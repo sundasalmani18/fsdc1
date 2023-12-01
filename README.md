@@ -15,6 +15,11 @@ html,css,bootstrap  javascript
 * BOOTSTRAP
 
 ```js
-import axios from 'axios';
+let myname = "Sundus"
+```
 
-## md extension markdown document.
+```html
+<script src="bootstrap.min.js"></script>
+```
+
+### md extension markdown document.
