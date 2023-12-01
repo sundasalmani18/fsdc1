@@ -1,0 +1,398 @@
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+/* Header Section  */
+
+.header .headerMenu {
+    display: flex;
+    padding: 10px 30px;
+    justify-content: space-between;
+}
+
+.header .headerMenu .logo {
+    color: #ce1212;
+    text-transform: uppercase;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+
+.header .headerMenu .navbarlist li {
+    display: inline;
+    margin: 0 30px;
+}
+
+
+.header .headerMenu .navbarlist li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+
+.header .headerMenu .eventbtn {
+    align-self: center;
+}
+
+
+.header .headerMenu .eventbtn button {
+    background: #ce1212;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+.maincontainer {
+    width: 100%;
+    height: 620px;
+    margin: 0 auto;
+    background-color: rgb(216, 213, 213);
+
+
+
+}
+
+/* main content */
+.contentheading {
+    width: 30%;
+    height: 50%;
+    /* background-color:aqua;  */
+    position: absolute;
+    margin: 100px 80px 100px 100px;
+}
+
+.contentheading .h1 {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.contentheading p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+
+}
+
+.contentbtn {
+    height: 50%;
+    width: 100%;
+    /* background-color: blue;  */
+    margin: 20px;
+
+
+}
+
+.contentbtn button {
+    width: 100px;
+    border-radius: 10px;
+    background-color: #ce1212;
+    color: #fff;
+    margin: 40px;
+    float: left;
+    padding: 10px;
+    border: none;
+
+}
+
+.playdiv {
+    width: 55%;
+    height: 70%;
+    /* background-color: #ce1212; */
+    /* margin:10px; */
+    float: left;
+
+}
+
+.playdiv .play-img {
+    height: 2%;
+    width: 2%;
+    /* background-color: #ce1212; */
+    margin: 20px;
+}
+
+.playdiv .play-text {
+    height: 30%;
+    width: 70%;
+    /* background-color:blue; */
+    /* margin-right: 30px; */
+    float: right;
+
+
+
+
+}
+
+.playdiv text {
+    color: #000;
+    ;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: justify;
+
+
+}
+
+.food-img {
+    height: 70%;
+    width: 40%;
+    /* background-color: red; */
+    float: left;
+    position: absolute;
+    margin: 20px;
+    padding: 70px;
+    left: 550px;
+    top: 10px;
+  
+}
+
+.food-img .img {
+    height: 10000%;
+    width: 20%;
+
+}
+
+.aboutdiv {
+    width: 100%;
+    height: 100%;
+    margin-top: 80px;
+}
+
+.aboutdiv h1 {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.aboutdiv h2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.aboutbooktable{
+    display: flex;
+}
+
+
+.about-leftsec {
+    width: 700px;
+    height: 800px;
+    margin: 40px;
+    /* background-color: #ce1212; */
+    /* float: left; */
+
+
+
+
+
+}
+
+.about-leftsec .booktable {
+    height: 20%;
+    width: 50%;
+    /* background-color: rgb(31, 7, 7); */
+    margin-left: 120px;
+
+
+}
+
+
+.about-rightsec {
+    width: 500px;
+    height: 800px;
+    /* background-color:aqua; */
+    /* float: left; */
+
+
+
+}
+
+.about-rightsec .textdiv {
+    height: 50%;
+    width: 80%;
+    margin: 30px;
+    padding: 20px;
+    /* background-color: #ce1212;       */
+    border: 2px solid #000;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: #fff;
+}
+
+.about-rightsec .imagediv {
+    height: 40%;
+    width: 100%;
+    /* background-color: #000; */
+    margin: 40px;
+}
+.yummymenu{
+   height: 200px;
+     width: 500px;
+    /*background-color: #000; */
+    margin-left: 370px;
+}
+
+.yummymenu .navbarlist li{
+    display: inline;
+    margin: 0 30px;
+}
+.yummymenu .navbarlist li a{
+color: #000;
+font-size: 17px;
+}
+
+.starter1{
+    height: 300px;
+    width: auto;
+    /* background-color: #ce1212; */
+    margin: 30px; 
+    padding: 50px;
+    display: flex;
+}
+.starter1.menuitem1{
+    width: 250px;
+    height:300px ;
+    /* background-color: #994e4e; */
+     margin-left: 120px;
+}
+.starter1 .menuitem2 {
+    width: 250px;
+    height:300px ;
+    /* background-color: #793a3a; */
+    margin-left: 120px;
+}
+.starter1 .menuitem3{
+    width: 250px;
+    height:300px ;
+    /* background-color:aqua; */
+    margin-left: 120px;
+}
+
+
+
+
+.starter2{
+    height: 300px;
+    width: auto;
+    /* background-color: #ce1212; */
+    margin: 30px; 
+    padding: 50px;
+    display: flex;
+}
+.starter2.menuitem1{
+    width: 250px;
+    height:300px ;
+    /* background-color: #994e4e; */
+     margin-left: 120px;
+    
+   
+    
+}
+.starter2 .menuitem2 {
+    width: 250px;
+    height:300px ;
+    /* background-color: #793a3a; */
+    margin-left: 120px;
+}
+.starter2 .menuitem3{
+    width: 250px;
+    height:300px ;
+    /* background-color:aqua; */
+    margin-left: 120px;
+}
+.reservation{
+    width: auto;
+    height: 500px;
+    /* background-color: #9730304b; */
+    margin-top: 80px;
+  
+   
+}
+.reservetable{
+    display: flex;
+    margin-left: 70px;
+}
+.reservation.reservation-img{
+    
+}
+.reservation .reservation-form{
+    height: 390px;
+    width: 850px;
+    background-color: rgb(245, 242, 242);
+}
+
+
+.reservation .reservation-form .form{
+    height: 700px;
+    width: 800px;
+    /* background-color: rgb(116, 25, 25); */
+    margin-left: 70px;
+}
+input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    margin-top: 18px;
+}
+    
+    .reservation .reservation-form .form button{
+    background: #ce1212;
+    color: #fff;
+    border: none;
+    border-radius: 80px;
+    padding: 10px;
+    font-size: 20px;
+    margin-left:250px ;
+  
+   
+    }
+    textarea{
+        width: 91%;
+        padding: 15px 20px;
+        margin: 8px 0;
+        box-sizing: border-box; 
+    }
+
+    .footer{
+        height: 300px;
+        width: auto;
+        background-color: #000;
+       
+        display: flex;
+    }
+    .footer .address{
+        width: 200px;
+        height: 200px;
+        margin-left: 90px;
+        /* background-color: #ce1212; */
+        margin-top:20px;
+        color: #fff;
+    } 
+    .footer .reserve{
+        width: 200px;
+        height: 200px;
+        margin-left: 90px;
+        /* background-color: #ce1212; */
+        margin-top:20px;
+        color: #fff;
+    }
+    .footer .openhr{
+        width: 200px;
+        height: 200px;
+        margin-left: 90px;
+        /* background-color: #ce1212; */
+        margin-top:20px;
+        color: #fff;
+    }
+    .footer .followus{
+        width: 200px;
+        height: 200px;
+        margin-left: 90px;
+        /* background-color: #ce1212; */
+        margin-top:20px;
+        color: #fff;
+    }

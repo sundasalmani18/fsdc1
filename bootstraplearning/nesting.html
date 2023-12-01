@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nesting</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:2px solid black;
+        }
+        .row{
+            border:2px solid rgb(134, 69, 69);
+        }
+        .col-6{
+            border:2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 green">heading here
+                <div class="row">
+                    <div class="col-6">
+                        <h1>Sub heading</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolorem obcaecati est, architecto iusto perspiciatis voluptates ipsa, tempore excepturi 
+                            quam culpa error. Ducimus eligendi laudantium commodi nobis. Sapiente, quisquam veniam</p>.</div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>hello</h1>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h1>sec1</h1>  
+                                </div>
+                                <div class="col-6">
+                                    <h1>sec2</h1>  
+                                </div>
+                        </div> 
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

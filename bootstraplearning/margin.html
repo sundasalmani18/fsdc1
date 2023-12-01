@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>
+        .container{
+            border:2px solid black;
+        }
+        .row{
+            border:2px solid rgb(151, 44, 44);
+        }
+        .col-md-3{
+            border:2px solid blue;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- 
+                m-5
+                ml-auto 
+                ml margin left 
+            mr= margin right
+        mt-3 =margin top
+    mb-5= margin bottom-->
+            <div class="col-md-3 ml-auto">
+               <h1>Hello</h1>
+            </div>
+            <!--top margin  5 space    -->
+            <div class="col-md-3 mt-5">
+                <h1>Hello2</h1>
+             </div>
+             <!-- Every side margin 5 space -->
+             <div class="col-md-3 m-5">
+                <h1>Hello2</h1>
+             </div>
+        </div>
+    </div>
+    
+</body>
+</html>

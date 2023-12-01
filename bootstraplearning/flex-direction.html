@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex-direction</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <style>   
+        .container{
+            border:2px solid black;  
+        }
+        .row{
+            border:2px solid rgb(187, 90, 90);
+        }
+        .col-md-3{
+    border:2px solid rgb(187, 90, 90);
+    background-color: rgb(161, 135, 185);
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- flex-row-reverse =>reverse div like d to a  
+    flex-column=> change into column
+ flex-column-reverse=> chnage into column and also change position 
+ flex-wrap-reverse=> if fourth div exceed length it will on next to last and it will also reverse 
+ flex-fill=>width will 100 (it will apply on column or row )
+ Screen size
+ flex-lg-row
+ flex-sm-row-reverse
+-->
+    <div class="container">
+        <div class="row flex-column-reverse">
+            <div class="col-md-3">
+                <h1>col A</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, minima architecto expedita nesciunt libero incidunt.</p>
+            </div>
+            <div class="col-md-3"> <h1>col B</h1><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+            <div class="col-md-3"> <h1>col C</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos, fuga?</p></div>
+            <div class="col-md-3"> <h1>col D</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error laboriosam temporibus, magni, quasi cumque dolor, quia culpa hic nam quaerat commodi eius nesciunt iure odio eveniet incidunt nostrum repudiandae quas.</p></div>
+        </div>
+    </div>
+</body>
+</html>
