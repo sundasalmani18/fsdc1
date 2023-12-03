@@ -23,18 +23,18 @@ let myname = "Sundus"
 ```
 
 ### md extension markdown document.
-1 Html  
+* Html  
 inline internal and external html
 paragraph,heading table form tags 
 class ,id 
 link
-2 css
+* css
 margin 
 padding 
 border
 icon 
 align
-3 Bootstrap
+* Bootstrap
 grid system
 row column 
 padding margin
