@@ -177,7 +177,7 @@ a:hover {
   background-color: rgb(233, 228, 228);
 }
 
-.servicecol:hover {
+.servicecol:hover{
   background-color: #FEA116;
   color: #fff;
 }
@@ -254,7 +254,7 @@ background-color: #FEA116;
 }
 
 
-team-item img {
+.team-item img {
   transition: .5s;
 }
 
@@ -265,4 +265,19 @@ team-item img {
 }
 .team-item:hover img {
   transform: scale(1.1);
+}
+.chef-item{
+  background-color: rgb(226, 217, 217);
+}
+
+.btn-square{
+  background-color: #FEA116;
+  border: none;
+}
+.btn-square:hover{
+  background-color: #FEA116; 
+}
+.owl-item:active{
+  background-color: #FEA116;
+  color: #fff;
 }
