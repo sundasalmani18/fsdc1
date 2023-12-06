@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- here we define viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+
+</head>
+
+<body>
+
+    Ternary OP ====
+    <h1 id="operator"></h1>
+
+    String OP ====
+    <h1 id="stringop"></h1>
+ 
+    Logival OP =====
+    <h1 id="logicalop"></h1>
+
+    <script>
+        // Ternary OP
+        let a=10;
+        a >= 20
+        let b=20;
+        document.getElementById("operator").innerHTML = (a < b) ? "Hello Javacsript" : "Hello Y";
+
+        // String OP
+
+        let nameOne = "A"
+        let nameTwo = "B"
+        let result = nameOne > nameTwo
+
+        document.getElementById("stringop").innerHTML = result;
+
+        // Logival OP
+        let empOneSalary = "50000"
+        let empTwoSalary = "70000"
+        let empThreeSalary = "80000"
+
+        let  empName = false
+
+    
+        // if(parseInt(empOneSalary) > 60000 && parseInt(empThreeSalary) > 50000 ){
+        //     result = "Ali"
+        // } else {
+        //     result = "asgar"
+        // }
+
+        if(!empName){
+            result = "Ali"
+        } else {
+            result = "asgar"
+        }
+
+        document.getElementById("logicalop").innerHTML = result;
+
+        let valOne =  5
+        let percentage = (100 + 200) * valOne;
+
+
+    
+
+    </script>
+    <!-- <script src="./assets/js/app.js"></script> -->
+</body>
+
+</html>
