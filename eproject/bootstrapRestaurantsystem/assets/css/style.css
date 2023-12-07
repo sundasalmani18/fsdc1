@@ -281,3 +281,44 @@ background-color: #FEA116;
   background-color: #FEA116;
   color: #fff;
 }
+
+.companysection a{
+  text-align: left;
+  text-decoration: none;
+  margin-bottom: 5px;
+  color: #fff;
+  display: block;
+  transition: .3s;
+}
+.companysection a:hover{
+  color: #fff;
+}
+#footer .copyright{
+  padding: 25px 0;
+  font-size: 15px;
+  border-top: 1px solid rgba(256, 256, 256, .1);
+}
+.companysection a:before{
+  
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+}
+#footer .footermenu a{ 
+  margin-right: 50px;
+  padding-right: 15px;
+  border-right: 1px solid rgba(255, 255, 255, .1);
+  text-decoration: none;
+  color: #fff;
+
+}
+.btn-primary{
+  background-color: #feaf39;
+  border-color: #feaa2d;
+}
+.btn-primary:hover {
+  color: #000;
+  background-color: #feaf39;
+  border-color: #feaa2d;
+}
