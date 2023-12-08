@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+
+       function myfunc(){
+        document.write("hi everyone");
+        console.log("hi everyone");
+       }
+
+        function add(x,y){
+            return x+y;
+        }
+            function sub(x,y){
+            return x-y;
+        }
+        function multi(x,y){
+            return x*y;
+        }
+        
+
+        let a=2;
+        let b=3;
+       
+        document.getElementById("demo1").innerHTML=add(a,b);
+        document.getElementById("demo2").innerHTML=sub(a,b);
+        document.getElementById("demo3").innerHTML=multi(a,b);
+        // document.write("addition is ",myfunc(a,b));
+        // console.log("addition is", myfunc(a,b));  
+        myfunc();
+        
+        </script>
+         
+</body>
+</html>
