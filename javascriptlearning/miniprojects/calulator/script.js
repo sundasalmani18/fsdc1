@@ -9,7 +9,7 @@ const calculator = {
 
 function inputDigit(digit) {
     const { displayValue, waitingForSecondOperand } = calculator;
-    console.log({displayValue, waitingForSecondOperand, digit})
+    console.log({ displayValue, waitingForSecondOperand, digit })
     if (waitingForSecondOperand == true) {
         calculator.displayValue = digit;
         calculator.waitingForSecondOperand = false
@@ -121,3 +121,49 @@ keys.addEventListener('click', event => {
     updateDisplay();
 })
 
+
+///////// end
+
+
+let disValue = '0'
+
+function updateDis() {
+    const display = document.querySelector('.cal-screen');
+    console.log({ display })
+    display.value = disValue
+}
+
+updateDis();
+
+
+function resetCal() {
+    disValue = '0'
+    updateDis();
+}
+
+
+const calkeys = document.querySelector('.cal-key');
+
+calkeys.addEventListener('click', event => {
+    console.log({ event })
+    const { target } = event
+    const { value } = target;
+
+    disValue = value
+    updateDis();
+
+    switch (value) {
+        case '+':
+            handleOperator(value);
+            break
+        case 'all-clear':
+            resetCal();
+            break;
+        default:
+            if (Number.isInteger(parseFloat(value))) {
+                inputDigit(value);
+            }
+    }
+
+    
+})

@@ -1,0 +1,13 @@
+https://preview.codecanyon.net/item/restaurant-pos-restaurant-management-system-with-kitchen-display/full_screen_preview/45798310
+
+https://resto.codehas.net/auth/login
+
+Administration Area: 
+Email: admin@admin.com 
+Password: 12345678
+
+Task-----
+
+* admin login
+* admin/dashboard
+* admin/categories
