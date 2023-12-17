@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Categories</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/fontawesomeall.min.css">
+</head>
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='fa-solid fa-bars' id="header-toggle"></i> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="home.html" class="nav_logo "><i class="fa-solid fa-utensils  fa-2x  "
+                        style="color: white;"></i> <span class="nav_logo-name">Restaurant System</span>
+                </a>
+
+                <div class="nav_list"> <a href="dashboard.html" class="nav_link active"> <i
+                            class='fa-solid fa-palette'></i> <span class="nav_name">Dashboard</span> </a>
+                    <a href="categories.html" class="nav_link"> <i class='fa-solid fa-layer-group'></i> <span
+                            class="nav_name">Categories</span> </a>
+                    <a href="items.html" class="nav_link"> <i class="fa-solid fa-list"></i> <span
+                            class="nav_name">Items</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span
+                            class="nav_name">Bookmark</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span
+                            class="nav_name">Files</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
+                            class="nav_name">Stats</span> </a>
+                </div>
+            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                    class="nav_name">SignOut</span> </a>
+        </nav>
+    </div>
+
+
+    <div class="categories p-4">
+        <div class=" d-flex p-3">
+            <i class="fa-solid fa-circle-plus fa-2x"></i>
+            <h6 class="m-2  d-flex">Add Categories</h6>
+            <div class="" style="margin-left: 850px;">
+                <a href="../admin/home.html"  class="btn btn-success" >Back</a>
+                
+            </div>
+        </div>
+
+        <div class="category-info p-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Categories Information</h5>
+                        <h6>Enter information for new product category</h6>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label class="m-2">Name</label>
+                        <input type="text" class="form-control" required>
+                        <label class="m-2">Image</label>
+                        <div class="image-content">
+                            <div class="file-upload-wrapper p-2">
+                                <input type="file" id="input-file-now-custom-1" class="file-upload" data-default-file="https://mdbootstrap.com/img/Photos/Others/images/89.webp" />
+                              </div>
+                        </div>
+
+                        <div class="d-flex flex-row-reverse bd-highlight">
+                            <a href="../admin/categories.html" class=" btn btn-success m-2">Cancel</a>
+                            <a href="" class="btn btn-primary m-2" >Save </a>     
+                        </div>        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+   
+
+
+
+<!-- <script>
+    $('.file-upload').file_upload();</script> -->
+    <script src="../assets/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/pagination.js"></script>
+    <script src="../assets/js/veritcalNavbar.js"></script>
+</body>
+
+</html>

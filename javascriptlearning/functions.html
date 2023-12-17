@@ -1,43 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Function</title>
 </head>
+
 <body>
-    <p id="demo1"></p>
+    <!-- <p id="demo1"></p>
     <p id="demo2"></p>
-    <p id="demo3"></p>
+    <p id="demo3"></p> -->
+
+    <form id="form" onsubmit="return contactForm(event)">
+        <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name" required>
+        <input type="email" id="email" name="email" placeholder="Enter Email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3 id="contactText"></h3>
     <script>
 
-       function myfunc(){
-        document.write("hi everyone");
-        console.log("hi everyone");
-       }
-      
-        function add(x,y){
-            return x+y;
-        }
-            function sub(x,y){
-            return x-y;
-        }
-        function multi(x,y){
-            return x*y;
-        }
-        
+        // let submitButton = document.querySelector('button');
 
-        let a=2;
-        let b=3;
-        myfunc();
-        document.getElementById("demo1").innerHTML=add(a,b);
-        document.getElementById("demo2").innerHTML=sub(a,b);
-        document.getElementById("demo3").innerHTML=multi(a,b); 
-         document.write("addition is ",add(a,b));
+        // submitButton.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     console.log(e)
+
+        //     const contactForm = document.querySelector('#form')
+        //     const fullName = document.querySelector('[name="fullname"]')
+        //     const email = document.querySelector('[name="email"]')
+
+        //     if (fullName.value.length === 0 || email.value.length === 0) {
+        //         let errorText = `Please fill all inputs`
+        //         document.getElementById('contactText').innerHTML = errorText
+        //     } else {
+        //         let contactText = `Thank you Contact Us , Name ${fullName.value} & Email ${email.value}`
+        //         document.getElementById('contactText').innerHTML = contactText
+        //     }
+        // })
+
+
+        function contactForm(event) {
+            event.preventDefault();
+            const fullName = document.forms["form"]["fullname"]
+            const email = document.forms["form"]["email"]
+            if (fullName.value.length === 0 || email.value.length === 0) {
+                let errorText = `Please fill all inputs`
+                document.getElementById('contactText').innerHTML = errorText
+            } else {
+                let contactText = `Thank you Contact Us , Name ${fullName.value} & Email ${email.value}`
+                document.getElementById('contactText').innerHTML = contactText
+            }
+        }
+
+        // let inputValue = ""
+        // function handleInput(value) {
+        //     console.log(value)
+        //     alert('Hello', value)
+        // }
+        // function submitData() {
+        //     // let formValue = new formData()
+        //     // console.log({ formValue })
+        //     alert('Hello', inputValue)
+        // }
+
+        // function myfunc() {
+        //     document.write("hi everyone");
+        //     console.log("hi everyone");
+        // }
+
+        // function add(x, y) {
+        //     return x + y;
+        // }
+        // function sub(x, y) {
+        //     return x - y;
+        // }
+        // function multi(x, y) {
+        //     return x * y;
+        // }
+
+
+        // let a = 2;
+        // let b = 3;
+        // myfunc();
+        // document.getElementById("demo1").innerHTML = add(a, b);
+        // document.getElementById("demo2").innerHTML = sub(a, b);
+        // document.getElementById("demo3").innerHTML = multi(a, b);
+        // document.write("addition is ", add(a, b));
         // console.log("addition is", myfunc(a,b));  
-       
-        
-        </script>
-         
+
+
+    </script>
+
 </body>
+
 </html>

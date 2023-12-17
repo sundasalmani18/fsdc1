@@ -50,7 +50,55 @@ a{text-decoration: none}
  text-align: center;
 
 }
+.nav .fa{
+color: white;
+}
 .graph-content{
     border: 1px solid black;
     border-radius: 8px;
+}
+.categories{
+    background-color: #eff1f3;
+}
+
+.categories-content{
+    border: 1px solid black;
+    border-radius: 8px; 
+}
+.search-content{
+    background-color: #fff;
+}
+.add-content{
+    background-color: #eff1f3;
+}
+.list-group img{
+    height: 100px;
+}
+.table img{
+    height: 70px;
+}
+.table p{
+    color: grey;
+}
+.table span{
+    color: grey;
+}
+
+
+.category-info{
+    border: 1px solid black;
+    border-radius: 8px; 
+    height: 420px;
+    background-color: #fff;
+}
+.image-content{
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 8px; 
+}
+.item-info{
+    border: 1px solid black;
+    border-radius: 8px; 
+    height: 600px;
+    background-color: #fff;
 }
