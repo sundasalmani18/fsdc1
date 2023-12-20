@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>String</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+</head>
+
+<body>
+    <h2>String</h2>
+
+    <script>
+
+        let name = "Sundas";
+        let carBrand = '  Toyota Car';
+        let sentance = "I'm working, in IT, Field"
+        let startTrimValue = "   start trim value"
+        let endTrimValue = "End trim value    "
+        let startEndTrimValue = "  Start trim value End  "
+
+        let empSalary = 7
+
+        // console.log('my name', name, typeof name)
+        // console.log('my car', carBrand, typeof carBrand)
+        // console.log('sentance', sentance)
+
+        // String length
+        console.log('my name', sentance.length)
+        document.write(sentance)
+
+        //String trim()
+        console.log('wihtout trim example', startEndTrimValue)
+        console.log('trim example', startEndTrimValue.trim())
+        console.log('trim start example', startTrimValue.trimStart())
+        console.log('trim end example', endTrimValue.trimEnd())
+
+
+        // slice()
+        console.log('my name', sentance.slice(4))
+        console.log('my name', sentance)
+        console.log('my name', sentance.slice(-12, -6))
+
+        // substring()
+        console.log('substring example:', sentance.substring(7, 13))
+
+
+        // concat()
+        console.log('concat example:', name.concat(carBrand))
+
+        console.log(name + carBrand)
+
+        // toLowerCase()
+        console.log('without toLowerCase example:', carBrand)
+        console.log('toLowerCase example:', carBrand.toLowerCase())
+        // toUpperCase()
+        console.log('without toUpperCase example:', name)
+        console.log('toUpperCase example:', name.toUpperCase())
+
+
+        // padStart()
+        let roleNum = "8";
+        console.log("padStart exmaple", roleNum.padStart(3, "0"))
+
+        // padEnd()
+
+        console.log("padEnd exmaple", empSalary.toString().padEnd(4, "x"))
+        // document.write(empSalary.toString().padEnd(4, "x"))
+
+
+        // charAt()
+        console.log("charAt exmaple", name.charAt(4))
+        // charCodeAt()
+        console.log("charCodeAt exmaple", name.charCodeAt(0))
+
+
+        // split()
+
+        console.log('split example', sentance.split(","))
+
+        // function valueExtrac(val1,val2){
+        //     console.log('valueExtrac', sentance.substring(val1,val2))
+        // }
+
+        // valueExtrac(-12,-6)
+
+    </script>
+</body>
+
+</html>
