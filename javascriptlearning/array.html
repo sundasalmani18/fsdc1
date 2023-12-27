@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    
+    <h1> Array</h1>
+
+    <div id="students"></div>
+    <script>
+        let students = ["Ali","sundus","alena","abc"];
+
+        console.log(students)
+        console.log(students[1])
+
+        students[2] = "waqas";
+
+        console.log(students)
+        console.log(typeof students[2])
+
+        let person = {name: "raheel", age : 28}
+
+        console.log(person["age"])
+
+        console.log(students.length)
+        console.log(students.sort())
+        
+
+        let totalStudents =  students.length;
+
+        let text = "<ul>";
+
+        for(let i=0; i < totalStudents; i++){
+            text += `<li> ${students[i]} </li>`
+        }
+        text += "</ul>"
+
+        document.getElementById("students").innerHTML = text
+
+        students.push("jhon")
+
+        console.log(students)
+
+        students[students.length] = "ccc"
+
+        console.log(students)
+
+        console.log(students[10])
+    </script>
+</body>
+</html>

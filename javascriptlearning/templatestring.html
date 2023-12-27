@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template string </title>
+</head>
+<body>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="num1"></h2>
+    <h2 id="num2"></h2>
+    <h2 id="num3"></h2>
+    <h2 id="num4"></h2>
+    <script>
+        //TEMPLATE literals
+        let paragraph =`javascript is popular programming language used to develop  "dynamic web pages" `;
+        document.getElementById("demo").innerHTML=paragraph;
+//template string 
+        let firstname="ahmed";
+        let lastname="khan";      
+        document.getElementById("demo1").innerHTML=`${firstname} ${lastname}`;
+
+
+        //Number Methods
+        //tostring convert number into string
+        let x=983;
+        document.getElementById("num1").innerHTML=x.toString();
+
+
+       // toExponential(): returns a string, with a number rounded and written using exponential notation
+       let y=2.80725036;
+      
+       document.getElementById("num2").innerHTML= y.toExponential(2);
+       //toFixed() returns a string, with the number written with a specified number of decimals:
+       document.getElementById("num3").innerHTML= y.toFixed(3);
+
+       //valueof() return number as a number
+       document.getElementById("num4").innerHTML= y.valueOf();
+  </script>
+</body>
+</html>

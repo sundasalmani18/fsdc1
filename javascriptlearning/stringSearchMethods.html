@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>String methods</h1>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="demo3"></h2>
+    <h2 id="demo4"></h2>
+    <h2 id="demo5"></h2>
+    <h2 id="demo6"></h2>
+    <script>
+        //indexof take two argument indexof and position 
+        //indexof not work with regular expression 
+        // indexOf()
+       // indexof check position of sc.sc found it will show index position 
+        let text1 = "this sc is my school sc";
+        console.log('indexOF', text1.indexOf('sc'));
+        document.getElementById("demo").innerHTML=text1.indexOf('sc');
+
+
+        // lastIndexOf()
+           //lastindexof not work with regular expression 
+           //position argument accepted
+             // lastindexof check position pf sc complete paragraph and show last position of sc .
+        let text2 = "this sc is my school my shoes color is blank in sc";
+        console.log('lastIndexOf', text2.lastIndexOf('sc'));
+        document.getElementById("demo1").innerHTML=text2.lastIndexOf('sc');
+
+        // search()
+        //work with regular expression 
+        let text3 = "this sc is my school my shoes color is 'blank' in sc";
+        console.log('search', text3.search('sc'));
+        document.getElementById("demo2").innerHTML=text3.search(/sc/);
+
+
+        // match()  -- next class
+        //work with regular expression
+        let text4 = "this sc is my school. my shoes SC color is 'blank' in School";
+        console.log('match', text4.match('sc'));
+        document.getElementById("demo3").innerHTML=text4.match(/sc/);
+        console.log('matchAll', text4.matchAll(/School/g));
+
+        //includes()
+       // not work with regular expression
+        console.log('includes', text4.includes('scw'));
+        document.getElementById("demo4").innerHTML=text4.includes('sc');
+
+        //startsWith()
+        console.log('startsWith', text4.startsWith('this'));
+        document.getElementById("demo5").innerHTML=text4.startsWith('sc');
+
+        let name = "ali khan"
+        console.log('endsWith', name.endsWith('M'));
+        document.getElementById("demo6").innerHTML=text4.endsWith('sc');
+
+    </script>
+</body>
+
+</html>

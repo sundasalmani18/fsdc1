@@ -11,19 +11,66 @@
 </head>
 
 <body>
+
+<!-- difference between substr and substring
+1.The two parameters of substr() are start and length ,
+ 2.substring() , they are start and end .
+  3substr() and slice neg value allow, 
+  4 substring() neg value  clamp it to 0 .
+-->
     <h2>String</h2>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="demo3"></h2>
+    <h2 id="demo4"></h2>
+    <h2 id="demo5"></h2>
+    <h2 id="demo6"></h2>
+    <h2 id="demo7"></h2>
+    <h2 id="demo8"></h2>
+    <h2 id="demo9"></h2>
+    <h2 id="demo10"></h2>
+    <h2 id="demo11"></h2>
+    <h2 id="demo12"></h2>
+
 
     <script>
 
         let name = "Sundas";
         let carBrand = '  Toyota Car';
-        let sentance = "I'm working, in IT, Field"
+        let sentance = "I'm working, in IT, Field  "
         let startTrimValue = "   start trim value"
         let endTrimValue = "End trim value    "
         let startEndTrimValue = "  Start trim value End  "
 
         let empSalary = 7
+           //By id
+           document.getElementById("demo").innerHTML=sentance.length;
+       //trim
+       document.getElementById("demo1").innerHTML=startTrimValue.trimStart();
+       document.getElementById("demo2").innerHTML=startEndTrimValue.trim();
+       document.getElementById("demo3").innerHTML=endTrimValue.trimEnd();
 
+       //slice
+       document.getElementById("demo4").innerHTML=name.slice(-5);
+       //concat
+       document.getElementById("demo5").innerHTML=carBrand.concat(name);
+
+       //substring
+       document.getElementById("demo6").innerHTML=name.substring(3);
+       //toLowerCase
+       document.getElementById("demo7").innerHTML=name.toLowerCase();
+       //toupercase
+   document.getElementById("demo8").innerHTML=name.toUpperCase();
+       //padStart
+       let employee="8";
+       document.getElementById("demo9").innerHTML=employee.padStart(3,"0");
+       //padEnd
+       document.getElementById("demo10").innerHTML=employee.padEnd(4,"x");
+       //charAt()
+       document.getElementById("demo11").innerHTML=name.charAt(3);
+       //split
+       document.getElementById("demo12").innerHTML=sentance.split(",");
         // console.log('my name', name, typeof name)
         // console.log('my car', carBrand, typeof carBrand)
         // console.log('sentance', sentance)
@@ -87,6 +134,9 @@
 
         // valueExtrac(-12,-6)
 
+
+
+        
     </script>
 </body>
 
