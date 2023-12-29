@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods </title>
+</head>
+<body>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="demo3"></h2>
+    <h2 id="demo4"></h2>
+    <h2 id="demo5"></h2>
+    <h2 id="demo6"></h2>
+    <h2 id="demo7"></h2>
+    <h2 id="demo8"></h2>
+    <h2 id="demo9"></h2>
+    <h2 id="demo10"></h2>
+    <h2 id="demo11"></h2>
+    <h2 id="demo12"></h2>
+    <script>
+let name=["marium","anum","amna","uzma","sana"];
+//Array length
+document.getElementById("demo1").innerHTML=name.length;
+//Array toString()
+document.getElementById("demo2").innerHTML=name.toString();
+//Array pop()
+//The pop() method removes the last element from an array:
+name.pop();
+document.getElementById("demo3").innerHTML=name;
+//Array push()
+//The push() method adds a new element to an array (at the end):
+name.push("fatima");
+document.getElementById("demo4").innerHTML=name;
+//Array shift()
+//shift() method removes the first array element and "shifts" all other elements to a lower index.
+name.shift();
+document.getElementById("demo5").innerHTML=name;
+//Array unshift()
+//unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
+name.unshift("zainab");
+document.getElementById("demo6").innerHTML=name;
+//Array join()
+//join() method also joins all array elements into a string.
+document.getElementById("demo7").innerHTML=name.join("*");
+//Array delete()
+delete name[1];
+document.getElementById("demo8").innerHTML=name;
+//Array concat()
+//The concat() method creates a new array by merging (concatenating) existing arrays:
+let rollno=[12,15,20,78,90];
+document.getElementById("demo9").innerHTML=name.concat(rollno);
+//Array flat()
+//flat() method creates a new array with sub-array elements concatenated to a specified depth.
+let arr=[[88,99],[66,55],[22,33]];
+document.getElementById("demo10").innerHTML=arr.flat();
+//Array splice()
+// splice() method can be used to add new items to an array:
+// The first parameter (2) defines the position where new elements should be added (spliced in).
+// The second parameter (0) defines how many elements should be removed.
+console.log(name.splice(3,0,"rida","urooj"));
+document.getElementById("demo11").innerHTML=name.splice(3,0,"rida","urooj");
+//Array slice()
+//slices out a part of an array starting from array element 1
+document.getElementById("demo12").innerHTML=name.slice(1);
+    </script>
+ 
+</body>
+</html>
