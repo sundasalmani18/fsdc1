@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="demo3"></h2>
+    <h2 id="demo4"></h2>
+    <h2 id="demo5"></h2>
+    <h2 id="demo6"></h2>
+    <h2 id="demo7"></h2>
+    <h2 id="demo8"></h2>
+    <h2 id="demo9"></h2>
+    <h2 id="demo10"></h2>
+    <h2 id="demo11"></h2>
+    <h2 id="demo12"></h2>
+<script>z
+    // Array map()
+const numbers1 = [45, 4, 9, 16, 25];
+const numbers2 = numbers1.map(myFunction);
+
+document.getElementById("demo").innerHTML = numbers2;
+
+function myFunction(value, index, array) {
+  return value ;
+}
+  
+//Array forEach
+// const numbers = [45, 4, 9, 16, 25];
+
+// let txt = "";
+// numbers.forEach(myFunction);
+// document.getElementById("demo1").innerHTML = txt;
+
+// function myFunction(value) {
+//   txt += value + "<br>"; 
+
+
+// Array flatMap()
+//flatMap() method first maps all elements of an array and then creates a new array by flattening the array
+const myArr = [1, 2, 3, 4, 5,6];
+const newArr = myArr.flatMap((x) => x * 2);
+document.getElementById("demo2").innerHTML = newArr;
+
+// Array filter()
+//filter() method creates a new array with array elements that pass a test
+let num = [45, 4, 9, 16, 25];
+let val = num.filter(myFunction);
+
+document.getElementById("demo3").innerHTML = val;
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+// Array reduce()
+//reduce() method runs a function on each array element to produce (reduce it to) a single value.
+
+// let numbers = [45, 4, 9, 16, 25];
+// let sum = numbers.reduce(myFunction);
+
+// document.getElementById("demo4").innerHTML = "The sum is " + sum;
+
+// function myFunction(total, value, index, array) {
+//   return total + value;
+// }
+// Array reduceRigth()
+//reduceRight() method runs a function on each array element to produce (reduce it to) a single value
+const numbers = [45, 4, 9, 16, 25];
+let sum = numbers.reduceRight(myFunction);
+
+document.getElementById("demo5").innerHTML = "The sum is " + sum;
+
+function myFunction(total, value, index, array) {
+  return total + value;
+}
+//     Array every()
+//every() method checks if all array values pass a test
+// checks if all array values are larger than 18:
+let numbr = [45, 4, 9, 16, 25];
+let allOver18 = numbr.every(myFunction);
+
+document.getElementById("demo6").innerHTML = "All over 18 is " + allOver18;
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+//     Array some()
+const nu = [45, 4, 9, 16, 25];
+let someOver18 = nu.some(myFunction);
+
+document.getElementById("demo7").innerHTML = "Some over 18 is " + someOver18;
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+//     Array from()
+//Array.from() method returns an Array object from any object with a length property or any iterable object
+const Arr = Array.from("ABCDEFG");
+document.getElementById("demo8").innerHTML = Arr;
+//     Array keys()
+//Array.keys() method returns an Array Iterator object with the keys of an array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const keys = fruits.keys();
+
+let text = "";
+for (let x of keys) {
+  text += x + "<br>";
+}
+
+document.getElementById("demo9").innerHTML = text;
+//     Array entries()
+//an Array Iterator, and then iterate over the key/value pairs
+const fruit = ["Banana", "Orange", "Apple", "Mango"];
+const f = fruit.entries();
+
+for (let x of f) {
+  document.getElementById("demo10").innerHTML += x + "<br>";
+}
+
+//     Array with()
+//Array with() method as a safe way to update elements in an array without altering the original array.
+const months = ["Januar", "Februar", "Mar", "April"];
+const myMonths = months.with(2, "March");
+
+document.getElementById("demo11").innerHTML = myMonths;
+//     Array Spread (...) 
+//operator expands an iterable (like an array) into more elements:
+
+const q1 = ["Jan", "Feb", "Mar"];
+const q2 = ["Apr", "May", "Jun"];
+const q3 = ["Jul", "Aug", "Sep"];
+const q4 = ["Oct", "Nov", "May"];
+
+const year = [...q1, ...q2, ...q3, ...q4];
+document.getElementById("demo12").innerHTML = year; 
+</script>
+</body>
+</html>

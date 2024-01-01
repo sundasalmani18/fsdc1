@@ -9,15 +9,27 @@
     <h2 id="demo1"></h2>
     <h2 id="demo2"></h2>
     <h2 id="demo3"></h2>
+    <h2 id="demo3_3"></h2>
+    <h2 id="demo3_4"></h2>
     <h2 id="demo4"></h2>
     <h2 id="demo5"></h2>
     <h2 id="demo6"></h2>
     <h2 id="demo7"></h2>
     <h2 id="demo8"></h2>
+    <h2 id="demo8_8"></h2>
+    <h2 id="demo8_9"></h2>
     <h2 id="demo9"></h2>
     <h2 id="demo10"></h2>
     <h2 id="demo11"></h2>
     <h2 id="demo12"></h2>
+    <h2 id="demo13"></h2>
+    <h2 id="demo14"></h2>
+    <h2 id="demo15"></h2>
+    <h2 id="demo16"></h2>
+    <h2 id="demo17"></h2>
+    <h2 id="demo18"></h2>
+    <h2 id="demo19"></h2>
+    <h2 id="demo20"></h2>
     <script>
 let name=["marium","anum","amna","uzma","sana"];
 //Array length
@@ -26,8 +38,10 @@ document.getElementById("demo1").innerHTML=name.length;
 document.getElementById("demo2").innerHTML=name.toString();
 //Array pop()
 //The pop() method removes the last element from an array:
-name.pop();
-document.getElementById("demo3").innerHTML=name;
+let lastIndex = name.pop();
+document.getElementById("demo3").innerHTML=`Pop method ${lastIndex}`;
+document.getElementById("demo3_3").innerHTML=`Pop method ${name}`;
+document.getElementById("demo3_4").innerHTML=`Pop method ${name.length}`;
 //Array push()
 //The push() method adds a new element to an array (at the end):
 name.push("fatima");
@@ -44,8 +58,12 @@ document.getElementById("demo6").innerHTML=name;
 //join() method also joins all array elements into a string.
 document.getElementById("demo7").innerHTML=name.join("*");
 //Array delete()
-delete name[1];
-document.getElementById("demo8").innerHTML=name;
+delete name[2];
+document.getElementById("demo8").innerHTML=`delete method ${name}`;
+document.getElementById("demo8_8").innerHTML=`delete method ${name.length}`;
+
+name[2] = "abc"
+document.getElementById("demo8_9").innerHTML=` method ${name}`;
 //Array concat()
 //The concat() method creates a new array by merging (concatenating) existing arrays:
 let rollno=[12,15,20,78,90];
@@ -60,10 +78,58 @@ document.getElementById("demo10").innerHTML=arr.flat();
 // The second parameter (0) defines how many elements should be removed.
 console.log(name.splice(3,0,"rida","urooj"));
 document.getElementById("demo11").innerHTML=name.splice(3,0,"rida","urooj");
+
 //Array slice()
 //slices out a part of an array starting from array element 1
 document.getElementById("demo12").innerHTML=name.slice(1);
-    </script>
+
+
+//sort and reverse array
+document.getElementById("demo13").innerHTML=`sorting ${name.sort()}`;
+document.getElementById("demo14").innerHTML=`reverse ${name.reverse()}`;
+
+let num=[5,8,12,3,20,2];
+//ascending oredr
+num.sort(function(a, b){return a - b});
+document.getElementById("demo15").innerHTML=`num ascending sorting ${num}`;
+//descending order
+num.sort(function(a, b){return b - a});
+document.getElementById("demo16").innerHTML=`num descending sorting ${num}`;
+//random order 
+num.sort(function(){return 0.5-Math.random()});
+document.getElementById("demo17").innerHTML=`random order ${num}`;
+//Math.min.apply to find the lowest number in an array
+
+document.getElementById("demo18").innerHTML=`Math min.apply ${myArrayMin(num)}`;
+function myArrayMin(arr) {
+  return Math.min.apply(null, arr);
+}
+//Math.max.apply to find the highest number in an array
+document.getElementById("demo19").innerHTML=`Math max.apply ${myArraymax(num)}`;
+function myArraymax(arr) {
+  return Math.max.apply(null, arr);
+}
+  //sort object
+  let array=[
+    {name:"ali" ,rollno:12},
+    {name:"ahmed" ,rollno:5},
+    {name:"umar" ,rollno:72},
+    {name:"hassan" ,rollno:11},
+    {name:"amir" ,rollno:9}
+
+];
+display();
+array.sort(function(a, b){return a.rollno - b.rollno});
+display();
+function display() {
+  document.getElementById("demo20").innerHTML =
+  array[0].name + " " + array[0].rollno + "<br>" +
+  array[1].name + " " + array[1].rollno + "<br>" +
+  array[1].name + " " + array[2].rollno + "<br>" +
+  array[1].name + " " + array[3].rollno + "<br>" +
+  array[2].name + " " + array[4].rollno;
+}
+ </script>
  
 </body>
 </html>

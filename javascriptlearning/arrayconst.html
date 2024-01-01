@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array const</title>
+</head>
+<body>
+    <h2>JavaScript const</h2>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    
+    <script>
+    
+    const cars = ["Saab", "Volvo", "BMW"];
+    document.getElementById("demo").innerHTML = cars;
+    //An array declared with const cannot be reassigned
+//     Elements Can be Reassigned
+// You can change the elements of a constant array:
+    const car = ["Saab", "Volvo", "BMW"];
+
+// You can change an element:
+car[0] = "Toyota";
+document.getElementById("demo1").innerHTML = car;  
+
+
+// Const Block Scope
+// An array declared with const has Block Scope.
+
+// An array declared in a block is not the same as an array declared outside the block:
+
+const carr = ["Saab", "Volvo", "BMW"];
+// Here cars[0] is "Saab"
+{  
+  const carr = ["Toyota", "Volvo", "BMW"]; 
+  document.getElementById("demo2").innerHTML = carr[0];
+  // Here cars[0] is "Toyota"
+}
+// Here cars[0] is "Saab"
+</script>
+</body>
+</html>
