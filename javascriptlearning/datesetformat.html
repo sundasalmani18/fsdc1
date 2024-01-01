@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date set format</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+
+    <script>
+  // setDate()	Set the day as a number (1-31)
+const d = new Date();
+d.setDate(15);
+document.getElementById("demo").innerHTML = d;
+ //setFullYear()	Set the year (optionally month and day)
+ const dd = new Date();
+d.setFullYear(2020);
+document.getElementById("demo1").innerHTML = dd;
+// setMonth()	Set the month (0-11)
+const d1 = new Date();
+d1.setMonth(11);
+document.getElementById("demo2").innerHTML = d1;
+//setHours()	Set the hour (0-23)
+const d2 = new Date();
+d2.setHours(22);
+document.getElementById("demo3").innerHTML = d2;
+// setSeconds()	Set the seconds (0-59)
+const d3 = new Date();
+d3.setSeconds(30);
+document.getElementById("demo4").innerHTML = d3;
+</script>
+</body>
+</html>
