@@ -6,36 +6,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POS</title>
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/pos.css">
   <link rel="stylesheet" href="../assets/css/fontawesomeall.min.css">
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav m-4">
+        <li class="nav-item active">
+          <a href="../admin/home.html" class="btn btn-outline-primary pl-4 m-3"><i class="fa-solid fa-rotate-left p-2"></i>Back</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="btn btn-outline-primary m-3  py-2 "><i class="fa-regular fa-circle-xmark p-2 "></i>Clear</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle m-3  py-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="form-group  m-3">
+            <label for="inputPassword2" class="sr-only">Password</label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="btn btn-outline-primary m-3"> <i class="fa-solid fa-grip-lines p-2"></i>InProcess</a>
+        </li>
+        <li class="nav-item">
+          <a href="../admin/home.html" class="btn btn-outline-primary m-3"> <i class="fa-solid fa-notes-medical p-2"></i>Notes</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
 
-<div class="d-flex">
- <a href="../admin/home.html" class="btn btn-primary pl-4 m-3"><i class="fa-solid fa-rotate-left"></i>Back</a>
- <a href="#" class="btn btn-primary m-3">Clear</a>
- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle m-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a> 
-  </div>
-</div>
-<div class="form-group  m-3">
-  <label for="inputPassword2" class="sr-only">Password</label>
-  <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-</div>
-<a href="../admin/home.html" class="btn btn-primary m-3">Notes</a>
-<a href="#" class="btn btn-primary m-3">InProcess</a>
-</div>
+
 <div class="container-fluid">
   <div class="row">
             <div class="col-md-2 d-flex">
-            <div class="table-responsive">
+            <div class="table-responsive  m-4" >
 
               <table class="table table-hover table-border-none  align-content-center">
                 <tbody>
@@ -43,77 +63,77 @@
                     <td class="">
                       <img src="../assets/images/pos/sandwiches.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Sandwiches</span>
+                      <p class="text-center">Sandwiches</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/salad.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid " alt=""><br>
-                      <span>Salad</span>
+                      <p class="text-center">Salad</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/burger.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Burger</span>
+                      <p class="text-center">Burger</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/appetizer.jpg"
                       class=" border object-cover bg-white p-1 rounded " alt=""><br>
-                    <span>Appetizer</span>
+                    <p class="text-center">Appetizer</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/soup.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Soup</span>
+                      <p class="text-center">Soup</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/pizza.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Pizza</span>
+                      <p class="text-center">Pizza</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/pasta.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Pasta</span>
+                      <p class="text-center">Pasta</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/seafood.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Seafood</span>
+                      <p class="text-center">Seafood</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/steak.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Steak</span>
+                      <p class="text-center">Steak</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/chicken.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Chicken</span>
+                      <p class="text-center">Chicken</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="">
                       <img src="../assets/images/pos/sushi.jpg"
                         class=" border object-cover bg-white p-1 rounded img-fluid" alt=""><br>
-                      <span>Sushi</span>
+                      <p class="text-center">Sushi</p>
                     </td>
                   </tr>
             
@@ -127,7 +147,7 @@
       <!-- <div class="col py-3"> -->
 
     
-        <div class="row ">
+        <div class="row  mt-4">
           <div class="col-md-3 ">
             <div >
             <img src="../assets/images/pos/pos-content/MozzarellaSticks.jpg"

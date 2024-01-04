@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+</head>
+<body>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="demo3"></h2>
+    <h2 id="demo4"></h2>
+    <h2 id="demo5"></h2>
+    <h2 id="demo6"></h2>
+    <h2 id="demo7"></h2>
+    <h2 id="demo8"></h2>
+    <h2 id="demo9"></h2>
+    <h2 id="demo10"></h2>
+    <h2 id="demo11"></h2>
+    <h2 id="demo12"></h2>
+    <h2 id="demo13"></h2>
+    <h2 id="demo14"></h2>
+    <h2 id="demo15"></h2>
+    <h2 id="demo16"></h2>
+    <h2 id="demo17"></h2>
+    <h2 id="demo18"></h2>
+    <h2 id="demo19"></h2>
+    <h2 id="demo20"></h2>
+    <h2 id="demo21"></h2>
+    <h2 id="demo22"></h2>
+    <script>
+        //pi 
+document.getElementById("demo").innerHTML=`Pi value ${Math.PI}`;
+//round 
+document.getElementById("demo1").innerHTML=`Round  ${Math.round(4.4)}`;
+document.getElementById("demo2").innerHTML=`Round  ${Math.round(4.6)}`;
+document.getElementById("demo3").innerHTML=`Round  ${Math.round(-4.6)}`;
+//floor
+document.getElementById("demo4").innerHTML=`Floor  ${Math.floor(4.4)}`;
+document.getElementById("demo5").innerHTML=`Floor  ${Math.floor(4.6)}`;
+document.getElementById("demo6").innerHTML=`Floor  ${Math.floor(-4.6)}`;
+//ceil
+document.getElementById("demo7").innerHTML=`Ceil  ${Math.ceil(4.4)}`;
+document.getElementById("demo8").innerHTML=`Ceil  ${Math.ceil(4.6)}`;
+document.getElementById("demo9").innerHTML=`Ceil  ${Math.ceil(-4.6)}`;
+//truncate
+document.getElementById("demo10").innerHTML=`truncate  ${Math.trunc(5.3)}`;
+//Math.sign(x) returns if x is negative, null or positive
+document.getElementById("demo11").innerHTML=`math sign  ${Math.sign(-4.6)}`;
+//math.pow
+document.getElementById("demo12").innerHTML=`power  ${Math.pow(10,2)}`;
+//math.sqrt
+document.getElementById("demo13").innerHTML=`square  ${Math.sqrt(4)}`;
+// Math.abs(x) returns the absolute (positive) value of x
+document.getElementById("demo14").innerHTML=`abs  ${Math.abs(-4.8)}`;
+
+//Math.sin(x) returns the sine (a value between -1 and 1) of the angle x (given in radians)
+document.getElementById("demo15").innerHTML=`sine degree  ${Math.sin(90 * Math.PI / 180)}`;
+//Math.cos(x) returns 1 (the cos of 0 degrees)
+document.getElementById("demo16").innerHTML=`cos degree  ${Math.cos(0 * Math.PI / 180)}`;
+// Math.min() and Math.max()
+document.getElementById("demo17").innerHTML=`math min  ${Math.min(4,-2,40,-90,120,10)}`;
+// Math.random() returns a random number between 0 (inclusive), and 1 (exclusive)
+document.getElementById("demo18").innerHTML=`random  ${Math.random(4)}`;
+//Math.log() returns the natural logarithm of a number
+document.getElementById("demo19").innerHTML=`log  ${Math.log(4)}`;
+// Math.log2(x) How many times must we multiply 2 to get 8
+document.getElementById("demo20").innerHTML=`math log2(x)  ${Math.log2(16)}`;
+// Math.log10(x)
+document.getElementById("demo21").innerHTML=`math.log10(x)  ${Math.log10(100000)}`;
+    </script>
+</body>
+</html>
