@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop</title>
+</head>
+
+<body>
+    <h2 id="demo"></h2>
+    <script>
+        let text = "";
+        for (let i = 0; i < 10; i++) {
+            text += i;
+            document.getElementById("demo").innerHTML = `loop is ${text}`;
+        }
+
+        let v = 0
+
+        while (false) {
+            console.log("Hello ")
+            v++
+        }
+
+        do {
+            console.log("do while")
+            v++
+        } while (v < 10)
+
+
+        for (let i = 0; i < 10; i++) {
+            if (i === 3) { continue; }
+            console.log("The number is " + i)
+        }
+
+
+        
+
+    </script>
+</body>
+
+</html>

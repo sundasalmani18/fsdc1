@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map /set</title>
+</head>
+<body>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
+    <h2 id="demo3"></h2>
+    <h2 id="demo4"></h2>
+    <h2 id="demo5"></h2>
+    <h2 id="demo6"></h2>
+    <script>
+        //set is collection of unique values
+        let abcArray  = ["karachi", "lahore", "karachi"]
+        console.log(abcArray)
+
+        const letters = new Set(abcArray);
+        console.log(letters)
+
+        //add values
+        const letter = new Set(["a","b","c"]);
+        letter.add("d");
+        letter.add("e");
+        letter.add("f");
+        document.getElementById("demo").innerHTML=`set is ${letter.size}`;
+        let text = "";
+letter.forEach (function(value) {
+  text += value + "<br>";
+})
+document.getElementById("demo1").innerHTML=`set is ${text}`;
+
+
+//map
+// A Map holds key-value pairs where the keys can be any datatype.
+// A Map remembers the original insertion order of the keys.
+
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+let text2 = "";
+fruits.forEach (function(value, key) {
+  text2 += key + ' = ' + value + "<br>"
+})
+
+document.getElementById("demo2").innerHTML = ` map entries ${text2}`;
+
+//get method
+document.getElementById("demo3").innerHTML = ` map get ${fruits.get("apples")}`;
+//set method
+fruits.set("applees",200)
+document.getElementById("demo4").innerHTML = ` map set ${fruits.get("applees")}`;
+//delete method
+fruits.delete("bananas");
+document.getElementById("demo5").innerHTML = ` map delete ${fruits.has("bananas")}`;
+//has method
+document.getElementById("demo6").innerHTML = ` map has ${fruits.has("ss")}`;
+//
+        let person  = {
+            name : "abc",
+            phone: "94362823",
+            name2: "abc"
+        }
+
+        console.log(person)
+
+        let todayDate = new Date()
+        console.log(todayDate)
+            </script>
+</body>
+</html>

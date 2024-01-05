@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random</title>
 </head>
+
 <body>
     <h2 id="demo"></h2>
     <h2 id="demo1"></h2>
     <h2 id="demo2"></h2>
     <script>
         // Math.random() returns a random number between 0 (inclusive),  and 1 (exclusive):
-        document.getElementById("demo").innerHTML=`random number ${Math.random()}`;
+        document.getElementById("demo").innerHTML = `random number ${Math.random()}`;
         //Math.random() used with Math.floor() can be used to return random integers
-        document.getElementById("demo1").innerHTML=`random number ${Math.floor(Math.random()*100)}`;
-      //This JavaScript function always returns a random number between min and max (both included): 
-      document.getElementById("demo2").innerHTML=`random number ${getRndInteger(3,80)}`;
-     function getRndInteger(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) ) + min;
-   }
-       
+        document.getElementById("demo1").innerHTML = `random number ${Math.floor(Math.random() * 100)}`;
+        //This JavaScript function always returns a random number between min and max (both included): 
+        document.getElementById("demo2").innerHTML = `random number ${getRndInteger(3, 80)}`;
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
     </script>
 </body>
+
 </html>

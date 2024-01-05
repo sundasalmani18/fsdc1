@@ -37,6 +37,8 @@
 
     // console.log(texts)
 
+    var name = "abc"
+
     // Array map()
     let numbers1 = [45, 4, 9, 16, 25];
     let numbers2 = numbers1.map(mapMyFunction);
@@ -44,6 +46,7 @@
     document.getElementById("demo").innerHTML = `Map function ${numbers2}`;
 
     function mapMyFunction(value, index, array) {
+      console.log(name)
       return value + 2;
     }
 
