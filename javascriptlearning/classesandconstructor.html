@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes and Constructor</title>
+</head>
+<body>
+    <script>
+       class Registerationsystem{
+       constructor(name,rollno){
+        this.name=name;
+        this.rollno=rollno;
+        }
+
+       
+        submitform(){
+            alert("hi " +this.name+ "you have submitted ur form ur roll no is " +this.rollno);
+        }
+        cancel(){
+            alert("hi "+this.name+"ur registeration has been canceled");
+        }
+    }
+
+       let ali = new Registerationsystem("ali",152); 
+       ali.submitform();
+       let umar =new Registerationsystem("umar",223);
+        umar.cancel();     
+    </script>
+</body>
+</html>
