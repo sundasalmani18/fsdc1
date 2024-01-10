@@ -9,6 +9,7 @@
 
 <body>
     <h2 id="demo"></h2>
+    <h2 id="loopin"></h2>
     <script>
         let text = "";
         for (let i = 0; i < 10; i++) {
@@ -33,10 +34,20 @@
             if (i === 3) { continue; }
             console.log("The number is " + i)
         }
-
-
-        
-
+//work on key of object
+let obj ={
+    ali:52,
+     ahmed:18,
+     umar:83,
+     amir:2
+}
+let text2 ="";
+      for(let a in obj){
+        //console.log(obj[a]);
+        text2+=a;
+         document.getElementById("loopin").innerHTML =`${text}`;
+      }  
+    
     </script>
 </body>
 
