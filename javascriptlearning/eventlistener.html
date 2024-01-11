@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>listener</title>
+</head>
+<body>
+    <h1 onclick="this.innerHTML='hello'">Click me to change the text</h1>
+    <h2 id="demo"></h2>
+    <button id="btn"> click me</button>
+    <script>
+        document.getElementById("btn").addEventListener("click",show);
+        function show (){
+       document.getElementById("demo").innerHTML ="hi Every this is event listener function";
+        }
+
+        //event
+
+    </script>
+</body>
+</html>

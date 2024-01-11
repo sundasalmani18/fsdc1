@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Navigation</title>
+</head>
+<body>
+    <ul id ="nav">
+        <li>Home</li>
+        <li>Services</li>
+        <li>Gallery</li>
+    </ul>
+    <div class ="container">
+        this  is container
+    </div>
+    <script>
+        //navigation is used to select elements
+        let navg=document.getElementById('nav');
+        console.log(navg);
+        let contnr = document.getElementsByClassName('container');
+        console.log(contnr);
+        //with css selector 
+        let selctr=document.querySelector('#nav>li')
+        console.log(selctr);
+        let selct=document.querySelectorAll('#nav>li')
+        console.log(selct);
+
+
+    </script>
+</body>
+</html>

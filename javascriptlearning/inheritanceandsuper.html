@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="demo"></h2>
+    <script>
+        class Shape {
+            constructor (sides){
+                this.sides=sides;
+             
+            }
+            Name(){
+            return 'i have '+this.sides+'sides';
+            }
+            
+        }
+        class Square extends Shape{
+            constructor (sides,color){
+              super(sides);
+              this.color=color;
+            }  
+        show(){
+           
+              return this.Name()+' i  ' +this.color+' in color';
+        } 
+            }
+            let obj= new Square(4,"orange");
+            document.getElementById("demo").innerHTML = obj.show();
+
+        
+    </script>
+</body>
+</html>

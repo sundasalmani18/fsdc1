@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h2>hi i m heading tag</h2>
+    <h2>hi i m heading tag</h2>
+    <button onclick="count()">Count</button>
+    <script>
+        function count(){
+       let total =document.getElementsByTagName("h2");
+       alert('h2 tag ' +total.length);
+        } 
+        
+    </script>
+</body>
+</html>

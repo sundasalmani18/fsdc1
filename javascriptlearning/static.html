@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static</title>
+</head>
+
+<body>
+    <h2 id="demo"></h2>
+    <h2 id="demo1"></h2>
+    <script>
+        class Employee {
+            constructor(name) {
+                this.name = name;
+            }
+            static msg() {
+                return 'Hello ';
+            }
+            show() {
+                return 'My name is ' + this.name;
+            }
+        }
+        document.getElementById("demo").innerHTML = Employee.msg();
+        let obj = new Employee("ali");
+        document.getElementById("demo1").innerHTML = obj.show();
+
+    </script>
+</body>
+
+</html>
