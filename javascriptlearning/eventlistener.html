@@ -6,7 +6,7 @@
     <title>listener</title>
 </head>
 <body>
-    <h1 onclick="this.innerHTML='hello'">Click me to change the text</h1>
+     <!-- <h1 onclick="this.innerHTML='hello'">Click me to change the text</h1>
     <h2 id="demo"></h2>
     <button id="btn"> click me</button>
     <script>
@@ -14,9 +14,36 @@
         function show (){
        document.getElementById("demo").innerHTML ="hi Every this is event listener function";
         }
+        //event 
+    </script> -->
+<button id="btn" onclick="hideandshow()">show and hide</button>
+<p id="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+ Illo cumque sed optio corporis laboriosam quisquam nostrum. Eligendi, nostrum consequuntur.
+ Ad voluptatibus quis alias quaerat nobis natus ipsum esse ut architecto.</p>
+<script>
+   let pargr=document.getElementById("para");
+   pargr.addEventListener("mouseover",function run(){
+    // alert("mouseover in paragraph");
+    console.log("mouseover in paragraph");
+   });
+   pargr.addEventListener("mouseout",function run(){
+    // alert("mouseout in paragraph");
+    console.log("mouseout in paragraph");
+   });
+   
+  
 
-        //event
+    function hideandshow(){
+        let btn =document.getElementById("btn");
+        let para=document.getElementById("para");
+        if(para.style.display != 'none'){
+            para.style.display='none';
+        }
+        else{
+            para.style.display='block';
+        }
+    }
+</script>
 
-    </script>
 </body>
 </html>
