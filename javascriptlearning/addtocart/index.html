@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <img src="download.jpg" alt="">
+    <p id="productname">abc</p>
+    <p id="productprice">500</p>
+    <button onclick="addtocart()">Add to Cart</button>
+
+    <table id="cartTable">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="cartBody">
+            <tr>
+                <td>abc</td>
+                <td>500</td>
+                <td>1</td>
+                <td><button>Remove</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <script>
+        function addtocart() {
+            
+            let productname = document.getElementById("productname").textContent;
+            let productprice = document.getElementById("productprice").textContent;
+
+            // Table Row
+            let cartRow = document.createElement('tr');
+
+            // create Column
+            let productNameTd = document.createElement('td')
+            let productPriceTd = document.createElement('td')
+            let productQtyTd = document.createElement('td')
+
+            // Data Assign Cell
+            productNameTd.textContent = productname;
+            productPriceTd.textContent = productprice;
+            productQtyTd.textContent = '1';
+
+            // CartRow append Td
+            cartRow.appendChild(productNameTd);
+            cartRow.appendChild(productPriceTd);
+            cartRow.appendChild(productQtyTd);
+
+            // append with tableBody
+            document.getElementById('cartBody').appendChild(cartRow);
+        }
+    </script>
+</body>
+
+</html>
