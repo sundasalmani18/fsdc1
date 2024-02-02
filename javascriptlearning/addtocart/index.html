@@ -10,70 +10,158 @@
 
 <body>
     <div class="container p-5">
-<div class="text-center"> 
-    <img src="download.jpg" alt="">
-   <p id="productname">abc</p>
-    <p id="productprice">500</p>
-    <button onclick="addtocart()" class="btn btn-primary">Add to Cart</button>
-</div>
- 
-    <table id="cartTable" class="table">
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Product Quantity</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="cartBody">
-            <tr>
+        <div class="row products">
+            <!-- <div class="text-center">
+                <img src="download.jpg" alt="">
+                <p id="productname">abc</p>
+                <p id="productprice">500</p>
+                <button onclick="addtocart()" class="btn btn-primary">Add to Cart</button>
+            </div> -->
+        </div>
+
+        <table id="cartTable" class="table">
+            <thead>
+                <tr>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody">
+                <!-- <tr>
                 <td>abc</td>
                 <td>500</td>
                 <td>1</td>
                 <td><button id="removecart" onclick="removefromcart()" class="btn btn-danger">Remove</button></td>
-            </tr>
-        </tbody>
+            </tr> -->
+            </tbody>
 
-    </table>
-</div>
+        </table>
+    </div>
 
     <script>
-        function addtocart() {
+        let products = [
+            {
+                id: 1,
+                name: "Product Name 1",
+                image: "./download.jpg",
+                price: 100
+            },
+            {
+                id: 2,
+                name: "Product Name 2",
+                image: "./download.jpg",
+                price: 400
+            },
+            {
+                id: 3,
+                name: "Product Name 3",
+                image: "./download.jpg",
+                price: 500
+            },
+            {
+                id: 4,
+                name: "Product Name 4",
+                image: "./download.jpg",
+                price: 700
+            }
+        ]
 
-            let productname = document.getElementById("productname").textContent;
-            let productprice = document.getElementById("productprice").textContent;
-            let removebtn = document.getElementById("removecart");
+        let productsList = document.querySelector('.products');
+        let cartBody = document.querySelector('#cartBody');
 
-            // Table Row
-            let cartRow = document.createElement('tr');
+        let listCart = []
 
-            // create Column
-            let productNameTd = document.createElement('td');
-            let productPriceTd = document.createElement('td');
-            let productQtyTd = document.createElement('td');
-            let removebtnTd = document.createElement('td');
-
-            // Data Assign Cell
-            productNameTd.textContent = productname;
-            productPriceTd.textContent = productprice;
-            productQtyTd.textContent = '1';
-            removebtnTd = removebtn;
-
-            // CartRow append Td
-            cartRow.appendChild(productNameTd);
-            cartRow.appendChild(productPriceTd);
-            cartRow.appendChild(productQtyTd);
-            cartRow.appendChild(removebtnTd);
-
-            // append with tableBody
-            document.getElementById('cartBody').appendChild(cartRow);    
+        function initApp() {
+            products.forEach((el, index) => {
+                let newDiv = document.createElement('div');
+                newDiv.classList.add('col-md-3');
+                newDiv.innerHTML = `
+                <img src=\"${el.image}"\ alt="">
+                <p id="productname">${el.name}</p>
+                <p id="productprice">${el.price}</p>
+                <button onclick="addtocart(${index})" class="btn btn-primary">Add to Cart</button>
+                `;
+                productsList.appendChild(newDiv);
+            })
         }
+
+        initApp();
+        
+
+        function addtocart(index) {
+
+            if (listCart[index] == null) {
+                listCart[index] = products[index]
+                listCart[index].quanity = 1;
+            }
+
+            // console.log(listCart)
+            reloadCart();
+
+            // let productname = document.getElementById("productname").textContent;
+            // let productprice = document.getElementById("productprice").textContent;
+            // // let removebtn = document.getElementById("removecart");
+
+            // // Table Row
+            // let cartRow = document.createElement('tr');
+
+            // // create Column
+            // let productNameTd = document.createElement('td');
+            // let productPriceTd = document.createElement('td');
+            // let productQtyTd = document.createElement('td');
+            // let removebtnTd = document.createElement('td');
+
+            // // Data Assign Cell
+            // productNameTd.textContent = productname;
+            // productPriceTd.textContent = productprice;
+            // productQtyTd.textContent = '1';
+            // removebtnTd.innerHTML = `<button id="removecart" onclick="removefromcart()" class="btn btn-danger">Remove</button>`;
+
+            // // CartRow append Td
+            // cartRow.appendChild(productNameTd);
+            // cartRow.appendChild(productPriceTd);
+            // cartRow.appendChild(productQtyTd);
+            // cartRow.appendChild(removebtnTd);
+
+            // // append with tableBody
+            // document.getElementById('cartBody').appendChild(cartRow);
+        }
+
+        function reloadCart() {
+            // listCart.innerHTML = '';
+            let count = 0;
+            let totalPrice = 0;
+
+            listCart.forEach((el, index) => {
+                totalPrice = totalPrice + el.price;
+                count = count + el.quanity;
+
+                if (el != null) {
+                    let newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td><img src=\"${el.image}"\ alt=""></td>
+                        <td>${el.name}</td>
+                        <td>${el.price}</td>
+                        <td>${el.quanity}</td>
+                        <td><button id="removecart" onclick="removefromcart()" class="btn btn-danger">Remove</button></td>
+                `;
+                // console.log('newRow',newRow)
+                cartBody.appendChild(newRow);
+                   
+                }
+            
+            })
+
+        }
+
         function removefromcart() {
-         const removerow=document.getElementById("cartBody");
-         removerow.removeChild(removerow.firstElementChild);
+            const removerow = document.getElementById("cartBody");
+            removerow.removeChild(removerow.lastElementChild);
         }
-    
+
     </script>
 </body>
 
