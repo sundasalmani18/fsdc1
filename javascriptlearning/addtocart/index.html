@@ -120,8 +120,7 @@
                         <td><img src=\"${el.image}"\ alt=""></td>
                         <td>${el.name}</td>
                         <td>${el.price}</td>
-                        <td><button 
-                            onclick="subquantity(${index})">-</button>${el.quanity}<button id ="add"onclick="addquantity(${index})">+</button></td>
+                        <td><button onclick="subquantity(${index})">-</button>${el.quanity}<button id ="add"onclick="addquantity(${index})">+</button></td>
                         <td><button id="removecart" onclick="removefromcart(${index})" class="btn btn-danger">Remove</button></td>
                 `;
                     // console.log('newRow',newRow)
@@ -134,20 +133,22 @@
 
         }
         function addquantity(index) {
-
-            const newQuantity = (parseInt(listCart[index].quanity)) + 1
+          
+            let newQuantity = (parseInt(listCart[index].quanity)) + 1
             listCart[index].quanity = newQuantity;
-            const newprice=listCart[index].price*newQuantity;
+            let newprice=listCart[index].price*newQuantity;
+            reloadCart();
             console.log(newQuantity);
             console.log(newprice);
 
         }
 
         function subquantity(index) {
-            const button = document.querySelector('#add')
-            const newQuantity = (parseInt(listCart[index].quanity)) - 1
+           
+            let newQuantity = (parseInt(listCart[index].quanity)) - 1
             listCart[index].quanity = newQuantity;
-            const newprice=listCart[index].price*newQuantity;
+            let newprice=listCart[index].price*newQuantity;
+            reloadCart();
             console.log(newQuantity);
             console.log(newprice);
         }
