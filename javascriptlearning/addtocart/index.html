@@ -72,7 +72,7 @@
         let productsList = document.querySelector('.products');
         let cartBody = document.querySelector('#cartBody');
 
-        let listCart = []
+        let listCart = [];
 
         function initApp() {
             products.forEach((el, index) => {
@@ -84,12 +84,13 @@
                 <p id="productprice">${el.price}</p>
                 <button onclick="addtocart(${index})" class="btn btn-primary">Add to Cart</button>
                 `;
+
                 productsList.appendChild(newDiv);
             })
         }
 
         initApp();
-        
+
 
         function addtocart(index) {
 
@@ -101,37 +102,11 @@
             // console.log(listCart)
             reloadCart();
 
-            // let productname = document.getElementById("productname").textContent;
-            // let productprice = document.getElementById("productprice").textContent;
-            // // let removebtn = document.getElementById("removecart");
 
-            // // Table Row
-            // let cartRow = document.createElement('tr');
-
-            // // create Column
-            // let productNameTd = document.createElement('td');
-            // let productPriceTd = document.createElement('td');
-            // let productQtyTd = document.createElement('td');
-            // let removebtnTd = document.createElement('td');
-
-            // // Data Assign Cell
-            // productNameTd.textContent = productname;
-            // productPriceTd.textContent = productprice;
-            // productQtyTd.textContent = '1';
-            // removebtnTd.innerHTML = `<button id="removecart" onclick="removefromcart()" class="btn btn-danger">Remove</button>`;
-
-            // // CartRow append Td
-            // cartRow.appendChild(productNameTd);
-            // cartRow.appendChild(productPriceTd);
-            // cartRow.appendChild(productQtyTd);
-            // cartRow.appendChild(removebtnTd);
-
-            // // append with tableBody
-            // document.getElementById('cartBody').appendChild(cartRow);
         }
 
         function reloadCart() {
-            // listCart.innerHTML = '';
+            cartBody.innerHTML = "";
             let count = 0;
             let totalPrice = 0;
 
@@ -145,22 +120,45 @@
                         <td><img src=\"${el.image}"\ alt=""></td>
                         <td>${el.name}</td>
                         <td>${el.price}</td>
-                        <td>${el.quanity}</td>
-                        <td><button id="removecart" onclick="removefromcart()" class="btn btn-danger">Remove</button></td>
+                        <td><button 
+                            onclick="subquantity(${index})">-</button>${el.quanity}<button id ="add"onclick="addquantity(${index})">+</button></td>
+                        <td><button id="removecart" onclick="removefromcart(${index})" class="btn btn-danger">Remove</button></td>
                 `;
-                // console.log('newRow',newRow)
-                cartBody.appendChild(newRow);
-                   
+                    // console.log('newRow',newRow)
+                    cartBody.appendChild(newRow);
                 }
-            
+
+
             })
 
+
+        }
+        function addquantity(index) {
+
+            const newQuantity = (parseInt(listCart[index].quanity)) + 1
+            listCart[index].quanity = newQuantity;
+            const newprice=listCart[index].price*newQuantity;
+            console.log(newQuantity);
+            console.log(newprice);
+
         }
 
-        function removefromcart() {
-            const removerow = document.getElementById("cartBody");
-            removerow.removeChild(removerow.lastElementChild);
+        function subquantity(index) {
+            const button = document.querySelector('#add')
+            const newQuantity = (parseInt(listCart[index].quanity)) - 1
+            listCart[index].quanity = newQuantity;
+            const newprice=listCart[index].price*newQuantity;
+            console.log(newQuantity);
+            console.log(newprice);
         }
+
+        function removefromcart(index) {
+            listCart.splice(index, 1);
+            reloadCart();
+
+
+        }
+
 
     </script>
 </body>
