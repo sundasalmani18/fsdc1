@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap.min.css">
+
+    
 </head>
 
 <body>
     <div class="container p-5">
+        
+
         <div class="row products">
             <!-- <div class="text-center">
                 <img src="download.jpg" alt="">
@@ -42,30 +46,36 @@
     </div>
 
     <script>
+        
+
         let products = [
             {
                 id: 1,
                 name: "Product Name 1",
                 image: "./download.jpg",
-                price: 100
+                price: 100,
+                unitPrice: 100
             },
             {
                 id: 2,
                 name: "Product Name 2",
                 image: "./download.jpg",
-                price: 400
+                price: 400,
+                unitPrice: 400
             },
             {
                 id: 3,
                 name: "Product Name 3",
                 image: "./download.jpg",
-                price: 500
+                price: 500,
+                unitPrice: 500
             },
             {
                 id: 4,
                 name: "Product Name 4",
                 image: "./download.jpg",
-                price: 700
+                price: 700,
+                unitPrice: 500
             }
         ]
 
@@ -127,30 +137,38 @@
                     cartBody.appendChild(newRow);
                 }
 
-
             })
-
-
         }
         function addquantity(index) {
-          
-            let newQuantity = (parseInt(listCart[index].quanity)) + 1
+            let tempObj = listCart[index]
+            let newQuantity = tempObj["quanity"] + 1
+            let newprice = tempObj["unitPrice"] * newQuantity
+
             listCart[index].quanity = newQuantity;
-            let newprice=listCart[index].price*newQuantity;
-            reloadCart();
+            listCart[index].price = newprice;
             console.log(newQuantity);
             console.log(newprice);
+            reloadCart();
 
         }
 
+
         function subquantity(index) {
-           
-            let newQuantity = (parseInt(listCart[index].quanity)) - 1
+            if(listCart[index].quanity===0){
+                removefromcart(index);
+            }
+            else{
+       let obj =listCart[index]; 
+            let newQuantity = obj["quanity"] - 1
             listCart[index].quanity = newQuantity;
-            let newprice=listCart[index].price*newQuantity;
+            let newprice = obj["unitPrice"] * newQuantity;
+            listCart[index].price=newprice
+           
             reloadCart();
             console.log(newQuantity);
             console.log(newprice);
+            }
+            
         }
 
         function removefromcart(index) {
