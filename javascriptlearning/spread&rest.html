@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         //desturcturing 
-        let array=['aisha','28','javascript developer'];
-        let [name,age,designation]=array;
+        let array = ['aisha', '28', 'javascript developer'];
+        let [name, age, designation] = array;
         console.log(array);
         //rest operator combine
-       
-//spread operator=>array literals
-let array1 =["a","b","c","d","e"];
-console.log(array1)
-let array2=["f","g"]
 
-let finalarray=[...array2,...array1];
-console.log(finalarray);
+        //spread operator=>array literals
+        let array1 = ["a", "b", "c", "d", "e"];
+        console.log(array1)
+        let array2 = ["f", "g"]
 
-const arrayy = [1, 2, 3];
-const obj = { ...arrayy }; 
-console.log(obj)// { 0: 1, 1: 2, 2: 3 }
+        let obj1 = { name: 'abc', age: 22 }
+        obj1 = {school : "xyz", obj1}
+        // let obj2 = { school: "xyx", ...obj1 }
+        console.log('update value', obj1)
+
+        let finalarray = [...array2, ...array1];
+        console.log(finalarray);
+
+        const arrayy = [1, 2, 3];
+        const obj = { ...arrayy };
+        console.log(obj)// { 0: 1, 1: 2, 2: 3 }
 
 
-//rest operator
-let arr=[1,2,3,4,5,6,7,8,9];
-let[a,b,c,...rest]=arr;
-console.log(arr)
+        //rest operator
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let [a, b, c, ...rest] = arr;
+        console.log(arr)
 
     </script>
 </body>
+
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- <script src="./modules.js" type="module"></script> -->
+</head>
+<body>
+        <p id="demo"></p>
+       
+
+        <script type="module">
+        import { name, age } from "./modules.js";
+        
+        document.getElementById("demo").innerHTML = "My name is " + name;
+        document.getElementById("demo").innerHTML += ", I am " + age + ".";
+        </script>
+</body>
+</html>
+      
+  
