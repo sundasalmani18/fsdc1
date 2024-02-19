@@ -1,8 +1,12 @@
 .mydiv{
     text-align: center;
-    background-color: beige;
+    background-color:rgb(201, 198, 198);
 }
-.table{
-    border: 1px solid ;
-    align-items: center;
+.table {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.table tr td{
+    border: 1px solid;
 }
