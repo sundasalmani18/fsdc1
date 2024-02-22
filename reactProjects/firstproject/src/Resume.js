@@ -1,11 +1,16 @@
 import './Resume.css'
 
-export default function Myinfo(props) {
+export default function Resume({
+    name = "",
+    desgination = "",
+    currentJob = false
+}) {
     return (
         <div className="mydiv">
             <header className="header">
-                <h1> {props.name}</h1>
-                <h1 >{props.desgination}</h1>
+                <h1>{name}</h1>
+                <h1>{desgination}</h1>
+                <p>Job Status: {currentJob ? 'Working' : 'Available'}</p>
 
                 <table className='table'>
                     <tr>
