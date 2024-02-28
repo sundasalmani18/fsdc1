@@ -14,6 +14,7 @@ import Memo from './memo'
 import LayoutRoutes from './pages/LayoutRoutes';
 import UseStateexmp from './useStateexample'
 import ExmpuseeffectFetch from './Exmpuseeffect'
+import Exmpusecontext from './Exmpusecontext'
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
       {/* <LayoutRoutes />
 
       <UseStateexmp/>  */}
-      <ExmpuseeffectFetch />
+      {/* <ExmpuseeffectFetch /> */}
 
-
+     < Exmpusecontext/>
       {/* <Memo/> */}
       {/* <Resume name={"sundas"} desgination={"Web developer"} currentJob={true}/> */}
       {/* <Calculator /> */}
