@@ -1,3 +1,7 @@
+import team1 from "../assets/images/team-1.jpg";
+import team2 from "../assets/images/team-2.jpg";
+import team3 from "../assets/images/team-3.jpg";
+import team4 from "../assets/images/team-4.jpg";
 
 
 export default function Chefs(){
@@ -5,7 +9,7 @@ export default function Chefs(){
     return(
     <>
       {/* <!-- =================================chefs==================================== --> */}
-  {/* <div id="Chefs">
+  <div id="Chefs">
     <div className="container section">
       <div className="chef-title">
         <h5 className="text-center icon">Team member</h5>
@@ -14,10 +18,10 @@ export default function Chefs(){
       <div className="row g-4 p-5">
 
         <div className=" col-md-3 wow fadeInUp" data-wow-delay="0.1s"
-          style={{visibility: visible, animationDelay: 0.1, animationName: fadeInUp}}>
+          style={{visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp"}}>
           <div className="chef-item rounded overflow-hidden p-3">
             <div className="rounded-circle overflow-hidden m-4 ">
-              <img src="assets/images/team-1.jpg" className="img-fluid " alt=""/>
+              <img src={team1} className="img-fluid " alt=""/>
             </div>
             <h5 className="text-center">Full Name</h5>
             <small className="text-center">Designation</small>
@@ -37,10 +41,10 @@ export default function Chefs(){
         </div>
 
         <div className=" col-md-3 wow fadeInUp" data-wow-delay="0.1s"
-          style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+           style={{visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp"}}>
           <div className="chef-item rounded overflow-hidden p-3">
             <div className="rounded-circle overflow-hidden m-4 ">
-              <img src="assets/images/team-2.jpg" className="img-fluid" alt=""/>
+              <img src={team2} className="img-fluid" alt=""/>
             </div>
             <h5 className="text-center">Full Name</h5>
             <small className="text-center">Designation</small>
@@ -60,10 +64,10 @@ export default function Chefs(){
         </div>
 
         <div className=" col-md-3 wow fadeInUp" data-wow-delay="0.1s"
-          style={{visibility: visible, animationDelay: 0.1, animationName: fadeInUp}}>
+          style={{visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp"}}>
           <div className="chef-item rounded overflow-hidden p-3">
             <div className="rounded-circle overflow-hidden m-4 ">
-              <img src="assets/images/team-3.jpg" className="img-fluid" alt=""/>
+              <img src={team3} className="img-fluid" alt=""/>
             </div>
             <h5 className="text-center">Full Name</h5>
             <small className="text-center">Designation</small>
@@ -83,10 +87,10 @@ export default function Chefs(){
         </div>
 
         <div className=" col-md-3 wow fadeInUp" data-wow-delay="0.1s"
-          style={{visibility: visible, animationDelay: 0.1, animationName: fadeInUp}}>
+          style={{visibility:" visible", animationDelay: "0.1s", animationName: "fadeInUp"}}>
           <div className="chef-item rounded overflow-hidden p-3">
             <div className="rounded-circle overflow-hidden m-4 ">
-              <img src="assets/images/team-4.jpg" className="img-fluid" alt=""/>
+              <img src={team4} className="img-fluid" alt=""/>
             </div>
             <h5 className="text-center">Full Name</h5>
             <small className="text-center">Designation</small>
@@ -105,7 +109,7 @@ export default function Chefs(){
         </div>
       </div>
     </div>
-  </div> */}
+  </div>
   {/* <!-- ================================= End chefs============================================ --> */}
     
     </>

@@ -1,0 +1,94 @@
+{
+    "services": [
+        {
+            "title": "Master Chefs",
+            "desc": "Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam"
+        },
+        {
+            "title": " Quality Food",
+            "desc": "Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam"
+        },
+        {
+            "title": "Online Order",
+            "desc": "Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam"
+        },
+        {
+            "title": "24/7 Service",
+            "desc": "Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam"
+        }
+    ],
+    "about": {
+        "title": "About us ",
+        "subtitle": " Welcome to Restoran",
+        "desc": "<p class='mb-4'>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.  Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p><p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>",
+        "experices": {
+            "years": "15",
+            "desc": "<p class='mb-0'>Year of</p><h5>experience</h5>"
+        },
+        "chef": {
+            "year": "50",
+            "desc": "<p class='mb-0'>Popular</p><h5>Master Chef</h5>"
+        },
+        "buttonLabel": "read more"
+    },
+    "menu": {
+        "title": "Food menu",
+        "subtitle": "Most Popular Items",
+        "menuCategory": [
+            {
+                "id": "1",
+                "categoryName": "Breakfast",
+                "desc": "Popular",
+                "icon": "fa-solid fa-burger",
+                "link": "breakfast-tab",
+                "active": "true"
+            },
+            {
+                "id": "2",
+                "categoryName": "Lunch",
+                "desc": "Special",
+                "icon": "fa-solid fa-burger",
+                "link": "home-tab",
+                "active": "false"
+            },
+            {
+                "id": "3",
+                "categoryName": "Dinner",
+                "desc": "Lovely",
+                "icon": "fa-solid fa-burger",
+                "link": "home-tab",
+                "active": "false"
+            }
+        ],
+        "menu": {
+            "breakfast": [
+                {
+                    "id": "1",
+                    "title": "breakfast",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "115",
+                    "image": "menu-1.jpg" 
+                }
+            ],
+            "lunch": [
+                {
+                    "id": "1",
+                    "title": "Chicken burger",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "115",
+                    "image": "https://img.freepik.com/free-photo/grilled-gourmet-burger-with-cheese-tomato-onion-french-fries-generated-by-artificial-intelligence_25030-63181.jpg"
+                }
+            ],
+            "dinner": [
+                {
+                    "id": "1",
+                    "title": "dinner Chicken ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "115",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                }
+            ]
+        }
+
+    }
+}

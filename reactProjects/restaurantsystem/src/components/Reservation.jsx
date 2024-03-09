@@ -14,7 +14,7 @@ export default function Reservation(){
           <div className="reservation-video">
             <div className="btn-play">
             <FontAwesomeIcon icon={faCirclePlay} className=" fa-solid fa-5x"/>
-              <i className="fa-solid fa-circle-play fa-5x"></i>
+              {/* <i className="fa-solid fa-circle-play fa-5x"></i> */}
             </div>
           </div>
         </div>

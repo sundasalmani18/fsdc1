@@ -20,9 +20,10 @@ export default function HomePage() {
       <About/>
       <Menu/>
       <Reservation/>
-      {/* <Chefs/> */}
-      {/* <Testimonials/>
-      */}
+      <Chefs/> 
+       <Testimonials/>
+     
+      
     </>
   );
 };

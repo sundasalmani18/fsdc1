@@ -80,6 +80,7 @@ a:hover {
   font-weight: 500;
   text-transform: uppercase;
   border: none;
+  margin: 9px;
 }
 
 #logo {
@@ -322,3 +323,4 @@ background-color: #FEA116;
   background-color: #feaf39;
   border-color: #feaa2d;
 }
+
