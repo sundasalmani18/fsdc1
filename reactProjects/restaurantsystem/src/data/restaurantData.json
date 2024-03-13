@@ -48,7 +48,7 @@
                 "categoryName": "Lunch",
                 "desc": "Special",
                 "icon": "fa-solid fa-burger",
-                "link": "home-tab",
+                "link": "lunch-tab",
                 "active": "false"
             },
             {
@@ -56,7 +56,7 @@
                 "categoryName": "Dinner",
                 "desc": "Lovely",
                 "icon": "fa-solid fa-burger",
-                "link": "home-tab",
+                "link": "dinner-tab",
                 "active": "false"
             }
         ],
@@ -73,16 +73,16 @@
             "lunch": [
                 {
                     "id": "1",
-                    "title": "Chicken burger",
+                    "title": "lunch",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "115",
-                    "image": "https://img.freepik.com/free-photo/grilled-gourmet-burger-with-cheese-tomato-onion-french-fries-generated-by-artificial-intelligence_25030-63181.jpg"
+                    "image": "menu-1.jpg" 
                 }
             ],
             "dinner": [
                 {
                     "id": "1",
-                    "title": "dinner Chicken ",
+                    "title": "lunch ",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "115",
                     "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"

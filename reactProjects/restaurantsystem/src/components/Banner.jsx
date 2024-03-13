@@ -18,7 +18,7 @@ export default function Banner() {
               <div id="banner-button">
                 <button type="button" className="mt-2 px-5 py-3">Book a table</button>
                 <FontAwesomeIcon icon={faCirclePlay} className=" fa-solid "/>
-                <i className="fa-solid fa-circle-play "></i>
+                {/* <i className="fa-solid fa-circle-play "></i> */}
                 <span style={{ color: "#fff", fontFamily: "Verdana, Geneva, Tahoma, sans-serif " }}>Watch video</span>
               </div>
             </div>

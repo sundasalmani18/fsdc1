@@ -7,6 +7,7 @@ import Menu from "../components/Menu";
 import Reservation from "../components/Reservation";
 import Chefs from '../components/Chefs';
 import Testimonials from '../components/Testimonails';
+import Footer from '../components/Footer';
 
 
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Reservation/>
       <Chefs/> 
        <Testimonials/>
+       <Footer/>
      
       
     </>

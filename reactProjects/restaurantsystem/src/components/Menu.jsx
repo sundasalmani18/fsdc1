@@ -48,7 +48,7 @@ export default function Menu() {
                     <button
                       // id="home-tab"
                       // className="nav-link active"
-                      className={`nav-link ${item.active ? 'active' : ''} ` }   
+                      className={`nav-link ${(item.active).boolean ? 'active' : ''} ` }   
                       id={item.link}
                       data-bs-toggle="tab"
                       // data-bs-target="#home" 
@@ -101,7 +101,7 @@ export default function Menu() {
 
             <div className="tab-content" id="myTabContent">
             
-              <div className="tab-pane fade show active" id="Breakfast" role="tabpanel" aria-labelledby="breakfast-tab">
+              <div className="tab-pane fade show active" id="dinner" role="tabpanel" aria-labelledby="dinner-tab">
                
               {tabdata.length > 0 ? (tabdata.map((item, index) => ( 
               <div  className="row g-4">
