@@ -1,7 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import Login from './login';
+import {Routes, Route, useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+
 
 export default function Navbar() {
+  const navigate =useNavigate();
   return (
     <>
       {/* <!-- ==========================header section============================================= --> */}
@@ -45,8 +50,10 @@ export default function Navbar() {
                   <form className="form-inline my-2  my-lg-0 m-3 ">
 
                     <a id="headbutton" href="#reservation" className="btn-sm btn btn-outline-success ">Book Table</a>
-                    <a id="headbutton" href="login.html" className="btn-sm btn btn-outline-success">Login / Register</a>
-                    <a id="headbutton" href="./admin/adminLogin.html" className="btn-sm btn btn-outline-success">Admin Portal</a>
+                    {/* <a id="headbutton" href={<Login />} className="btn-sm btn btn-outline-success ">Login/Register</a> */}
+                    <a id="headbutton" onClick={()=>navigate("/login")}  className="btn-sm btn btn-outline-success ">Login/Register</a>
+                    {/* <a id="headbutton" href="./admin/adminLogin.html" className="btn-sm btn btn-outline-success">Admin Portal</a> */}
+                    <a id="headbutton" onClick={()=>navigate("/admin")} className="btn-sm btn btn-outline-success">Admin Portal</a>
                   </form>
                 </div>
               </nav>

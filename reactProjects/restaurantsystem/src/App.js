@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* < LayoutRoutes/> */}
+        < LayoutRoutes/>
         <HomePage />
       </BrowserRouter>
 
