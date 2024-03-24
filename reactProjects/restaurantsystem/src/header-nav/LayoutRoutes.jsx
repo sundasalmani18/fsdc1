@@ -4,7 +4,7 @@ import { Link, Routes, Route } from "react-router-dom";
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
-import Home from "./Home";
+import Home from "../admin/home";
 import Login from "../components/login";
 import Adminlogin from "../components/adminlogin";
 import Signup from "../components/signup";
@@ -104,6 +104,7 @@ export default function LayoutRoutes() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/admin" element={<Adminlogin/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/adminhome" element={<Home/>}/>
 
         {/* <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />

@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
-import Login from './login';
-import {Routes, Route, useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Navbar() {

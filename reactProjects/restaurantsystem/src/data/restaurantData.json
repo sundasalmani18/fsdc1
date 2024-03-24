@@ -90,5 +90,21 @@
             ]
         }
 
-    }
+    },
+
+
+    "chef":{
+        "title":"Team member",
+        "subtitle":"Our Master Chefs",
+     "ourchef":[
+        {
+      "name":"Full Name",
+      "designation":"Designation",
+      "iconfacebook":"fab fa-facebook-f",
+      "icontwitter":"fab fa-twitter",
+      "iconinsta":"fab fa-instagram"
+     }
+     ]
+        
+}
 }

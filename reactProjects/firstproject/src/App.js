@@ -17,17 +17,26 @@ import ExmpuseeffectFetch from './Exmpuseeffect'
 import Exmpusecontext from './Exmp2useeffect'
 import A from './exmpcontext/A';
 import Exmpuseref from './Exmpuseref'
+import Exampleusereducer from './exampleusereducer'
+import Exampleusecallback from './exampleusecallback';
+import Todo from './examplecrudtodo';
+import Curdusereducer from './curdusereducer';
 
 function App() {
   return (
     <div className="App">
+      {/* <Todo  /> */}
+      <Curdusereducer/>
+{/* <Exampleusecallback/> */}
+
+{/* <Exampleusereducer/> */}
       {/* <LayoutRoutes />
 
       <UseStateexmp/>  */}
       {/* <ExmpuseeffectFetch /> */}
 
       {/* <A name={"sundas"} rollno={20}/> */}
-      <Exmpuseref />
+      {/* <Exmpuseref /> */}
       {/* < Exmpusecontext/> */}
       {/* <Memo/> */}
       {/* <Resume name={"sundas"} desgination={"Web developer"} currentJob={true}/> */}
