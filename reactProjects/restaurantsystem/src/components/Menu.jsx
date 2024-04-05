@@ -11,7 +11,7 @@ import { faMugSaucer } from '@fortawesome/free-solid-svg-icons';
 import { faBurger } from '@fortawesome/free-solid-svg-icons';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import restData from '../data/restaurantData.json'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Menu() {
 
@@ -19,13 +19,55 @@ export default function Menu() {
 
   const data = restData.menu;
 
-  const menuCategoryData = restData.menu.menuCategory;
-  const tabdata = restData.menu.menu.breakfast;
-     // const catname = MenuData.menuCategory;
-     const [tab,setTab]=useState(1);
-     function updatemenu(id){
-         setTab(id);
-     }
+  // const menuCategoryData = restData.menu.menuCategory;
+  // const tabdata = restData.menu.menu.breakfast;
+  // const catname = MenuData.menuCategory;
+
+  const [menuCategoryData, setMenuCategoryData] = useState(restData.menu.menuCategory);
+  const [tabdata, setTabdata] = useState(restData.menu.menuData.breakfast);
+  const [tabid, setTabid] = useState(restData.menu.menuCategory);
+
+  const [tab, setTab] = useState(1);
+
+  // function updatemenu(id) {
+  //   setTab(id);
+  //   const updatetab = tabdata.map((item, i) =>
+  //     i === id
+  //       ? { ...item } : ""
+
+
+  //   )
+  //   console.log("tabData", updatetab)
+  //   setTabdata(updatetab);
+
+  // }
+
+
+  // useEffect(() => (
+  //   setTabdata(restData.menu.menuData[data.link])
+  // ), [])
+
+  function selectMenu(index, data) {
+    // const category = menuCategoryData[index]
+    const updateCategory = menuCategoryData.map((item, i) =>
+      i === index
+        ? { ...item, active: "true" }
+        : { ...item, active: "false" }
+    )
+    console.log("updateCategory", updateCategory)
+    setMenuCategoryData(updateCategory)
+    setTabdata(restData.menu.menuData[data.link])
+    setTabid(restData.menu.menuCategory[data.link])
+    console.log("updateCategoryyyy", restData.menu.menuCategory)
+
+
+    // idar only one parameter update horaha hai
+    // const newArr = [...menuCategoryData];
+    // newArr[index]["active"] = "true"
+
+    // setMenuCategoryData(newArr)
+
+  }
 
   return (
     <>
@@ -44,21 +86,13 @@ export default function Menu() {
             <div className="menu-nav pt-3  d-flex justify-content-center">
               <ul className="nav nav-tabs border-bottom mb-5" id="myTab" role="tablist">
                 {menuCategoryData.length > 0 ? (menuCategoryData.map((item, index) => (
-                  <li key={index} className="nav-item " role="presentation" onclick="updatemenu({})">
+                  <li key={index} className="nav-item " role="presentation">
                     <button
-                      // id="home-tab"
-                      // className="nav-link active"
-                      className={`nav-link ${(item.active).boolean ? 'active' : ''} ` }   
-                      id={item.link}
-                      data-bs-toggle="tab"
-                      // data-bs-target="#home" 
-                      data-bs-target={`#${item.categoryName}`}
+                      className={`nav-link ${(item.active) === "true" ? 'active' : ''} `}
+                      id={`#${item.link}`}
                       type="button"
-                      role="tab"
-                      aria-controls={item.categoryName}
-                      aria-selected="true">
-                      {/* <FontAwesomeIcon icon={faBurger} className="icon fa-2x " /> */}
-                      {/* <i class="fa-solid fa-burger icon fa-2x" /> */}
+                      onClick={() => selectMenu(index, item)}
+                    >
                       <div>
                         <i class={`${item.icon} icon fa-2x`} />
                       </div>
@@ -70,350 +104,49 @@ export default function Menu() {
               </ul>
             </div>
 
-            {/* <div className="menu-nav pt-3  d-flex justify-content-center">
-              <ul className="nav nav-tabs border-bottom mb-5" id="myTab" role="tablist">
-                <li className="nav-item" role="presentation">
-                  <button className="nav-link " id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                    role="tab" aria-controls="profile" aria-selected="false">
-                    <FontAwesomeIcon icon={faBurger} className="icon fa-2x" />
-                    <i className="fa-solid fa-burger icon fa-2x"></i>
-                    <div className="">
-                      <small>Special</small>
-                      <h6 className="mt-n1 mb-0">Lunch</h6>
-                    </div>
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button className="nav-link " id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                    role="tab" aria-controls="contact" aria-selected="false">
-                    <FontAwesomeIcon icon={faUtensils} className=" icon fa-2x" />
-
-                    <i className="fa fa-utensils me-3 icon fa-2x "></i>
-                    <div className="">
-                      <small>Lovely</small>
-                      <h6 className="mt-n1 mb-0">Dinner</h6>
-                    </div>
-                  </button>
-                </li>
-              </ul>
-            </div> */}
-
-
             <div className="tab-content" id="myTabContent">
-            
-              <div className="tab-pane fade show active" id="dinner" role="tabpanel" aria-labelledby="dinner-tab">
-               
-              {tabdata.length > 0 ? (tabdata.map((item, index) => ( 
-              <div  className="row g-4">
-              
-                  <div className="col-md-6">
-                
+         {console.log("hello",tabid)}
 
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded width:10px" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
- 
-                  </div>
-
-
-
-                  <div className="col-md-6">
-
-                  <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src={item.image} alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> {item.title}</span>
-                          <span className="icon"> {item.price}</span>
-                        </h5>
-                        <small>{item.desc}</small>
-                      </div>
-                    </div>
-
-                  </div>
-              
-                </div>
-                ))) : null} 
-              </div>
-             
-
-
-              {/* <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div className="tab-pane fade show active" id={tabid.link}>
+          
                 <div className="row g-4">
                   <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-1.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
+                  
+                    {tabdata.length > 0 ? (tabdata.slice(0, 4).map((item, index) => (
 
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-2.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
+                      <div key={index} className="d-flex align-items-center">
+                        <img className="rounded" style={{ width: "100px" }} src={item.image} alt="" />
+                        <div className=" w-100 ps-4 d-flex flex-column ">
+                          <h5 className="d-flex justify-content-between border-bottom pb-2">
+                            <span>{item.title}</span>
+                            <span className="icon">{item.price}</span>
+                          </h5>
+                          <small>{item.desc}</small>
+                        </div>
                       </div>
-                    </div>
+                      
+                    ))) : null}
                   </div>
                   <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-3.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
+                  
+                    {tabdata.length > 0 ? (tabdata.slice(4, 8).map((item, index) => (
+
+                      <div key={index} className="d-flex align-items-center">
+                        <img className="rounded" style={{ width: "100px" }} src={item.image} alt="" />
+                        <div className=" w-100 ps-4 d-flex flex-column ">
+                          <h5 className="d-flex justify-content-between border-bottom pb-2">
+                            <span>{item.title}</span>
+                            <span className="icon">{item.price}</span>
+                          </h5>
+                          <small>{item.desc}</small>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-4.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-5.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-6.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-7.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-8.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
+                      
+                    ))) : null}
                   </div>
                 </div>
               </div>
 
-              <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div className="row g-4">
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-1.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-2.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-3.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-4.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-5.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-6.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-7.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex align-items-center">
-                      <img className="img-fluid rounded" src="./assets/images/menu-8.jpg" alt="" />
-                      <div className=" w-100 ps-4 d-flex flex-column ">
-                        <h5 className="d-flex justify-content-between border-bottom pb-2">
-                          <span> Chicken burger</span>
-                          <span className="icon"> $115</span>
-                        </h5>
-                        <small>Ipsum ipsum clita erat amet dolor justo diam</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

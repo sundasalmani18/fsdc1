@@ -44,18 +44,17 @@ export default function Curdusereducer() {
 
       case 'UPDATE_TODO': {
         console.log('UPDATE_TODO', action)
-        // setTodos((t) => [...t, "New Todo"]);
-        // state.map((s) => [...s, s["id"] ])
+        return (action.name.length)
+          ? state.map((item, i) =>
+            item.id === action.id
+              ? { ...item, name: action.name }
+              : item
+          )
+          : state
 
-        const findObject = state[action.id]
-        console.log("findObject findObject", findObject)
-        findObject = action
-        console.log("findObject", findObject)
-        // const updateObject = state.filter((emp) => emp.id == action.id)
-        // return (action.name.length)
-        //   ? [state.filter((emp) => emp.id == action.id)
-        //     .forEach(x => x.name = action.name)]
-        //   : state
+        // const newArr = [...state];
+        // newArr[action.id]["name"] = action.name
+        // state = newArr
       }
 
       case 'DELETE_TODO': {
@@ -127,9 +126,10 @@ export default function Curdusereducer() {
     });
     console.log(inputRef.current.value);
     inputRef.current.value = '';
+    setIsUpdateTodoStatus(false)
   }
 
-  console.log('todos',todos)
+  console.log('todos', todos)
   return (
     <div className="todo-input">
       <form>

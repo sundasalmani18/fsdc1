@@ -21,18 +21,20 @@ import Exampleusereducer from './exampleusereducer'
 import Exampleusecallback from './exampleusecallback';
 import Todo from './examplecrudtodo';
 import Curdusereducer from './curdusereducer';
+import Exampleusestate from './Exampleusestate';
 
 function App() {
   return (
     <div className="App">
       {/* <Todo  /> */}
-      <Curdusereducer/>
+     <Exampleusestate/>
+      {/* <Curdusereducer/> */}
 {/* <Exampleusecallback/> */}
 
 {/* <Exampleusereducer/> */}
-      {/* <LayoutRoutes />
+      {/* <LayoutRoutes />*/}
 
-      <UseStateexmp/>  */}
+      {/* <UseStateexmp/>   */}
       {/* <ExmpuseeffectFetch /> */}
 
       {/* <A name={"sundas"} rollno={20}/> */}
