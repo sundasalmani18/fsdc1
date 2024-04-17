@@ -6,12 +6,12 @@ export default function Login(){
     const passwordRef=useRef();
 
 
-    function onSubmitm(e){
+    function onSubmit(e){
   e.preventDefault();
   console.log({email : emailRef.current.value, "password" :passwordRef.current.value});
     }
     return(
-   <form onSubmit={onSubmitm}>
+   <form onSubmit={onSubmit}>
   <label>UserName</label>
 <input type="email"  ref={emailRef} />
 
