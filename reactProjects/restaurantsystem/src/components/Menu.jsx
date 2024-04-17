@@ -107,7 +107,7 @@ export default function Menu() {
             <div className="tab-content" id="myTabContent">
          {console.log("hello",tabid)}
 
-              <div className="tab-pane fade show active" id={tabid.link}>
+              <div className="tab-pane fade show active" id={tabid}>
           
                 <div className="row g-4">
                   <div className="col-md-6">

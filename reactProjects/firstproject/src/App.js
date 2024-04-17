@@ -22,12 +22,16 @@ import Exampleusecallback from './exampleusecallback';
 import Todo from './examplecrudtodo';
 import Curdusereducer from './curdusereducer';
 import Exampleusestate from './Exampleusestate';
+import Searchaddtask from './search&addtask';
+import Login from './loginform';
 
 function App() {
   return (
     <div className="App">
       {/* <Todo  /> */}
-     <Exampleusestate/>
+     {/* <Exampleusestate/> */}
+     <Searchaddtask/>
+     <Login/>
       {/* <Curdusereducer/> */}
 {/* <Exampleusecallback/> */}
 

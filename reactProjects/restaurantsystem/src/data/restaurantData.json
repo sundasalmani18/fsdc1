@@ -67,56 +67,56 @@
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "115",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "2",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "200",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "3",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "250",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "4",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "500",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "5",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "1000",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "6",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "1500",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "7",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "5000",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 },
                 {
                     "id": "8",
                     "title": "Breakfast",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "8000",
-                    "image": "../assets/images/menu-2.jpg"
+                    "image": "../assets/images/menu-1.jpg"
                 }
                
             ],
@@ -127,16 +127,125 @@
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "115",
                     "image": "../assets/images/menu-2.jpg"
-                }
+                },
+            
+                    {
+                        "id": "2",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "3",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "4",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "5",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "6",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "7",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "8",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    },
+                    {
+                        "id": "9",
+                        "title": "Lunch",
+                        "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                        "price": "115",
+                        "image": "../assets/images/menu-2.jpg"
+                    }
+                   
             ],
             "dinner": [
                 {
                     "id": "1",
                     "title": "Dinner ",
                     "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "650",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                    "id": "2",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "1150",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                    "id": "3",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
                     "price": "115",
                     "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                    "id": "4",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "1025",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                    "id": "5",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "3015",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                    "id": "6",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "900",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                  
+                    "id": "7",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "4300",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
+                },
+                {
+                    "id": "8",
+                    "title": "Dinner ",
+                    "desc": "Ipsum ipsum clita erat amet dolor justo diam",
+                    "price": "800",
+                    "image": "https://thumbs.dreamstime.com/b/thanksgiving-dinner-roasted-turkey-garnished-cranberries-rustic-style-table-decoraded-pumpkins-vegetables-pie-127581137.jpg"
                 }
+               
             ]
         }
     },
@@ -147,6 +256,7 @@
             {
                 "name": "Full Name",
                 "designation": "Designation",
+                "image": "../assets/images/team-1.jpg",
                 "iconfacebook": "fab fa-facebook-f",
                 "icontwitter": "fab fa-twitter",
                 "iconinsta": "fab fa-instagram"
@@ -154,6 +264,7 @@
             {
                 "name": "Full Name",
                 "designation": "Designation",
+                "image": "../assets/images/team-2.jpg",
                 "iconfacebook": "fab fa-facebook-f",
                 "icontwitter": "fab fa-twitter",
                 "iconinsta": "fab fa-instagram"
@@ -161,6 +272,7 @@
             {
                 "name": "Full Name",
                 "designation": "Designation",
+                "image": "../assets/images/team-3.jpg",
                 "iconfacebook": "fab fa-facebook-f",
                 "icontwitter": "fab fa-twitter",
                 "iconinsta": "fab fa-instagram"
@@ -168,10 +280,51 @@
             {
                 "name": "Full Name",
                 "designation": "Designation",
+                "image": "../assets/images/team-4.jpg",
                 "iconfacebook": "fab fa-facebook-f",
                 "icontwitter": "fab fa-twitter",
                 "iconinsta": "fab fa-instagram"
             }
         ]
-    }
+    },
+    "testimonials":{
+"title":"Testimonials",
+"subtitle":"Our Clients Say",
+"ourTestimonials":[
+    {
+      "description":"Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+      "name":"Client Name",
+      "image":"../assets/images/testimonial-1.jpg",
+      "profession":"Profession" ,
+      "icon":"fa fa-quote-left fa-2x icon mb-3" 
+    },
+    {
+        "description":"Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name":"Client Name",
+        "image":"../assets/images/testimonial-2.jpg",
+        "profession":"Profession" ,
+        "icon":"fa fa-quote-left fa-2x icon mb-3" 
+      },
+
+      {
+        "description":"Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name":"Client Name",
+        "image":"../assets/images/testimonial-3.jpg",
+        "profession":"Profession"  ,
+        "icon":"fa fa-quote-left fa-2x icon mb-3"
+      },
+
+      {
+        "description":"Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam",
+        "name":"Client Name",
+        "image":"../assets/images/testimonial-4.jpg",
+        "profession":"Profession" ,
+        "icon":"fa fa-quote-left fa-2x icon mb-3" 
+      }
+  
+
+]
+   }
+
+
 }

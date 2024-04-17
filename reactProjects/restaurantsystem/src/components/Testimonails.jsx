@@ -4,7 +4,14 @@ import tsetimonials3 from "../assets/images/testimonial-3.jpg";
 import tsetimonials4 from "../assets/images/testimonial-4.jpg";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import restData from '../data/restaurantData.json'
+
 export default function Testimonials(){
+
+  const testimonialsData = restData.testimonials;
+  const ourtestimonials = restData.testimonials.ourTestimonials;
+
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -30,8 +37,8 @@ export default function Testimonials(){
  <div id="testimonail">
   <div className="container section ">
     <div className="testimonail-title">
-      <h5 className="text-center">Testimonail</h5>
-      <h1 className="text-center">Our Clients Say</h1>
+      <h5 className="text-center">{testimonialsData.title}</h5>
+      <h1 className="text-center">{testimonialsData.subtitle}</h1>
     </div>
     <div className="row ">
       <div className="owl-carousel owl-theme">
@@ -54,22 +61,27 @@ export default function Testimonials(){
               dotListClass="custom-dot-list-style"
               itemClass="carousel-item-padding-40-px"
             >
+              {ourtestimonials.length > 0 ? (ourtestimonials.map((item, index) => (
         <div className="owl-item active">
+        
           <div className="testimonial-item bg-transparent border rounded p-4">
-            <i className="fa fa-quote-left fa-2x icon mb-3"></i>
-            <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+            <i className= {item.icon}></i>
+            <p>{item.description}</p>
             <div className="d-flex align-items-center">
               <img className="img-fluid flex-shrink-0 rounded-circle" style={{width: "50px", height: "50px"}}
-                src={tsetimonials1} alt=""/>
+                src={item.image} alt=""/>
               <div className="ps-3">
-                <h5>Client Name</h5>
-                <small>Profession</small>
+                <h5>{item.name}</h5>
+                <small>{item.profession}</small>
               </div>
             </div>
           </div>
+        
+        
         </div>
+          ))): null}
 
-        <div className="owl-item cloned">
+        {/* <div className="owl-item cloned">
           <div className="testimonial-item bg-transparent border rounded p-4">
             <i className="fa fa-quote-left fa-2x icon mb-3"></i>
             <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
@@ -113,7 +125,7 @@ export default function Testimonials(){
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         </Carousel>
       

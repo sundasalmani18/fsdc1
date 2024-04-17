@@ -26,7 +26,7 @@ export default function Chefs(){
            
           <div className="chef-item rounded overflow-hidden p-3">
             <div className="rounded-circle overflow-hidden m-4 ">
-              <img src={team1} className="img-fluid " alt=""/>
+              <img src={item.image} className="img-fluid " alt=""/>
             </div>
             <h5 className="text-center">{item.name}</h5>
             <small className="text-center">{item.designation}</small>
