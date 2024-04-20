@@ -1,5 +1,5 @@
-import { useRef } from "react";
 
+import { useRef } from "react";
 
 export default function Login(){
     const emailRef=useRef();
@@ -13,10 +13,10 @@ export default function Login(){
     return(
    <form onSubmit={onSubmit}>
   <label>UserName</label>
-<input type="email"  ref={emailRef} />
+<input type="email"  ref={emailRef} /><br/><br/>
 
   <label>Password</label>
-  <input type="password"  ref={passwordRef}/>
+  <input type="password"  ref={passwordRef}/><br/><br/>
 <button type="submit">Submit</button>
    </form>
 
