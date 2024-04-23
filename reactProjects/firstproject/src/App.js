@@ -32,7 +32,7 @@ function App() {
      {/* <Exampleusestate/> */}
      <Searchaddtask/>
      <Login/>
-      {/* <Curdusereducer/> */}
+      <Curdusereducer/>
 {/* <Exampleusecallback/> */}
 
 {/* <Exampleusereducer/> */}
