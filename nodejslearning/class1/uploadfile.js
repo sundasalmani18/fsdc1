@@ -1,48 +1,35 @@
-// var http = require('http');
-// var formidable = require('formidable');
+const http = require('http');
+const formidable = require('formidable');
+const fs = require('fs');
+const path = require('path');
 
-// http.createServer(function (req, res) {
-//   if (req.url == '/fileupload') {
-//     var form = new formidable.IncomingForm();
-//     form.parse(req, function (err, fields, files) {
-//       res.write('File uploaded');
-//       res.end();
-//     });
-//   } else {
-//     res.writeHead(200, {'Content-Type': 'text/html'});
-//     res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
-//     res.write('<input type="file" name="filetoupload"><br>');
-//     res.write('<input type="submit">');
-//     res.write('</form>');
-//     return res.end();
-//   }
-// }).listen(8080);
+var uploadPathFolderURL = path.join(__dirname, 'fileupload' + '/')
 
+console.log('uploadPathFolderURL', uploadPathFolderURL)
 
-
-
-var http = require('http');
-var formidable = require('formidable');
-var fs = require('fs');
-
-http.createServer(function (req, res) {
+const server = http.createServer(function (req, res) {
   if (req.url == '/fileupload') {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      var oldpath = files.filetoupload.filepath;
-      var newpath = 'C:\Users\sundas\Documents\SundusLearning\fsdc1\nodejslearning\class1\files' + files.filetoupload.originalFilename;
+      var oldpath = files.filetoupload[0].filepath;
+      var newpath = uploadPathFolderURL + files.filetoupload[0].originalFilename;
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
         res.write('File uploaded and moved!');
         res.end();
       });
- });
+    });
   } else {
-    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
     res.write('<input type="file" name="filetoupload"><br>');
     res.write('<input type="submit">');
     res.write('</form>');
     return res.end();
   }
-}).listen(8080);
+})
+
+
+server.listen(8080, () => {
+  console.log('Server listening on http://localhost:8080/ ...');
+});
