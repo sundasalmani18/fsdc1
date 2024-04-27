@@ -17,27 +17,24 @@ router.get('/', (req, res) => {
   console.log('cvFile', cvFile)
   console.log('imgFIle', imgFIle)
 
-  const transporterGmail = nodemailer.createTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
-    port: 5000,
-    secure: false, // Use `true` for port 465, `false` for all other ports
+
+  const transporterMaintrap = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
     auth: {
-      user: process.env.USER,
-      pass: process.env.APP_PASSWORD,
-    },
+      user: "86761e5e0864de",
+      pass: "f921cbdc789295"
+    }
   });
 
-
-  
   const mailoption = {
     from: {
       name: "sundas almani",
       address: process.env.USER
     }, // sender address
-    to: "hamzakhan6334@gmail.com", // list of receivers
+    to: "zignunokku@gufum.com", // list of receivers
     subject: "send email using nodemailer node js  ", // Subject line
-    text: "Hello EverOne", // plain text body
+    text: "Hello EveryOne", // plain text body
     html: "<b>Hello world?</b>", // html body
 
 
@@ -55,9 +52,9 @@ router.get('/', (req, res) => {
     ]
   }
 
-  const sendMail = async (transporterGmail, mailoption) => {
+  const sendMail = async (transporterMaintrap, mailoption) => {
     try {
-      await transporterGmail.sendMail(mailoption)
+      await transporterMaintrap.sendMail(mailoption)
       console.log("Email Has Been Send Successfully")
     }
     catch (error) {
@@ -65,7 +62,7 @@ router.get('/', (req, res) => {
     }
   }
 
-  sendMail(transporterGmail, mailoption)
+  sendMail(transporterMaintrap, mailoption)
 
   res.write('Email Has Been Send Successfully');
   res.end();

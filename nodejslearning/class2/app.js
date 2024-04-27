@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const userRoutes=require('./routes/user')
 const emailRoutes=require('./routes/sendmail')
+const mailtrapRoutes=require('./routes/mailtrapsendmail')
 
 const app = express();
 
@@ -11,6 +12,7 @@ const PORT = 5000;
 
 app.use('/user',userRoutes)
 app.use('/sendmail',emailRoutes)
+app.use('/mailtrapemail',mailtrapRoutes)
 
 app.get('/', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
