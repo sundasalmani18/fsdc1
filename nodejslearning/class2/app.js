@@ -8,6 +8,15 @@ const app = express();
 
 const PORT = 5000;
 
+const userRoutes=require('./routes/user')
+app.use('/user',userRoutes)
+
+
+const emailRoutes=require('./routes/sendmail')
+app.use('/sendmail',emailRoutes)
+
+
+
 app.get('/', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
