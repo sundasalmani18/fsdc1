@@ -1,21 +1,16 @@
+const express = require('express');
 const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
+const userRoutes=require('./routes/user')
+const emailRoutes=require('./routes/sendmail')
 
-
-const express = require('express');
 const app = express();
 
 const PORT = 5000;
 
-const userRoutes=require('./routes/user')
 app.use('/user',userRoutes)
-
-
-const emailRoutes=require('./routes/sendmail')
 app.use('/sendmail',emailRoutes)
-
-
 
 app.get('/', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -39,10 +34,6 @@ app.post('/fileupload', (req, res) => {
             res.end();
         });
     });
-})
-
-app.get('/contact', (req, res) => {
-    res.send('Hello Contact');
 })
 
 

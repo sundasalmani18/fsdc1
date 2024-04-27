@@ -3,56 +3,79 @@ const nodemailer = require("nodemailer");
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
-const router= express.Router();
 
+const router = express.Router();
 
+// let uploadPathFolderURL = path.join(__dirname, 'fileupload' + '/')
 
 router.get('/', (req, res) => {
   console.log("Email sent")
-const transporter = nodemailer.createTransport({
-    service :"gmail",
-  host: "smtp.gmail.com",
-  port: 5000,
-  secure: false, // Use `true` for port 465, `false` for all other ports
-  auth: {
-    user: process.env.USER,
-    pass: process.env.APP_PASSWORD,
-  },
-});
 
-const mailoption ={
-from: {
-    name:"sundas almani",
-    address:process.env.USER
-}, // sender address
-to: "hamzakhan6334@gmail.com", // list of receivers
-subject: "send email using nodemailer node js  ", // Subject line
-text: "Hello EverOne", // plain text body
-html: "<b>Hello world?</b>", // html body
+  let cvFile = path.dirname(__filename, 'firstCv.pdf')
+  let imgFIle = path.dirname(__filename, 'pizza.jpg')
 
-attachments:[{
-file :'firstCv.pdf',
-path :path.join(__dirname , 'firstCv.pdf'),
-contentType:'application/pdf'    
-},
-{
-  file:'pizza.jpg',
-  path:path.join(__dirname ,'pizza.jpg'),
-  contentType:'image/jpg'  
-  },
-]
-}
+  console.log('cvFile', cvFile)
+  console.log('imgFIle', imgFIle)
 
-const sendMail = async(transporter,mailoption)=>{
-  try{
-    await transporter.sendMail(mailoption)
-    console.log("Email Has Been Send Successfully")
+  const transporterGmail = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 5000,
+    secure: false, // Use `true` for port 465, `false` for all other ports
+    auth: {
+      user: process.env.USER,
+      pass: process.env.APP_PASSWORD,
+    },
+  });
+
+
+  const transporterMaintrap = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+      user: "86761e5e0864de",
+      pass: "f921cbdc789295"
+    }
+  });
+
+  const mailoption = {
+    from: {
+      name: "sundas almani",
+      address: process.env.USER
+    }, // sender address
+    to: "zignunokku@gufum.com", // list of receivers
+    subject: "send email using nodemailer node js  ", // Subject line
+    text: "Hello EverOne", // plain text body
+    html: "<b>Hello world?</b>", // html body
+
+
+    attachments: [{
+      // file: 'firstCv.pdf',
+      // path: path.join(__dirname, 'firstCv.pdf'),
+      // contentType: 'application/pdf'
+      filename: 'firstCv.pdf',
+      content: cvFile
+    },
+    {
+      filename: 'pizza.jpg',
+      content: imgFIle
+    },
+    ]
   }
-  catch(error){
-    console.error(error)
-  }
-}
 
-sendMail(transporter,mailoption)
+  const sendMail = async (transporterMaintrap, mailoption) => {
+    try {
+      await transporterMaintrap.sendMail(mailoption)
+      console.log("Email Has Been Send Successfully")
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
+  sendMail(transporterMaintrap, mailoption)
+
+  res.write('Email Has Been Send Successfully');
+  res.end();
 })
-module.exports=router
+module.exports = router
