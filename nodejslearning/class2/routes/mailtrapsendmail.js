@@ -61,9 +61,7 @@ router.get('/', (req, res) => {
       console.error(error)
     }
   }
-
   sendMail(transporterMaintrap, mailoption)
-
   res.write('Email Has Been Send Successfully');
   res.end();
 })
