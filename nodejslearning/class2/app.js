@@ -5,6 +5,7 @@ const path = require('path');
 const userRoutes=require('./routes/user')
 const emailRoutes=require('./routes/sendmail')
 const mailtrapRoutes=require('./routes/mailtrapsendmail')
+const uploadfilemulter=require('./uploadfilemulter')
 
 const app = express();
 
@@ -13,10 +14,13 @@ const PORT = 5000;
 app.use('/user',userRoutes)
 app.use('/sendmail',emailRoutes)
 app.use('/mailtrapemail',mailtrapRoutes)
+app.use('/uploadfilemulter',uploadfilemulter)
 
 
 app.set("view engine","ejs")
-app.set("view engine",path.resolve("./views"))
+app.set("views",path.resolve("./views"))
+
+app.use(express.urlencoded({extended:false}))
 
 
 app.get('/', (req, res) => {
