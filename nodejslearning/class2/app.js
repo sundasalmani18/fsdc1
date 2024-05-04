@@ -2,14 +2,34 @@ const express = require('express');
 const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
+const mysql = require('mysql');
 const userRoutes=require('./routes/user')
 const emailRoutes=require('./routes/sendmail')
 const mailtrapRoutes=require('./routes/mailtrapsendmail')
 const uploadfilemulter=require('./uploadfilemulter')
 
+
 const app = express();
 
 const PORT = 5000;
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root"
+  });
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+
+    // let createDbQuery = "CREATE DATABASE mydb"
+    // con.query(createDbQuery, function (err, result) {
+    //     if (err) throw err;
+    //     console.log("Result: " + result);
+    //   });
+  });
+
 
 app.use('/user',userRoutes)
 app.use('/sendmail',emailRoutes)
