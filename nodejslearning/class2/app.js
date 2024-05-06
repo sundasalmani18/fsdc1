@@ -20,16 +20,40 @@ var con = mysql.createConnection({
     database : "mydb"
   });
   
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   var sql = "DROP TABLE orderitems";
+  //   con.query(sql, function (err, result) {
+  //     if (err) throw err;
+  //     console.log("Table deleted");
+  //   });
+  // });
+
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
 
+   
+
+
 //orders_items
-// var sql = "CREATE TABLE orderItems (order_item_id INT AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,menu_item_id INT NOT NULL,quantity INT,price DECIMAL(19,2),FOREIGN KEY (menu_item_id) REFERENCES menu(id))";
+// var sql = "CREATE TABLE orderitems (order_item_id INT AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,menu_item_id INT NOT NULL,quantity INT,price DECIMAL(19,2),FOREIGN KEY (menu_item_id) REFERENCES menu(id),FOREIGN KEY (order_id) REFERENCES orders(order_id))";
 // con.query(sql, function (err, result) {
 // if (err) throw err;
 // console.log("Table created");
 // });
+
+// var sql = "INSERT INTO orderitems(order_item_id,order_id,menu_item_id, quantity,price) VALUES ?";
+//     var values =[
+//       [1,"2","4","1", "200.00"],
+//         [2,"4","5","2", "2000.00"],
+//         [3,"3","6","2", "4000.00"],
+//         [4,"2","5","1", "300.00"]           
+//     ];
+//       con.query(sql,[values] ,function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//       });
 
 
 //orders
@@ -40,6 +64,19 @@ var con = mysql.createConnection({
 // });
 
 
+// var sql = "INSERT INTO orders (order_id,order_type_id,employee_id, order_time,total_amount) VALUES ?";
+//     var values =[
+//       [1,"2","4","2024-05-02 12:00:00", "500.00"],
+//         [2,"1","2","2024-04-20 12:00:00", "1000.00"],
+//         [3,"1","1","2024-02-10 12:00:00", "2000.00"],
+//         [4,"2","3","2024-01-02 12:00:00", "300.00"]           
+//     ];
+//       con.query(sql,[values] ,function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//       });
+
+
 
 //order_type
 // var sql = "CREATE TABLE order_types (order_type_id INT AUTO_INCREMENT PRIMARY KEY,order_type_name VARCHAR(255))";
@@ -47,6 +84,17 @@ var con = mysql.createConnection({
 // if (err) throw err;
 // console.log("Table created");
 // });
+
+//insert order_type
+// var sql = "INSERT INTO order_types (order_type_id,order_type_name) VALUES ?";
+//     var values =[
+//       [1,"dine-in"],
+//       [2,"take away"]     
+//     ];
+//       con.query(sql,[values] ,function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//       });
 
 
 //employee
@@ -56,7 +104,19 @@ var con = mysql.createConnection({
 // console.log("Table created");
 // });
   
-
+//insert employee
+// var sql = "INSERT INTO employee (employee_id,full_name,position, phone_no,email,salary ) VALUES ?";
+//     var values =[
+//       [1,"ali","chef","1234567890","ali@gmail.com", "50000"],
+//       [2,"ahemd","chef","1234567890","ahmed@gmail.com", "30000"],
+//       [3,"aisha","waiter","1234567890","aisha@gmail.com", "560000"],
+//        [4,"sana","chef","1234567890","sana@gmail.com", "20000"],
+        
+//     ];
+//       con.query(sql,[values] ,function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//       });
 
     //testimonials
     // var sql = "CREATE TABLE testimonials (id INT AUTO_INCREMENT PRIMARY KEY,clientname VARCHAR(255),description VARCHAR(255),profession VARCHAR(255))";
@@ -87,8 +147,8 @@ var con = mysql.createConnection({
     //   console.log("Table created");
     // });
 
-    //error in book a table
-  // var sql = "INSERT INTO booking_table (name,email,date_time,numofpeople,request) VALUES ?";
+  //book a table
+  // var sql = "INSERT INTO booking_table (name,email,date,no_of_people,request) VALUES ?";
   //   var values =[
   //     ["ali","ali@gmail.com","2024-05-02 12:00:00","4","no any"],
   //     ["ahmed","ahmed@gmail.com","2024-08-18 5:00:00","4","no any"]
@@ -165,7 +225,7 @@ var con = mysql.createConnection({
     //   });
   });
 
-
+ 
 
 
 
