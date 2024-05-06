@@ -1,0 +1,140 @@
+create database Restaurantdb;
+
+use restaurantdb;
+ 
+ 
+create table users(
+		id int not null auto_increment,
+        name varchar(50),
+        designation varchar(50),
+        primary key(id)
+        ) ;
+
+insert into users (name,designation) 
+	values
+	("ali","chef"),
+	("ahemd","chef"),
+    ("aisha","waiter"),
+    ("sana","chef");
+    
+    
+select * from users;
+select (name) from users;
+
+
+
+create table menu(
+		id int not null auto_increment primary key,
+        product_name varchar(50),
+         category_id int,
+        price varchar(50),
+      FOREIGN kEY (category_id) REFERENCES category(category_id)
+        ) ;
+
+insert into menu (id,product_name,category_id,price) 
+	values
+	(1,"aloo paratha ","1", "500.00"),
+	(2,"chicken handi","3", "1000.00"),
+    (3,"biryani","2", "2000.00");
+    
+create table category(
+		category_id int not null auto_increment primary key,
+        category_name varchar(50),
+        category_image varchar(255)
+        ) ;
+        
+insert into category (category_id,category_name,category_image) 
+	values
+	(1,"brekfast","https://thewholekitchen.com.sg/cdn/shop/files/the-whole-kitchen-individual-boxes-breakfast-muffin-granola-01_400x.jpg"),
+	(2,"lunch","https://t3.ftcdn.net/jpg/02/02/07/56/360_F_202075610_MGQKkqilBtXnLwMtWlSDvFrrW2kbYYgl.jpg"),
+    (3,"dinner","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0fT1sWaUFfs0bSqkNATKSFmDaBBFgH6SEAw&s");
+    
+
+ 
+ 
+create table booking_table(id int not null auto_increment    primary key ,
+        name varchar(50),
+        email varchar(50),
+		date_time datetime,
+		numofpeople varchar(50),
+		request varchar(50)
+   );
+       
+insert into booking_table (name,email,date_time,numofpeople,request ) 
+	values
+	("ali","ali@gmail.com","2024-05-02 12:00:00","4","no any"),
+	("ahmed","ahmed@gmail.com","2024-08-18 5:00:00","4","no any");
+   
+create table testimonial(id int not null auto_increment,
+        clientname varchar(50),
+        description varchar(255),
+        profession varchar(50),
+        primary key(id));
+        
+        
+insert into testimonial (clientname,description,profession ) 
+	values
+	("ali","experienced","chef"),
+	("ahemd","newly apoint","chef"),
+    ("aisha","junior","waiter"),
+    ("sana","senior","chef");
+
+alter table menu add description varchar(225);  
+
+
+create table employees (
+		employee_id int not null auto_increment,
+        full_name varchar(50),
+        position varchar(255),
+        phone_no varchar(50),
+		email varchar(50),
+		salary varchar(50),
+        primary key(employee_id));
+        
+insert into employees (employee_id,full_name,position, phone_no,email,salary) 
+	values
+	(1,"ali","chef","1234567890","ali@gmail.com", "50000"),
+	(2,"ahemd","chef","1234567890","ahmed@gmail.com", "30000"),
+    (3,"aisha","waiter","1234567890","aisha@gmail.com", "560000"),
+    (4,"sana","chef","1234567890","sana@gmail.com", "20000");
+        
+create table order_types(
+		order_type_id int not null auto_increment primary key,
+        order_type_name varchar(50));
+
+insert into order_types (order_type_id,order_type_name) 
+	values
+	(1,"dine-in"),
+	(2,"take away");
+                 
+create table orders(
+		order_id int not null auto_increment primary key,
+        order_type_id int,
+		employee_id int,
+        order_time datetime, 
+		total_amount decimal(10,2),
+		FOREIGN kEY (order_type_id) REFERENCES order_types(order_type_id),
+        FOREIGN kEY (employee_id) REFERENCES employees(employee_id));         
+        
+insert into orders (order_id,order_type_id,employee_id, order_time,total_amount) 
+	values
+	(1,"2","4","2024-05-02 12:00:00", "500.00"),
+	(2,"1","2","2024-04-20 12:00:00", "1000.00"),
+    (3,"1","1","2024-02-10 12:00:00", "2000.00"),
+    (4,"2","3","2024-01-02 12:00:00", "300.00");
+        
+create table orderItems(
+		order_item_id int not null auto_increment,
+		order_id int not null,
+        menu_item_id int not null, 
+		quantity int,
+        price decimal(19,2),
+		FOREIGN kEY (menu_item_id) REFERENCES menu(id));    
+
+insert into orderItems (order_item_id,order_id,menu_item_id, quantity,price) 
+	values
+	(1,"2","4","2024-05-02 12:00:00", "500.00"),
+	(2,"4","2","2024-04-20 12:00:00", "1000.00"),
+    (3,"3","1","2024-02-10 12:00:00", "2000.00"),
+    (4,"2","3","2024-01-02 12:00:00", "300.00");
+        

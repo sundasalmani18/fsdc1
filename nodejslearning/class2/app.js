@@ -25,11 +25,11 @@ var con = mysql.createConnection({
     console.log("Connected!");
 
 //orders_items
-var sql = "CREATE TABLE orderItems (order_item_id INT AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,menu_item_id INT NOT NULL,quantity INT,price DECIMAL(19,2),FOREIGN KEY (menu_item_id) REFERENCES menu(id))";
-con.query(sql, function (err, result) {
-if (err) throw err;
-console.log("Table created");
-});
+// var sql = "CREATE TABLE orderItems (order_item_id INT AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,menu_item_id INT NOT NULL,quantity INT,price DECIMAL(19,2),FOREIGN KEY (menu_item_id) REFERENCES menu(id))";
+// con.query(sql, function (err, result) {
+// if (err) throw err;
+// console.log("Table created");
+// });
 
 
 //orders
@@ -66,6 +66,19 @@ console.log("Table created");
     // });
 
 
+   //insert testimonials 
+// var sql = "INSERT INTO testimonials (clientname,description,profession ) VALUES ?";
+//     var values =[
+//       ["ali","experienced","chef"],
+//       ["ahemd","newly apoint","chef"],
+//         ["aisha","junior","waiter"],
+//         ["sana","senior","chef"],
+        
+//     ];
+//       con.query(sql,[values] ,function (err, result) {
+//         if (err) throw err;
+//         console.log("1 record inserted");
+//       });
 
   //booking_table
     // var sql = "CREATE TABLE booking_table (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(255),email VARCHAR(255),date DATETIME, no_of_people VARCHAR(255),request VARCHAR(255))";
@@ -74,7 +87,16 @@ console.log("Table created");
     //   console.log("Table created");
     // });
 
-
+    //error in book a table
+  // var sql = "INSERT INTO booking_table (name,email,date_time,numofpeople,request) VALUES ?";
+  //   var values =[
+  //     ["ali","ali@gmail.com","2024-05-02 12:00:00","4","no any"],
+  //     ["ahmed","ahmed@gmail.com","2024-08-18 5:00:00","4","no any"]
+  //   ];
+  //     con.query(sql,[values] ,function (err, result) {
+  //       if (err) throw err;
+  //       console.log("1 record inserted");
+  //     });
 
     //category table 
     //  var sql = "CREATE TABLE category (category_id INT AUTO_INCREMENT PRIMARY KEY,category_name VARCHAR(255),category_image VARCHAR(255))";
@@ -82,6 +104,18 @@ console.log("Table created");
     //   if (err) throw err;
     //   console.log("Table created");
     // });
+   
+    //insert category 
+    // var sql = "INSERT INTO category (category_id,category_name,category_image) VALUES ?";
+    // var values =[
+    //   [1,"brekfast","https://thewholekitchen.com.sg/cdn/shop/files/the-whole-kitchen-individual-boxes-breakfast-muffin-granola-01_400x.jpg"],
+    //   [2,"lunch","https://t3.ftcdn.net/jpg/02/02/07/56/360_F_202075610_MGQKkqilBtXnLwMtWlSDvFrrW2kbYYgl.jpg"],
+    //   [3,"dinner","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0fT1sWaUFfs0bSqkNATKSFmDaBBFgH6SEAw&s"],
+    // ];
+    //   con.query(sql,[values] ,function (err, result) {
+    //     if (err) throw err;
+    //     console.log("1 record inserted");
+    //   });
 
 
 //menu table
@@ -91,9 +125,21 @@ console.log("Table created");
     //   console.log("Table created");
     // });
 
+// menu insert 
+  // var sql = "INSERT INTO menu (product_name, category_id,price) VALUES ?";
+  // var values =[
+  //   ["aloo paratha","1","500.00"],
+  //   ["chicken handi","3", "1000.00"],
+  //   ["biryani","2", "2000.00"],
+  // ];
+
+  //   con.query(sql,[values] ,function (err, result) {
+  //     if (err) throw err;
+  //     console.log("1 record inserted");
+  //   });
 
 
-
+//insert user
     // var sql = "INSERT INTO users (name, designation) VALUES ('ali', 'chef')";
     // con.query(sql, function (err, result) {
     //   if (err) throw err;
