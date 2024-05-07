@@ -19,7 +19,72 @@ var con = mysql.createConnection({
     password: "root",
     database : "mydb"
   });
-  
+ 
+
+
+
+
+
+  con.connect(function(err) {
+    if (err) throw err;
+    var sql = "SELECT category.category_name AS categoryName, menu.product_name AS productName FROM category JOIN menu ON category.category_id = menu.category_id";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
+
+//limit clause
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   var sql = "SELECT * FROM testimonials LIMIT 2, 4";
+  //   con.query(sql, function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //   });
+  // });
+
+ //update clause
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   var sql = "UPDATE employee SET full_name = 'sara' WHERE full_name = 'sana'";
+  //   con.query(sql, function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result.affectedRows + " record(s) updated");
+  //   });
+  // });
+
+
+//orderby clause
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   con.query("SELECT * FROM employee ORDER BY full_name DESC", function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //   });
+  // });
+
+// where clause
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   con.query("SELECT * FROM orders WHERE employee_id = '2'", function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //   });
+  // });
+
+  //select form
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   con.query("SELECT * FROM orders", function (err, result, fields) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //   });
+  // });
+
+
+
+
   // con.connect(function(err) {
   //   if (err) throw err;
   //   var sql = "DROP TABLE orderitems";
@@ -29,9 +94,9 @@ var con = mysql.createConnection({
   //   });
   // });
 
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
+  // con.connect(function(err) {
+  //   if (err) throw err;
+  //   console.log("Connected!");
 
    
 
@@ -208,7 +273,7 @@ var con = mysql.createConnection({
 
 
 
-    //create table
+    //create user table
     // var sql = "CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), designation VARCHAR(255))";
     // con.query(sql, function (err, result) {
     //   if (err) throw err;
@@ -223,7 +288,7 @@ var con = mysql.createConnection({
     //     if (err) throw err;
     //     console.log("Result: " + result);
     //   });
-  });
+  // });
 
  
 
