@@ -94,7 +94,7 @@ export default function Menu() {
                       onClick={() => selectMenu(index, item)}
                     >
                       <div>
-                        <i class={`${item.icon} icon fa-2x`} />
+                        <i className={`${item.icon} icon fa-2x`} />
                       </div>
                       <small>{item.desc}</small>
                       <h6 className="mt-n1 mb-0">{item.categoryName}</h6>

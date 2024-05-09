@@ -53,11 +53,11 @@ export default function Service() {
               keyBoardControl={true}
               customTransition="all .5"
               transitionDuration={500}
-              containerClass="carousel-container"
+              containerclassName="carousel-container"
               removeArrowOnDeviceType={["tablet", "mobile"]}
               // deviceType={this.props.deviceType}
-              dotListClass="custom-dot-list-style"
-              itemClass="carousel-item-padding-40-px"
+              dotListclassName="custom-dot-list-style"
+              itemclassName="carousel-item-padding-40-px"
             >
               {ServicesData.length > 0 ? (ServicesData.map((item, index) => (
                 <div key={index} className="servicecol">

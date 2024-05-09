@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import LayoutRoutes from './header-nav/LayoutRoutes'
 import { BrowserRouter } from 'react-router-dom'
+import LayoutRoutes from './header-nav/LayoutRoutes'
+import './App.css';
+import logo from './logo.svg';
 // import HomePage from './pages/HomePage';
 
 function App() {

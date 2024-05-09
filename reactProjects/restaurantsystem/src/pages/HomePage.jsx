@@ -1,5 +1,5 @@
 
-import Service from  '../components/Services';
+import Service from '../components/Services';
 import Banner from "../components/Banner";
 import Navbar from "../components/Navbar";
 import About from "../components/Aboutus";
@@ -14,18 +14,15 @@ import Footer from '../components/Footer';
 export default function HomePage() {
   return (
     <>
-   
       <Navbar />
       <Banner />
-      <Service/>
-      <About/>
-      <Menu/>
-      <Reservation/>
-      <Chefs/> 
-       <Testimonials/>
-       <Footer/>
-     
-      
+      <Service />
+      <About />
+      <Menu />
+      <Reservation />
+      <Chefs />
+      <Testimonials />
+      <Footer />
     </>
   );
 };
