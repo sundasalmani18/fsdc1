@@ -1,7 +1,7 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminNavbar() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <>
       <div className="bodyMenu">
@@ -17,11 +17,11 @@ export default function AdminNavbar() {
                 </a>
 
 
-                <div class="nav_list"> <a href="dashboard.html" class="nav_link active"> <i
+                <div class="nav_list"> <a  class="nav_link active"> <i
                             class='fa-solid fa-palette'></i> <span class="nav_name">Dashboard</span> </a>
-                    <a href="categories.html" class="nav_link"> <i class='fa-solid fa-layer-group'></i> <span
+                    <a onClick={() => navigate("/admin/category")}  class="nav_link"> <i class='fa-solid fa-layer-group'></i> <span
                             class="nav_name">Categories</span> </a>
-                    <a href="items.html" class="nav_link"> <i class="fa-solid fa-list"></i> <span
+                    <a onClick={() => navigate("/admin/items")} class="nav_link"> <i class="fa-solid fa-list"></i> <span
                             class="nav_name">Items</span> </a>
                     <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span
                             class="nav_name">Bookmark</span> </a>

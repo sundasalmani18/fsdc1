@@ -1,16 +1,19 @@
-import MozzarellaSticks from "../assets/images/adminitems/MozzarellaSticks.jpg";
-import nachos from "../assets/images/adminitems/nachos.jpg";
-import chickenwings from "../assets/images/adminitems/chickenwings.jpg";
-import SpinachArtichokeDi from  "../assets/images/adminitems/SpinachArtichokeDi.jpg";
-import Bruschetta from "../assets/images/adminitems/Bruschetta.jpg";
-import potatoskin from  "../assets/images/adminitems/potatoskin.jpg";
-import stuffedmushroom from "../assets/images/adminitems/stuffedmushroom.jpg";
-import BuffaloCauliflowe from "../assets/images/adminitems/BuffaloCauliflowe.jpg";
-import FriedCalamari from  "../assets/images/adminitems/FriedCalamari.jpg"; 
-import JalapenoPoppers from  "../assets/images/adminitems/JalapenoPoppers.jpg";
-import team1 from "../assets/images/team-1.jpg";
+
+import { useNavigate } from "react-router-dom";
+import MozzarellaSticks from "../../assets/images/adminitems/MozzarellaSticks.jpg";
+import nachos from "../../assets/images/adminitems/nachos.jpg";
+import chickenwings from "../../assets/images/adminitems/chickenwings.jpg";
+import SpinachArtichokeDi from "../../assets/images/adminitems/SpinachArtichokeDi.jpg";
+import Bruschetta from "../../assets/images/adminitems/Bruschetta.jpg";
+import potatoskin from  "../../assets/images/adminitems/potatoskin.jpg";
+import stuffedmushroom from "../../assets/images/adminitems/stuffedmushroom.jpg";
+import BuffaloCauliflowe from "../../assets/images/adminitems/BuffaloCauliflowe.jpg";
+import FriedCalamari from  "../../assets/images/adminitems/FriedCalamari.jpg"; 
+import JalapenoPoppers from  "../../assets/images/adminitems/JalapenoPoppers.jpg";
+
 
 export default function AdminItems() {
+    const navigate = useNavigate();
     return (
         <>
             <div class="categories p-4">
@@ -36,7 +39,7 @@ export default function AdminItems() {
                     </form>
                 </div>
                 <div class="add-content p-3">
-                    <a href="../admin/additem.html" class="btn btn-success  my-sm-0">Add</a>
+                    <a onClick={()=>navigate("/admin/category/additems")} class="btn btn-success  my-sm-0">Add</a>
 
                 </div>
                 <div class="table-responsive">

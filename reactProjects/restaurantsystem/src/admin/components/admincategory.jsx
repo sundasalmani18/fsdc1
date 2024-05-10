@@ -1,13 +1,18 @@
-import sandwiches from "../assets/images/admin-categories/sandwiches.jpg";
-import salad from "../assets/images/admin-categories/salad.jpg";
-import burger from "../assets/images/admin-categories/burger.jpg";
-import appetizer from "../assets/images/admin-categories/appetizer.jpg";
-import soup from "../assets/images/admin-categories/soup.jpg";
-import pizza from "../assets/images/admin-categories/pizza.jpg";
-import pasta from "../assets/images/admin-categories/pasta.jpg";
-import seafoods from  "../assets/images/admin-categories/seafoods.jpg";
+import { useNavigate } from "react-router-dom";
+import sandwiches from "../../assets/images/admin-categories/sandwiches.jpg";
+import salad from "../../assets/images/admin-categories/salad.jpg";
+import burger from "../../assets/images/admin-categories/burger.jpg";
+import appetizer from "../../assets/images/admin-categories/appetizer.jpg";
+import soup from "../../assets/images/admin-categories/soup.jpg";
+import pizza from "../../assets/images/admin-categories/pizza.jpg";
+import pasta from "../../assets/images/admin-categories/pasta.jpg";
+import seafoods from  "../../assets/images/admin-categories/seafoods.jpg";
+import steak from  "../../assets/images/admin-categories/steak.jpg";
+import chicken from  "../../assets/images/admin-categories/chicken.jpg";
 
-export default function AdminCategory() {  
+export default function AdminCategory() { 
+    
+    const navigate = useNavigate();
     return(
 <>
         <div class="categories">
@@ -32,7 +37,7 @@ export default function AdminCategory() {
                     </form>
                 </div>
                 <div class="add-content p-3">
-                    <a href="../admin/addcategories.html"  class="btn btn-success m-2 my-sm-0">Add</a>
+                    <a onClick={()=>navigate("/admin/category/addcategories")}  class="btn btn-success m-2 my-sm-0">Add</a>
                     {/* <!-- <button class="btn btn-success m-2 my-sm-0" type="submit">Add</button> --> */}
                 </div>
 
@@ -48,8 +53,7 @@ export default function AdminCategory() {
                                 </label>
                             </td>
                             <td class="">
-                                <img src={sandwiches}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                <img src={sandwiches} class=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
@@ -208,7 +212,7 @@ export default function AdminCategory() {
                                 </label>
                             </td>
                             <td class="">
-                                <img src="../assets/images/admin-categories/steak.jpg"
+                                <img src={steak}
                                     class=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
@@ -228,7 +232,7 @@ export default function AdminCategory() {
                                 </label>
                             </td>
                             <td class="">
-                                <img src="../assets/images/admin-categories/chicken.jpg"
+                                <img src={chicken}
                                     class=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
