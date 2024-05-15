@@ -15,7 +15,7 @@ export default function AdminCategory() {
     const navigate = useNavigate();
     return(
 <>
-        <div class="categories">
+        <div class="categories pl-5p">
         <div class="container">
             <div class="row">
                 <div class=" d-flex mb-3">

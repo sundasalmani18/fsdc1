@@ -3,7 +3,7 @@ export default function AdminDashboard() {
 
   return (
     <>
-      <div className=" dashboard ">
+      <div className="dashboard pl-5p">
 
         <div className=" d-flex pt-3 m-3">
           <i className='fa-solid fa-palette fa-2x'></i>

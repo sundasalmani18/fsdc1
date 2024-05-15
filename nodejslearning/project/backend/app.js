@@ -1,5 +1,5 @@
 import express from 'express';
-// import categoriesRoutes from './routes/categories';
+import categoriesRoutes from './routes/categories.js';
 // const express = require('express') ;
 const app=express();
 
@@ -9,7 +9,7 @@ app.get("/",(req,res)=>{
 })
 
 
-// app.use("/category",categoriesRoutes);
+app.use("/category",categoriesRoutes);
 
 
 

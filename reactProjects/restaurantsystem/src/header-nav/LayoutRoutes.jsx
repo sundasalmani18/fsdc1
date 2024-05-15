@@ -4,13 +4,15 @@ import { Link, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/loginPage";
 import SignupPage from "../pages/signupPage";
+
+
 // Admin Pages
 import AdminLoginPage from "../pages/adminPages/adminLoginPage";
-import AdminCategory from "../pages/adminPages/adminDashboardPage";
-import AdminItems from "../pages/adminPages/adminDashboardPage";
+import AdminCategory from "../pages/adminPages/admincategory";
+import AdminItems from "../pages/adminPages/adminitems";
 import AdminDashboardPage from "../pages/adminPages/adminDashboardPage";
-import  AddCategories from "../pages/adminPages/adminDashboardPage";
-import  AddItems from "../pages/adminPages/adminDashboardPage";
+import  AddCategories from "../pages/adminPages/adminaddcategory";
+import  AddItems from "../pages/adminPages/adminadditems";
 
 export default function LayoutRoutes() {
   return (

@@ -1,0 +1,28 @@
+
+{
+    "users": [
+       
+        {
+            "user_id": "1001",																		
+            "email": "user1@gmail.com",																		
+            "phone": "2345678900",																		
+            "gender": "male",																		
+            "phone_brand_id": "2003",																		
+            "skills": ["3001","3002","3003"],																		
+            "picture": "#"
+        },
+        {																		
+            "user_id": "1002",																		
+            "email": "user1@gmail.com",																		
+            "phone": "2345678900",																		
+            "gender": "female",																		
+            "phone_brand_id": "2002",																		
+            "skills": ["3001","3002"],																		
+            "picture": "#"																		
+            }	
+    
+    ]
+
+
+
+}

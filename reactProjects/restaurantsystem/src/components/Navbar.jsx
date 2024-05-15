@@ -16,9 +16,9 @@ export default function Navbar() {
               <h2 id="logo" className="p-2" >Yummy.</h2>
             </div> --> */}
             <div className="col-md-12">
-              <nav className="navbar navbar-expand-lg navbar-light ">
-              <FontAwesomeIcon icon={faUtensils} className=" fa fa-2x"  />
-                <i className="fa fa-utensils me-3  fa-2x "></i>
+              <nav className="navbar navbar-expand-lg navbar-light">
+              <FontAwesomeIcon icon={faUtensils} className=" fa fa-2x m-3"  />
+                {/* <i className="fa fa-utensils me-3  fa-2x "></i> */}
                 <a id="logo" className="navbar-brand" href="#">Yummy.</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

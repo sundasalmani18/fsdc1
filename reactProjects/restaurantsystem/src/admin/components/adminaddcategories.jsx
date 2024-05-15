@@ -2,7 +2,7 @@ export default function AddCategories() {
     return(
 
     <>
-     <div class="categories p-4">
+     <div class="categories pl-5p">
         <div class=" d-flex p-3">
             <i class="fa-solid fa-circle-plus fa-2x"></i>
             <h6 class="m-2  d-flex">Add Categories</h6>
