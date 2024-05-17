@@ -3,6 +3,8 @@ import categoriesRoutes from './routes/categories.js';
 // const express = require('express') ;
 const app=express();
 
+app.use(express.json());
+
 app.get("/",(req,res)=>{
     res.json({mesg:"welcome to my application"})
 

@@ -28,10 +28,10 @@ import Login from './loginform';
 function App() {
   return (
     <div className="App">
-      {/* <Todo  /> */}
+      <Todo  />
      {/* <Exampleusestate/> */}
-     <Searchaddtask/>
-     <Login/>
+     {/* <Searchaddtask/> */}
+     {/* <Login/> */}
       <Curdusereducer/>
 {/* <Exampleusecallback/> */}
 

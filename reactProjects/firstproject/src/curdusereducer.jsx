@@ -143,7 +143,7 @@ export default function Curdusereducer() {
             <input ref={inputRef} type="text" id="add-todo" placeholder="Add Employee" />
             <button onClick={addTodo}> ADD Employee</button>
           </>
-        )}
+          )}
 
       </form>
 
