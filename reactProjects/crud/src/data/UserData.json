@@ -3,21 +3,21 @@
     "users": [
        
         {
-            "user_id": "1001",																		
+           "user_id": "1001",																		
             "email": "user1@gmail.com",																		
-            "phone": "2345678900",																		
-            "gender": "male",																		
-            "phone_brand_id": "2003",																		
-            "skills": ["3001","3002","3003"],																		
-            "picture": "#"
+            "phone": "23456789001",																		
+            "gender": ["male"],																		
+            "phone_brand": "samsung",																		
+            "skill": "html",																		
+           " picture": "#"	
         },
         {																		
             "user_id": "1002",																		
-            "email": "user1@gmail.com",																		
-            "phone": "2345678900",																		
-            "gender": "female",																		
-            "phone_brand_id": "2002",																		
-            "skills": ["3001","3002"],																		
+            "email": "user2@gmail.com",																		
+            "phone": "23456789002",																		
+            "gender": ["female"],																		
+            "phone_brand": "iphone",																		
+            "skill": ["Css"],																		
             "picture": "#"																		
             }	
     
