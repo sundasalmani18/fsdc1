@@ -8,7 +8,7 @@
             "phone": "23456789001",																		
             "gender": "male",																		
             "phone_brand": "samsung",																		
-            "skills": ["html","css"],																		
+            "skill": ["css","html"],																		
            " picture": "#"	
         },
         {																		
@@ -17,7 +17,7 @@
             "phone": "23456789002",																		
             "gender": "female",																		
             "phone_brand": "iphone",																		
-            "skills": "Css",																		
+            "skill": ["javascript"],																		
             "picture": "#"																		
             }	
     

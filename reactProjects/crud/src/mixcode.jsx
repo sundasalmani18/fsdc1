@@ -155,7 +155,7 @@
 //           <label htmlFor="gender" className="form-label">Skills</label>
 //           <div>
 //             <div>
-//               <input type="checkbox" name="languages" value="html" onChange={onChangeHandler} checked={formData.skill.indexOf('html' ) !== -1} />
+            //   <input type="checkbox" name="languages" value="html" onChange={onChangeHandler} checked={formData.skill.indexOf('html' ) !== -1} />
 //               <label htmlFor="html">HTML</label>
 //             </div>
 //             <div>
