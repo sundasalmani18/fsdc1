@@ -91,17 +91,17 @@ export default function CrudOperation() {
       alert('Submitted')
     }
     else {
-      alert('In-Valid Form')
+      alert('All Fields Are required ')
     }
   }
   const handleDelete = (id) => {
     if (id > 0) {
-      if (window.confirm("are you sure to delete item")) {
+      if (window.confirm("Are You Sure to delete this item")) {
         const dt = data.filter(item => item.user_id !== id);
         setData(dt);
       }
     }
-    alert(id);
+    alert("User id" +id+ "has been deleted");
   }
 
   let handleClear = () => {
@@ -220,35 +220,26 @@ export default function CrudOperation() {
               <label> Select Skills </label><br />
               <input className="form-check-input" type="checkbox" name="languages" onChange={handleSkill} value="html" id="flexCheckDefault" checked={skill.indexOf('html') !== -1} />
               <label className="form-check-label" htmlFor="flexCheckDefault">  html  </label>
-              <input className="form-check-input" type="checkbox" name="languages" value="Javascript" onChange={handleSkill} id="flexCheckDefault" checked={skill.indexOf('javascript') !== -1} />
+              <input className="form-check-input" type="checkbox" name="languages" value="javascript" onChange={handleSkill} id="flexCheckDefault" checked={skill.indexOf('javascript') !== -1} />
               <label className="form-check-label" htmlFor="flexCheckDefault">  javascript  </label>
               <input className="form-check-input" type="checkbox" name="languages" value="css" onChange={handleSkill} id="flexCheckDefault" checked={skill.indexOf('css') !== -1} />
               <label className="form-check-label" htmlFor="flexCheckDefault">  css  </label><br />
               {formError.skill}
-
             </div>
-
-
-
-
             {!isUpdate ?
-              <button class="btn btn-secondary m-2" >Add</button>
+              <button class="btn btn-success m-2" >Add</button>
               :
-              <button class="btn btn-secondary m-2" onClick={handleUpdate}>Update</button>
-
+              <button class="btn btn-success m-2" onClick={handleUpdate}>Update</button>
             }
-
           </div>
         </form>
+        </div>
+<div style={{ display: "flex", justifyContent: "center"}}>
+<button class="btn btn-primary" onClick={handleClear}>Clear</button>
+</div>
+      
 
-
-
-
-      </div>
-
-      <button class="btn btn-secondary" onClick={handleClear}>Clear</button>
-
-
+     
 
 
       <table class="table">
