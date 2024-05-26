@@ -16,9 +16,9 @@ function App() {
   return(
     <>
 
-    <MixCode/>
+    {/* <MixCode/> */}
     {/* <AllFieldsValidate/> */}
-    {/* <CrudOperation/> */}
+    <CrudOperation/>
       {/* <Crud/> */}
       {/* <Checkboxform/> */}
       {/* <Formvalidation/> */}

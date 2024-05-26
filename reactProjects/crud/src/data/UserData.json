@@ -6,18 +6,18 @@
            "user_id": "1001",																		
             "email": "user1@gmail.com",																		
             "phone": "23456789001",																		
-            "gender": ["male"],																		
+            "gender": "male",																		
             "phone_brand": "samsung",																		
-            "skill": "html",																		
+            "skills": ["html","css"],																		
            " picture": "#"	
         },
         {																		
             "user_id": "1002",																		
             "email": "user2@gmail.com",																		
             "phone": "23456789002",																		
-            "gender": ["female"],																		
+            "gender": "female",																		
             "phone_brand": "iphone",																		
-            "skill": ["Css"],																		
+            "skills": "Css",																		
             "picture": "#"																		
             }	
     

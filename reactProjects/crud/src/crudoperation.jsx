@@ -6,7 +6,7 @@ export default function CrudOperation() {
 
     const userdata = restData.users;
     const [data, setData] = useState([userdata]);
-    const [user_id, setUser_id] = useState();
+    const [user_id, setUser_id] = useState('');
     const [email, setEmail] = useState('');
     const [phoneno, setPhoneno] = useState('');
     const [phonebrand, setPhoneBrand] = useState('');
@@ -14,11 +14,7 @@ export default function CrudOperation() {
     const [skill, setSkill] = useState('');
     const [skillArray, setSkillArray] = useState([]);
     const [isUpdate, setIsUpdate] = useState(false);
-    const [emailerror, setEmailError] = useState(false);
-    const [phoneerror, setPhoneError] = useState(false);
-    const [gendererror, setGenderError] = useState(false);
-    const [phonebranderror, setPhoneBrandError] = useState(false);
-    const [skillerror, setSkillError] = useState(false);
+    const [formError, setFormError] = useState({})
 
 
 
@@ -32,52 +28,91 @@ useEffect(() => {
 }, []);
 
 
+
+
+const validateForm = () => {
+  let err = {}
+
+  if (user_id === '') {
+    err.user_id = <p style={{color:"red"}}>User Id required!</p>
+  }
+  if (email === '') {
+    err.email = <p style={{color:"red"}}>Email required!</p>
+  } else {
+    let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!regex.test(email)) {
+      err.email = <p style={{color:"red"}}>Email not valid</p>
+    }
+  }
+
+  if (phoneno === '' ) {
+    err.phoneno = <p style={{color:"red"}}>phone no is required!</p>
+  } 
+
+  if (phonebrand === '') {
+    err.phonebrand = <p style={{color:"red"}}>phone Brand required!</p> 
+  }
+  if (gender === '') {
+    err.gender = <p style={{color:"red"}}>Gender required!</p>
+  }
+  if (skill.length < 1) {
+    err.skill = <p style={{color:"red"}}>Any one skill required!</p> 
+  }
+
+  setFormError({ ...err })
+
+  return Object.keys(err).length < 1;
+}
+
+
 let handleAdd = (e) => {
     e.preventDefault();
 
+    let isValid = validateForm()
+    
+             if (isValid) {
+    // const email = e.target[0].value;
+    // if (!regex.test(email)) {
+    //   setEmailError(true);
+    // }
+    // else {
+    //   setEmail(email);
+    //   setEmailError(false);
+    // }
+    // const phoneno = e.target[1].value;
+    // if (phoneno === "") {
+    //   setPhoneError(true);
+    // }
+    // else {
 
-    const email = e.target[0].value;
-    if (!regex.test(email)) {
-      setEmailError(true);
-    }
-    else {
-      setEmail(email);
-      setEmailError(false);
-    }
-    const phoneno = e.target[1].value;
-    if (phoneno === "") {
-      setPhoneError(true);
-    }
-    else {
+    //   setPhoneError(false);
+    // }
+    // const gender = e.target[2].value;
+    // if (gender === "") {
+    //   setGenderError(true);
+    // }
+    // else {
+    //   setGender(false);
+    // }
 
-      setPhoneError(false);
-    }
-    const gender = e.target[2].value;
-    if (gender === "") {
-      setGenderError(true);
-    }
-    else {
-      setGender(false);
-    }
+    // const phonebrand = e.target[5].value;
+    // console.log(phonebrand+"phonebrand")
+    // if (phonebrand ==="" ) {
+    //   setPhoneBrandError(true);
+    // }
+    // else {
 
-    const phonebrand = e.target[5].value;
-    console.log(phonebrand+"phonebrand")
-    if (phonebrand ==="" ) {
-      setPhoneBrandError(true);
-    }
-    else {
+    //   setPhoneBrandError(false);
+    // }
+    // const skill = e.target[5].value;
+    // if (skill === null) {
+    //   setSkillError(true);
+    // }
+    // else {
 
-      setPhoneBrandError(false);
-    }
-    const skill = e.target[5].value;
-    if (skill === null) {
-      setSkillError(true);
-    }
-    else {
-
-      setSkill(false);
-    }
-    if ((regex.test(email)) && phoneno !== ""  && gender !== "" && phonebrand !== "" && skill !== "") {
+    //   setSkill(false);
+    // }
+    // if ((regex.test(email)) && phoneno !== ""  && gender !== "" && phonebrand !== "" && skill !== "") {
 
 
       const dt = [...data];
@@ -95,7 +130,11 @@ let handleAdd = (e) => {
       setData(dt)
       console.log(dt);
       handleClear();
-    }
+      alert('Submitted')
+    } 
+    else {
+           alert('In-Valid Form')
+           }
 }
     const handleDelete = (id) => {
         if (id > 0) {
@@ -164,42 +203,24 @@ let handleAdd = (e) => {
         setSkill(e.target.value);
         console.log("hello " + value, checked);
         if (checked) {
-          setSkillArray([
-            ...skillArray, value
+          setSkill([
+            ...skill, value
+
+            
           ])
+          console.log(skill +  "skill")
+         
     
         }
         else {
-          setSkillArray(skillArray.filter((e) => (e !== value)))
+          setSkill(skill.filter((e) => (e !== value)))
     
         }
+        // console.log(skill)
       }
 
 
-      const handleEmail = (e) => {
-        const email = e.target.value;
-    
-        if (!regex.test(email)) {
-          setEmailError(true);
-        }
-        else {
-          setEmail(email);
-          setEmailError(false);
-        }
-        setEmail(email);
-      }
-
-      const handlePhoneBrand=(e)=>{
-        const phonebrand =e.target.value;
-        setPhoneBrand(phonebrand);
-      }
-  const handleRadiobutton=(e)=> {
-   
-    // const target = e.target;
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
-    // const gender = target.gender;
-    setGender(e.target.value); 
-  }
+  
       return (
 
         <>
@@ -211,41 +232,43 @@ let handleAdd = (e) => {
               <div className="col-md-6 text-center m-4">
                 <div className=" align-items-center">
                   <input type="number" class="form-control m-2" placeholder="user_id" onChange={(e) => setUser_id(e.target.value)} value={user_id} />
-                  <input type="text" class="form-control m-2" placeholder="email" onChange={handleEmail} value={email} />
-                  {emailerror ? <p style={{ color: "red" }}>Invalid Email</p> : ""}
+                  {formError.user_id}   <br /><br />
+                  <input type="text" class="form-control m-2" placeholder="email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                  {formError.email}
                   {/* { email.validationError && <span>{email.validationError}</span>}
                   {error.email}  <p style={{color:"red"}}></p> */}
                   <br /><br />
                   <input type="number" class="form-control m-2" placeholder="phone no " onChange={(e) => setPhoneno(e.target.value)} value={phoneno} />
-                  {phoneerror ? <p style={{ color: "red" }}>Required</p> : ""}
+                  {formError.phoneno}
     
     
-                  <input type="radio" name="gender" value="female" onChange={handleRadiobutton}  /> Female
-                  <input type="radio" name="gender" value="male" onChange={handleRadiobutton} 
+                  <input type="radio" name="gender" value="female" onChange={(e) => setGender(e.target.value)} checked={gender === 'female'} /> Female
+                  <input type="radio" name="gender" value="male"  onChange={(e) => setGender(e.target.value)} checked={gender === 'male'}
                   /> Male
     
-                  {gendererror ? <p style={{ color: "red" }}>Required</p> : ""}
+                  {formError.gender}
                   <br />
                   <br />
                   {/* <h1>{gender}</h1> */}
     
     
-                  <select name="select brand" value={phonebrand} onChange={handlePhoneBrand} >
+                  <select name="select brand" value={phonebrand} onChange={(e) => setPhoneBrand(e.target.value)} >
+                  <option value="" type="" > </option>
                     <option value="iphone" type="" >iphone </option>
                     <option value="samsung" >samsung</option>
                     <option value="oppo"  >oppo</option>
                   </select>
-                  {phonebranderror ? <p style={{ color: "red" }}>Required</p> : ""}
+                  {formError.phonebrand}
     
                   <br />
                   <label> Select Skills </label><br />
-                  <input className="form-check-input" type="checkbox" name="languages" onChange={handleSkill} value="html" id="flexCheckDefault" />
+                  <input className="form-check-input" type="checkbox" name="languages" onChange={handleSkill} value="html" id="flexCheckDefault" checked={skill.indexOf('html' ) !== -1} />
                   <label className="form-check-label" htmlFor="flexCheckDefault">  html  </label>
-                  <input className="form-check-input" type="checkbox" name="languages" value="Javascript" onChange={handleSkill} id="flexCheckDefault" />
+                  <input className="form-check-input" type="checkbox" name="languages" value="Javascript" onChange={handleSkill} id="flexCheckDefault" checked={skill.indexOf('javascript' ) !== -1} />
                   <label className="form-check-label" htmlFor="flexCheckDefault">  javascript  </label>
-                  <input className="form-check-input" type="checkbox" name="languages" value="css" onChange={handleSkill} id="flexCheckDefault" />
+                  <input className="form-check-input" type="checkbox" name="languages" value="css" onChange={handleSkill} id="flexCheckDefault" checked={skill.indexOf('css' ) !== -1} />
                   <label className="form-check-label" htmlFor="flexCheckDefault">  css  </label><br />
-                  {skillerror ? <p style={{ color: "red" }}>Required</p> : ""}
+                  {formError.skill}
     
                 </div>
     
@@ -300,7 +323,7 @@ let handleAdd = (e) => {
                   <td>{item.phone}</td>
                   <td>{item.gender}</td>
                   <td>{item.phone_brand}</td>
-                  <td>{item.skill}</td>
+                  <td>{item.skills}</td>
     
     
                   <td><button class="btn btn-primary" onClick={() => handleEdit(item.user_id, index)}>Edit</button></td>
