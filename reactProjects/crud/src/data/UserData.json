@@ -7,7 +7,7 @@
             "email": "user1@gmail.com",																		
             "phone": "23456789001",																		
             "gender": "male",																		
-            "phone_brand": "samsung",																		
+            "phonebrand": "samsung",																		
             "skill": ["css","html"],																		
            " picture": "#"	
         },
@@ -16,7 +16,7 @@
             "email": "user2@gmail.com",																		
             "phone": "23456789002",																		
             "gender": "female",																		
-            "phone_brand": "iphone",																		
+            "phonebrand": "iphone",																		
             "skill": ["javascript"],																		
             "picture": "#"																		
             }	

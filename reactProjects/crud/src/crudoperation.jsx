@@ -80,7 +80,7 @@ export default function CrudOperation() {
         phone: phoneno,
         gender: gender,
         skill: skill,
-        phone_brand: phonebrand
+        phonebrand: phonebrand
 
       }
       dt.push(newObject);
@@ -124,7 +124,7 @@ export default function CrudOperation() {
       setGender(dt[index].gender);
       console.log(dt[index].gender + "gender")
       setPhoneBrand(dt[index].phonebrand);
-      console.log(dt[index].phone_brand + "phone_brand")
+      console.log(dt[index].phonebrand + "phone_brand")
       setSkill(dt[index].skill);
       console.log(dt[index].skill + "skill")
     }
@@ -144,7 +144,7 @@ export default function CrudOperation() {
     dt[index].email = email;
     dt[index].phone = phoneno;
     dt[index].gender = gender;
-    dt[index].phone_brand = phonebrand;
+    dt[index].phonebrand = phonebrand;
     dt[index].skill = skill;
 
     setData(dt);
@@ -278,7 +278,7 @@ export default function CrudOperation() {
               <td>{item.email}</td>
               <td>{item.phone}</td>
               <td>{item.gender}</td>
-              <td>{item.phone_brand}</td>
+              <td>{item.phonebrand}</td>
               <td>{item.skill}</td>
 
 
