@@ -48,6 +48,11 @@ export default function CrudOperation() {
     if (phoneno === '') {
       err.phoneno = <p style={{ color: "red" }}>phone no is required!</p>
     }
+    else {
+      if (phoneno.length < 11) {
+        err.phoneno =  <p style={{ color: "red" }}>Phone no should  11 digits!</p>
+      }
+    }
 
     if (phonebrand === '') {
       err.phonebrand = <p style={{ color: "red" }}>phone Brand required!</p>
@@ -196,7 +201,8 @@ export default function CrudOperation() {
               <br /><br />
               <input type="number" class="form-control m-2" placeholder="phone no " onChange={(e) => setPhoneno(e.target.value)} value={phoneno} />
               {formError.phoneno}
-
+              <br />
+              <br />
 
               <input type="radio" name="gender" value="female" onChange={(e) => setGender(e.target.value)} checked={gender === 'female'} /> Female
               <input type="radio" name="gender" value="male" onChange={(e) => setGender(e.target.value)} checked={gender === 'male'}
