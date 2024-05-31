@@ -13,19 +13,18 @@ import MixCode from './mixcode';
 
 function App() {
 
-  return(
+  return (
     <>
-
-    {/* <MixCode/> */}
-    {/* <AllFieldsValidate/> */}
-    <CrudOperation/>
+      <CrudOperation />
+      {/* <MixCode/> */}
+      {/* <AllFieldsValidate/> */}
       {/* <Crud/> */}
       {/* <Checkboxform/> */}
       {/* <Formvalidation/> */}
-  {/* <CheckBox/> */}
+      {/* <CheckBox/> */}
     </>
   );
-  
-  }
+
+}
 
 export default App;

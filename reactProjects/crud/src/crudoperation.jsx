@@ -12,13 +12,12 @@ export default function CrudOperation() {
   const [phonebrand, setPhoneBrand] = useState('');
   const [gender, setGender] = useState("");
   const [skill, setSkill] = useState('');
-  const [skillArray, setSkillArray] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
   const [formError, setFormError] = useState({})
 
 
 
-  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  // const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 
 
@@ -50,7 +49,7 @@ export default function CrudOperation() {
     }
     else {
       if (phoneno.length < 11) {
-        err.phoneno =  <p style={{ color: "red" }}>Phone no should  11 digits!</p>
+        err.phoneno = <p style={{ color: "red" }}>Phone no should  11 digits!</p>
       }
     }
 
@@ -99,6 +98,7 @@ export default function CrudOperation() {
       alert('All Fields Are required ')
     }
   }
+
   const handleDelete = (id) => {
     if (id > 0) {
       if (window.confirm("Are You Sure to delete this item")) {
@@ -106,10 +106,10 @@ export default function CrudOperation() {
         setData(dt);
       }
     }
-    alert("User id" +id+ "has been deleted");
+    alert("User id" + id + "has been deleted");
   }
 
-  let handleClear = () => {
+  const handleClear = () => {
     setUser_id('');
     setEmail('');
     setPhoneno('');
@@ -135,9 +135,6 @@ export default function CrudOperation() {
     }
   }
 
-
-
-
   const handleUpdate = (e) => {
     e.preventDefault();
     const index = data.map((item) => {
@@ -156,8 +153,6 @@ export default function CrudOperation() {
     handleClear();
   }
 
-
-
   const handleSkill = (e) => {
 
     const value = (e.target.value);
@@ -170,12 +165,9 @@ export default function CrudOperation() {
         ...skill, value
       ])
       console.log(skill + "skill")
-
-
     }
     else {
       setSkill(skill.filter((e) => (e !== value)))
-
     }
     // console.log(skill)
   }
@@ -239,13 +231,13 @@ export default function CrudOperation() {
             }
           </div>
         </form>
-        </div>
-<div style={{ display: "flex", justifyContent: "center"}}>
-<button class="btn btn-primary" onClick={handleClear}>Clear</button>
-</div>
-      
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button class="btn btn-primary" onClick={handleClear}>Clear</button>
+      </div>
 
-     
+
+
 
 
       <table class="table">

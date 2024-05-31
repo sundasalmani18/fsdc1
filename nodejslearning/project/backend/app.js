@@ -1,5 +1,8 @@
 import express from 'express';
 import categoriesRoutes from './routes/categories.js';
+import employeeRoutes from './routes/employeeroutes.js';
+import userRoutes from './routes/user_routes.js';
+
 // const express = require('express') ;
 const app=express();
 
@@ -12,6 +15,8 @@ app.get("/",(req,res)=>{
 
 
 app.use("/category",categoriesRoutes);
+app.use("/employee",employeeRoutes);
+app.use("/user",userRoutes);
 
 
 
