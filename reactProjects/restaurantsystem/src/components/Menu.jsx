@@ -72,7 +72,7 @@ export default function Menu() {
   return (
     <>
       {/* <!-- ====================================menu section ====================================== --> */}
-      <div id="menu">
+      <div id="menu ">
         <div className="container section d-flex justify-content-center ">
           <div className="row">
 

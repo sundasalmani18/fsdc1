@@ -16,355 +16,355 @@ export default function AdminItems() {
     const navigate = useNavigate();
     return (
         <>
-            <div class="categories p-4">
-        <div class="container">
-            <div class="row">
-                <div class=" d-flex p-2">
-                    <i class="fa-solid fa-list fa-2x"></i>
-                    <h4 class="m-2">Food Items</h4>
+            <div className="categories p-4">
+        <div className="container">
+            <div className="row">
+                <div className=" d-flex p-2">
+                    <i className="fa-solid fa-list fa-2x"></i>
+                    <h4 className="m-2">Food Items</h4>
                 </div>
 
-                <div class="d-flex flex-row-reverse bd-highlight">
-                    <a href="../admin/home.html" class=" btn btn-success m-2">Back</a>
+                <div className="d-flex flex-row-reverse bd-highlight">
+                    <a href="../admin/home.html" className=" btn btn-success m-2">Back</a>
                 </div>
 
 
             </div>
-            <div class="categories-content p-5">
-                <div class="search-content p-3">
-                    <form class="form-inline my-2 col-md-2 d-flex">
-                        <input class="form-control mr-sm-2 p-2 col-md-2" type="search" placeholder="Search"
+            <div className="categories-content p-5">
+                <div className="search-content p-3">
+                    <form className="form-inline my-2 col-md-2 d-flex">
+                        <input className="form-control mr-sm-2 p-2 col-md-2" type="search" placeholder="Search"
                             aria-label="Search"/>
-                        <button class="btn btn-success m-2 my-sm-0" type="submit">Search</button>
+                        <button className="btn btn-success m-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
-                <div class="add-content p-3">
-                    <a onClick={()=>navigate("/admin/category/additems")} class="btn btn-success  my-sm-0">Add</a>
+                <div className="add-content p-3">
+                    <a onClick={()=>navigate("/admin/category/additems")} className="btn btn-success  my-sm-0">Add</a>
 
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-hover align-content-center">
+                <div className="table-responsive">
+                    <table className="table table-hover align-content-center">
                         <tbody>
                             <tr>
-                                <td class="ml-5">
-                                    <input class="form-check-input m-3  p-3  " type="checkbox" value=""
+                                <td className="ml-5">
+                                    <input className="form-check-input m-3  p-3  " type="checkbox" value=""
                                         id="flexCheckChecked"/>
-                                    <label class="form-check-label" for="flexCheckChecked">
+                                    <label className="form-check-label" htmlFor="flexCheckChecked">
                                     </label>
                                 </td>
-                                <td class="">
+                                <td className="">
                                     <img src={MozzarellaSticks}
-                                        class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                        className=" border object-cover bg-white p-1 rounded " alt=""/>
 
 
                                 </td>
                                 <td>
-                                    <p class="text-base font-semibold text-xl mt-2">Mozzarella Sticks</p>
-                                    <span class="text-xs">11-07-2023, 08:18:11</span>
+                                    <p className="text-base font-semibold text-xl mt-2">Mozzarella Sticks</p>
+                                    <span className="text-xs">11-07-2023, 08:18:11</span>
                                 </td>
 
                                 <td>
-                                    <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                    <span class="text-xs">Cost</span>
+                                    <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                    <span className="text-xs">Cost</span>
                                 </td>
                                 <td>
-                                    <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                    <span class="text-xs">Price</span>
+                                    <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                    <span className="text-xs">Price</span>
                                 </td>
                                 <td>
-                                    <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                    <span class="text-xs">categories</span>
+                                    <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                    <span className="text-xs">categories</span>
                                 </td>
 
-                                <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                                <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                                 </td>
                             </tr>
                             <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={chickenwings}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Chicken wings</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Chicken wings</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={SpinachArtichokeDi}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Spinach Artichoke Dip</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Spinach Artichoke Dip</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={nachos}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Nachos</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Nachos</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={Bruschetta}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Bruschetta</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Bruschetta</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={potatoskin}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Potato Skin</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Potato Skin</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={stuffedmushroom}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Stuffed Mushroom</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Stuffed Mushroom</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={BuffaloCauliflowe}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Buffalo Cauliflower</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Buffalo Cauliflower</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={FriedCalamari}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Fried Calamari</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Fried Calamari</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ml-5">
-                                <input class="form-check-input m-3  p-3 " type="checkbox" value=""
+                            <td className="ml-5">
+                                <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <label className="form-check-label" htmlFor="flexCheckChecked">
                                 </label>
                             </td>
-                            <td class="">
+                            <td className="">
                                 <img src={JalapenoPoppers}
-                                    class=" border object-cover bg-white p-1 rounded " alt=""/>
+                                    className=" border object-cover bg-white p-1 rounded " alt=""/>
                                    
 
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Jalapeno Poppers</p>
-                                <span class="text-xs">11-07-2023, 08:18:11</span>
+                                <p className="text-base font-semibold text-xl mt-2">Jalapeno Poppers</p>
+                                <span className="text-xs">11-07-2023, 08:18:11</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$8.00</p>
-                                <span class="text-xs">Cost</span>
+                                <p className="text-base font-semibold text-xl mt-2">$8.00</p>
+                                <span className="text-xs">Cost</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">$12.00</p>
-                                <span class="text-xs">Price</span>
+                                <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                <span className="text-xs">Price</span>
                             </td>
                             <td>
-                                <p class="text-base font-semibold text-xl mt-2">Appetizers</p>
-                                <span class="text-xs">categories</span>
+                                <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                <span className="text-xs">categories</span>
                             </td>
-                            <td><a href="" class=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                            <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
                         </tr> 
                         </tbody>

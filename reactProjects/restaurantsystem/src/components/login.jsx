@@ -25,7 +25,7 @@ export default function Login(){
           </div>
           <div className="form-group form-check">
             <input type="checkbox" className="form-check-input" id="rempass"/>
-            <label className="form-check-label" for="rempass">Remember password </label>
+            <label className="form-check-label" htmlFor="rempass">Remember password </label>
           </div>
 
             <div className="col-md-12 justify-content-center d-flex p-2">         

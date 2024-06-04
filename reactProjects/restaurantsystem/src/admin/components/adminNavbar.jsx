@@ -17,18 +17,18 @@ export default function AdminNavbar() {
                 </a>
 
 
-                <div class="nav_list"> <a  class="nav_link active"> <i
-                            class='fa-solid fa-palette'></i> <span class="nav_name">Dashboard</span> </a>
-                    <a onClick={() => navigate("/admin/category")}  class="nav_link"> <i class='fa-solid fa-layer-group'></i> <span
-                            class="nav_name">Categories</span> </a>
-                    <a onClick={() => navigate("/admin/items")} class="nav_link"> <i class="fa-solid fa-list"></i> <span
-                            class="nav_name">Items</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span
-                            class="nav_name">Bookmark</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span
-                            class="nav_name">Files</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
-                            class="nav_name">Stats</span> </a>
+                <div className="nav_list"> <a  className="nav_link active"> <i
+                            className='fa-solid fa-palette'></i> <span className="nav_name">Dashboard</span> </a>
+                    <a onClick={() => navigate("/admin/category")}  className="nav_link"> <i className='fa-solid fa-layer-group'></i> <span
+                            className="nav_name">Categories</span> </a>
+                    <a onClick={() => navigate("/admin/items")} className="nav_link"> <i className="fa-solid fa-list"></i> <span
+                            className="nav_name">Items</span> </a>
+                    <a href="#" className="nav_link"> <i className='bx bx-bookmark nav_icon'></i> <span
+                            className="nav_name">Bookmark</span> </a>
+                    <a href="#" className="nav_link"> <i className='bx bx-folder nav_icon'></i> <span
+                            className="nav_name">Files</span> </a>
+                    <a href="#" className="nav_link"> <i className='bx bx-bar-chart-alt-2 nav_icon'></i> <span
+                            className="nav_name">Stats</span> </a>
                 </div>
 
                 {/* <div className="nav_list"> <a href="dashboard.html" className="nav_link active"> <i
