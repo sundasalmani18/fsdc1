@@ -191,6 +191,11 @@ a:hover {
   color: #f50909;
 } */
 
+
+.tabpanedata{
+  color: #141414;
+}
+
 .readbutton{
 color: #ebe3e3;
   background: #FEA116;
@@ -268,26 +273,31 @@ background-color: #FEA116;
   transform: scale(1.1);
 }
 .chef-item{
-  background-color: rgb(226, 217, 217);
+  background-color: rgb(219, 209, 209);
 }
 
 .btn-square{
   background-color: #FEA116;
   border: none;
 }
+
+.testimonial-item{
+  color: #252424;
+}
 .btn-square:hover{
   background-color: #FEA116; 
 }
 .owl-item:active{
   background-color: #FEA116;
-  color: #fff;
+  color: #221f1f;
 }
 
 .companysection a{
+  
   text-align: left;
   text-decoration: none;
   margin-bottom: 5px;
-  color: #fff;
+  color: #ece0e0;
   display: block;
   transition: .3s;
 }

@@ -110,7 +110,7 @@ export default function Menu() {
               <div className="tab-pane fade show active" id={tabid}>
           
                 <div className="row g-4">
-                  <div className="col-md-6">
+                  <div className="col-md-6 tabpanedata">
                   
                     {tabdata.length > 0 ? (tabdata.slice(0, 4).map((item, index) => (
 
@@ -127,7 +127,7 @@ export default function Menu() {
                       
                     ))) : null}
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-6 tabpanedata">
                   
                     {tabdata.length > 0 ? (tabdata.slice(4, 8).map((item, index) => (
 
