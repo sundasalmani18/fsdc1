@@ -115,6 +115,7 @@ export default function Menu() {
                     {tabdata.length > 0 ? (tabdata.slice(0, 4).map((item, index) => (
 
                       <div key={index} className="d-flex align-items-center">
+                        
                         <img className="rounded" style={{ width: "100px" }} src={item.image} alt="" />
                         <div className=" w-100 ps-4 d-flex flex-column ">
                           <h5 className="d-flex justify-content-between border-bottom pb-2">
@@ -153,6 +154,7 @@ export default function Menu() {
       </div>
 
       {/* <!-- ================================================menu section end============================ --> */}
+
     </>
 
   );

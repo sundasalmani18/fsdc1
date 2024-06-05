@@ -3,23 +3,43 @@ import team2 from "../assets/images/team-2.jpg";
 import team3 from "../assets/images/team-3.jpg";
 import team4 from "../assets/images/team-4.jpg";
 import restData from '../data/restaurantData.json'
+import { useState,useEffect } from "react";
 
 
 export default function Chefs(){
-  const chefData = restData.chef;
-  const ourchef = restData.chef.ourchef;
+  // const chefData = restData.chef;
+  // const ourchef = restData.chef.ourchef;
+
+
+  const [chefData, setChefData] = useState('');
+
+  useEffect(() => {
+    getEmployees()
+  }, [])
+
+  const getEmployees = () => {
+    fetch('http://localhost:8080/employee')
+      .then((res) => { return res.json() })
+      .then((data) => { setChefData(data?.Data) })
+      .catch(error => console.error("Error fetching data", error))
+  }
+
+  console.log('chefData', chefData)
+
+
     return(
     <>
       {/* <!-- =================================chefs==================================== --> */}
   <div id="Chefs">
     <div className="container section">
       <div className="chef-title">
+    
         <h5 className="text-center icon">{chefData.title}</h5>
         <h1 className="text-center">{chefData.subtitle}</h1>
       </div>
       <div className="row g-4 p-5">
     
-      {ourchef.length > 0 ? (ourchef.map((item, index) => (
+      {chefData?.employees?.length > 0 ? (chefData?.employees?.map((item, index) => (
 
         <div className=" col-md-3 wow fadeInUp" data-wow-delay="0.1s"
           style={{visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp"}}>
@@ -28,7 +48,7 @@ export default function Chefs(){
             <div className="rounded-circle overflow-hidden m-4 ">
               <img src={item.image} className="img-fluid " alt=""/>
             </div>
-            <h5 className="text-center">{item.name}</h5>
+            <h5 className="text-center">{item.full_name}</h5>
             <small className="text-center">{item.designation}</small>
             <div className="d-flex justify-content-center mt-3">
               <a className="btn btn-square btn-primary mx-1" href="">

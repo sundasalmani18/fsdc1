@@ -255,11 +255,8 @@ background-color: #FEA116;
 }
 .nav-tabs .nav-link{
        border: none;
-       margin: 10px;
-       
+       margin: 10px;   
 }
-
-
 .team-item img {
   transition: .5s;
 }

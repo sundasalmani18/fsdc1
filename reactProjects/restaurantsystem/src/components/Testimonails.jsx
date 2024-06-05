@@ -77,7 +77,8 @@ const CarouselTestionails = ({ testionails = [] }) => {
 }
 
 export default function Testimonials() {
-
+  // const testimonialsData = restData.testimonials;
+  // const ourtestimonialsData = restData.testimonials.ourtestimonials;
 
   const [testimonialsData, setTestimonialsData] = useState('')
 
