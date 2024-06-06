@@ -45,6 +45,11 @@ export const addCategory = (req, res) => {
         req.body.category_image,
     ]
 
+    
+    console.log('bodyData', bodyData)
+    
+    // return res.status(200).json({ msg: 'addCategory' })
+
     db.query(query, [bodyData], (err, data) => {
         if (err) return res.status(500).send(err)
 

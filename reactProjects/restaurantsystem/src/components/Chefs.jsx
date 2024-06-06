@@ -52,8 +52,8 @@ export default function Chefs(){
             <small className="text-center">{item.designation}</small>
             <div className="d-flex justify-content-center mt-3">
               <a className="btn btn-square btn-primary mx-1" href="">
-              <i className={item.iconfacebook}></i>
-                {/* <i className="fab fa-facebook-f"></i> */}
+              {/* <i className={item.iconfacebook}></i> */}
+                <i className="fab fa-facebook-f"></i>
               </a>
               <a className="btn btn-square btn-primary  mx-1" href="">
               <i className={item.icontwitter}></i>
