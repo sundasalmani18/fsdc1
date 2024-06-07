@@ -37,12 +37,13 @@ export const getTestimonial = (req, res) => {
 
 export const addTestimonial = (req, res) => {
  
-    const query = "INSERT INTO testimonial (clientname,description,profession) VALUES (?)"; // dynamic query
+    const query = "INSERT INTO testimonial (clientname,description,profession,images) VALUES (?)"; // dynamic query
 
     const bodyData = [
         req.body.clientname,
         req.body.description,
-        req.body.profession
+        req.body.profession,
+        req.body.images
        
 
     ]

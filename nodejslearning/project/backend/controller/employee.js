@@ -37,7 +37,7 @@ export const getEmployee = (req, res) => {
 
 export const addEmployee = (req, res) => {
  
-    const query = "INSERT INTO employees (full_name, position,phone_no,email,salary) VALUES (?)"; // dynamic query
+    const query = "INSERT INTO employees (full_name, position,phone_no,email,salary,images) VALUES (?)"; // dynamic query
 
     const bodyData = [
         req.body.full_name,
@@ -45,6 +45,8 @@ export const addEmployee = (req, res) => {
         req.body.phone_no,
         req.body.email,
         req.body.salary,
+        req.body.designation,
+        req.body.images
 
     ]
 

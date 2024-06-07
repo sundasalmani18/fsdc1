@@ -3,8 +3,9 @@ import cors from 'cors';
 import categoriesRoutes from './routes/categoriesRoutes.js';
 import employeeRoutes from './routes/employeeRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import testimonailRoutes from './routes/testimonail_routes.js'
+import testimonailRoutes from './routes/testimonailRoutes.js'
 import orderRoutes from './routes/orderRoutes.js';
+import booktableRoutes from './routes/booktableRoutes.js';
 
 // const express = require('express') ;
 const app = express();
@@ -23,6 +24,7 @@ app.use("/employee", employeeRoutes);
 app.use("/user", userRoutes);
 app.use("/testimonial", testimonailRoutes);
 app.use("/order", orderRoutes);
+app.use("/booktable", booktableRoutes);
 
 
 

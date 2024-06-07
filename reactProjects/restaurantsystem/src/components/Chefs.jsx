@@ -33,9 +33,12 @@ export default function Chefs(){
   <div id="Chefs">
     <div className="container section">
       <div className="chef-title">
+
+      <h5 className="text-center icon">Team member</h5>
+      <h1 className="text-center">Our Master Chefs</h1>
     
-        <h5 className="text-center icon">{chefData.title}</h5>
-        <h1 className="text-center">{chefData.subtitle}</h1>
+        {/* <h5 className="text-center icon">{chefData.title}</h5>
+        <h1 className="text-center">{chefData.subtitle}</h1> */}
       </div>
       <div className="row g-4 p-5">
     
@@ -46,7 +49,8 @@ export default function Chefs(){
            
           <div className="chef-item rounded overflow-hidden p-3">
             <div className="rounded-circle overflow-hidden m-4 ">
-              <img src={item.image} className="img-fluid " alt=""/>
+           
+              <img src={item.images} className="img-fluid " alt=""/>
             </div>
             <h5 className="text-center">{item.full_name}</h5>
             <small className="text-center">{item.designation}</small>
@@ -56,12 +60,12 @@ export default function Chefs(){
                 <i className="fab fa-facebook-f"></i>
               </a>
               <a className="btn btn-square btn-primary  mx-1" href="">
-              <i className={item.icontwitter}></i>
-                {/* <i className="fab fa-twitter"></i> */}
+              {/* <i className={item.icontwitter}></i> */}
+                <i className="fab fa-twitter"></i>
               </a>
               <a className="btn btn-square btn-primary mx-1" href="">
-              <i className={item.iconinsta}></i>
-                {/* <i className="fab fa-instagram"></i> */}
+              {/* <i className={item.iconinsta}></i> */}
+                <i className="fab fa-instagram"></i>
               </a>
             </div>
 

@@ -60,7 +60,7 @@ const CarouselTestionails = ({ testionails = [] }) => {
                 <p>{item.description}</p>
                 <div className="d-flex align-items-center">
                   <img className="img-fluid flex-shrink-0 rounded-circle" style={{ width: "50px", height: "50px" }}
-                    src={item.image} alt="" />
+                    src={item.images} alt="" />
                   <div className="ps-3">
                     <h5>{item.clientname}</h5>
                     <small>{item.profession}</small>
@@ -124,8 +124,11 @@ export default function Testimonials() {
       <div id="testimonail">
         <div className="container section ">
           <div className="testimonail-title">
-            <h5 className="text-center">{testimonialsData.title}</h5>
-            <h1 className="text-center">{testimonialsData.subtitle}</h1>
+          <h5 className="text-center">Testimonials</h5>
+          <h1 className="text-center">Our Clients Say</h1> 
+
+            {/* <h5 className="text-center">{testimonialsData.title}</h5>
+            <h1 className="text-center">{testimonialsData.subtitle}</h1> */}
           </div>
           <div className="row ">
             <CarouselTestionails testionails={testimonialsData?.testimonials}/>
