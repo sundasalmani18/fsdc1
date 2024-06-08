@@ -47,24 +47,23 @@ export const addBookTable = (req, res) => {
         req.body.numOfPeople,
         req.body.request,
     ]
-
-    
+ 
     console.log('bodyData', bodyData)
     
-    // return res.status(200).json({ msg: 'addCategory' })
+    // return res.status(200).json({ msg: 'booktable' })
 
     db.query(query, [bodyData], (err, data) => {
         if (err) return res.status(500).send(err)
 
         let responseData = {
             result: true,
-            category: bodyData,
+            booktable: bodyData,
             msg: "table Booked"
         }
         return res.status(200).json({ Data: responseData })
     })
 
-    // return res.status(200).json({ msg: 'addCategory' })
+    // return res.status(200).json({ msg: 'booktable' })
 }
 
 
