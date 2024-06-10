@@ -10,10 +10,27 @@ import stuffedmushroom from "../../assets/images/adminitems/stuffedmushroom.jpg"
 import BuffaloCauliflowe from "../../assets/images/adminitems/BuffaloCauliflowe.jpg";
 import FriedCalamari from  "../../assets/images/adminitems/FriedCalamari.jpg"; 
 import JalapenoPoppers from  "../../assets/images/adminitems/JalapenoPoppers.jpg";
+import { useState,useEffect } from "react";
 
 
 export default function AdminItems() {
     const navigate = useNavigate();
+    const [itemsData, setItemsData] = useState('')
+
+    useEffect(() => {
+        getItems()
+    }, [])
+
+    const getItems = () => {
+        fetch('http://localhost:8080/item')
+            .then((res) => { return res.json() })
+            .then((data) => { setItemsData(data?.Data) })
+            .catch(error => console.error("Error fetching data", error))
+    }
+
+    console.log('itemsData', itemsData)
+
+
     return (
         <>
             <div className="categories p-4">
@@ -45,6 +62,9 @@ export default function AdminItems() {
                 <div className="table-responsive">
                     <table className="table table-hover align-content-center">
                         <tbody>
+                        {itemsData?.items?.length > 0 ? (
+                                        itemsData?.items?.map((item, index) => (
+
                             <tr>
                                 <td className="ml-5">
                                     <input className="form-check-input m-3  p-3  " type="checkbox" value=""
@@ -53,33 +73,36 @@ export default function AdminItems() {
                                     </label>
                                 </td>
                                 <td className="">
-                                    <img src={MozzarellaSticks}
+                                    <img src={item.image}
                                         className=" border object-cover bg-white p-1 rounded " alt=""/>
 
 
                                 </td>
                                 <td>
-                                    <p className="text-base font-semibold text-xl mt-2">Mozzarella Sticks</p>
+                                    <p className="text-base font-semibold text-xl mt-2">{item.item_name}</p>
                                     <span className="text-xs">11-07-2023, 08:18:11</span>
                                 </td>
 
                                 <td>
-                                    <p className="text-base font-semibold text-xl mt-2">with Some Extra Cheese</p>
+                                    <p className="text-base font-semibold text-xl mt-2">{item.description}</p>
                                     <span className="text-xs">Description </span>
                                 </td>
                                 <td>
-                                    <p className="text-base font-semibold text-xl mt-2">$12.00</p>
+                                    <p className="text-base font-semibold text-xl mt-2">{item.price}</p>
                                     <span className="text-xs">Price</span>
                                 </td>
                                 <td>
-                                    <p className="text-base font-semibold text-xl mt-2">Appetizers</p>
+                                    <p className="text-base font-semibold text-xl mt-2">{item.category}</p>
                                     <span className="text-xs">categories</span>
                                 </td>
 
                                 <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                                 </td>
                             </tr>
-                            <tr>
+
+))
+) : null}
+                            {/* <tr>
                             <td className="ml-5">
                                 <input className="form-check-input m-3  p-3 " type="checkbox" value=""
                                     id="flexCheckChecked"/>
@@ -366,7 +389,7 @@ export default function AdminItems() {
                             </td>
                             <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                             </td>
-                        </tr> 
+                        </tr>  */}
                         </tbody>
                     </table>
                 </div>
