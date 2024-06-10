@@ -64,8 +64,8 @@ export default function AdminItems() {
                                 </td>
 
                                 <td>
-                                    <p className="text-base font-semibold text-xl mt-2">$8.00</p>
-                                    <span className="text-xs">Cost</span>
+                                    <p className="text-base font-semibold text-xl mt-2">with Some Extra Cheese</p>
+                                    <span className="text-xs">Description </span>
                                 </td>
                                 <td>
                                     <p className="text-base font-semibold text-xl mt-2">$12.00</p>
