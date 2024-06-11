@@ -10,7 +10,7 @@ export default function AdminNavbar() {
             <div className="header_toggle"> <i className='fa-solid fa-bars' id="header-toggle"></i> </div>
           </header>
           <div className="l-navbar" id="nav-bar">
-            <nav className="nav">
+            <nav className="navg">
               <div>
                 <a href="home.html" className="nav_logo "><i className="fa-solid fa-utensils  fa-2x  "
                   style={{color: "white"}}></i> <span className="nav_logo-name">Restaurant System</span>

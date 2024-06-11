@@ -27,7 +27,7 @@ export default function Menu() {
   const [tabdata, setTabdata] = useState(restData.menu.menuData.breakfast);
   const [tabid, setTabid] = useState(restData.menu.menuCategory);
 
-  const [tab, setTab] = useState(1);
+  // const [tab, setTab] = useState(1);
 
   // function updatemenu(id) {
   //   setTab(id);

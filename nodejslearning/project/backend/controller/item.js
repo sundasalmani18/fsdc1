@@ -45,7 +45,7 @@ export const addItem = (req, res) => {
        
 
     ]
-
+    console.log('bodyData', bodyData)
     db.query(query, [bodyData], (err, data) => {
         if (err) return res.status(500).send(err)
 
