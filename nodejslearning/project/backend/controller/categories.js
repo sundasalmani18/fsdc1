@@ -27,9 +27,9 @@ export const getCategory = (req, res) => {
 
         let responseData = {
             result: true,
-            category: data
+            category: data[0]
         }
-        return res.status(200).json({ Data: responseData })
+        return res.status(200).json(responseData)
     })
 
     // return res.status(200).json({ msg: 'getCatagory' })

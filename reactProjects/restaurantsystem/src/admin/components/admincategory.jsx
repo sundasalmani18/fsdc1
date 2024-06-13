@@ -80,6 +80,8 @@ export default function AdminCategory() {
                                                 </td>
                                                 <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                                                 </td>
+                                                <td><a href="" onClick={() => navigate(`/admin/category/editcategory/${item.category_id}`)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
+                                                </td>
                                             </tr>
                                         ))
                                     ) : null}
