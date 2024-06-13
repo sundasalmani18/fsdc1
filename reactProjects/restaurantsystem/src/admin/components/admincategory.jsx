@@ -28,6 +28,26 @@ export default function AdminCategory() {
     }
 
     console.log('categoriesData', categoriesData)
+
+
+    const handelDelete = async (id) => {
+        console.log("id : -", id);
+       
+        try {
+          const response = await fetch('http://localhost:8080/category/' + id, {
+            method: "DELETE",
+          });
+          if (!response.ok) {
+            throw new Error("Failed to delete item");
+          }
+          setCategoriesData(categoriesData.filter((item) => item.id !== id));
+        } catch (error) {
+            alert("data delete")
+        } 
+        // finally {
+        //   setIsLoading(false);
+        // }
+      };
     return (
         <>
             <div className="categories pl-5p">
@@ -81,6 +101,8 @@ export default function AdminCategory() {
                                                 <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
                                                 </td>
                                                 <td><a href="" onClick={() => navigate(`/admin/category/editcategory/${item.category_id}`)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
+                                                </td>
+                                                <td><a href=""    onClick={() => handelDelete(item.category_id)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Delete</a>
                                                 </td>
                                             </tr>
                                         ))

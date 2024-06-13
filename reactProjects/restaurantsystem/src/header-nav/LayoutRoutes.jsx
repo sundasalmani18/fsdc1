@@ -15,6 +15,7 @@ import AdminDashboardPage from "../pages/adminPages/adminDashboardPage";
 import  AddCategories from "../pages/adminPages/adminaddcategory";
 import  AddItems from "../pages/adminPages/adminadditems";
 import  EditCategory from "../pages/adminPages/admineditcategory";
+import  DeleteCategory from "../pages/adminPages/admindeletecat";
 
 export default function LayoutRoutes() {
   return (
@@ -30,6 +31,7 @@ export default function LayoutRoutes() {
         <Route path="/admin/category/addcategories" element={<AddCategories/>}/>
         <Route path="/admin/category/additems" element={<AddItems/>}/>
         <Route path="/admin/category/editcategory/:catId" element={<EditCategory/>}/>
+        <Route path="/admin/category/deletecategory/:catId" element={<DeleteCategory/>}/>
 
         {/* <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />

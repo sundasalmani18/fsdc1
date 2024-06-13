@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export default function EditCategories() {
-
+    const navigate = useNavigate();
     const { catId } = useParams();
 
     const [formData, setFormData] = useState({})
@@ -38,30 +40,30 @@ export default function EditCategories() {
     }
 
 
-    // const addCategory = async (e) => {
-    //     e.preventDefault()
-    //     try {
-    //         const fetchRes = await fetch('http://localhost:8080/category', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(formData)
-    //         })
+    const editCategory = async (e) => {
+        e.preventDefault()
+        try {
+            const fetchRes = await fetch(`http://localhost:8080/category/${catId}`, {
+                method: 'PUT',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
 
-    //         if(!fetchRes.ok){
-    //             throw new Error('Error occurred')
-    //         }
-    //         const data = await fetchRes.json()
-    //         console.log('fetchRes', data)
+            if(!fetchRes.ok){
+                throw new Error('Error occurred')
+            }
+            const data = await fetchRes.json()
+            console.log('fetchRes', data)
+            navigate("/admin/category");
+            // setFormData(initFormData)
+            alert(data.Data.msg)
+        } catch (error) {
+            console.error('error fetching the data', error)
 
-    //         setFormData(initFormData)
-    //         alert(data.Data.msg)
-    //     } catch (error) {
-    //         console.error('error fetching the data', error)
-
-    //     }
-    // }
+        }
+    }
 
     return (
 
@@ -88,7 +90,7 @@ export default function EditCategories() {
                                 <h6>Enter information for new product category</h6>
                             </div>
 
-                            <form >
+                            <form onSubmit={editCategory}>
                                 <div className="col-md-6">
                                     <label className="m-2">Name</label>
                                     <input
