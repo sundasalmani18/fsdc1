@@ -72,7 +72,7 @@ export default function AdminCategory() {
                             </form>
                         </div>
                         <div className="add-content p-3">
-                            <a onClick={() => navigate("/admin/category/addcategories")} className="btn btn-success m-2 my-sm-0">Add</a>
+                        
                             {/* <!-- <button className="btn btn-success m-2 my-sm-0" type="submit">Add</button> --> */}
                         </div>
 
@@ -98,7 +98,7 @@ export default function AdminCategory() {
                                                     <p className="text-base font-semibold text-xl mt-2">{item.category_name}</p>
                                                     <span className="text-xs">11-07-2023, 08:18:11</span>
                                                 </td>
-                                                <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                                                <td>    <a onClick={() => navigate("/admin/category/addcategories")} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Add</a>
                                                 </td>
                                                 <td><a href="" onClick={() => navigate(`/admin/category/editcategory/${item.category_id}`)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
                                                 </td>
