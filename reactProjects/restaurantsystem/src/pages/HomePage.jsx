@@ -3,7 +3,7 @@ import Service from '../components/Services';
 import Banner from "../components/Banner";
 import Navbar from "../components/Navbar";
 import About from "../components/Aboutus";
-import Menu from "../components/Menu";
+import Menu from "../components/Menu2";
 import Reservation from "../components/Reservation";
 import Chefs from '../components/Chefs';
 import Testimonials from '../components/Testimonails';

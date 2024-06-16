@@ -7,6 +7,7 @@ import testimonailRoutes from './routes/testimonailRoutes.js'
 import orderRoutes from './routes/orderRoutes.js';
 import booktableRoutes from './routes/booktableRoutes.js';
 import itemsRoutes from './routes/itemsRoutes.js';
+import menuCategoryRoutes from './routes/categoryMenuRoutes.js';
 
 // const express = require('express') ;
 const app = express();
@@ -27,6 +28,7 @@ app.use("/testimonial", testimonailRoutes);
 app.use("/order", orderRoutes);
 app.use("/booktable", booktableRoutes);
 app.use("/item", itemsRoutes);
+app.use("/menucategory", menuCategoryRoutes);
 
 
 
