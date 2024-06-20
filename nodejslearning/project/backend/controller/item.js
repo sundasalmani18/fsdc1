@@ -59,16 +59,19 @@ export const addItem = (req, res) => {
 }
 
 export const updateItem = (req, res) => {
-    const categoryId = req.params.id;
+    const itemId = req.params.id;
     // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
-    const query = "UPDATE items SET `item_name` = ?, `category` = ? WHERE `item_id`= ?";
+    const query = "UPDATE items SET `item_name` = ?, `category` = ?,`description` = ?,`image` = ? ,`price` = ? WHERE `item_id`= ?";
 
     const bodyData = [
         req.body.itemName,
         req.body.category,
+        req.body.description,
+        req.body.image,
+        req.body.price,
     ]
 
-    db.query(query, [...bodyData, categoryId], (err, data) => {
+    db.query(query, [...bodyData, itemId], (err, data) => {
         if (err) return res.status(500).send(err)
 
         let responseData = {

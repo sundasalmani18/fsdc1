@@ -98,7 +98,7 @@ export default function AdminItems() {
 
                                 <td> <a onClick={()=>navigate("/admin/category/additems")}  className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Add</a>
                                 </td>
-                                <td> <a className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
+                                <td> <a onClick={()=>navigate(`/admin/item/edititem/${item.item_id}`)}className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
                                 </td>
                                 <td> <a  className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Delete</a>
                                 </td>
