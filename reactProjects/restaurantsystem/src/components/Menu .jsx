@@ -27,6 +27,24 @@ export default function Menu() {
   const [tabdata, setTabdata] = useState(restData.menu.menuData.breakfast);
   const [tabid, setTabid] = useState(restData.menu.menuCategory);
 
+
+
+  const [categoriesData, setCategoriesData] = useState('')
+
+  useEffect(() => {
+      getCategories()
+  }, [])
+
+  const getCategories = () => {
+      fetch('http://localhost:8080/category')
+          .then((res) => { return res.json() })
+          .then((data) => { setCategoriesData(data?.Data) })
+          .catch(error => console.error("Error fetching data", error))
+  }
+
+  console.log('categoriesData', categoriesData)
+
+
   // const [tab, setTab] = useState(1);
 
   // function updatemenu(id) {

@@ -56,7 +56,7 @@ export default function AdminItems() {
                     </form>
                 </div>
                 <div className="add-content p-3">
-                    <a onClick={()=>navigate("/admin/category/additems")} className="btn btn-success  my-sm-0">Add</a>
+                   
 
                 </div>
                 <div className="table-responsive">
@@ -96,7 +96,11 @@ export default function AdminItems() {
                                     <span className="text-xs">categories</span>
                                 </td>
 
-                                <td><a href="" className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">View</a>
+                                <td> <a onClick={()=>navigate("/admin/category/additems")}  className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Add</a>
+                                </td>
+                                <td> <a className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
+                                </td>
+                                <td> <a  className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Delete</a>
                                 </td>
                             </tr>
 

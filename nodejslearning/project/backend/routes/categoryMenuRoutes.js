@@ -1,9 +1,6 @@
 import express from 'express';
 import {
-
-    getMenu
-    
-  
+    getMenu  
 } from '../controller/categoryMenu.js'
 
 const router = express.Router();
