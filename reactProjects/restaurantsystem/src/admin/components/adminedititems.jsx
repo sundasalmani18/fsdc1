@@ -11,10 +11,10 @@ export default function EditItems() {
     const [formData, setFormData] = useState({})
 
     useEffect(() => {
-        // if (!category) {
+        
             getItemData()
          
-        // }
+       
     }, [])
 
     // const getItemData = async () => {
@@ -29,11 +29,11 @@ export default function EditItems() {
     // console.log('formData', formData)
 
 
-
+   
     const getItemData = async () => {
-       await fetch(`http://localhost:8080/item/${itemId}`)
+      await fetch(`http://localhost:8080/item/${itemId}`)
             .then((res) => { return res.json() })
-            .then((data) => { setFormData(data?.Data) })
+            .then((data) => { setFormData(data.Data.item[0]) })
             .catch(error => console.error("Error fetching data", error))
     }
 
@@ -122,11 +122,12 @@ return (
                     <div className="col-md-6">
                         <label class ="m-2">Name</label>
                         <input type="text" 
-                        name="itemName"
+                        name="item_name"
                         className="form-control"
                         value={formData.item_name}
                         onChange={handleInputChange}
                         required/>
+
                         <label className="m-2">Category</label>
                         <input type="text" 
                         name="category"
@@ -153,7 +154,7 @@ return (
                             onChange={handleInputChange}
                             rows="3"></textarea>
                           </div>
-                        {/* <!-- <textarea name="" id=""   style="border-radius: 8px;width: 530px;"></textarea> --> */}
+                         {/* <!-- <textarea name="" id=""   style="border-radius: 8px;width: 530px;"></textarea> -->  */}
                         
                         <label className="m-2">Image</label>
                         <div className="image-content">
@@ -161,12 +162,12 @@ return (
                                 <input type="file" id="input-file-now-custom-1"
                                  className="file-upload" 
                                  name="image"
-                                 data-default-file="https://mdbootstrap.com/img/Photos/Others/images/89.webp" 
-                                 value={formData.image}
+                                
+                                //  value={formData.image}
                                  onChange={handleInputChange}
                                  />
                               </div>
-                        </div>
+                        </div> 
 
                         <div className="d-flex flex-row-reverse bd-highlight">
                             <a href="../admin/items.html" className=" btn btn-success m-2">Cancel</a>

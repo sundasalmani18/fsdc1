@@ -64,7 +64,7 @@ export const updateItem = (req, res) => {
     const query = "UPDATE items SET `item_name` = ?, `category` = ?,`description` = ?,`image` = ? ,`price` = ? WHERE `item_id`= ?";
 
     const bodyData = [
-        req.body.itemName,
+        req.body.item_name,
         req.body.category,
         req.body.description,
         req.body.image,
