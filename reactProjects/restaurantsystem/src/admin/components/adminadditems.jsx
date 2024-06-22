@@ -1,7 +1,11 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function AddItems() {
+    const navigate = useNavigate();
 
     const initFormData = {
         itemName: "",
@@ -42,6 +46,7 @@ const addItem = async (e) => {
 
         setFormData(initFormData)
         alert(data.Data.msg)
+        navigate("/admin/items");
     } catch (error) {
         console.error('error fetching the data', error)
 

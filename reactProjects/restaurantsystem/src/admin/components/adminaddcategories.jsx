@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddCategories() {
-
+    const navigate = useNavigate();
     const initFormData = {
             category_name: "",
             category_image: "#"
@@ -38,6 +39,7 @@ export default function AddCategories() {
 
             setFormData(initFormData)
             alert(data.Data.msg)
+            navigate("/admin/category");
         } catch (error) {
             console.error('error fetching the data', error)
 

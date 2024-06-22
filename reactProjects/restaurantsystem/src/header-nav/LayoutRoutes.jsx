@@ -30,7 +30,7 @@ export default function LayoutRoutes() {
         <Route path="/admin/category" element={<AdminCategory/>}/>
         <Route path="/admin/items" element={<AdminItems/>}/>
         <Route path="/admin/category/addcategories" element={<AddCategories/>}/>
-        <Route path="/admin/category/additems" element={<AddItems/>}/>
+        <Route path="/admin/item/additems" element={<AddItems/>}/>
         <Route path="/admin/category/editcategory/:catId" element={<EditCategory/>}/>
         <Route path="/admin/item/edititem/:itemId" element={<EditItem/>}/>
         {/* <Route path="/admin/category/deletecategory/:catId" element={<DeleteCategory/>}/> */}

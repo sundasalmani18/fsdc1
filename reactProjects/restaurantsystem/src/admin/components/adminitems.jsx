@@ -31,6 +31,24 @@ export default function AdminItems() {
     console.log('itemsData', itemsData)
 
 
+    const handelDelete = async (id) => {
+        console.log("id : ", id);
+       
+        try {
+          const response = await fetch('http://localhost:8080/item/' + id, {
+            method: "DELETE",
+          });
+          if (!response.ok) {
+            throw new Error("Failed to delete item");
+          }
+          setItemsData(itemsData.filter((item) => item.id !== id));
+        } catch (error) {
+            alert("data deleted")
+        } 
+       
+      };
+
+
     return (
         <>
             <div className="categories p-4">
@@ -56,7 +74,7 @@ export default function AdminItems() {
                             </form>
                         </div>
                         <div className="add-content p-3">
-
+                        <a onClick={() => navigate("/admin/item/additems")} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Add</a>
 
                         </div>
                         <div className="table-responsive">
@@ -94,9 +112,6 @@ export default function AdminItems() {
                                                 <td>
                                                     <p className="text-base font-semibold text-xl mt-2">{item.category}</p>
                                                     <span className="text-xs">categories</span>
-                                                </td>
-
-                                                <td> <a onClick={() => navigate("/admin/category/additems")} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Add</a>
                                                 </td>
                                                 <td> <a onClick={() => navigate(`/admin/item/edititem/${item.item_id}`)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
                                                 </td>
