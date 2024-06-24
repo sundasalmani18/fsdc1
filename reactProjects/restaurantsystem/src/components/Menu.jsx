@@ -19,9 +19,7 @@ export default function Menu() {
 
   const data = restData.menu;
 
-  // const menuCategoryData = restData.menu.menuCategory;
-  // const tabdata = restData.menu.menu.breakfast;
-  // const catname = MenuData.menuCategory;
+ 
 
   const [menuCategoryData, setMenuCategoryData] = useState(restData.menu.menuCategory);
   const [tabdata, setTabdata] = useState(restData.menu.menuData.breakfast);
@@ -29,20 +27,34 @@ export default function Menu() {
 
 
 
-  const [categoriesData, setCategoriesData] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [categories, setCategories] = useState([]);
+  const [options, setOptions] = useState([])
 
   useEffect(() => {
-      getCategories()
-  }, [])
+    fetchCategories();
+  }, []);
 
-  const getCategories = () => {
-      fetch('http://localhost:8080/category')
-          .then((res) => { return res.json() })
-          .then((data) => { setCategoriesData(data?.Data) })
-          .catch(error => console.error("Error fetching data", error))
-  }
+  const fetchCategories = async () => {
+    try {
+      fetch('http://localhost:8080/menucategory')
+            .then((res) => { return res.json() })
+            .then((data) => { setCategories(data?.Data) })
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
+  console.log("categories", categories);
 
-  console.log('categoriesData', categoriesData)
+  const handleCategoryChange = (event) => {
+    const category = event.target.value;
+    setSelectedCategory(category);
+    
+    // Find options for the selected category
+    const selectedOptions = categories.find(cat => cat.name === category)?.options || [];
+    setOptions(selectedOptions);
+    console.log(selectedOptions ,"select option ")
+  };
 
 
   // const [tab, setTab] = useState(1);
@@ -103,19 +115,19 @@ export default function Menu() {
 
             <div className="menu-nav pt-3  d-flex justify-content-center">
               <ul className="nav nav-tabs border-bottom mb-5" id="myTab" role="tablist">
-                {menuCategoryData.length > 0 ? (menuCategoryData.map((item, index) => (
+                {categories?.category?.length > 0 ? (categories?.category?.map((item, index) => (
                   <li key={index} className="nav-item " role="presentation">
                     <button
                       className={`nav-link ${(item.active) === "true" ? 'active' : ''} `}
                       id={`#${item.link}`}
                       type="button"
-                      onClick={() => selectMenu(index, item)}
+                      onClick={() => handleCategoryChange}
                     >
                       <div>
                         <i className={`${item.icon} icon fa-2x`} />
                       </div>
                       <small>{item.desc}</small>
-                      <h6 className="mt-n1 mb-0">{item.categoryName}</h6>
+                      <h6 className="mt-n1 mb-0">{item.category}</h6>
                     </button>
                   </li>
                 ))) : null}
@@ -130,14 +142,15 @@ export default function Menu() {
                 <div className="row g-4">
                   <div className="col-md-6 tabpanedata">
                   
-                    {tabdata.length > 0 ? (tabdata.slice(0, 4).map((item, index) => (
+                    {categories?.category?.length > 0 ? (categories?.category?.slice(0, 4).map((item, index) => (
 
                       <div key={index} className="d-flex align-items-center">
                         
                         <img className="rounded" style={{ width: "100px" }} src={item.image} alt="" />
                         <div className=" w-100 ps-4 d-flex flex-column ">
                           <h5 className="d-flex justify-content-between border-bottom pb-2">
-                            <span>{item.title}</span>
+                            {/* <span>{item.title}</span> */}
+                            <span>{item.item_name}</span>
                             <span className="icon">{item.price}</span>
                           </h5>
                           <small>{item.desc}</small>

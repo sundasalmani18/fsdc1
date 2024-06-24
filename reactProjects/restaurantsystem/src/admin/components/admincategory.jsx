@@ -101,7 +101,7 @@ export default function AdminCategory() {
                                                
                                                 <td><a href="" onClick={() => navigate(`/admin/category/editcategory/${item.category_id}`)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Edit</a>
                                                 </td>
-                                                <td><a href=""    onClick={() => handelDelete(item.category_id)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Delete</a>
+                                                <td><a href=""  onClick={() => handelDelete(item.category_id)} className=" btn btn-primary hover:bg-cyan text-white rounded mt-3">Delete</a>
                                                 </td>
                                             </tr>
                                         ))

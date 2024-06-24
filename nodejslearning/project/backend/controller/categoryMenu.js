@@ -2,7 +2,7 @@ import { db } from '../dbConn.js';
 
 
 export const getMenu = (req, res) => {
-    const q = "SELECT category.category_name AS category, items.item_name ,items.description,items.image,items.price FROM category LEFT JOIN items ON category.category_name = items.category;";
+    const q = "SELECT category.category_name AS category, items.item_name ,items.description,items.image,items.price FROM category RIGHT JOIN items ON category.category_name = items.category;";
 
     db.query(q, (err, data) => {
         if (err) return res.status(500).send(err)
