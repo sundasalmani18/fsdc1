@@ -153,7 +153,7 @@ export default function Menu() {
                             <span>{item.item_name}</span>
                             <span className="icon">{item.price}</span>
                           </h5>
-                          <small>{item.desc}</small>
+                          <small>{item.description}</small>
                         </div>
                       </div>
                       
@@ -161,16 +161,17 @@ export default function Menu() {
                   </div>
                   <div className="col-md-6 tabpanedata">
                   
-                    {tabdata.length > 0 ? (tabdata.slice(4, 8).map((item, index) => (
+                    {categories?.category?.length > 0 ? (categories?.category?.slice(4, 8).map((item, index) => (
 
                       <div key={index} className="d-flex align-items-center">
                         <img className="rounded" style={{ width: "100px" }} src={item.image} alt="" />
                         <div className=" w-100 ps-4 d-flex flex-column ">
                           <h5 className="d-flex justify-content-between border-bottom pb-2">
-                            <span>{item.title}</span>
+                            {/* <span>{item.title}</span> */}
+                            <span>{item.item_name}</span>
                             <span className="icon">{item.price}</span>
                           </h5>
-                          <small>{item.desc}</small>
+                          <small>{item.description}</small>
                         </div>
                       </div>
                       
