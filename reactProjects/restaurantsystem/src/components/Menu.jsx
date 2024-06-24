@@ -51,7 +51,7 @@ export default function Menu() {
     setSelectedCategory(category);
     
     // Find options for the selected category
-    const selectedOptions = categories.find(cat => cat.name === category)?.options || [];
+    const selectedOptions = categories.find(cat => cat.name === categories.category)?.options || [];
     setOptions(selectedOptions);
     console.log(selectedOptions ,"select option ")
   };
@@ -141,8 +141,9 @@ export default function Menu() {
           
                 <div className="row g-4">
                   <div className="col-md-6 tabpanedata">
+                  {/* {people.filter(person => person.age < 60).map(filteredPerson => ( */}
                   
-                    {categories?.category?.length > 0 ? (categories?.category?.slice(0, 4).map((item, index) => (
+                    {categories?.category?.length > 0 ? (categories?.category?.filter(item=>item.category!==categories.category).slice(0,4).map((item, index) => (
 
                       <div key={index} className="d-flex align-items-center">
                         
