@@ -37,13 +37,16 @@ export const getUser = (req, res) => {
 
 export const addUser = (req, res) => {
  
-    const query = "INSERT INTO users (name, designation) VALUES (?)"; // dynamic query
+    const query = "INSERT INTO users (name, designation,first_name,last_name,email,number,password) VALUES (?)"; // dynamic query
 
     const bodyData = [
-        req.body.name,
+        req.body.first_name,
         req.body.designation,
-       
-
+        req.body.first_name,
+        req.body.last_name,
+        req.body.email,
+        req.body.number,
+        req.body.password,
     ]
 
     db.query(query, [bodyData], (err, data) => {

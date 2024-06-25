@@ -8,6 +8,7 @@ import orderRoutes from './routes/orderRoutes.js';
 import booktableRoutes from './routes/booktableRoutes.js';
 import itemsRoutes from './routes/itemsRoutes.js';
 import menuCategoryRoutes from './routes/categoryMenuRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
 // const express = require('express') ;
 const app = express();
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 })
 
 
+app.use("/auth", authRoutes);
 app.use("/category", categoriesRoutes);
 app.use("/employee", employeeRoutes);
 app.use("/user", userRoutes);

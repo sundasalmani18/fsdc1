@@ -27,9 +27,9 @@ export default function Menu() {
 
 
 
-  const [selectedCategory, setSelectedCategory] = useState('')
+
   const [categories, setCategories] = useState([]);
-  const [options, setOptions] = useState([])
+
 
   useEffect(() => {
     fetchCategories();
@@ -46,15 +46,15 @@ export default function Menu() {
   };
   console.log("categories", categories);
 
-  const handleCategoryChange = (event) => {
-    const category = event.target.value;
-    setSelectedCategory(category);
+  // const handleCategoryChange = (event) => {
+  //   const category = event.target.value;
+  //   setSelectedCategory(category);
     
-    // Find options for the selected category
-    const selectedOptions = categories.find(cat => cat.name === categories.category)?.options || [];
-    setOptions(selectedOptions);
-    console.log(selectedOptions ,"select option ")
-  };
+  //   // Find options for the selected category
+  //   const selectedOptions = categories.find(cat => cat.name === categories.category)?.options || [];
+  //   setOptions(selectedOptions);
+  //   console.log(selectedOptions ,"select option ")
+  // };
 
 
   // const [tab, setTab] = useState(1);
@@ -115,19 +115,19 @@ export default function Menu() {
 
             <div className="menu-nav pt-3  d-flex justify-content-center">
               <ul className="nav nav-tabs border-bottom mb-5" id="myTab" role="tablist">
-                {categories?.category?.length > 0 ? (categories?.category?.map((item, index) => (
+                {categories?.categories?.length > 0 ? (categories?.categories?.map((item, index) => (
                   <li key={index} className="nav-item " role="presentation">
                     <button
                       className={`nav-link ${(item.active) === "true" ? 'active' : ''} `}
                       id={`#${item.link}`}
                       type="button"
-                      onClick={() => handleCategoryChange}
+                      onClick={() => selectMenu}
                     >
                       <div>
                         <i className={`${item.icon} icon fa-2x`} />
                       </div>
                       <small>{item.desc}</small>
-                      <h6 className="mt-n1 mb-0">{item.category}</h6>
+                      <h6 className="mt-n1 mb-0">{item}</h6>
                     </button>
                   </li>
                 ))) : null}
@@ -143,7 +143,7 @@ export default function Menu() {
                   <div className="col-md-6 tabpanedata">
                   {/* {people.filter(person => person.age < 60).map(filteredPerson => ( */}
                   
-                    {categories?.category?.length > 0 ? (categories?.category?.filter(item=>item.category!==categories.category).slice(0,4).map((item, index) => (
+                    {categories?.categoryMenu?.length > 0 ? (categories?.categoryMenu?.slice(0,4).map((item, index) => (
 
                       <div key={index} className="d-flex align-items-center">
                         
@@ -162,7 +162,7 @@ export default function Menu() {
                   </div>
                   <div className="col-md-6 tabpanedata">
                   
-                    {categories?.category?.length > 0 ? (categories?.category?.slice(4, 8).map((item, index) => (
+                    {categories?.categoryMenu?.length > 0 ? (categories?.categoryMenu?.slice(4, 8).map((item, index) => (
 
                       <div key={index} className="d-flex align-items-center">
                         <img className="rounded" style={{ width: "100px" }} src={item.image} alt="" />

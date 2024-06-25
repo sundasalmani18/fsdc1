@@ -12,15 +12,16 @@ export default function Adminlogin() {
               <h1 >Admin Login Form </h1>
             </div>
             <form>
+                
               <div className="form-group">
                 <input type="email" className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded" id="email"
                   placeholder="Enter Email" />
               </div>
-
               <div className="form-group">
                 <input type="password" className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded" id="password"
                   placeholder="Enter Password" />
               </div>
+             
               <div className="form-group form-check">
                 <input type="checkbox" className="form-check-input" id="rempass" />
                 <label className="form-check-label" htmlFor="rempass">Remember password </label>
