@@ -68,7 +68,8 @@ export default function Menu() {
         : { ...item, active: "false" }
     )
     console.log("updateCategory", updateCategory)
-    setMenuCategoryData(updateCategory)
+    setOptions(updateCategory);
+    // setMenuCategoryData(updateCategory)
     setTabdata(restData.menu.menuData[data.link])
     setTabid(restData.menu.menuCategory[data.link])
     console.log("updateCategoryyyy", restData.menu.menuCategory)
