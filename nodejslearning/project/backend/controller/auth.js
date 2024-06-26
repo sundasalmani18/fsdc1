@@ -2,7 +2,7 @@ import { db } from '../dbConn.js';
 import bcrypt from 'bcrypt'
 
 export const register = (req, res) => {
-    // exiting user check 
+    // existing user check 
     const q = "SELECT * FROM users where email = ?"
 
     db.query(q, [req.body.email], (err, data) => {
@@ -14,11 +14,9 @@ export const register = (req, res) => {
         const salt = bcrypt.genSaltSync(10)
         const hashPass = bcrypt.hashSync(req.body.password, salt)
 
-        const query2 = "INSERT INTO users (name, designation,first_name,last_name,email,number,password) VALUES (?)"; // dynamic query
+        const query2 = "INSERT INTO users (first_name,last_name,email,number,password) VALUES (?)"; // dynamic query
 
         const bodyData = [
-            req.body.first_name,
-            req.body.designation,
             req.body.first_name,
             req.body.last_name,
             req.body.email,

@@ -29,6 +29,8 @@ export default function Menu() {
 
 
   const [categories, setCategories] = useState([]);
+  const [SelectCategory,setSelectedCategory] =useState('')
+  const [options,setOptions] = useState();
 
 
   useEffect(() => {
@@ -49,6 +51,7 @@ export default function Menu() {
   // const handleCategoryChange = (event) => {
   //   const category = event.target.value;
   //   setSelectedCategory(category);
+  //   console.log("datacategory", category);
     
   //   // Find options for the selected category
   //   const selectedOptions = categories.find(cat => cat.name === categories.category)?.options || [];
@@ -57,6 +60,19 @@ export default function Menu() {
   // };
 
 
+  function selectMenu(index, data) {
+    // const category = menuCategoryData[index]
+    const updateCategory = menuCategoryData.map((item, i) =>
+      i === index
+        ? { ...item, active: "true" }
+        : { ...item, active: "false" }
+    )
+    console.log("updateCategory", updateCategory)
+    setMenuCategoryData(updateCategory)
+    setTabdata(restData.menu.menuData[data.link])
+    setTabid(restData.menu.menuCategory[data.link])
+    console.log("updateCategoryyyy", restData.menu.menuCategory)
+  }
   // const [tab, setTab] = useState(1);
 
   // function updatemenu(id) {
@@ -77,27 +93,6 @@ export default function Menu() {
   //   setTabdata(restData.menu.menuData[data.link])
   // ), [])
 
-  function selectMenu(index, data) {
-    // const category = menuCategoryData[index]
-    const updateCategory = menuCategoryData.map((item, i) =>
-      i === index
-        ? { ...item, active: "true" }
-        : { ...item, active: "false" }
-    )
-    console.log("updateCategory", updateCategory)
-    setMenuCategoryData(updateCategory)
-    setTabdata(restData.menu.menuData[data.link])
-    setTabid(restData.menu.menuCategory[data.link])
-    console.log("updateCategoryyyy", restData.menu.menuCategory)
-
-
-    // idar only one parameter update horaha hai
-    // const newArr = [...menuCategoryData];
-    // newArr[index]["active"] = "true"
-
-    // setMenuCategoryData(newArr)
-
-  }
 
   return (
     <>
