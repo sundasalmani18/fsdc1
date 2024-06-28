@@ -9,6 +9,7 @@ import booktableRoutes from './routes/booktableRoutes.js';
 import itemsRoutes from './routes/itemsRoutes.js';
 import menuCategoryRoutes from './routes/categoryMenuRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import loginRoutes from './routes/loginRoutes.js'
 
 // const express = require('express') ;
 const app = express();
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
 
 })
 
-
+app.use("/login", loginRoutes);
 app.use("/auth", authRoutes);
 app.use("/category", categoriesRoutes);
 app.use("/employee", employeeRoutes);
