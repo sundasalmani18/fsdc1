@@ -1,9 +1,11 @@
 import { db } from '../dbConn.js';
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 export const login = (req, res) => {
     //CHECK USER
   
-    const q = "SELECT * FROM users WHERE email = ?";
+    const q = "SELECT * FROM users where email = ?";
   
     db.query(q, [req.body.email], (err, data) => {
       if (err) return res.status(500).json(err);
