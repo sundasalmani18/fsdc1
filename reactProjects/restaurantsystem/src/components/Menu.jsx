@@ -15,15 +15,15 @@ import { useEffect, useState } from "react";
 
 export default function Menu() {
 
-  const [tabStatus, setTabStatus] = useState("")
+  
 
   const data = restData.menu;
 
  
 
   const [menuCategoryData, setMenuCategoryData] = useState(restData.menu.menuCategory);
-  const [tabdata, setTabdata] = useState(restData.menu.menuData.breakfast);
-  const [tabid, setTabid] = useState(restData.menu.menuCategory);
+  const [tabdata, setTabdata] = useState();
+  // const [tabid, setTabid] = useState(restData.menu.menuCategory);
 
 
 
@@ -61,18 +61,18 @@ export default function Menu() {
 
 
   function selectMenu(index, data) {
-    // const category = menuCategoryData[index]
-    const updateCategory = menuCategoryData.map((item, i) =>
+  console.log("data",data);
+    const updateCategory = categories?.categories?.map((item, i) =>
       i === index
-        ? { ...item, active: "true" }
-        : { ...item, active: "false" }
+        ? { item, active: "true" }
+        : { item, active: "false" }
     )
     console.log("updateCategory", updateCategory)
     setOptions(updateCategory);
     // setMenuCategoryData(updateCategory)
-    setTabdata(restData.menu.menuData[data.link])
-    setTabid(restData.menu.menuCategory[data.link])
-    console.log("updateCategoryyyy", restData.menu.menuCategory)
+    setTabdata(updateCategory[data.item])
+    // setTabid(restData.menu.menuCategory[data.link])
+    console.log("updateCategoryyyy", categories)
   }
   // const [tab, setTab] = useState(1);
 
@@ -117,7 +117,7 @@ export default function Menu() {
                       className={`nav-link ${(item.active) === "true" ? 'active' : ''} `}
                       id={`#${item.link}`}
                       type="button"
-                      onClick={() => selectMenu}
+                      onClick={() => selectMenu(item,index)}
                     >
                       <div>
                         <i className={`${item.icon} icon fa-2x`} />
