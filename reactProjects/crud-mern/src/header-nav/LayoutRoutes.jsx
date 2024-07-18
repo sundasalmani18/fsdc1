@@ -10,7 +10,7 @@ export function Layout (){
   <Routes>
 
     <Route path="/contactus" element={<ContactusPages/>}/>
-    <Route path="/home" element={<HomePage/>}/>
+    <Route path="/" element={<HomePage/>}/>
 
   </Routes>
 
