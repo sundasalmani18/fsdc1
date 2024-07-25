@@ -17,6 +17,4 @@ router.get('/logout', logout);
 // router.delete('/:id', deleteUser);
 
 
-
-
 export default router;

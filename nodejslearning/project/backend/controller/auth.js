@@ -2,11 +2,11 @@ import { db } from '../dbConn.js';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-export const register = (req, res) => {
+export const register =  (req, res) => {
     // existing user check 
     const q = "SELECT * FROM users where email = ?"
 
-    db.query(q, [req.body.email], (err, data) => {
+    db.query  (q, [req.body.email], (err, data) => {
         if (err) return res.status(500).json(err);
         if (data.length) return res.status(409).json("user already exits");
 

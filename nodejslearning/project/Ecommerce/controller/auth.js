@@ -1,75 +1,80 @@
-import nodemon from "nodemon";
-import { db } from "../dbCon";
+import { db } from '../dbCon.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-export const register=(req ,res)=>{
-  const {name,email,password,phone,address} =req.body;
+export const register= (req ,res)=>{
+ // existing user check 
+ const q = "SELECT * FROM users where email = ?"
 
-  const query ="SELECT * FROM users WHERE email=?"
-  db.query(query,[email],(err,data)=>{
-    if(err) return res.status(500).json(err);
-    if(data.length) return res.status(409).json("user already register")
+ db.query(q, [req.body.email], (err, data) => {
+     if (err) return res.status(500).json(err);
+     if (data.length) return  res.status(409).json("user already exits");
 
-        const salt =  bcrypt.genSalt(10);
-        const hashedPassword =  bcrypt.hash(password, salt);
+     // pasword convert to hash bcryp
+     
+     const salt =  bcrypt.genSaltSync(10)
+     const hashPass =  bcrypt.hashSync(req.body.password, salt)
 
-   const q="INSERT INTO users(name,email, password,phone,address)VALUES(?)";
-    
- const bodyData=[
-    name,
-    email,
- hashedPassword,
-    phone,
-    address
- ]
-    db.query(q,[bodyData],(err,data)=>{
-   if(err)return res.status(500).json(err)
+     const query2 = "INSERT INTO users (name,email,password,phone,address) VALUES (?)"; // dynamic query
 
-let responseData={
-  result:true,
-  user:bodyData,
-  msg :"register successful"
-}
+     const bodyData = [
+         req.body.name,
+         req.body.email,
+         req.body.phone,
+         req.body.address,
+         hashPass,
+     ]
 
-return res.status(200).json({Data:responseData})
+     db.query(query2, [bodyData], (err, data) => {
+         if (err) return res.status(500).send(err)
 
-    })
+         let responseData = {
+             result: true,
+             user: bodyData,
+             msg: "user created"
+         }
+         return res.status(200).json({ Data: responseData })
+     })
 
-  })
+ })
 
 }
 
 export const login=(req ,res)=>{
-const email = req.body.email
-const password = req.body.password
+const email = req.body.email;
 
-const query ="SELECT * FROM user where email =? "
 
-db.query(query,[email],(err,data)=>{
+const q ="SELECT * FROM users where email = ?";
+
+db.query(q,[email],(err,data)=>{
 
   if (err) return res.status(500).json(err);
-  if(data.length ==0) return res.status(404).json("email not found");
-  const hashedPassword = result[0].password
+  if(data.length === 0) return res.status(404).json("email not found");
   
-    const isPasswordCorrect= bcrypt.compare(password, hashedPassword)
+
+  
+    const isPasswordCorrect= bcrypt.compareSync(
+       req.body.password, 
+        data[0].password
+    );
     if(!isPasswordCorrect)
       return res.status(404).json("invalid email or password")
 
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
     const { password, ...other } = data[0];
 
-    res
-      .cookie("access_token", token, {
+    res.cookie("access_token", token, {
         httpOnly: true,
       })
       .status(200)
       .json(other);
 });
-}
+};
 
 
 
 
-export const loogout=(req,res)=>{
+export const logout=(req,res)=>{
 res.clearCookie("access_token",{
   sameSite:"none",
   secure:true
