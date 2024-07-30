@@ -1,5 +1,6 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes.js'
+import cros from 'cors'
 
 
 
@@ -7,6 +8,7 @@ const app = express();
 const port = 8000;
 app.use(express.json());
 
+app.use(cros());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });

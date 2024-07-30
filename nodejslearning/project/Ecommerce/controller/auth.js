@@ -12,7 +12,7 @@ export const register= (req ,res)=>{
 
      // pasword convert to hash bcryp
      
-     const salt =  bcrypt.genSaltSync(10)
+     const salt = bcrypt.genSaltSync(10)
      const hashPass =  bcrypt.hashSync(req.body.password, salt)
 
      const query2 = "INSERT INTO users (name,email,password,phone,address) VALUES (?)"; // dynamic query
