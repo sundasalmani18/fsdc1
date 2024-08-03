@@ -16,7 +16,8 @@ export default  function Nav(){
     
   </li>
   <li className="nav-item">
-    <a className="nav-link disabled" href="#">Login</a>
+  <a id="headbutton" onClick={()=>navigate("/login")}  className="btn-sm btn btn-outline-primary ">Login</a>
+  
   </li>
   <li className="nav-item">
     <a className="nav-link disabled" href="#">Cart</a>

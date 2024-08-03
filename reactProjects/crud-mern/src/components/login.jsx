@@ -1,4 +1,27 @@
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/authcontext";
+
+
+
  export default function Login(){
+  const navigate=useNavigate();
+
+const initFormData={
+  email:"",
+  password:""
+ };
+ const {currentUser,login,logout} = useContext(AuthContext)
+  const [formData,setFormData]=useState(initFormData)
+ 
+
+
+  const handleInputChange=(e)=>{
+   const {name,value} =e.target;
+   setFormData({...formData,
+    [name]:value
+   })
+  }
     return(
         <>
         
@@ -39,8 +62,8 @@
                   </div>
 
                   <a class="small text-muted" href="#!">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2" style={{color: "#393f81;"}}>Don't have an account? <a href="#!"
-                      style={{color: "#393f81;"}}>Register here</a></p>
+                  <p class="mb-5 pb-lg-2" style={{color: "#393f81;"}}>Don't have an account? <button  onClick={()=>navigate("/register")} 
+                      style={{color: "#393f81;"}}>Register here</button></p>
                   <a href="#!" class="small text-muted">Terms of use.</a>
                   <a href="#!" class="small text-muted">Privacy policy</a>
                 </form>
