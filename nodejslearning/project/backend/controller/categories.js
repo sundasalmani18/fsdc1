@@ -108,3 +108,18 @@ export const deleteCategory = (req, res) => {
 }
 
 
+ export const searchCategory=(req, res) => {
+      
+   const query="SELECT * FROM category WHERE category_name= ?";
+   db.query(query,[req.params.key] ,(err, data) => {
+    if (err) return res.status(500).send(err)
+
+    let responseData = {
+        result: true,
+        categories: data
+    }
+    return res.status(200).json({ Data: responseData })
+})
+// return res.status(200).json({msg: 'getCategories'})
+}
+

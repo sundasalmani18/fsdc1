@@ -5,6 +5,8 @@ import {
     getCategory,
     updateCategory,
     deleteCategory,
+    searchCategory
+
 
 } from '../controller/categories.js'
 
@@ -15,6 +17,7 @@ router.get('/:id', getCategory);
 router.post('/', addCategory);
 router.delete('/:id', deleteCategory);
 router.put('/:id', updateCategory);
+router.get('/search/:key', searchCategory);
 
 
 export default router;
