@@ -15,20 +15,30 @@ export default function AdminCategory() {
 
     const navigate = useNavigate();
     const [categoriesData, setCategoriesData] = useState('')
+    const [searchData,setSearchData]=useState(categoriesData);
 
     useEffect(() => {
         getCategories()
+        
     }, [])
 
     const getCategories = () => {
         fetch('http://localhost:8080/category')
             .then((res) => { return res.json() })
-            .then((data) => { setCategoriesData(data?.Data) })
+            .then((data) => {
+                 setCategoriesData(data?.Data) 
+                  setSearchData(data?.Data)
+                 
+            })
             .catch(error => console.error("Error fetching data", error))
     }
 
     console.log('categoriesData', categoriesData)
+ //search functionality
+ const filterSearch=(event)=>{
+    setSearchData(categoriesData.filter((catname)=>catname.category_name.includes(event.target.value)))
 
+ }
 
     const handelDelete = async (id) => {
         console.log("id : -", id);
@@ -66,7 +76,7 @@ export default function AdminCategory() {
                     <div className="categories-content ">
                         <div className="search-content p-3">
                             <form className="form-inline my-2 col-md-2 d-flex">
-                                <input className="form-control mr-sm-2 p-2 col-md-2" type="search" placeholder="Search"
+                                <input className="form-control mr-sm-2 p-2 col-md-2" onChange={filterSearch} type="search" placeholder="Search"
                                     aria-label="Search" />
                                 <button className="btn btn-success m-2 my-sm-0" type="submit">Search</button>
                             </form>
@@ -80,8 +90,11 @@ export default function AdminCategory() {
 
                             <table className="table table-hover align-content-center">
                                 <tbody>
-                                    {categoriesData?.categories?.length > 0 ? (
-                                        categoriesData?.categories?.map((item, index) => (
+                                {searchData?.categories?.length > 0 ? (
+                                        searchData?.categories?.map((item, index) => (
+                                            //without search functionality 
+                                    // {categoriesData?.categories?.length > 0 ? (
+                                    //     categoriesData?.categories?.map((item, index) => (
                                             <tr>
                                                 <td className="ml-5">
                                                     <input className="form-check-input m-3  p-3 " type="checkbox" value=""
