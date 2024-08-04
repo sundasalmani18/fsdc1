@@ -25,7 +25,7 @@ export default function LayoutRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
-        <Route path="/admin/login"   element={<AdminLoginPage/>}/>
+        <Route path="/adminlogin"   element={<AdminLoginPage/>}/>
         <Route path="/admin/dashboard" element={<AdminDashboardPage/>}/>
         <Route path="/admin/category" element={<AdminCategory/>}/>
         <Route path="/admin/items" element={<AdminItems/>}/>

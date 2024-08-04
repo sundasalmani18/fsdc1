@@ -53,7 +53,7 @@ export default function Navbar() {
                     <a id="headbutton" onClick={()=>navigate("/login")}  className="btn-sm btn btn-outline-success ">Login/Register</a>
                     
                     {/* <a id="headbutton" href="./admin/adminLogin.html" className="btn-sm btn btn-outline-success">Admin Portal</a> */}
-                    <a id="headbutton" onClick={()=>navigate("/admin")} className="btn-sm btn btn-outline-success">Admin Portal</a>
+                    <a id="headbutton" onClick={()=>navigate("/adminlogin")} className="btn-sm btn btn-outline-success">Admin Portal</a>
                   </form>
                 </div>
               </nav>

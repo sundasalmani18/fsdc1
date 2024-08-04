@@ -22,7 +22,6 @@ setFormData({
 })
 }
 
-
 const registerUser = async (e) => {
 e.preventDefault()
 try {
