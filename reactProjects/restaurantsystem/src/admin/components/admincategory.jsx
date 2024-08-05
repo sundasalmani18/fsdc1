@@ -112,7 +112,7 @@ export default function AdminCategory() {
                                     // {categoriesData?.categories?.length > 0 ? (
                                     //     categoriesData?.categories?.map((item, index) => (
                                    
-                                            <tr>
+                                            <tr onChange={filterSearch}> 
                                                 
                                                 <td className="ml-5">
                                                     <input className="form-check-input m-3  p-3 " type="checkbox" value=""
