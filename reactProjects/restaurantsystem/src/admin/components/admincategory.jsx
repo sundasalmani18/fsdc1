@@ -14,8 +14,9 @@ import { useEffect, useState } from "react";
 export default function AdminCategory() {
 
     const navigate = useNavigate();
-    const [categoriesData, setCategoriesData] = useState([])
-    const [searchData,setSearchData]=useState([]);
+    const [categoriesData, setCategoriesData] = useState('')
+    const [searchData,setSearchData]=useState('');
+    console.log("search data ", searchData)
 
     useEffect(() => {
         getCategories()
@@ -28,7 +29,7 @@ export default function AdminCategory() {
             .then((res) => { return res.json() })
             .then((data) => {
                  setCategoriesData(data?.Data) 
-                  setSearchData(data?.Data)
+                
                  
     })
             .catch(error => console.error("Error fetching data", error))
@@ -43,7 +44,7 @@ export default function AdminCategory() {
    const filterSearch=(event)=>{
 
     const filteredData=categoriesData?.categories?.filter((catname)=>catname.category_name.toLowerCase().includes(event.target.value.toLowerCase()))
-    setSearchData(filteredData)
+    // setSearchData(filteredData)
   
     console.log(filteredData,"filtered data ")
    
@@ -88,7 +89,7 @@ export default function AdminCategory() {
                             <form className="form-inline my-2 col-md-2 d-flex">
                                 <input className="form-control mr-sm-2 p-2 col-md-2" 
                               
-                                onChange={filterSearch}
+                                onChange={(e)=>setSearchData(e.target.value)}
                                  type="text" 
                                 placeholder="Search"
                                     aria-label="Search" />
@@ -106,13 +107,19 @@ export default function AdminCategory() {
                                 <tbody>
                                
                               
-                                {searchData?.categories?.length > 0 ? (
-                                        searchData?.categories?.map((item, index) => (
+                                {categoriesData?.categories?.length > 0 ? (
+                                        categoriesData?.categories?.filter((item)=>{
+                                           return searchData.toLowerCase() === ''? item:
+                                           item.category_name.toLowerCase().includes(searchData)
+                                        })
+                                        
+                                        
+                                        .map((item, index) => (
                                             //without search functionality 
                                     // {categoriesData?.categories?.length > 0 ? (
                                     //     categoriesData?.categories?.map((item, index) => (
                                    
-                                            <tr onChange={filterSearch}> 
+                                            <tr> 
                                                 
                                                 <td className="ml-5">
                                                     <input className="form-check-input m-3  p-3 " type="checkbox" value=""
