@@ -1,21 +1,24 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes.js'
-import cros from 'cors'
+import cors from 'cors';
 
 
 
 const app = express();
-const port = 8000;
+app.use(cors());
+
 app.use(express.json());
 
-app.use(cros());
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.get("/", (req, res) => {
+    res.json({ mesg: "welcome to my application" })
+
+})
+
+app.use("/auth", authRoutes);
 
 
-app.use("/auth",authRoutes);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+
+const PORT = 8000;
+app.listen(PORT, () => { console.log("server is running ", PORT) }
+)
