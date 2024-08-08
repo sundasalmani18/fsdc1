@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/authcontext";
+// import { AuthContext } from "../context/authcontext";
+import {AuthContext} from "../context/authContext"
 
 
 
@@ -23,7 +24,7 @@ const initFormData={
    })
   }
 
-  const handleLogin= async()=>{
+  const handleLogin= async(e)=>{
   e.preventDefault();
   try{
     await login(formData);

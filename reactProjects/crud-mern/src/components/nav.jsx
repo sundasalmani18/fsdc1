@@ -12,11 +12,11 @@ export default  function Nav(){
     <a className="nav-link" href="#">Category</a>
   </li>
   <li className="nav-item">
-  <a id="headbutton" onClick={()=>navigate("/register")}  className="btn-sm btn btn-outline-success ">Register</a>
+  <a id="headbutton" onClick={()=>navigate("/register")}  className="btn-sm btn btn-outline-success m-2 ">Register</a>
     
   </li>
   <li className="nav-item">
-  <a id="headbutton" onClick={()=>navigate("/login")}  className="btn-sm btn btn-outline-primary ">Login</a>
+  <a id="headbutton" onClick={()=>navigate("/login")}  className="btn-sm btn btn-outline-primary m-2 ">Login</a>
   
   </li>
   <li className="nav-item">

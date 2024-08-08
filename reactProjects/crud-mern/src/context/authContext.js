@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { AuthContext } from "../../../restaurantsystem/src/context/authContext";
+import axios from "axios";
+
 
 
 
@@ -14,11 +15,13 @@ const login=async(data)=>{
     setCurrentUser(res.data)
 }
 const logout=async()=>{
-    const res= await axios.post('http://localhost:8000/auth/logout')
+    const res= await axios.get('http://localhost:8000/auth/logout')
     setCurrentUser({})
 }
+return(
 
 <AuthContext.Provider value={{currentUser,login,logout}}>
 {children}
 </AuthContext.Provider>
+)
 }

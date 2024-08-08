@@ -40,35 +40,35 @@ export const register= (req ,res)=>{
 
 }
 
-export const login=(req ,res)=>{
-const email = req.body.email;
+export const login = (req, res) => {
+  //CHECK USER
 
+  const q = "SELECT * FROM users where email = ?";
 
-const q ="SELECT * FROM users where email = ?";
+  db.query(q, [req.body.email], (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0) return res.status(404).json("Email not found!");
 
-db.query(q,[email],(err,data)=>{
-
-  if (err) return res.status(500).json(err);
-  if(data.length === 0) return res.status(404).json("email not found");
-  
-
-  
-    const isPasswordCorrect= bcrypt.compareSync(
-       req.body.password, 
-        data[0].password
+    //Check password
+    const isPasswordCorrect = bcrypt.compareSync(
+      req.body.password,
+      data[0].password
     );
-    if(!isPasswordCorrect)
-      return res.status(404).json("invalid email or password")
+
+    if (!isPasswordCorrect)
+      return res.status(400).json("Wrong email or password!");
 
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
     const { password, ...other } = data[0];
 
-    res.cookie("access_token", token, {
+    res
+      .cookie("access_token", token, {
         httpOnly: true,
       })
       .status(200)
       .json(other);
-});
+      
+  });
 };
 
 
