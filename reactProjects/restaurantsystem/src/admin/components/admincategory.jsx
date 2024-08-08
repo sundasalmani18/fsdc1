@@ -41,15 +41,6 @@ export default function AdminCategory() {
 
 
  
-   const filterSearch=(event)=>{
-
-    const filteredData=categoriesData?.categories?.filter((catname)=>catname.category_name.toLowerCase().includes(event.target.value.toLowerCase()))
-    // setSearchData(filteredData)
-  
-    console.log(filteredData,"filtered data ")
-   
- }
-
 
     const handelDelete = async (id) => {
         console.log("id : -", id);
@@ -112,8 +103,7 @@ export default function AdminCategory() {
                                            return searchData.toLowerCase() === ''? item:
                                            item.category_name.toLowerCase().includes(searchData)
                                         })
-                                        
-                                        
+                                           
                                         .map((item, index) => (
                                             //without search functionality 
                                     // {categoriesData?.categories?.length > 0 ? (

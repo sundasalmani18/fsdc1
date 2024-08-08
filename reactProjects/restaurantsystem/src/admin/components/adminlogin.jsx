@@ -44,7 +44,7 @@ export default function Adminlogin() {
 
     e.preventDefault()
     await logout()
-     navigate('/admin')
+     navigate('/')
   }
 
 
@@ -56,7 +56,7 @@ export default function Adminlogin() {
     try {
       await login(formData)
       alert("login successful")
-      // navigate('/admin')
+      navigate('/admin/dashboard')
     } catch (err) {
       console.log('ee', err)
     }
@@ -86,6 +86,7 @@ export default function Adminlogin() {
   }
 
   if (isUserlogin()) {
+    navigate('/')
     // return window.open('/', '_self')
   }
 
