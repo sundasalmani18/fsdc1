@@ -45,6 +45,7 @@ export default function Adminlogin() {
     e.preventDefault()
     await logout()
      navigate('/')
+     alert("logout successful")
   }
 
 

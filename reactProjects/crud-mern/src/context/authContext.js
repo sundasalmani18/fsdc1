@@ -1,34 +1,52 @@
-import { createContext, useState } from "react";
+import { createContext, useState,useEffect } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
-
-
-
+   
 export const AuthContext=createContext();
-export const AuthContextProvider =({children})=>{
+export const   AuthContextProvider = ({children})=>{
+    // const navigate = useNavigate();
+  
+
 const [currentUser,setCurrentUser]=useState(
    JSON.parse( localStorage.getItem("user"))
 )
 
 
-console.log("current user", currentUser)
+
 const login=async(data)=>{
-    const res= await axios.post('http://localhost:8000/auth/login', data)
+  
+    const res= await axios.post('http://localhost:8000/auth/login', data)   
+   console.log('res', res)
+  
+   setCurrentUser(res.data)
+   
    window.localStorage.setItem("userType",res.data.userType)
    window.localStorage.setItem("loggedIn",true)
-    setCurrentUser(res.data)
+   console.log("current ",currentUser)
     if(res.data.userType === "admin"){
-        return(window.location.href="../admin-dashboard")
+    
+    //   navigate("../admindashboard")   
     }
     else{
-        return(window.location.href="/")
+       
+        // navigate("/")
+ 
 
     }
+ 
 }
 const logout=async()=>{
     const res= await axios.get('http://localhost:8000/auth/logout')
     setCurrentUser({})
+
 }
+
+
+useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(currentUser))
+})
+
 return(
 
 <AuthContext.Provider value={{currentUser,login,logout}}>
