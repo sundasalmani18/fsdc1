@@ -28,6 +28,7 @@ const initFormData={
   e.preventDefault();
   try{
     await login(formData);
+    alert("login successful")
     console.log("login successful")
   }
   catch(err){
