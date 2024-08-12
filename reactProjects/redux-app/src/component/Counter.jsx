@@ -11,7 +11,7 @@ const dispatch = useDispatch();
   return (
     <div className="App">
       <h1>
-         Hello World <br /> A little Redux Project. YaaY!
+        Welcome To Redux Project.
       </h1>
       <h3>Counter</h3>
       <h3>{counter}</h3>
