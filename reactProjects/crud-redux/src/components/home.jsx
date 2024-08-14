@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Home(){
+
+  const naviagte =useNavigate()
  const users =useSelector((state)=>state.user)
 console.log("user",users)
 
@@ -9,6 +12,7 @@ console.log("user",users)
         <>
         <div className ="container">
             <h2>Welcome To Crud App in Redux</h2><br/><br/>
+            <button onClick={()=>naviagte("/create")} className="btn btn-primary">Create</button>
             
         <table class="table table-dark">
   <thead>
