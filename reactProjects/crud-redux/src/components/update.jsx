@@ -1,47 +1,62 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
+import { useParams,useNavigate } from "react-router-dom";
 
 
 export default function Update() {
-const [name,setName]=useState('');
-const [email,setEmail]=useState('');
-const dispatch =useDispatch();
+ const {id} =useParams();
+   console.log("id",id)
+const users =useSelector((state)=>state.user)
 
 
-const updateUser=()=>{
+const existingUser = users.filter(f => f.id == id);
+  console.log(existingUser);
 
-}
+  const { name, email } = existingUser[0];
+  const [uname, setName] = useState(name);
+  const [uemail, setEmail] = useState(email);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+ 
+
+
 
     return (
         <>
-           <div className="container m-5">
-            <div className="col-md-10 justify-content-center">
-                <div class="card">
-                    <div class="card-header">
-                        Create New User
+           <div classNameName="container m-5">
+            <div classNameName="col-md-10 justify-content-center">
+                <div className="card">
+                    <div className="card-header">
+                       Update User
                     </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
+                    <div className="card-body">
+                        <blockquote className="blockquote mb-0">
 
-                            <form onSubmit={updateUser}>
-                            <div class="form-group">
+                            <form >
+                            <div className="form-group">
                                     <label for="exampleInputPassword1">Name</label>
-                                    <input type="text" class="form-control" 
+                                    <input type="text" className="form-control" 
                                     id="exampleInputPassword1"
-                                    setName={(e)=>e.target.value}
+                                   name="name"
+                                   value={uname}
+                                //    onChange={(e) =>setName( e.target.value)}
                                      placeholder="Name" />
                                 </div>
 
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" 
+                                    <input type="email" className="form-control" 
                                     id="exampleInputEmail1" aria-describedby="emailHelp"
-                                   setEmail={(e)=>e.target.value}
+                                  name="email"
+                                    // onChange={(e) =>setEmail( e.target.value)}
+                                    value={uemail}
                                     placeholder="Enter email" />
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                   
                                 </div>
                                
-                                <button type="submit" class="btn btn-primary m-4">Submit</button>
+                                <button type="submit" className="btn btn-primary m-4">Update User</button>
                             </form>
                         </blockquote>
                     </div>

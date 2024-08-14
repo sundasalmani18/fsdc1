@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../feature/userSlice";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Create() {
-        const users =useSelector((state)=>state.user)
+    const navigate =useNavigate(); 
+     const users =useSelector((state)=>state.user)
     const dispatch =useDispatch();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -14,24 +16,24 @@ export default function Create() {
     const createUser = (e) => {
         e.preventDefault();
         dispatch(addUser({ id:users[users.length-1].id+1, name: name, email: email }))
-      
+      navigate("/")
     }
 
     return (
         <>
-            <div className="container m-5">
-                <div className="col-md-10 justify-content-center">
-                    <div class="card">
-                        <div class="card-header">
+            <div classNameName="container m-5">
+                <div classNameName="col-md-10 justify-content-center">
+                    <div className="card">
+                        <div className="card-header">
                             Create New User
                         </div>
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
+                        <div className="card-body">
+                            <blockquote className="blockquote mb-0">
 
                                 <form onSubmit={createUser}>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="exampleInputPassword1">Name</label>
-                                        <input type="text" class="form-control"
+                                        <input type="text" className="form-control"
                                             id="exampleInputPassword1"
                                             name="name"
                                             onChange={(e) =>setName( e.target.value)}
@@ -39,17 +41,17 @@ export default function Create() {
                                             placeholder="Name" />
                                     </div>
 
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control"
+                                        <input type="email" className="form-control"
                                             id="exampleInputEmail1" aria-describedby="emailHelp"
                                             name="email"
                                             onChange={(e) =>setEmail( e.target.value)}
                                             placeholder="Enter email" />
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary m-4">Submit</button>
+                                    <button type="submit" className="btn btn-primary m-4">Submit</button>
                                 </form>
                             </blockquote>
                         </div>

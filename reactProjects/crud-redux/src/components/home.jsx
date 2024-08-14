@@ -14,7 +14,7 @@ console.log("user",users)
             <h2>Welcome To Crud App in Redux</h2><br/><br/>
             <button onClick={()=>naviagte("/create")} className="btn btn-primary">Create</button>
             
-        <table class="table table-dark">
+        <table className="table table-dark">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -32,7 +32,7 @@ console.log("user",users)
       <th scope="row">{user.id}</th>
       <td scope="row">{user.name}</td>
       <td scope="row">{user.email}</td>
-      <td><button className="btn btn-secondary">Update</button></td>
+      <td><button onClick ={()=>naviagte(`/update/${user.id}`)} className="btn btn-secondary">Update</button></td>
       <td><button className="btn btn-danger">Delete</button></td>      
     </tr>
   ))}
