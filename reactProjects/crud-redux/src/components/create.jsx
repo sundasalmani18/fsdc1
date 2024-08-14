@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Create() {
-    const navigate =useNavigate(); 
-     const users =useSelector((state)=>state.user)
-    const dispatch =useDispatch();
+    const navigate = useNavigate();
+    const users = useSelector((state) => state.user)
+    const dispatch = useDispatch();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
 
@@ -15,8 +15,8 @@ export default function Create() {
 
     const createUser = (e) => {
         e.preventDefault();
-        dispatch(addUser({ id:users[users.length-1].id+1, name: name, email: email }))
-      navigate("/")
+        dispatch(addUser({ id: users[users.length - 1].id + 1, name: name, email: email }))
+        navigate("/")
     }
 
     return (
@@ -36,8 +36,8 @@ export default function Create() {
                                         <input type="text" className="form-control"
                                             id="exampleInputPassword1"
                                             name="name"
-                                            onChange={(e) =>setName( e.target.value)}
-                                            
+                                            onChange={(e) => setName(e.target.value)}
+
                                             placeholder="Name" />
                                     </div>
 
@@ -46,7 +46,7 @@ export default function Create() {
                                         <input type="email" className="form-control"
                                             id="exampleInputEmail1" aria-describedby="emailHelp"
                                             name="email"
-                                            onChange={(e) =>setEmail( e.target.value)}
+                                            onChange={(e) => setEmail(e.target.value)}
                                             placeholder="Enter email" />
                                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                                     </div>

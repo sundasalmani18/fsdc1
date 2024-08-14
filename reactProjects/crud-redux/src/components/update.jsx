@@ -11,7 +11,7 @@ export default function Update() {
 
 
     const existingUser = users.filter(f => f.id == item_id);
-    console.log(existingUser,"existing userr");
+    console.log(existingUser, "existing userr");
 
     const { name, email } = existingUser[0];
     const [uname, setName] = useState(name);
@@ -20,7 +20,7 @@ export default function Update() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleUpdate=(event) => {
+    const handleUpdate = (event) => {
         event.preventDefault();
         dispatch(updateUser({
 
