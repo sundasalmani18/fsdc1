@@ -3,21 +3,21 @@
 // const socketIo= require("socket.io")
 import express from "express"
 import http from "http" 
-import path from "path"
 import {Server} from "socket.io"
+
 
 
 
 const app = express()
 const server= http.createServer(app)
 const io = new Server(server)
-
+app.use("/css",express.static("./node_modules/bootstrap/dist/css"));
 app.use(express.static("public"))
 io.on("connection", (socket) => {
     console.log("user connected")
     socket.on("chat-message",(msg)=>{
         io.emit("chat-message",msg)
-        console.log(msg)
+        console.log("message",msg)
     });
     socket.on("disconnect",(msg)=>{
 
