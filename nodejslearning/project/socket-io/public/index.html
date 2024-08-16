@@ -7,6 +7,8 @@
 
 <body>
 
+
+
     <!-- <div className="container">
         <h1>Chatting App</h1>
         <div className="message">
@@ -55,7 +57,7 @@
                                 <div class="direct-chat-msg">
                                     <div class="direct-chat-info clearfix">
                                         <span class="direct-chat-name pull-left">Timona Siera</span>
-                                        <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                                        <!-- <span class="direct-chat-timestamp pull-right"id ="date">23 Jan 2:00 pm</span> -->
                                     </div>
 
                                     <img class="direct-chat-img"
@@ -63,8 +65,9 @@
                                         alt="message user image">
 
                                     <div class="direct-chat-text" id="messages">
-                                        For what reason would it be advisable for me to think about business content?
+
                                     </div>
+                                    <span class="direct-chat-timestamp pull-right" id="date">23 Jan 2:00 pm</span>
 
                                 </div>
 
@@ -93,7 +96,8 @@
                                     <input type="text" name="message" placeholder="Type Message ..."
                                         class="form-control" id="input_message">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-warning btn-flat" id="send_btn">Send</button>
+                                        <button type="button" class="btn btn-warning btn-flat"
+                                            id="send_btn">Send</button>
                                     </span>
                                 </div>
                             </form>
@@ -111,6 +115,33 @@
 
     <script src="./socket.io/socket.io.js"></script>
     <script>
+
+        const d = new Date();
+        document.getElementById("date").innerHTML = d;
+
+        // const socket = io()
+        // const sendBtn = document.getElementById("send_btn")
+        // const input = document.getElementById("input_message")
+        // const msg = document.getElementById("messages")
+        // sendBtn.addEventListener("click", () => {
+        //     if(input.value){
+        //         socket.emit("chat-message",input.value)
+        //         input.value = ""
+        //     }
+
+        // });
+
+        // socket.on("chat-message", (msg) => {
+        //     const item = document.createElement("li")
+        //     item.textContent = msg
+        //     messages.appendChild(item)
+        // })
+
+
+
+
+
+
         const socket = io();
         const sendBtn = document.getElementById("send_btn")
         const input = document.getElementById("input_message")
@@ -128,6 +159,9 @@
             item.textContent = msg
             messages.appendChild(item)
         })
+
+
+
     </script>
 </body>
 
