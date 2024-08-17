@@ -21,9 +21,9 @@ export default function Create() {
 
     return (
         <>
-            <div classNameName="container m-5">
-                <div classNameName="col-md-10 justify-content-center">
-                    <div className="card">
+            <div className="container m-5">
+                <div className="col-md-10 justify-content-center">
+                    <div className="card m-5">
                         <div className="card-header">
                             Create New User
                         </div>

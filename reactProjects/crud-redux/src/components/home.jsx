@@ -16,9 +16,11 @@ export default function Home() {
   return (
     <>
       <div className="container">
-        <h2>Welcome To Crud App in Redux</h2><br /><br />
+        <br/> <br/>
+        <h2>Welcome To Crud App in Redux</h2><br/>
+        <div className="m-2">
         <button onClick={() => naviagte("/create")} className="btn btn-primary">Create</button>
-
+        </div>
         <table className="table table-dark">
           <thead>
             <tr>
