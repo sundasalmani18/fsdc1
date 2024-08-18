@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, json } from "react-router-dom";
 import { updateUser } from "../feature/userSlice";
 
 
@@ -26,8 +26,11 @@ export default function Update() {
 
             id: item_id,
             name: uname,
-            email: uemail
+            email: uemail,
         }))
+        localStorage.setItem('users' ,JSON.stringify(users))        
+       
+      
         navigate("/")
     }
 

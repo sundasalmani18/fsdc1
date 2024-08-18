@@ -8,17 +8,48 @@ export default function Create() {
     const navigate = useNavigate();
     const users = useSelector((state) => state.user)
     const dispatch = useDispatch();
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [formError, setFormError] = useState({})
 
 
+    const validateForm = () => {
+        let err = {}
+        if (name === '') {
+            err.name = <p style={{ color: "red" }}>name no is required!</p>
+          }
+    if (email === '') {
+        err.email = <p style={{ color: "red" }}>Email required!</p>
+      } else {
+        let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!regex.test(email)) {
+          err.email = <p style={{ color: "red" }}>Email not valid</p>
+        }
+    }
+        
+    setFormError({ ...err })
+
+    return Object.keys(err).length < 1;
+
+    }
 
     const createUser = (e) => {
         e.preventDefault();
+
+        const isValid = validateForm()
+
+        if (isValid) {
+
         dispatch(addUser({ id: users[users.length - 1].id + 1, name: name, email: email }))
+        localStorage.setItem('items', JSON.stringify(users));
         navigate("/")
     }
+    else{
+        alert('All Fields Are required ')
+    }
+}
 
+    
     return (
         <>
             <div className="container m-5">
@@ -39,6 +70,7 @@ export default function Create() {
                                             onChange={(e) => setName(e.target.value)}
 
                                             placeholder="Name" />
+                                            {formError.name}
                                     </div>
 
                                     <div className="form-group">
@@ -48,6 +80,7 @@ export default function Create() {
                                             name="email"
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder="Enter email" />
+                                             {formError.email}
                                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                                     </div>
 
