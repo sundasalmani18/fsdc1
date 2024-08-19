@@ -10,9 +10,9 @@ export const getUsers = (req, res) => {
 
         let responseData = {
             result: true,
-            users: data
+            user: data
         }
-        return res.status(200).json({ Data: responseData })
+        return res.status(200).json({  Data:responseData })
     })
    
 }
