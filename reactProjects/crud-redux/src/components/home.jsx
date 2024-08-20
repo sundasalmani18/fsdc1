@@ -25,6 +25,19 @@ export default function Home() {
     };
     fetchData();
   }, []);
+
+
+
+  const handleDelete = (id) => {
+    console.log("id : ", id);
+    axios.delete("http://localhost:8080/user/" +id)
+    .then(res=>{
+      dispatch(deleteUser({id}))
+      console.log("delete user",res)
+    }).catch(err=>console.log(err,"err"))
+
+       
+       }
   return (
     <>
       <div className="container">
@@ -32,12 +45,12 @@ export default function Home() {
         <h2>Welcome To Crud App in Redux</h2>
         <br />
         <div className="m-2">
-          {/* <button
+           <button
             onClick={() => naviagte("/create")}
             className="btn btn-primary"
           >
             Create
-          </button> */}
+          </button> 
         </div>
         <table className="table table-dark">
           <thead>
@@ -65,12 +78,12 @@ export default function Home() {
                   </button>
                 </td>
                 <td>
-                  {/* <button
+                   <button
                     onClick={() => handleDelete(user.id)}
                     className="btn btn-danger"
                   >
                     Delete
-                  </button>  */}
+                  </button>  
                 </td>
               </tr>
             ))}

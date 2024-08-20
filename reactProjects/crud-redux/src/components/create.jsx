@@ -18,7 +18,7 @@ export default function Create() {
     const validateForm = () => {
         let err = {}
         if (name === '') {
-            err.name = <p style={{ color: "red" }}>name no is required!</p>
+            err.name = <p style={{ color: "red" }}> Name is required!</p>
           }
     if (email === '') {
         err.email = <p style={{ color: "red" }}>Email required!</p>

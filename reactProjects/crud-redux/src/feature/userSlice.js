@@ -23,7 +23,7 @@ export const userSlice = createSlice({
                             
                         },
                         updateUser: (state, action) => {
-                           const index=state.user.findIndex(x=>x.id === action.payload.id)
+                           const index=state.user.findIndex(x=>x.id == action.payload.id)
                            console.log("index",index)
                            state.user[index]={
                             id:action.payload.id,
@@ -33,7 +33,8 @@ export const userSlice = createSlice({
                         },
                         deleteUser: (state, action) => {
                            
-                            
+                            const id=action.payload.id
+                            state.user=state.user.filter(u=>u.id !== id)
                 
                         }
            
