@@ -8,7 +8,7 @@ import axios from "axios";
 //api 
 export default function Create() {
     const navigate = useNavigate();
-    const users = useSelector((state) => state.user)
+    const users = useSelector((state) => state.storeusers.user)
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

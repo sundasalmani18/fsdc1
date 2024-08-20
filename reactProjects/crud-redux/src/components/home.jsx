@@ -10,9 +10,9 @@ import { getUser } from "../feature/userSlice";
 export default function Home() {
   const dispatch = useDispatch();
   const naviagte=useNavigate()
-  const users = useSelector((state) => state.users.user);
+  const users = useSelector((state) => state.storeusers.user);
 
-  console.log(useSelector((state) => state.users.user));
+  console.log(useSelector((state) => state.storeusers.user));
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,7 +57,7 @@ export default function Home() {
                 <td scope="row">{user.name}</td>
                 <td scope="row">{user.email}</td>
                 <td>
-                  {/* <button
+                <button
                     onClick={() => naviagte(`/update/${user.id}`)}
                     className="btn btn-secondary"
                   >
@@ -65,12 +65,12 @@ export default function Home() {
                   </button>
                 </td>
                 <td>
-                  <button
+                  {/* <button
                     onClick={() => handleDelete(user.id)}
                     className="btn btn-danger"
                   >
                     Delete
-                  </button> */}
+                  </button>  */}
                 </td>
               </tr>
             ))}
