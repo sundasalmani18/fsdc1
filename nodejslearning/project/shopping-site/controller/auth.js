@@ -1,4 +1,4 @@
-import { db } from '../dbConn.js';
+import { db } from '../dbConnect.js';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
@@ -15,14 +15,16 @@ export const register =  (req, res) => {
         const salt = bcrypt.genSaltSync(10)
         const hashPass = bcrypt.hashSync(req.body.password, salt)
 
-        const query2 = "INSERT INTO users (first_name,last_name,email,number,password) VALUES (?)"; // dynamic query
+        const query2 = "INSERT INTO users (name,email,password,phone,address,userType) VALUES (?)"; // dynamic query
 
         const bodyData = [
-            req.body.first_name,
-            req.body.last_name,
+            req.body.name,
             req.body.email,
-            req.body.number,
-            hashPass,
+              hashPass,
+            req.body.phone,
+            req.body.address,
+            req.body.userType
+          
         ]
 
         db.query(query2, [bodyData], (err, data) => {
