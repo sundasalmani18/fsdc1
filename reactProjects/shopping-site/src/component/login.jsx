@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "./../context/authContext";
 
-export default function Adminlogin() {
+export default function Login() {
   const navigate = useNavigate();
 
   const initFormData = {
@@ -51,7 +51,7 @@ export default function Adminlogin() {
     try {
       await login(formData);
       alert("login successful");
-      navigate("/admin/dashboard");
+      navigate("/");
     } catch (err) {
       console.log("ee", err);
     }

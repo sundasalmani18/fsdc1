@@ -1,12 +1,16 @@
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Signup() {
+  const navigate = useNavigate();
   const initFormData = {
-    first_name: "",
-    last_name: "",
+    name: "",
     email: "",
-    number: "",
     password: "",
+    phone: "",
+    address: "",
+    userType: "",
   };
 
   const [formData, setFormData] = useState(initFormData);
@@ -22,7 +26,7 @@ export default function Signup() {
   const registerUser = async (e) => {
     e.preventDefault();
     try {
-      const fetchRes = await fetch("http://localhost:8080/auth/register", {
+      const fetchRes = await fetch("http://localhost:8000/auth/register", {
         method: "POST",
         headers: {
           "content-Type": "application/json",
@@ -38,7 +42,7 @@ export default function Signup() {
 
       setFormData(initFormData);
       alert(data.Data.msg);
-      // navigate("/admin/items");
+      navigate("/");
     } catch (error) {
       console.error("error fetching the data", error);
       alert("data already exists");
@@ -59,10 +63,10 @@ export default function Signup() {
                   className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
                   id="fname"
                   aria-describedby="emailHelp"
-                  name="first_name"
-                  value={formData.first_name}
+                  name="name"
+                  value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Enter first name"
+                  placeholder="Enter Name"
                 />
               </div>
 
@@ -71,30 +75,6 @@ export default function Signup() {
                   type="text"
                   className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
                   id="lname"
-                  name="last_name"
-                  value={formData.last_name}
-                  onChange={handleInputChange}
-                  placeholder="Enter Last name"
-                />
-              </div>
-
-              <div classname="form-group">
-                <input
-                  type="number"
-                  className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
-                  id="num"
-                  name="number"
-                  value={formData.number}
-                  onChange={handleInputChange}
-                  placeholder="Enter Number"
-                />
-              </div>
-
-              <div classname="form-group">
-                <input
-                  type="email"
-                  className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -102,24 +82,52 @@ export default function Signup() {
                 />
               </div>
 
-              <div className="form-group">
+              <div classname="form-group">
                 <input
                   type="password"
                   className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
-                  id="password"
+                  id="num"
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  placeholder="Enter Password"
+                  placeholder="Enter password"
                 />
               </div>
-              {/* <div className="form-group">  
-            <input type="password" className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded" 
-            id="conpassword"
-            value={formData.itemName}
-            onChange={handleInputChange}
-             placeholder="Enter conform Password"/>
-          </div> */}
+
+              <div classname="form-group">
+                <input
+                  type="number"
+                  className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
+                  id="email"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Enter Phone"
+                />
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
+                  id="password"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  placeholder="Enter Address"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  name="userType"
+                  type="text"
+                  className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
+                  id="user"
+                  value={formData.userType}
+                  onChange={handleInputChange}
+                  placeholder="Enter user type"
+                />
+              </div>
 
               <button type="submit" classname="btn btn-primary py-3 w-100">
                 Submit
