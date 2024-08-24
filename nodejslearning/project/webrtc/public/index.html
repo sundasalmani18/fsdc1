@@ -1,29 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web RTc</title>
-</head>
-<body>
+  </head>
+  <body>
     <button id="startbutton">Start Screen Sharing</button>
     <button id="stopbutton">Stop Screen Sharing</button>
-    <video id="localvideo"></video>
-    <video id="remotevideo"></video>
+    <video style="width: 250px" id="localvideo"></video>
+    <video style="width: 500px" id="remotevideo"></video>
 
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
-        const socket=io();
-        let localStream
-        let remoteStream
-        let peerConnection
+      const socket = io();
+      let localStream;
+      let remoteStream;
+      let peerConnection;
 
-        const startbutton=document.getElementById("startbutton")
-         const stopbutton = document.getElementById("stopbutton")
-          const localvideo = document.getElementById("localvideo")
-           const remotevideo = document.getElementById("remotevideo")
+      const startbutton = document.getElementById("startbutton");
+      const stopbutton = document.getElementById("stopbutton");
+      const localvideo = document.getElementById("localvideo");
+      const remotevideo = document.getElementById("remotevideo");
+      const servers = {
+        iceServer: [
+          {
+            urls: "stun:stun.l.google.com:19302",
+          },
+        ],
+      };
+      startbutton.addEventListener("click", startScreenShare);
+      stopbutton.addEventListener("click", stopScreenShare);
+
+      async function startScreenShare() {
+        try {
+          localStream = await navigator.mediaDevices.getDisplayMedia({
+            video: true,
+          });
+          localvideo.srcObject = localStream;
+          peerConnection = new RTCPeerConnection();
+          peerConnection.onicecandidate = handleIcecandidate;
+          peerConnection.ontrack = handleTrack;
+
+          localStream.getTracks().forEach((track) => {
+            peerConnection.addTrack(track, localStream);
+          });
+          peerConnection.onnegotiationneeded = async () => {
+            const offer = await peerConnection.createoffer();
+            await peerConnection.setLocalDescription(offer);
+            socket.emit("offer", offer);
+          };
+        } catch (err) {
+          console.log(err, "err");
+        }
+      }
+
+      async function stopScreenShare() {
+        try {
+          localStream.getTracks().forEach((track) => track.stop());
+          if (peerConnection) {
+            peerConnection.close();
+            peerConnection = null;
+          }
+        } catch (err) {
+          console.log(err, "err");
+        }
+      }
+
+      socket.on("offer", async (offer) => {
+        if (!peerConnection) startScreenShare();
+        try {
+          await peerConnection.setRemoteDescription(
+            new RTCSessionDescription(offer)
+          );
+          const answer = peerConnection.createAnswer();
+          await peerConnection.setLocalDescription(answer);
+          socket.emit("answer", answer);
+        } catch (err) {
+          console.log("erroe in handling offer");
+        }
+      });
+
+      socket.on("answer", async (answer) => {
+        try {
+          await peerConnection.setRemoteDescription(
+            new RTCSessionDescription(answer)
+          );
+        } catch (err) {
+          console.log("erroe in handling answer");
+        }
+      });
+
+      socket.on("ice-candidate", async (candidate) => {
+        try {
+          await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+        } catch (err) {
+          console.log("erroe in handling candidate");
+        }
+      });
+
+      function handleIcecandidate(event) {
+        if (event.candidate) {
+          socket.emit("ice-candidate", event.candidate);
+        }
+      }
+      function handleTrack(event) {
+        if (event.stream && event.stream[0]) {
+          remotevideo.srcObject = event.stream[0];
+        } else {
+          if (!remoteStream) {
+            remoteStream = new MediaStream();
+            remotevideo.srcObject = remoteStream;
+          }
+          remoteStream.addTrack(event.track);
+        }
+      }
     </script>
-    
-</body>
+  </body>
 </html>
