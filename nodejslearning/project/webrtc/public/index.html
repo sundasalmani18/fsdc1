@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web RTc</title>
+</head>
+<body>
+    <button id="startbutton">Start Screen Sharing</button>
+    <button id="stopbutton">Stop Screen Sharing</button>
+    <video id="localvideo"></video>
+    <video id="remotevideo"></video>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket=io();
+        let localStream
+        let remoteStream
+        let peerConnection
+
+        const startbutton=document.getElementById("startbutton")
+         const stopbutton = document.getElementById("stopbutton")
+          const localvideo = document.getElementById("localvideo")
+           const remotevideo = document.getElementById("remotevideo")
+    </script>
+    
+</body>
+</html>
