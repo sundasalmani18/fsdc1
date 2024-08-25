@@ -15,7 +15,8 @@ app.use(express.static(path.join(__dirname,"public")))
 
 io.on("connection",(socket)=>{
     console.log("user connected")
-    socket.on("disconnected",()=>{
+
+    socket.on("disconnect",()=>{
         console.log("user disconnected")
     })
     socket.on("offer",(offer)=>{

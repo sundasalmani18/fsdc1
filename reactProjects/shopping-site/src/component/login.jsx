@@ -15,13 +15,13 @@ export default function Login() {
   const [formData, setFormData] = useState(initFormData);
 
   useEffect(() => {
-    console.log(isUserlogin());
+    // console.log("user data", isUserlogin());
   }, []);
 
   const isUserlogin = () => {
     let validUser = false;
     if (Object.entries(currentUser).length > 0) {
-      // console.log(currentUser)
+      //console.log("current", currentUser);
       validUser = true;
     }
 
@@ -46,7 +46,7 @@ export default function Login() {
   const loginUser = async (e) => {
     e.preventDefault();
 
-    // console.log('formData', formData)
+    // console.log("formData", formData);
 
     try {
       await login(formData);

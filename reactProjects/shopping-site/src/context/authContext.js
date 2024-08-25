@@ -11,13 +11,13 @@ export const AuthContextProvider = ({ children }) => {
 
     const login = async (data) => {
         console.log('login data', data)
-        const res = await axios.post('http://localhost:8080/auth/login', data)
+        const res = await axios.post('http://localhost:8000/auth/login', data)
         console.log('res', res)
         setCurrentUser(res.data)
     }
 
     const logout = async () => {
-        const res = await axios.get('http://localhost:8080/auth/logout')
+        const res = await axios.get('http://localhost:8000/auth/logout')
         console.log('res logout', res)
         setCurrentUser({})
     }
