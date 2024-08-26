@@ -51,7 +51,7 @@ export default function Login() {
     try {
       await login(formData);
       alert("login successful");
-      navigate("/");
+      // navigate("/");
     } catch (err) {
       console.log("ee", err);
     }

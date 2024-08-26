@@ -31,6 +31,7 @@ export default function Navbar() {
                 Register
               </a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" onClick={() => navigate("/login")}>
                 Login
@@ -39,6 +40,22 @@ export default function Navbar() {
             <li class="nav-item">
               <a class="nav-link" href="#">
                 Logout
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" onClick={() => navigate("/category")}>
+                category
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onClick={() => navigate("/product")}>
+                product
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onClick={() => navigate("/admindashboard")}>
+                Admin Dashboard
               </a>
             </li>
           </ul>
