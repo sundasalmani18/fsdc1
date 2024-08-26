@@ -80,10 +80,10 @@ export default function Login() {
     // }
   };
 
-  if (isUserlogin()) {
-    navigate("/");
-    // return window.open('/', '_self')
-  }
+  // if (isUserlogin()) {
+  //   navigate("/");
+  //   // return window.open('/', '_self')
+  // }
 
   return (
     <>
