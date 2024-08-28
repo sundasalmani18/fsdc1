@@ -1,7 +1,7 @@
 import { db } from "../dbConnect.js";
 
-export const getCategories = (req, res) => {
-  const q = "select * from category";
+export const getProducts = (req, res) => {
+  const q = "select * from product";
   // const q = "SELECT category.category_name AS category, items.item_name ,items.description,items.image,items.price FROM category LEFT JOIN items ON category.category_name = items.category;";
 
   db.query(q, (err, data) => {
@@ -16,8 +16,8 @@ export const getCategories = (req, res) => {
   // return res.status(200).json({msg: 'getCategories'})
 };
 
-export const getCategory = (req, res) => {
-  const query = "select * from category where category_id =?";
+export const getProduct = (req, res) => {
+  const query = "select * from product where id =?";
 
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);
@@ -32,12 +32,20 @@ export const getCategory = (req, res) => {
   // return res.status(200).json({ msg: 'getCatagory' })
 };
 
-export const addCategory = (req, res) => {
+export const addProducts = (req, res) => {
   //  const query ="INSERT INTO category (category_name) VALUES ('Brunch')"; // static query
   // console.log('req', req.body)
-  const query = "INSERT INTO category (category_name) VALUES (?)"; // dynamic query
+  const query =
+    "INSERT INTO product (product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
 
-  const bodyData = [req.body.category_name];
+  const bodyData = [
+    req.body.product_name,
+    req.body.description,
+    req.body.price,
+    req.body.category_id,
+    req.body.quantity,
+    req.body.image,
+  ];
 
   console.log("bodyData", bodyData);
 
@@ -57,13 +65,20 @@ export const addCategory = (req, res) => {
   // return res.status(200).json({ msg: 'addCategory' })
 };
 
-export const updateCategory = (req, res) => {
+export const updateProduct = (req, res) => {
   const categoryId = req.params.id;
   // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
-    "UPDATE category SET `category_name` = ? WHERE `category_id`= ?";
+    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ?, `category_id` = ?,`quantity` = ?,`image` = ?, WHERE `id`= ?";
 
-  const bodyData = [req.body.category_name];
+  const bodyData = [
+    req.body.product_name,
+    req.body.description,
+    req.body.price,
+    req.body.category_id,
+    req.body.quantity,
+    req.body.image,
+  ];
 
   db.query(query, [...bodyData, categoryId], (err, data) => {
     if (err) return res.status(500).send(err);
@@ -79,8 +94,8 @@ export const updateCategory = (req, res) => {
   // return res.status(200).json({ msg: 'updateCategory' })
 };
 
-export const deleteCategory = (req, res) => {
-  const query = "DELETE FROM category WHERE `category_id` = ?";
+export const deleteProduct = (req, res) => {
+  const query = "DELETE FROM product WHERE `id` = ?";
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);
 
