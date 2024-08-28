@@ -9,7 +9,7 @@ export const getProducts = (req, res) => {
 
     let responseData = {
       result: true,
-      categories: data,
+      products: data,
     };
     return res.status(200).json({ Data: responseData });
   });
@@ -24,7 +24,7 @@ export const getProduct = (req, res) => {
 
     let responseData = {
       result: true,
-      category: data[0],
+      product: data[0],
     };
     return res.status(200).json(responseData);
   });
@@ -35,6 +35,10 @@ export const getProduct = (req, res) => {
 export const addProducts = (req, res) => {
   //  const query ="INSERT INTO category (category_name) VALUES ('Brunch')"; // static query
   // console.log('req', req.body)
+
+  const { product_name, description, price, category_id, quantity } =
+    req.fileld;
+  const { image } = req.file;
   const query =
     "INSERT INTO product (product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
 
@@ -56,8 +60,8 @@ export const addProducts = (req, res) => {
 
     let responseData = {
       result: true,
-      category: bodyData,
-      msg: "category created",
+      product: bodyData,
+      msg: "product created",
     };
     return res.status(200).json({ Data: responseData });
   });
@@ -66,7 +70,7 @@ export const addProducts = (req, res) => {
 };
 
 export const updateProduct = (req, res) => {
-  const categoryId = req.params.id;
+  const productId = req.params.id;
   // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
     "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ?, `category_id` = ?,`quantity` = ?,`image` = ?, WHERE `id`= ?";
@@ -80,13 +84,13 @@ export const updateProduct = (req, res) => {
     req.body.image,
   ];
 
-  db.query(query, [...bodyData, categoryId], (err, data) => {
+  db.query(query, [...bodyData, productId], (err, data) => {
     if (err) return res.status(500).send(err);
 
     let responseData = {
       result: true,
       category: bodyData,
-      msg: "category updated",
+      msg: "product updated",
     };
     return res.status(200).json({ Data: responseData });
   });
@@ -101,23 +105,23 @@ export const deleteProduct = (req, res) => {
 
     let responseData = {
       result: true,
-      category: data,
+      product: data,
     };
     return res.status(200).json({ Data: responseData });
   });
   // return res.status(200).json({ msg: 'deleteCategory' })
 };
 
-export const searchCategory = (req, res) => {
-  const query = "SELECT * FROM category WHERE category_name= ?";
-  db.query(query, [req.params.key], (err, data) => {
-    if (err) return res.status(500).send(err);
+// export const searchCategory = (req, res) => {
+//   const query = "SELECT * FROM category WHERE category_name= ?";
+//   db.query(query, [req.params.key], (err, data) => {
+//     if (err) return res.status(500).send(err);
 
-    let responseData = {
-      result: true,
-      categories: data,
-    };
-    return res.status(200).json({ Data: responseData });
-  });
-  // return res.status(200).json({msg: 'getCategories'})
-};
+//     let responseData = {
+//       result: true,
+//       categories: data,
+//     };
+//     return res.status(200).json({ Data: responseData });
+//   });
+//   // return res.status(200).json({msg: 'getCategories'})
+// };

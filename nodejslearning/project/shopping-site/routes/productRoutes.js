@@ -6,11 +6,12 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controller/product.js";
+import formidable from "formidable";
 
 const router = express.Router();
 
 router.get("/", getProducts);
-router.get("/:id", getProduct);
+router.get("/:id", formidable(), getProduct);
 router.post("/", addProducts);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
