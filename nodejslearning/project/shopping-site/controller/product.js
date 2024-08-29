@@ -1,4 +1,6 @@
 import { db } from "../dbConnect.js";
+import path from "path"; //for single specific Image
+import fs from "fs"; //for single specific Image
 
 export const getProducts = (req, res) => {
   const q = "select * from product";
@@ -32,23 +34,17 @@ export const getProduct = (req, res) => {
   // return res.status(200).json({ msg: 'getCatagory' })
 };
 
-export const addProducts = (req, res) => {
-  //  const query ="INSERT INTO category (category_name) VALUES ('Brunch')"; // static query
-  // console.log('req', req.body)
-
-  const { product_name, description, price, category_id, quantity } =
-    req.fileld;
-  const { image } = req.file;
+export const addProducts = async (req, res) => {
   const query =
-    "INSERT INTO product (product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
-
+    "INSERT INTO product(product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
+  const image = req.file.filename;
   const bodyData = [
     req.body.product_name,
     req.body.description,
     req.body.price,
     req.body.category_id,
     req.body.quantity,
-    req.body.image,
+    image,
   ];
 
   console.log("bodyData", bodyData);

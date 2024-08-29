@@ -1,4 +1,6 @@
 import express from "express";
+import upload from "../middleware/multerStorge.js";
+
 import {
   getProducts,
   getProduct,
@@ -6,19 +8,13 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controller/product.js";
-import formidable from "formidable";
 
 const router = express.Router();
 
 router.get("/", getProducts);
-router.get("/:id", formidable(), getProduct);
-router.post("/", addProducts);
+router.get("/:id", getProduct);
+router.post("/", upload.single("image"), addProducts);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
-
-// router.get('/:id', getUser);
-// router.post('/', addUser);
-// router.put('/:id', updateUser);
-// router.delete('/:id', deleteUser);
 
 export default router;
