@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 function Product() {
+  const [file, setFile] = useState();
+
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleUplaod = async () => {
+    const formData = new FormData();
+
+    formData.append("image", file);
+    await axios
+      .post("http://localhost:8000/product", formData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
-      <h1>Product Page</h1>
+      <input type="file" onChange={handleFile} />
+      <button onClick={handleUplaod}>upload</button>
     </div>
   );
 }

@@ -35,32 +35,33 @@ export const getProduct = (req, res) => {
 };
 
 export const addProducts = async (req, res) => {
-  const query =
-    "INSERT INTO product(product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
-  const image = req.file.filename;
-  const bodyData = [
-    req.body.product_name,
-    req.body.description,
-    req.body.price,
-    req.body.category_id,
-    req.body.quantity,
-    image,
-  ];
+  console.log(req.file);
+  // const query =
+  //   "INSERT INTO product(product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
+  // const image = req.file.filename;
+  // const bodyData = [
+  //   req.body.product_name,
+  //   req.body.description,
+  //   req.body.price,
+  //   req.body.category_id,
+  //   req.body.quantity,
+  //   image,
+  // ];
 
-  console.log("bodyData", bodyData);
+  // console.log("bodyData", bodyData);
 
-  // return res.status(200).json({ msg: 'addCategory' })
+  // // return res.status(200).json({ msg: 'addCategory' })
 
-  db.query(query, [bodyData], (err, data) => {
-    if (err) return res.status(500).send(err);
+  // db.query(query, [bodyData], (err, data) => {
+  //   if (err) return res.status(500).send(err);
 
-    let responseData = {
-      result: true,
-      product: bodyData,
-      msg: "product created",
-    };
-    return res.status(200).json({ Data: responseData });
-  });
+  //   let responseData = {
+  //     result: true,
+  //     product: bodyData,
+  //     msg: "product created",
+  //   };
+  //   return res.status(200).json({ Data: responseData });
+  // });
 
   // return res.status(200).json({ msg: 'addCategory' })
 };
