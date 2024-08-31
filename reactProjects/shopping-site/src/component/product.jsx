@@ -16,6 +16,7 @@ function Product() {
       .post("http://localhost:8000/product", formData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    alert("image add successful");
   };
 
   return (

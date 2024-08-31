@@ -36,41 +36,8 @@ export const getProduct = (req, res) => {
 
 export const addProducts = async (req, res) => {
   console.log(req.file);
-  // const query =
-  //   "INSERT INTO product(product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
-  // const image = req.file.filename;
-  // const bodyData = [
-  //   req.body.product_name,
-  //   req.body.description,
-  //   req.body.price,
-  //   req.body.category_id,
-  //   req.body.quantity,
-  //   image,
-  // ];
-
-  // console.log("bodyData", bodyData);
-
-  // // return res.status(200).json({ msg: 'addCategory' })
-
-  // db.query(query, [bodyData], (err, data) => {
-  //   if (err) return res.status(500).send(err);
-
-  //   let responseData = {
-  //     result: true,
-  //     product: bodyData,
-  //     msg: "product created",
-  //   };
-  //   return res.status(200).json({ Data: responseData });
-  // });
-
-  // return res.status(200).json({ msg: 'addCategory' })
-};
-
-export const updateProduct = (req, res) => {
-  const productId = req.params.id;
-  // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
-    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ?, `category_id` = ?,`quantity` = ?,`image` = ?, WHERE `id`= ?";
+    "INSERT INTO product(product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
 
   const bodyData = [
     req.body.product_name,
@@ -78,15 +45,49 @@ export const updateProduct = (req, res) => {
     req.body.price,
     req.body.category_id,
     req.body.quantity,
-    req.body.image,
+    req.file.filename,
   ];
 
+  console.log("bodyData", bodyData);
+
+  // return res.status(200).json({ msg: 'addCategory' })
+
+  db.query(query, [bodyData], (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    let responseData = {
+      result: true,
+      product: bodyData,
+      msg: "product created",
+    };
+    return res.status(200).json({ Data: responseData });
+  });
+
+  // return res.status(200).json({ msg: 'addCategory' })
+};
+
+export const updateProduct = (req, res) => {
+  const productId = req.params.id;
+  const image = req.file.filename;
+  // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
+  const query =
+    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ? ,`quantity` = ?, `image` =?  WHERE `id` = ?";
+
+  const bodyData = [
+    req.body.product_name,
+    req.body.description,
+    req.body.price,
+    req.body.quantity,
+    image,
+  ];
+
+  console.log("bodyData", bodyData);
   db.query(query, [...bodyData, productId], (err, data) => {
     if (err) return res.status(500).send(err);
 
     let responseData = {
       result: true,
-      category: bodyData,
+      product: bodyData,
       msg: "product updated",
     };
     return res.status(200).json({ Data: responseData });
