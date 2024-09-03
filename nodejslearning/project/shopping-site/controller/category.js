@@ -64,6 +64,7 @@ export const updateCategory = (req, res) => {
     "UPDATE category SET `category_name` = ? WHERE `category_id`= ?";
 
   const bodyData = [req.body.category_name];
+  console.log("updated body data", bodyData);
 
   db.query(query, [...bodyData, categoryId], (err, data) => {
     if (err) return res.status(500).send(err);
