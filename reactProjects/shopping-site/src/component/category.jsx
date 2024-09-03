@@ -4,8 +4,23 @@ import axios from "axios";
 import CategoryForm from "./categoryForm";
 
 function Category() {
-  const [categoriesData, setCategoriesData] = useState();
-  const [name, setName] = useState("");
+  const [categoriesData, setCategoriesData] = useState([]);
+  const [category_name, setCategory_name] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("http://localhost:8000/category", {
+        category_name,
+      });
+      getCategories();
+      alert(`${category_name} is created`);
+      console.log(data?.Data, "data");
+    } catch (err) {
+      console.log(err, "error");
+      //toast.error("something went wrong");
+    }
+  };
 
   useEffect(() => {
     getCategories();
@@ -23,21 +38,6 @@ function Category() {
   };
   console.log("categoriesData", categoriesData);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const data = axios.post("http://localhost:8000/category", { name });
-      if (data?.Data.success) {
-        toast.success(`${data.name} is created`);
-      } else {
-        toast.error(data.message);
-      }
-    } catch (err) {
-      console.log(err, "error");
-      toast.error("something went wrong");
-    }
-  };
-
   return (
     <div className="conatiner">
       <div className="row">
@@ -48,8 +48,8 @@ function Category() {
           <div>
             <CategoryForm
               handleSubmit={handleSubmit}
-              value={name}
-              setValue={setName}
+              value={category_name}
+              setValue={setCategory_name}
             />
           </div>
           <table class="table">
