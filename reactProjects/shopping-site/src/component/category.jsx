@@ -5,11 +5,11 @@ import CategoryForm from "./categoryForm";
 import { Modal } from "antd";
 
 function Category() {
-  const [categoriesData, setCategoriesData] = useState([]);
+  const [categoriesData, setCategoriesData] = useState();
   const [category_name, setCategory_name] = useState("");
   const [visible, setVisible] = useState(false);
   const [updateName, setUpdateName] = useState("");
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,21 +42,33 @@ function Category() {
   };
   console.log("categoriesData", categoriesData);
 
+  const handleDelete = async (id) => {
+    try {
+      const data = await axios.delete(`http://localhost:8000/category/${id}`);
+      alert(`${category_name} is deleted`);
+      getCategories();
+    } catch (err) {
+      console.log(err, "error");
+      //toast.error("something went wrong");
+    }
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
+
     try {
-      const { data } = await axios.put(
-        `http://localhost:8000/category/${selected.Id}`,
+      const data = await axios.put(
+        `http://localhost:8000/category/${selected.category_id}`,
         {
           category_name: updateName,
         }
       );
-      console.log(data?.Data, "data");
-      setSelected(null);
+
+      setSelected("");
       setUpdateName("");
-      // setVisible(false);
+      setVisible(false);
       getCategories();
-      alert(`${category_name} is updated`);
+      alert(`${updateName} is updated`);
     } catch (err) {
       console.log(err, "error");
       //toast.error("something went wrong");
@@ -95,11 +107,17 @@ function Category() {
                           onClick={() => {
                             setVisible(true);
                             setUpdateName(item.category_name);
+                            setSelected(item);
                           }}
                         >
                           Edit
                         </button>
-                        <button className="btn btn-danger"> Delete</button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => handleDelete(item.category_id)}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))
@@ -107,7 +125,11 @@ function Category() {
             </tbody>
           </table>
         </div>
-        <Modal onCancel={() => setVisible(false)} footer={null} open={visible}>
+        <Modal
+          onCancel={() => setVisible(false)}
+          footer={null}
+          visible={visible}
+        >
           <CategoryForm
             value={updateName}
             setValue={setUpdateName}
