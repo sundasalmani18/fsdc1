@@ -11,12 +11,12 @@ import {
 
 // Replace with your Firebase project configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBf5xeTZ1snwzfVSciJhJGCdhHQOQJhkN8",
+  authDomain: "redux-firebase-project-8f735.firebaseapp.com",
+  projectId: "redux-firebase-project-8f735",
+  storageBucket: "redux-firebase-project-8f735.appspot.com",
+  messagingSenderId: "480378240081",
+  appId: "1:480378240081:web:7485e86096b346c5808c70",
 };
 
 // Initialize Firebase
