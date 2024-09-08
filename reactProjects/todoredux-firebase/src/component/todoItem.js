@@ -13,8 +13,10 @@ const TodoItem = ({ todo }) => {
 
   const handleUpdate = () => {
     const newText = prompt("Enter new text:", todo.text);
+    // console.log(newText);
+    // console.log(todo);
     if (newText) {
-      dispatch(editTodo(todo.id, { text: newText }));
+      dispatch(editTodo({ id: todo.id, text: newText }));
       // console.log("text", newText);
     }
   };

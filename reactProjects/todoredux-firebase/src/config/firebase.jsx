@@ -7,6 +7,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  FieldValue,
 } from "firebase/firestore";
 
 // Replace with your Firebase project configuration
@@ -23,7 +24,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc };
+export {
+  db,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+  FieldValue,
+};
 
 // // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";

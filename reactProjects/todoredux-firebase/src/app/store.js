@@ -6,6 +6,10 @@ export const store = configureStore({
   reducer: {
     todos: todoReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 //export default store;

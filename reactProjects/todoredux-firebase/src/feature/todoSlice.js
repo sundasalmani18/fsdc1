@@ -1,5 +1,5 @@
 // src/redux/todoSlice.js
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { db } from "../config/firebase.jsx";
 
 const todoSlice = createSlice({
