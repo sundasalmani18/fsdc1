@@ -15,7 +15,7 @@ const TodoItem = ({ todo }) => {
     const newText = prompt("Enter new text:", todo.text);
     if (newText) {
       dispatch(editTodo(todo.id, { text: newText }));
-      console.log("text", newText);
+      // console.log("text", newText);
     }
   };
 
