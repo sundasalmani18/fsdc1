@@ -9,6 +9,7 @@ const TodoList = () => {
   const todos = useSelector((state) => state.todos.todos);
   const loading = useSelector((state) => state.todos.loading);
   const error = useSelector((state) => state.todos.error);
+  // console.log("todos", todos);
 
   useEffect(() => {
     dispatch(fetchTodos());

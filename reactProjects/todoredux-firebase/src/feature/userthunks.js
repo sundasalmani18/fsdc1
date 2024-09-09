@@ -12,7 +12,7 @@ import {
 // Fetch todos from Firebase
 export const fetchUsers = () => async (dispatch) => {
   try {
-    const querySnapshot = await getDocs(collection(db, "user"));
+    const querySnapshot = await getDocs(collection(db, "users"));
     const users = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
