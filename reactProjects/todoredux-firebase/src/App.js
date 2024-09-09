@@ -3,6 +3,7 @@ import "./App.css";
 import TodoForm from "./component/todoForm";
 import TodoList from "./component/todoList";
 import AddTodo from "./component/addTodo";
+import AddUser from "./component/usercomponent/addUser";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       {/* <TodoForm /> */}
       <TodoList />
       <AddTodo />
+
+      <AddUser />
     </div>
   );
 }
