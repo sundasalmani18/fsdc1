@@ -1,4 +1,9 @@
-import { addUser, setUser } from "../feature/userSlice.js";
+import {
+  addUser,
+  removeUser,
+  setUser,
+  updateUser,
+} from "../feature/userSlice.js";
 import {
   db,
   collection,
@@ -30,5 +35,23 @@ export const createUser = (user) => async (dispatch) => {
     dispatch(addUser({ id: docRef.id, ...user }));
   } catch (error) {
     console.error("Error adding todo: ", error);
+  }
+};
+export const deleteUser = (id) => async (dispatch) => {
+  try {
+    await deleteDoc(doc(db, "users", id));
+    dispatch(removeUser(id));
+  } catch (error) {
+    console.error("Error deleting todo: ", error);
+  }
+};
+
+// Update a todo in Firebase
+export const editUser = (user) => async (dispatch) => {
+  try {
+    await updateDoc(doc(db, "users", user.id), user);
+    dispatch(updateUser(user));
+  } catch (error) {
+    console.error("Error updating todo: ", error);
   }
 };

@@ -14,27 +14,21 @@ const userSlice = createSlice({
     addUser: (state, action) => {
       state.users.push(action.payload);
     },
-    // updateTodo: (state, action) => {
-    //   const index = state.todos.findIndex(
-    //     (todo) => todo.id === action.payload.id
-    //   );
-    //   console.log("index", index);
-    //   if (index !== "") {
-    //     state.todos[index] = action.payload;
-    //   }
-    // },
-    // removeTodo: (state, action) => {
-    //   state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-    // },
-    // setLoading: (state, action) => {
-    //   state.loading = action.payload;
-    // },
-    // setError: (state, action) => {
-    //   state.error = action.payload;
-    // },
+    updateUser: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user.id === action.payload.id
+      );
+      console.log("index", index);
+      if (index !== "") {
+        state.users[index] = action.payload;
+      }
+    },
+    removeUser: (state, action) => {
+      state.users = state.users.filter((user) => user.id !== action.payload);
+    },
   },
 });
 
-export const { setUser, addUser } = userSlice.actions;
+export const { setUser, addUser, removeUser, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;
