@@ -14,7 +14,7 @@ import {
   updateDoc,
 } from "../config/firebase.jsx";
 
-// Fetch todos from Firebase
+// Fetch users from Firebase
 export const fetchUsers = () => async (dispatch) => {
   try {
     const querySnapshot = await getDocs(collection(db, "users"));
@@ -28,7 +28,7 @@ export const fetchUsers = () => async (dispatch) => {
   }
 };
 
-// Add a new todo to Firebase
+// Add a new users to Firebase
 export const createUser = (user) => async (dispatch) => {
   try {
     const docRef = await addDoc(collection(db, "users"), user);
@@ -46,7 +46,7 @@ export const deleteUser = (id) => async (dispatch) => {
   }
 };
 
-// Update a todo in Firebase
+// Update a users in Firebase
 export const editUser = (user) => async (dispatch) => {
   try {
     await updateDoc(doc(db, "users", user.id), {

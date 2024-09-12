@@ -22,11 +22,13 @@ const TodoItem = ({ todo }) => {
   };
 
   return (
-    <li>
-      {todo.text}
-      <button onClick={handleUpdate}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
-    </li>
+    <div>
+      <li>
+        {todo.text}
+        <button onClick={handleUpdate}>Edit</button>
+        <button onClick={handleDelete}>Delete</button>
+      </li>
+    </div>
   );
 };
 

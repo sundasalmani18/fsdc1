@@ -1,5 +1,5 @@
 // with Redux firebase
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../feature/readTodo.js";
 import TodoItem from "../component/todoItem.js";
@@ -9,7 +9,10 @@ const TodoList = () => {
   const todos = useSelector((state) => state.todos.todos);
   const loading = useSelector((state) => state.todos.loading);
   const error = useSelector((state) => state.todos.error);
+  const { users } = useSelector((state) => state.users);
+  const [userSelected, setUserSelected] = useState("");
   // console.log("todos", todos);
+  console.log("user-todo", users);
 
   useEffect(() => {
     dispatch(fetchTodos());
@@ -18,12 +21,35 @@ const TodoList = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  const handleChange = (event) => {
+    setUserSelected(event.target.value);
+  };
+
   return (
-    <ul>
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} />
+        ))}
+      </ul>
+
+      <select id="" value={userSelected} onChange={handleChange}>
+        <label>Select a state</label>
+        {users.length > 0 &&
+          users.map((item) => (
+            <option key={item.id} value={item.name}>
+              {item.name}
+            </option>
+          ))}
+      </select>
+      {/* <label for="cars">Choose a car:</label>
+      <select name="cars" id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select> */}
+    </>
   );
 };
 
