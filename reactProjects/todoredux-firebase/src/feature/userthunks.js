@@ -49,9 +49,14 @@ export const deleteUser = (id) => async (dispatch) => {
 // Update a todo in Firebase
 export const editUser = (user) => async (dispatch) => {
   try {
-    await updateDoc(doc(db, "users", user.id), user);
+    await updateDoc(doc(db, "users", user.id), {
+      ...user,
+      updatedAt: new Date(),
+    });
+    // await updateDoc(doc(db, "users", user.id), user);
     dispatch(updateUser(user));
+    console.log("dispatch update", user);
   } catch (error) {
-    console.error("Error updating todo: ", error);
+    console.error("Error updating user: ", error);
   }
 };

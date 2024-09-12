@@ -19,7 +19,7 @@ const userSlice = createSlice({
         (user) => user.id === action.payload.id
       );
       console.log("index", index);
-      if (index !== "") {
+      if (index !== -1) {
         state.users[index] = action.payload;
       }
     },

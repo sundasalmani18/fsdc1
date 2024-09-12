@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editTodo } from "../feature/action.js";
+import { editUser } from "../../feature/userthunks.js";
 
 const UserEdit = ({ user, onClose }) => {
-  const [name, setName] = useState(todo.text);
-  const [email, setEmail] = useState(todo.text);
-  const [phone, setPhone] = useState(todo.text);
+  // console.log("edit user", user);
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text.trim()) {
-      dispatch(editUser(todo.id, text));
-      onClose();
-    }
+
+    const updateUsr = { id: user.id, name, email, phone };
+
+    //  dispatch(editUser(updateUsr));
+
+    dispatch(editUser(updateUsr));
+    console.log("update user", updateUsr);
+    onClose();
   };
 
   return (
@@ -21,18 +26,18 @@ const UserEdit = ({ user, onClose }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
         <button type="submit">Update</button>
         <button type="button" onClick={onClose}>
