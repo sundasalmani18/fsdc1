@@ -5,6 +5,7 @@ import { deleteTodo } from "../feature/deleteTodo.js";
 import { editTodo } from "../feature/updateTodo.js";
 
 const TodoItem = ({ todo }) => {
+  // console.log("TodoItem", todo);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -25,6 +26,7 @@ const TodoItem = ({ todo }) => {
     <div>
       <li>
         {todo.text}
+        {todo.user}
         <button onClick={handleUpdate}>Edit</button>
         <button onClick={handleDelete}>Delete</button>
       </li>

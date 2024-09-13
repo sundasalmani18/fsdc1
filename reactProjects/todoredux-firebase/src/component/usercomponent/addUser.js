@@ -15,6 +15,9 @@ const AddUser = () => {
       const newUsr = { name, email, phone };
       console.log("new user", newUsr);
       dispatch(createUser(newUsr));
+      setName("")
+      setEmail("")
+      setPhone("")
     }
 
     //   dispatch(createTodo({ text }));

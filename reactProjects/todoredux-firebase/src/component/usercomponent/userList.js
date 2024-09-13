@@ -7,7 +7,7 @@ import UserEdit from "./editUser.js";
 const UserList = () => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
-  console.log("users", users);
+  // console.log("users", users);
 
   const [editingUser, setEditingUser] = useState(null);
 

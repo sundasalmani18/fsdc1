@@ -3,6 +3,7 @@ import { addTodo } from "../feature/todoSlice";
 import { db, collection, addDoc, FieldValue } from "../config/firebase";
 
 export const createTodo = (todo) => async (dispatch) => {
+  // console.log("createTodo", todo);
   try {
     const docRef = await addDoc(collection(db, "todos"), {
       ...todo,
