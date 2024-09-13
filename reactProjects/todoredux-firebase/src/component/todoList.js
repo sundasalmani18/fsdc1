@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../feature/readTodo.js";
 import TodoItem from "../component/todoItem.js";
+import { deleteTodo } from "../feature/deleteTodo.js";
+import TodoEdit from "./editTodo.js";
 
 const TodoList = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
-  const loading = useSelector((state) => state.todos.loading);
-  const error = useSelector((state) => state.todos.error);
+  const [editingTodos, setEditingTodos] = useState(null);
 
   // console.log("todos", todos);
 
@@ -16,17 +17,66 @@ const TodoList = () => {
     dispatch(fetchTodos());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const handleEditClick = (todo) => {
+    setEditingTodos(todo);
+  };
+
+  const handleCloseEdit = () => {
+    setEditingTodos(null);
+  };
+
+  // const handleUpdate = (todo) => {
+  //   const newText = prompt("Enter new text:", todo.text);
+  //   // console.log(newText);
+  //   // console.log(todo);
+  //   if (newText) {
+  //     dispatch(editTodo({ id: todo.id, text: newText }));
+  //     // console.log("text", newText);
+  //   }
+  // };
 
   return (
-    <>
-      <ul>
-        {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
-        ))}
-      </ul>
-    </>
+    <div className="container m-5">
+      <h2>Todo List</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">user</th>
+            <th scope="col">text</th>
+            <th scope="col">upadte</th>
+            <th scope="col">delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todos.map((todo) => (
+            <tr key={todo.id}>
+              <td>{todo.text}</td>
+              <td>{todo.user}</td>
+              <td>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleEditClick(todo)}
+                >
+                  Edit
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => dispatch(deleteTodo(todo.id))}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+            // <TodoItem key={todo.id} todo={todo} />
+          ))}
+        </tbody>
+      </table>
+      {editingTodos && (
+        <TodoEdit todo={editingTodos} onClose={handleCloseEdit} />
+      )}
+    </div>
   );
 };
 

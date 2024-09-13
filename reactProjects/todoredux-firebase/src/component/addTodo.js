@@ -25,25 +25,51 @@ const AddTodo = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="container ">
+      <div className="col-md-8 m-4">
+        <h2>Add Todos</h2>
+        <form>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id=""
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter Todo"
+            />
+          </div>
+          <select id="" value={user} onChange={handleChange} className="m-4">
+            <label>Select a state</label>
+            {users.length > 0 &&
+              users.map((item) => (
+                <option key={item.id} value={item.name}>
+                  {item.name}
+                </option>
+              ))}
+          </select>
+          <br></br>
+
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+{
+  /* <form onSubmit={handleSubmit}>
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a New todo"
       />
-      <select id="" value={user} onChange={handleChange}>
-        <label>Select a state</label>
-        {users.length > 0 &&
-          users.map((item) => (
-            <option key={item.id} value={item.name}>
-              {item.name}
-            </option>
-          ))}
-      </select>
+     
       <button type="submit">Add</button>
-    </form>
-  );
-};
+    </form> */
+}
 
 export default AddTodo;

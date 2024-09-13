@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       {/* <TodoForm /> */}
-      <TodoList />
       <AddTodo />
+      <TodoList />
 
       <AddUser />
       <UserList />

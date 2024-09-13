@@ -8,28 +8,9 @@ const TodoItem = ({ todo }) => {
   // console.log("TodoItem", todo);
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(deleteTodo(todo.id));
-  };
-
-  const handleUpdate = () => {
-    const newText = prompt("Enter new text:", todo.text);
-    // console.log(newText);
-    // console.log(todo);
-    if (newText) {
-      dispatch(editTodo({ id: todo.id, text: newText }));
-      // console.log("text", newText);
-    }
-  };
-
   return (
     <div>
-      <li>
-        {todo.text}
-        {todo.user}
-        <button onClick={handleUpdate}>Edit</button>
-        <button onClick={handleDelete}>Delete</button>
-      </li>
+      <tr></tr>
     </div>
   );
 };

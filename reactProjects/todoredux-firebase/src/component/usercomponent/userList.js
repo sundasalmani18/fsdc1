@@ -75,13 +75,6 @@ const UserList = () => {
           <UserEdit user={editingUser} onClose={handleCloseEdit} />
         )}
       </table>
-      <ul>
-        <li>
-          {/* <button onClick={handleUpdate}>Edit</button>
-          <button onClick={handleDelete}>Delete</button> */}
-        </li>
-        {/* ))} */}
-      </ul>
     </div>
   );
 };
