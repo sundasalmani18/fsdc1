@@ -15,9 +15,9 @@ const AddUser = () => {
       const newUsr = { name, email, phone };
       console.log("new user", newUsr);
       dispatch(createUser(newUsr));
-      setName("")
-      setEmail("")
-      setPhone("")
+      setName("");
+      setEmail("");
+      setPhone("");
     }
 
     //   dispatch(createTodo({ text }));
@@ -31,7 +31,53 @@ const AddUser = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="container m-5">
+      <h2>Add User Data</h2>
+      <form onSubmit={handleSubmit}>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input
+            type="email"
+            class="form-control"
+            id=""
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id=""
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPhone">Phone No</label>
+          <input
+            type="number"
+            class="form-control"
+            id=""
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
+
+{
+  /* <form onSubmit={handleSubmit}>
       <input
         type="text"
         value={name}
@@ -54,8 +100,7 @@ const AddUser = () => {
       />
 
       <button type="submit">Add</button>
-    </form>
-  );
-};
+    </form> */
+}
 
 export default AddUser;

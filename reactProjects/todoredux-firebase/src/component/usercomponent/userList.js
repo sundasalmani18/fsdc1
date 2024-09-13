@@ -35,23 +35,53 @@ const UserList = () => {
 
   return (
     <div>
+      <h2>User Data</h2>
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">UserName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <th scope="row"> {user.name}</th>
+              <td>{user.email}</td>
+              <td>{user.phone}</td>
+              <td>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleEditClick(user)}
+                >
+                  Edit
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => dispatch(deleteUser(user.id))}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        {editingUser && (
+          <UserEdit user={editingUser} onClose={handleCloseEdit} />
+        )}
+      </table>
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name}
-            {user.email}
-            {user.phone}
-            {/* <button onClick={handleUpdate}>Edit</button>
+        <li>
+          {/* <button onClick={handleUpdate}>Edit</button>
           <button onClick={handleDelete}>Delete</button> */}
-
-            <button onClick={() => dispatch(deleteUser(user.id))}>
-              Delete
-            </button>
-            <button onClick={() => handleEditClick(user)}>Edit</button>
-          </li>
-        ))}
+        </li>
+        {/* ))} */}
       </ul>
-      {editingUser && <UserEdit user={editingUser} onClose={handleCloseEdit} />}
     </div>
   );
 };
