@@ -16,6 +16,7 @@ const AddTodo = () => {
     // console.log("user", user);
     if (text.trim()) {
       dispatch(createTodo({ text, user }));
+      alert("Todo add successfully");
       setText("");
     }
   };
@@ -28,7 +29,7 @@ const AddTodo = () => {
     <div className="container ">
       <div className="col-md-8 m-4">
         <h2>Add Todos</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div class="form-group">
             <input
               type="text"

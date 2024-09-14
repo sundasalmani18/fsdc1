@@ -37,7 +37,7 @@ const AddUser = () => {
         <div class="form-group">
           <label for="exampleInputEmail1">Name</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
             id=""
             value={name}
