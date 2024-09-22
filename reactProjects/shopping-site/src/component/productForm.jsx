@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Category from "./category";
+import axios from "axios";
 
 function ProductForm() {
   const [categoriesData, setCategoriesData] = useState();
@@ -26,22 +27,100 @@ function ProductForm() {
   useEffect(() => {
     getCategories();
   }, []);
+
+  const handleImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  //handle Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const productData = new FormData();
+      productData.append("product_name", productname);
+      productData.append("description", description);
+      productData.append("price", price);
+      productData.append("category", category);
+      productData.append("quantity", quantity);
+      productData.append("image", image);
+      const { data } = await axios.post(
+        "http://localhost:8000/product",
+
+        productData
+      );
+      alert(`${productname} is created`);
+      console.log(data?.Data, "data");
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
-      <h2>Add Product</h2>
-      <select
-        name="cars"
-        id="cars"
-        onChange={(value) => {
-          setCategory(value);
-        }}
-      >
-        {categoriesData?.categories?.map((item) => (
-          <option key={item.id} value={item.category_name}>
-            {item.category_name}
-          </option>
-        ))}
-      </select>
+      <div>
+        <h2>Add Product</h2>
+        <form onSubmit={handleSubmit}>
+          <select
+            placeholder="select category"
+            onChange={(value) => {
+              setCategory(value);
+            }}
+          >
+            <option>select Category</option>
+            {categoriesData?.categories?.map((item) => (
+              <option key={item.id} value={item.category_name}>
+                {item.category_name}
+              </option>
+            ))}
+          </select>
+          <div>
+            <label className="btn btn-outline-secondary">
+              <input type="file" onChange={handleImage} />
+            </label>
+          </div>
+
+          {image && (
+            <div>
+              <img
+                src={URL.createObjectURL(image)}
+                className="img img-responsive m-3"
+                height={"200px"}
+              />
+            </div>
+          )}
+
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Product Name"
+            value={productname}
+            onChange={(e) => setProductName(e.target.value)}
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Price "
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Quantity "
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 }

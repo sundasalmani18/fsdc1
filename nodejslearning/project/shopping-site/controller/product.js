@@ -19,7 +19,7 @@ export const getProducts = (req, res) => {
 };
 
 export const getProduct = (req, res) => {
-  const query = "select * from product where id =?";
+  const query = "select * from products where id =?";
 
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);
@@ -37,7 +37,7 @@ export const getProduct = (req, res) => {
 export const addProducts = async (req, res) => {
   console.log(req.file);
   const query =
-    "INSERT INTO product(product_name,description,price,category,quantity,image) VALUES (?)"; // dynamic query
+    "INSERT INTO products(product_name,description,price,category,quantity,image) VALUES (?)"; // dynamic query
 
   const bodyData = [
     req.body.product_name,
@@ -71,7 +71,7 @@ export const updateProduct = (req, res) => {
   const image = req.file.filename;
   // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
-    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ? ,`category`=?,`quantity` = ?, `image` =?  WHERE `id` = ?";
+    "UPDATE products SET `product_name` = ?, `description` = ?, `price` = ? ,`category`=?,`quantity` = ?, `image` =?  WHERE `id` = ?";
 
   const bodyData = [
     req.body.product_name,
@@ -97,7 +97,7 @@ export const updateProduct = (req, res) => {
 };
 
 export const deleteProduct = (req, res) => {
-  const query = "DELETE FROM product WHERE `id` = ?";
+  const query = "DELETE FROM products WHERE `id` = ?";
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);
 
