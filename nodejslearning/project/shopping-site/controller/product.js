@@ -37,13 +37,13 @@ export const getProduct = (req, res) => {
 export const addProducts = async (req, res) => {
   console.log(req.file);
   const query =
-    "INSERT INTO product(product_name,description,price,category_id,quantity,image) VALUES (?)"; // dynamic query
+    "INSERT INTO product(product_name,description,price,category,quantity,image) VALUES (?)"; // dynamic query
 
   const bodyData = [
     req.body.product_name,
     req.body.description,
     req.body.price,
-    req.body.category_id,
+    req.body.category,
     req.body.quantity,
     req.file.filename,
   ];
@@ -71,7 +71,7 @@ export const updateProduct = (req, res) => {
   const image = req.file.filename;
   // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
-    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ? ,`quantity` = ?, `image` =?  WHERE `id` = ?";
+    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ? ,`category`=?,`quantity` = ?, `image` =?  WHERE `id` = ?";
 
   const bodyData = [
     req.body.product_name,
