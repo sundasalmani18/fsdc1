@@ -1,29 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductForm from "./productForm";
 
 function Product() {
-  const [file, setFile] = useState();
+  const [product, setProduct] = useState([]);
 
-  const handleFile = (e) => {
-    setFile(e.target.files[0]);
+  const getAllProducts = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:8000/product");
+      setProduct(data.Data.products);
+      console.log("product", data.Data.products);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
-  const handleUplaod = async () => {
-    const formData = new FormData();
-
-    formData.append("image", file);
-    await axios
-      .post("http://localhost:8000/product", formData)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-    alert("image add successful");
-  };
-
+  useEffect(() => {
+    getAllProducts();
+  }, []);
   return (
     <div>
-      <input type="file" onChange={handleFile} />
-      <button onClick={handleUplaod}>upload</button>
+      <h1>All Products</h1>
+      <div className="col-md-9 d-flex">
+        {product.map((item) => (
+          <div class="card" key={item.id}>
+            <img
+              class="card-img-top"
+              src={`http://localhost:8000/product/productimage/${item.id}`}
+              alt={item.image}
+            />
+            <div class="card-body">
+              <h5 class="card-title">{item.product_name}</h5>
+              <p class="card-text">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

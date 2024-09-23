@@ -3,7 +3,7 @@ import path from "path"; //for single specific Image
 import fs from "fs"; //for single specific Image
 
 export const getProducts = (req, res) => {
-  const q = "select * from product";
+  const q = "select * from products";
   // const q = "SELECT category.category_name AS category, items.item_name ,items.description,items.image,items.price FROM category LEFT JOIN items ON category.category_name = items.category;";
 
   db.query(q, (err, data) => {
@@ -123,3 +123,19 @@ export const deleteProduct = (req, res) => {
 //   });
 //   // return res.status(200).json({msg: 'getCategories'})
 // };
+
+export const getProductImage = (req, res) => {
+  const query = "select image from products where id =?";
+
+  db.query(query, [req.params.id], (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    let responseData = {
+      result: true,
+      product: data[0],
+    };
+    return res.status(200).json(responseData);
+  });
+
+  // return res.status(200).json({ msg: 'getCatagory' })
+};
