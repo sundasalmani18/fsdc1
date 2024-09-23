@@ -9,6 +9,7 @@ import Category from "../component/category";
 import ProtectedRoutes from "./protectedRoutes";
 import Navbar from "../component/navbar";
 import ProductForm from "../component/productForm";
+import UpdateProduct from "../component/updateproduct";
 export default function LayoutRoutes() {
   const usertype = window.localStorage.getItem("usertype");
   const loggedIn = window.localStorage.getItem("loggedIn");
@@ -38,6 +39,7 @@ export default function LayoutRoutes() {
             <>
               <Route path="/product" element={<Product />} />
               <Route path="/productform" element={<ProductForm />} />
+              <Route path="/updateproduct/:id" element={<UpdateProduct />} />
               <Route path="/category" element={<Category />} />
               <Route path="/admindashboard" element={<AdminDashboard />} />
             </>
