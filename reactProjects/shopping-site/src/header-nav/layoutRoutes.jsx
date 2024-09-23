@@ -39,7 +39,10 @@ export default function LayoutRoutes() {
             <>
               <Route path="/product" element={<Product />} />
               <Route path="/productform" element={<ProductForm />} />
-              <Route path="/updateproduct/:id" element={<UpdateProduct />} />
+              <Route
+                path="/updateproduct/:productid"
+                element={<UpdateProduct />}
+              />
               <Route path="/category" element={<Category />} />
               <Route path="/admindashboard" element={<AdminDashboard />} />
             </>

@@ -3,7 +3,7 @@ import Category from "./category";
 import axios from "axios";
 
 function ProductForm() {
-  const [categoriesData, setCategoriesData] = useState();
+  const [categoriesData, setCategoriesData] = useState([]);
   const [productname, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");

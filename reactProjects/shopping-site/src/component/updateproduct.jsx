@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { productid } = useParams();
   const [categoriesData, setCategoriesData] = useState();
   const [productname, setProductName] = useState("");
   const [description, setDescription] = useState("");
@@ -13,11 +13,15 @@ const UpdateProduct = () => {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [image, setImage] = useState("");
+  const [id, setId] = useState("");
 
   const getProduct = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:8000/product/${id}`);
+      const { data } = await axios.get(
+        `http://localhost:8000/product/${productid}`
+      );
       setProductName(data.product.product_name);
+      setId(data.product.id);
       setDescription(data.product.description);
       setPrice(data.product.price);
       setCategory(data.product.category);
@@ -29,18 +33,22 @@ const UpdateProduct = () => {
     }
   };
 
-  //get All Category
-  // const getCategories = () => {
-  //   fetch("http://localhost:8000/category")
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setCategoriesData(data?.Data);
-  //     })
-  //     .catch((error) => console.error("Error fetching data", error));
-  // };
-  // console.log("categoriesData", categoriesData);
+  //  get All Category
+  const getCategories = () => {
+    fetch("http://localhost:8000/category")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCategoriesData(data?.Data);
+      })
+      .catch((error) => console.error("Error fetching data", error));
+  };
+  console.log("categoriesData", categoriesData);
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   useEffect(() => {
     getProduct();
@@ -61,13 +69,27 @@ const UpdateProduct = () => {
       productData.append("category", category);
       productData.append("quantity", quantity);
       productData.append("image", image);
-      const { data } = await axios.post(
-        "http://localhost:8000/product",
+      const { data } = await axios.put(
+        `http://localhost:8000/product/${productid}`,
 
         productData
       );
       alert(`${productname} is created`);
       console.log(data?.Data, "data");
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const answer = window.prompt("are you sure you want to delete");
+      if (!answer) return;
+      const { data } = await axios.delete(
+        `http://localhost:8000/product/${productid}`
+      );
+
+      navigate("/product");
     } catch (error) {
       console.log("error", error);
     }
@@ -81,6 +103,7 @@ const UpdateProduct = () => {
           onChange={(value) => {
             setCategory(value);
           }}
+          value={category.name}
         >
           <option>select Category</option>
           {categoriesData?.categories?.map((item) => (
@@ -137,6 +160,7 @@ const UpdateProduct = () => {
           Submit
         </button>
       </form>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };
