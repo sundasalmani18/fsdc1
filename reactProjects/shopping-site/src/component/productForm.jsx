@@ -7,7 +7,7 @@ function ProductForm() {
   const [productname, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState([]);
   const [quantity, setQuantity] = useState("");
   const [image, setImage] = useState("");
 
@@ -43,6 +43,8 @@ function ProductForm() {
       productData.append("category", category);
       productData.append("quantity", quantity);
       productData.append("image", image);
+      console.log("category", category);
+
       const { data } = await axios.post(
         "http://localhost:8000/product",
 
@@ -61,8 +63,8 @@ function ProductForm() {
         <form onSubmit={handleSubmit}>
           <select
             placeholder="select category"
-            onChange={(value) => {
-              setCategory(value);
+            onChange={(e) => {
+              setCategory(e.target.value);
             }}
           >
             <option>select Category</option>

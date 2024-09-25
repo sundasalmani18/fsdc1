@@ -100,10 +100,10 @@ const UpdateProduct = () => {
       <form onSubmit={handleSubmit}>
         <select
           placeholder="select category"
-          onChange={(value) => {
-            setCategory(value);
+          onChange={(e) => {
+            setCategory(e.target.value);
           }}
-          value={category.name}
+          value={category}
         >
           <option>select Category</option>
           {categoriesData?.categories?.map((item) => (

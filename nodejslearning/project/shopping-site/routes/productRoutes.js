@@ -7,7 +7,7 @@ import {
   addProducts,
   updateProduct,
   deleteProduct,
-  getProductImage,
+  // getProductImage,
 } from "../controller/product.js";
 
 const router = express.Router();
@@ -17,6 +17,6 @@ router.get("/:id", getProduct);
 router.post("/", upload.single("image"), addProducts);
 router.put("/:id", upload.single("image"), updateProduct);
 router.delete("/:id", deleteProduct);
-router.get("/productimage/:id", getProductImage);
+// router.get("/productimage/:id", getProductImage);
 
 export default router;
