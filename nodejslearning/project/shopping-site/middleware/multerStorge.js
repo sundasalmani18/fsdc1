@@ -2,7 +2,7 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "upload/"); // ->("./uploads")  this is the destination where files will save in the HArdDisk Storage
+    callback(null, "public/upload/"); // ->("./uploads")  this is the destination where files will save in the HArdDisk Storage
   },
   filename: (req, file, callback) => {
     callback(null, file.originalname);
