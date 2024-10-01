@@ -68,7 +68,7 @@ export const addProducts = async (req, res) => {
 
 export const updateProduct = (req, res) => {
   const productId = req.params.id;
-  // const image = req.file.filename;
+  const image = req.file.filename;
   // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
     "UPDATE products SET `product_name` = ?, `description` = ?, `price` = ? ,`category`=?,`quantity` = ?, `image` =?  WHERE `id` = ?";
@@ -79,7 +79,7 @@ export const updateProduct = (req, res) => {
     req.body.price,
     req.body.category,
     req.body.quantity,
-    // image,
+    image,
   ];
 
   console.log("bodyData", bodyData);

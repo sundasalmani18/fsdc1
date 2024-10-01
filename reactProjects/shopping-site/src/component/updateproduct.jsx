@@ -13,7 +13,6 @@ const UpdateProduct = () => {
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [image, setImage] = useState("");
-  const [id, setId] = useState("");
 
   const getProduct = async () => {
     try {
@@ -21,11 +20,12 @@ const UpdateProduct = () => {
         `http://localhost:8000/product/${productid}`
       );
       setProductName(data.product.product_name);
-      setId(data.product.id);
+      // setId(data.product.id);
       setDescription(data.product.description);
       setPrice(data.product.price);
       setCategory(data.product.category);
       setQuantity(data.product.quantity);
+      setImage(data.product.image);
 
       console.log("data", data.product);
     } catch (error) {
@@ -114,6 +114,7 @@ const UpdateProduct = () => {
         </select>
         <div>
           <label className="btn btn-outline-secondary">
+            {image ? image.name : "upload Image"}
             <input type="file" onChange={handleImage} />
           </label>
         </div>
@@ -121,7 +122,7 @@ const UpdateProduct = () => {
         {image && (
           <div>
             <img
-              src={URL.createObjectURL(image)}
+              src={`http://localhost:8000/upload/${image}`}
               className="img img-responsive m-3"
               height={"200px"}
             />

@@ -25,17 +25,17 @@ function Product() {
       <div className="col-md-9 d-flex">
         {product.map((item) => (
           <Link key={item.id} to={`/updateproduct/${item.id}`}>
-            {/* <div class="card"> */}
-            <img
-              class="card-img-top"
-              src={`http://localhost:8000/upload/${item.image}`}
-              alt={item.image}
-            />
-            <div class="card-body">
-              <h5 class="card-title">{item.product_name}</h5>
-              <p class="card-text">{item.description}</p>
+            <div class="card">
+              <img
+                class="card-img-top"
+                src={`http://localhost:8000/upload/${item.image}`}
+                alt={item.image}
+              />
+              <div class="card-body">
+                <h5 class="card-title">{item.product_name}</h5>
+                <p class="card-text">{item.description}</p>
+              </div>
             </div>
-            {/* </div> */}
           </Link>
         ))}
       </div>
