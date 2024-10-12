@@ -1,5 +1,7 @@
-const express = require('express')
-const db = require('./models')
+import express from 'express'
+import  db from './models/index.js'
+import employeeRoutes from './routes/employeeRoutes.js'
+ 
 
 const app = express()
 
@@ -13,6 +15,9 @@ db.mongose.connect(db.url).then(() => {
 app.get('/', (req, res) => {
     res.json({ 'message': "mongo db app" })
 })
+
+app.use("/employee", employeeRoutes);
+
 
 
 const PORT = 8080;
