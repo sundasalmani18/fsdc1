@@ -1,9 +1,11 @@
 import express from 'express'
 import  db from './models/index.js'
 import employeeRoutes from './routes/employeeRoutes.js'
+import bodyParser from 'body-parser';
  
 
 const app = express()
+app.use(bodyParser.json());
 
 db.mongose.connect(db.url).then(() => {
     console.log("connected to database")

@@ -7,11 +7,14 @@ import db from '../models/index.js'; // Adjust the path as necessary
 
 // Create
 export const addEmployee= async(req, res) => {
+  // console.log("req.body",req)
   try {
     const employee = new db.employees(req.body);
     await employee.save();
     res.status(201).send(employee);
+    console.log("employee",employee)
   } catch (error) {
+
     res.status(400).send(error);
   }
 };
