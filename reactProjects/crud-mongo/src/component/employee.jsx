@@ -57,6 +57,7 @@ const Employee = () => {
        onChange={handleChange}
        placeholder="Name"
        required
+         className=' form-contro m-2'
      />
      <input
        type="text"
@@ -65,6 +66,7 @@ const Employee = () => {
        onChange={handleChange}
        placeholder="salary"
        required
+         className='m-2'
      />
       <input
        type="text"
@@ -73,18 +75,32 @@ const Employee = () => {
        onChange={handleChange}
        placeholder="email"
        required
+       className='m-2'
      />
-     <button type="submit">{editItem ? 'Update Item' : 'Add Item'}</button>
+     <button className='btn btn-primary m-2' type="submit">{editItem ? 'Update Employee' : 'Add Employee'}</button>
    </form>
-   <ul>
+   < table className='table'>
+<thead>
+  <tr>
+    <td>Name</td>
+    <td>Salary</td>
+    <td>Email</td>
+  </tr>
+</thead>
+
      {items.map(item => (
-       <li key={item._id}>
-         {item.name} - {item.salary}-{item.email}
-         <button onClick={() => handleEdit(item)}>Edit</button>
-         <button onClick={() => handleDelete(item._id)}>Delete</button>
-       </li>
+      <tbody>
+       <tr key={item._id}>
+         <td>{item.name}</td> 
+         <td>{item.salary}</td>
+         <td>{item.email}</td> 
+         <button className='btn btn-primary m-2 '  onClick={() => handleEdit(item)}>Edit</button>
+         <button className='btn btn-secondary m-2' onClick={() => handleDelete(item._id)}>Delete</button>
+       </tr>
+       </tbody>
      ))}
-   </ul>
+    
+   </table>
    </div>
 
   )
