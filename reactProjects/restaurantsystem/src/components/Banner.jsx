@@ -10,8 +10,8 @@ export default function Banner() {
           <div className="row  justify-content-center align-items-center ">
             <div className="col-md-6">
               <div id="banner_heading">
-                <h2>Enjoy Your Healthy <br />
-                  Delicious Food</h2>
+                <p>Healthy  <br />
+                  Delicious Food</p>
                 <p>Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae
                   cumque eum quaerat</p>
               </div>

@@ -68,3 +68,65 @@
   #banner{
     background-color: black;
 }
+
+#banner {
+  background-color: black;
+}
+
+#banner_heading h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  font-weight: 400;
+  color: #fff;
+  font-weight: bold;
+ 
+  font-size: 52px;
+  text-transform: uppercase;
+}
+
+#banner_heading p {
+  color: #fff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 45px;
+}
+
+/* #banner-button .fa-solid {
+  color: red;
+} */
+
+#banner-button button {
+  color: #ebe3e3;
+  background: #fe3411;
+  padding: 8px 20px;
+  margin-left: 30px;
+  margin-right: 8px;
+  font-size: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+
+}
+
+/* .icon {
+  color:#FEA116;
+} */
+
+
+#education{
+  background-color: black;
+}
+.card{
+  background-color: black;
+}
+
+.card-body h5{
+  font-size: 35px;
+}
+.card-body h6{
+  font-size: 33px;
+}
+.card-body p{
+  font-size: 25px;
+}

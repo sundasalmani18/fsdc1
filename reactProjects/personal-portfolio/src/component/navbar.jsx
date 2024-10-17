@@ -57,10 +57,10 @@ const Navbar = () => {
     //   </div>
 <div id='header'>
 <div class="container">
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 ">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3  ">
   <div class="col-md-3 mb-2 mb-md-0">
     <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-     <a id="logo" className="navbar-brand" href="#">Sundas Almani.</a>
+     <a id="logo" className="navbar-brand" href="index.html">Sundas Almani.</a>
       {/* <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg> */}
     </a>
   </div>
@@ -72,27 +72,28 @@ const Navbar = () => {
     <li><a href="#" class="nav-link px-2">Pricing</a></li>
     <li><a href="#" class="nav-link px-2">FAQs</a></li>
     <li><a href="#" class="nav-link px-2">About</a></li> */}
-    <li className="nav-item active">
+    {/* <li className="nav-item active">
                       <a className="nav-link" href="index.html">Home <span className="sr-only"></span></a>
+                    </li> */}
+                    <li className="nav-item">
+                      <a className="nav-link px-2" href="#education">Education</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link px-2" href="#about">About</a>
+                      <a className="nav-link px-2" href="#experience">Experience</a>
                     </li>
                     <li className="nav-item">
                       <a className="nav-link px-2" href="#project">Project</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link px-2" href="#service">Service</a>
+                      <a className="nav-link px-2" href="#skill">Skill</a>
                     </li>
-                    <li className="nav-item">
-                      <a className="nav-link px-2" href="#contact">Contact</a>
-                    </li>
+                    
   </ul>
   </div>
 
   <div class="col-md-3 text-end">
     {/* <button type="button" class="btn btn-outline-primary me-2">Login</button> */}
-    <button id ="headbutton" type="button" className="btn btn-primary p-3">Lets Work Together</button>
+    <button id ="headbutton" type="button" className="btn btn-primary p-3">Technical Support System</button>
   </div>
 </header>
 </div>
