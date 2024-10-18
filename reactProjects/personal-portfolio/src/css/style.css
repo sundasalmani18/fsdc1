@@ -113,20 +113,42 @@
   color:#FEA116;
 } */
 
-
+/* 
 #education{
   background-color: black;
-}
+} */
 .card{
-  background-color: black;
+  background-color: #FEA116;
 }
 
 .card-body h5{
-  font-size: 35px;
+  font-size: 25px;
+  color: #ebe3e3;
 }
 .card-body h6{
-  font-size: 33px;
+  font-size: 25px;
+  color: #ebe3e3;
 }
 .card-body p{
-  font-size: 25px;
+  font-size: 15px;
+  color: #ebe3e3;
+}
+
+.section {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.servicecol {
+  background-color: rgb(233, 228, 228);
+  margin-left: 6px;
+}
+
+.servicecol:hover{
+  background-color: #FEA116;
+  color: #fff;
+}
+
+.servicecol:hover i{
+  color: #fff;
 }

@@ -32,6 +32,7 @@ const Skill = () => {
             </div>
         </section>
 
+
     )
 }
 

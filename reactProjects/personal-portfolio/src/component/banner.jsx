@@ -6,7 +6,7 @@ const Banner = () => {
     <div id="banner" className="py-2">
     <div className="container ">
       <div className="row  justify-content-center align-items-center ">
-        <div className="col-md-8">
+        <div className="col-md-8 mb-5">
           <div id="banner_heading">
             <p>Hello <br />
              I'm Sundas Almani</p>
