@@ -1,16 +1,60 @@
 import React from 'react'
+import Carousel from 'react-multi-carousel';
 
 const Experience = () => {
+
+ 
+        const responsive = {
+          desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3,
+            slidesToSlide: 3 // optional, default to 1.
+          },
+          tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+            slidesToSlide: 2 // optional, default to 1.
+          },
+          mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+            slidesToSlide: 1 // optional, default to 1.
+          }
+        };
+      
+        // if (testionails.length === 0) {
+        //   return null
+        // }
+      
   return (
     <>
-  <div id="testimonail">
+  <div id="experience">
     <div class="container section ">
       <div class="testimonail-title">
-        <h5 class="text-center">Experience</h5>
+        <h5 class="text-center mb-5">Experience</h5>
         {/* <h1 class="text-center">Our Clients Say</h1> */}
       </div>
       <div class="row ">
         <div class="owl-carousel owl-theme">
+        <Carousel
+          swipeable={false}
+          draggable={true}
+          showDots={false}
+          arrows={false}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+          autoPlaySpeed={1000}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerclassName="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // deviceType={this.props.deviceType}
+          dotListclassName="custom-dot-list-style"
+          itemclassName="carousel-item-padding-40-px"
+        >
           <div class="owl-item active">
             <div class="testimonial-item bg-transparent border rounded p-4">
               <div class="d-flex align-items-center">
@@ -20,9 +64,9 @@ const Experience = () => {
                   <h5>Intern Developer</h5>
                   <small>Verge System </small>
                   <p class="card-text"><strong>January 2021 - May 2021</strong></p>
-                  <li>Assisted in the development of mobile applications.</li>
-                <li>Participated in code reviews and contributed to team meetings.</li>
-                 <li>Learned best practices in software development and version control.</li>
+                  <small>Assisted in the development of mobile applications.</small><br/>
+                <small>Participated in code reviews and contributed to team meetings.</small><br/>
+                 <small>Learned best practices in software development and version control.</small><br/>
                 </div>
               </div>
             </div>
@@ -37,9 +81,9 @@ const Experience = () => {
                   <h5>Junior Developer</h5>
                   <small>Verge System </small>
                   <p class="card-text"><strong>June 2021 -January 2022</strong></p>
-                  <li>Developed and maintained web applications using JavaScript, HTML, and CSS.</li>
-                        <li>Collaborated with cross-functional teams to design and implement new features.</li>
-                        <li>Optimized application performance and improved user experience.</li>
+                  <small>Developed and maintained web applications using JavaScript, HTML, and CSS.</small><br/>
+                        <small>Collaborated with teams to design and implement new features.</small><br/>
+                        <small>Optimized application performance and improved user experience.</small><br/>
                 </div>
               </div>
             </div>
@@ -78,7 +122,7 @@ const Experience = () => {
               </div>
             </div>
           </div> */}
-
+  </Carousel>
         </div>
       </div>
     </div>
@@ -120,6 +164,6 @@ const Experience = () => {
 </section> */}
 </>
   )
-}
 
+}
 export default Experience
