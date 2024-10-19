@@ -71,6 +71,7 @@
 
 #banner {
   background-color: black;
+
 }
 
 #banner_heading h2 {
@@ -114,9 +115,7 @@
 } */
 
 /* 
-#education{
-  background-color: black;
-} */
+
 .card{
   background-color: #FEA116;
 }
@@ -134,10 +133,7 @@
   color: #ebe3e3;
 }
 
-.section {
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
+
 
 .servicecol {
   background-color: rgb(233, 228, 228);
@@ -153,6 +149,30 @@
   color: #fff;
 }
 
+
+
+
+
+/* .progress-bar:after {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  content: '';
+  background: #ffbd39;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  opacity: 0;
+} */
+
+.section {
+  margin-top: 70px;
+  margin-bottom: 70px;
+
+}
 
 #skill{
   background-color: black;
@@ -176,36 +196,55 @@
 }
 .progress-bar {
   background: #ffbd39;
-  /* -webkit-box-shadow: none;
-  box-shadow: none;
-  font-size: 12px;
-  line-height: 1.2;
-  color: #000000;
-  font-weight: 600;
-  position: relative;
-  overflow: visible;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px; */
+
+
 }
-
-
-/* .progress-bar:after {
-  position: absolute;
-  top: -2px;
-  right: 0;
-  width: 34px;
-  height: 34px;
-  content: '';
-  background: #ffbd39;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  opacity: 0;
-} */
 
 .skill_heading h4{
 color: #e6dddb;
+}
+
+
+#education{
+  background-color:black;
+ 
+} 
+
+.education-wrap {
+  width: 100%;
+  margin-bottom: 30px;
+  background:  #2b2726;
+  padding: 50px;
+  border-radius: 30px;
+}
+
+.education-wrap .date {
+  font-weight: 900;
+  font-size: 26px;
+  color: #ffbd39;
+}
+.education-wrap h2 ,span ,p{
+ color: #e6dddb;
+}
+
+
+#experience{
+  background-color:black;
+} 
+
+.experience-wrap {
+  width: 100%;
+  margin-bottom: 30px;
+  background:  #2b2726;
+  padding: 50px;
+  border-radius: 30px;
+}
+
+.experience-wrap .date {
+  font-weight: 900;
+  font-size: 26px;
+  color: #ffbd39;
+}
+.experience-wrap h2 ,span ,p{
+ color: #e6dddb;
 }

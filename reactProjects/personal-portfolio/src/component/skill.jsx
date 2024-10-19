@@ -7,7 +7,7 @@ const Skill = () => {
               
                 <div class="row justify-content-center p-5">
                     <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                        <h2 class="mb-4" >My Skills</h2>
+                        <h2 class="m-5" >My Skills</h2>
                     </div>
                     <div className='row d-flex'>
                         <div className='col-md-6 mb-5'>

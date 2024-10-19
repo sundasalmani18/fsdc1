@@ -22,10 +22,39 @@ const Education = () => {
         }
       };
     
-  return (
+  return (    
     <>
+    <div id ="education">
+      <div className='container '>
+        <div className='row justify-content-center pb-5 '>
+          <div className='col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated m-5'>
+            <h2>Education</h2>
+          </div>
 
-    <div id="education">
+        </div>
+        <div className='row'> 
+          <div className='col-md-6'>
+            <div className='education-wrap ftco-animate fadeInUp ftco-animated'>
+              <span className='date'> 2014-2015</span>
+              <h2>Master in </h2>
+              <span className='position'> university</span>
+              <p>absssssss</p>
+            </div>
+          </div>
+          <div className='col-md-6'>
+            <div className='education-wrap ftco-animate fadeInUp ftco-animated'>
+              <span className='date'> 2014-2015</span>
+              <h2>Master in </h2>
+              <span className='position'> university</span>
+              <p>absssssss</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {/* <div id="education">
     <div className="container section">
       <div className="row">
         <div className="owl-carousel owl-theme">
@@ -87,7 +116,7 @@ const Education = () => {
         </div>
       </div>
     </div>
-  </div>
+  </div> */}
 
 
 
