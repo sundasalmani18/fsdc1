@@ -248,3 +248,11 @@ color: #e6dddb;
 .experience-wrap h2 ,span ,p,small{
  color: #e6dddb;
 }
+
+#project{
+  background-color: black;
+}
+
+ .heading{
+  color: #ebe3e3;
+}

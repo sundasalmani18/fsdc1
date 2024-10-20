@@ -23,6 +23,7 @@ const Experience = () => {
               <span className='date'>Jan 2018-May 2018</span>
               <h2>Intern </h2>
               <span className='position'> Verge System</span><br/>
+              <small>Developed web applications using JavaScript, React, and Node.js</small><br/>
               <small>Assisted in the development of web applications.</small><br/>
                 <small>Participated in code reviews and contributed to team meetings.</small><br/>
                  <small>Learned best practices in software development and version control.</small><br/>
