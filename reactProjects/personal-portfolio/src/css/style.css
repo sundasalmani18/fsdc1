@@ -218,7 +218,7 @@ color: #e6dddb;
   border-radius: 30px;
 }
 
-.education-wrap .date {
+.education-wrap .degree {
   font-weight: 900;
   font-size: 26px;
   color: #ffbd39;
@@ -245,6 +245,6 @@ color: #e6dddb;
   font-size: 26px;
   color: #ffbd39;
 }
-.experience-wrap h2 ,span ,p{
+.experience-wrap h2 ,span ,p,small{
  color: #e6dddb;
 }

@@ -76,11 +76,11 @@ const Navbar = () => {
                       <a className="nav-link" href="index.html">Home <span className="sr-only"></span></a>
                     </li> */}
                     <li className="nav-item">
-                      <a className="nav-link px-2" href="#education">Education  and Experience</a>
+                      <a className="nav-link px-2" href="#education">Education </a>
                     </li>
-                    {/* <li className="nav-item">
+                    <li className="nav-item">
                       <a className="nav-link px-2" href="#experience">Experience</a>
-                    </li> */}
+                    </li>
                     <li className="nav-item">
                       <a className="nav-link px-2" href="#project">Project</a>
                     </li>

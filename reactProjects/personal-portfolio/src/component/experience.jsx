@@ -4,35 +4,15 @@ import Carousel from 'react-multi-carousel';
 const Experience = () => {
 
  
-        // const responsive = {
-        //   desktop: {
-        //     breakpoint: { max: 3000, min: 1024 },
-        //     items: 3,
-        //     slidesToSlide: 3 // optional, default to 1.
-        //   },
-        //   tablet: {
-        //     breakpoint: { max: 1024, min: 464 },
-        //     items: 2,
-        //     slidesToSlide: 2 // optional, default to 1.
-        //   },
-        //   mobile: {
-        //     breakpoint: { max: 464, min: 0 },
-        //     items: 1,
-        //     slidesToSlide: 1 // optional, default to 1.
-        //   }
-        // };
-      
-        // if (testionails.length === 0) {
-        //   return null
-        // }
+       
       
   return (
     <>
    <div id ="experience">
       <div className='container '>
-        <div className='row justify-content-center pb-5'>
-          <div className='col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated  m-5'>
-            <h2>Experience</h2>
+        <div className='row justify-content-center pb-5 '>
+          <div className='col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated'>
+            <h2>Education</h2>
 
           </div>
 
@@ -40,18 +20,22 @@ const Experience = () => {
         <div className='row'> 
           <div className='col-md-6'>
             <div className='experience-wrap ftco-animate fadeInUp ftco-animated'>
-              <span className='date'> 2014-2015</span>
-              <h2>Master in </h2>
-              <span className='position'> university</span>
-              <p>absssssss</p>
+              <span className='date'>Jan 2018-May 2018</span>
+              <h2>Intern </h2>
+              <span className='position'> Verge System</span><br/>
+              <small>Assisted in the development of web applications.</small><br/>
+                <small>Participated in code reviews and contributed to team meetings.</small><br/>
+                 <small>Learned best practices in software development and version control.</small><br/>
             </div>
           </div>
           <div className='col-md-6'>
             <div className='experience-wrap ftco-animate fadeInUp ftco-animated'>
-              <span className='date'> 2014-2015</span>
-              <h2>Master in </h2>
-              <span className='position'> university</span>
-              <p>absssssss</p>
+              <span className='date'> 2018-2019</span><br/>
+              <h2>Junior Developer </h2>
+              <span className='position'> Verge System</span><br/>
+              <small>Developed and maintained web applications using JavaScript, HTML, and CSS.</small><br/>
+              <small>Collaborated with teams to design and implement new features.</small><br/>
+               <small>Optimized application performance and improved user experience.</small><br/>
             </div>
           </div>
         </div>
@@ -69,6 +53,7 @@ const Experience = () => {
 
 
 
+  
 
 
    
