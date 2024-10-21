@@ -53,7 +53,7 @@
   .navbar li:hover:after {
     content: "";
     display: block;
-    background-color: #797473;
+    background-color: #FEA116;
     height: 3px;
   
   }
@@ -256,3 +256,7 @@ color: #e6dddb;
  .heading{
   color: #ebe3e3;
 }
+
+/* #footer{
+  background-color: black;
+} */
