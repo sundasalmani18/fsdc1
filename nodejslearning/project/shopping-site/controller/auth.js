@@ -16,7 +16,6 @@ export const register =  (req, res) => {
         const hashPass = bcrypt.hashSync(req.body.password, salt)
 
         const query2 = "INSERT INTO users (name,email,password,phone,address,userType) VALUES (?)"; // dynamic query
-
         const bodyData = [
             req.body.name,
             req.body.email,

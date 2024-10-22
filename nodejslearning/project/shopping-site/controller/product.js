@@ -3,7 +3,7 @@ import path from "path"; //for single specific Image
 import fs from "fs"; //for single specific Image
 
 export const getProducts = (req, res) => {
-  const q = "select * from products";
+  const q = "select * from product";
   // const q = "SELECT category.category_name AS category, items.item_name ,items.description,items.image,items.price FROM category LEFT JOIN items ON category.category_name = items.category;";
 
   db.query(q, (err, data) => {
@@ -19,7 +19,7 @@ export const getProducts = (req, res) => {
 };
 
 export const getProduct = (req, res) => {
-  const query = "select * from products where id =?";
+  const query = "select * from product where id =?";
 
   db.query(query, [req.params.id], (err, data) => {
     if (err) return res.status(500).send(err);
@@ -37,7 +37,7 @@ export const getProduct = (req, res) => {
 export const addProducts = async (req, res) => {
   // console.log(req.file);
   const query =
-    "INSERT INTO products(product_name,description,price,category,quantity,image) VALUES (?)"; // dynamic query
+    "INSERT INTO product(product_name,description,price,category,quantity,image) VALUES (?)"; // dynamic query
   // const file=req.file.filename
   const bodyData = [
     req.body.product_name,
@@ -71,7 +71,7 @@ export const updateProduct = (req, res) => {
   const image = req.file.filename;
   // const query = "UPDATE category SET category_name = 'breakfast' WHERE category_name = 'brekfast'"; // static query
   const query =
-    "UPDATE products SET `product_name` = ?, `description` = ?, `price` = ? ,`category`=?,`quantity` = ?, `image` =?  WHERE `id` = ?";
+    "UPDATE product SET `product_name` = ?, `description` = ?, `price` = ? ,`category`=?,`quantity` = ?, `image` =?  WHERE `id` = ?";
 
   const bodyData = [
     req.body.product_name,
