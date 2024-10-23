@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductForm from "./productForm";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Product() {
+  const navigate = useNavigate();
   const [product, setProduct] = useState([]);
 
   const getAllProducts = async () => {
@@ -24,7 +26,8 @@ function Product() {
       <h1>All Products</h1>
       <div className="col-md-9 d-flex">
         {product.map((item) => (
-          <Link key={item.id} to={`/updateproduct/${item.id}`}>
+          <div key={item.id}>
+         
             <div class="card">
               <img
                 class="card-img-top"
@@ -35,8 +38,10 @@ function Product() {
                 <h5 class="card-title">{item.product_name}</h5>
                 <p class="card-text">{item.description}</p>
               </div>
+              <button onClick={() => navigate(`/updateproduct/${item.id}`)}>Update</button>
             </div>
-          </Link>
+     
+          </div>
         ))}
       </div>
     </div>

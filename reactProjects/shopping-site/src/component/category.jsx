@@ -68,6 +68,7 @@ function Category() {
       setVisible(false);
       getCategories();
       alert(`${updateName} is updated`);
+      console.log("updateName",updateName)
     } catch (err) {
       console.log(err, "error");
       //toast.error("something went wrong");

@@ -74,8 +74,9 @@ const UpdateProduct = () => {
 
         productData
       );
-      alert(`${productname} is created`);
+      alert(`${productname} is update`);
       console.log(data?.Data, "data");
+      navigate("/product");
     } catch (error) {
       console.log("error", error);
     }
