@@ -5,24 +5,12 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
   return (
     <div id='footer'>
-      <div class="container">
+      <div class="container ">
         <div className='row'>
-          <div className='col-md mb-5'>
-            <h2>Link</h2>
-            <ul>
-              <li>< FontAwesomeIcon icon="fa-solid fa-right-long" />Education</li>
-              <li>Experience</li>
-              <li>Project</li>
-              <li>Skill</li>
-            </ul>
+          
+          <div className='col-md-12 justify-content-center border-top m-5'>
+            <h4 className='m-5'>Copyright © 2024 All rights reserved | This template is made with  by ABC</h4>
           </div>
-          <div className='col-md mb-5'>
-            <h2>Services</h2>
-          </div>
-          <div className='col-md mb-5'>
-          < FontAwesomeIcon icon={faUtensils} className=" icon" />
-          </div>
-
         </div>
 
       </div>

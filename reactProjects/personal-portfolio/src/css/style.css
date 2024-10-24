@@ -257,6 +257,11 @@ color: #e6dddb;
   color: #ebe3e3;
 }
 
-/* #footer{
+#footer{
   background-color: black;
-} */
+}
+
+
+#footer h4{
+  color: #e6dddb;
+}
