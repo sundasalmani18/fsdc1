@@ -5,7 +5,7 @@ import portfoloioData from '../data/portfoliodata.json';
 
 const Education = () => {
   const educationData=portfoloioData.education;
-  const data=portfoloioData.education.education_details;
+  const data=portfoloioData.education.education_detials;
     
   return (    
     <>
@@ -18,8 +18,21 @@ const Education = () => {
 
         </div>
         <div className='row'> 
-        
+
+ 
         {data.length > 0 ? (data.map((item, index) => (
+          <div className='col-md-6'>
+            <div className='education-wrap ftco-animate fadeInUp ftco-animated'>
+            <span className='degree'> {item.degree}</span>
+              <h2> {item.title} </h2>
+              <h2> {item.year} </h2>
+              <span className='position'> {item.position}</span> 
+            </div>
+          </div>
+
+))) : null} 
+        
+        {/* {data.length > 0 ? (data.map((item, index) => (
           <div className='col-md-6 '>
          
           <div className='education-wrap ftco-animate fadeInUp ftco-animated'>  
@@ -32,7 +45,7 @@ const Education = () => {
           </div>
           </div> 
         
-      ))) : null} 
+      ))) : null}  */}
     
   
           {/* <div className='col-md-6'>

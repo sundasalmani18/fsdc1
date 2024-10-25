@@ -1,20 +1,24 @@
 import React from 'react'
+import portfoloioData from '../data/portfoliodata.json';
 
 const Skill = () => {
+    const skillData=portfoloioData.skills;
+    const data=portfoloioData.skills.skill_detials;
     return (
         <div id="skill" >
             <div class="container ">
               
                 <div class="row justify-content-center p-5">
                     <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                        <h2 class="m-5" >My Skills</h2>
+                        <h2 class="m-5" >{skillData.title}</h2>
                     </div>
                     <div className='row d-flex'>
+                    {data.length > 0 ? (data.map((item, index) => (
                         <div className='col-md-6 mb-5'>
                             <div className='progress-wrap ftco-animate fadeInUp ftco-animated '>
                                 <div className='skill_heading d-flex justify-content-between'>
-                                <h4 className=''>HTML/CSS</h4>
-                                <h4 class="">90%</h4>
+                                <h4 className=''>{item.skill}</h4>
+                                <h4 class="">{item.percent}</h4>
                                 </div>
                                
                                 <div class="progress">
@@ -25,7 +29,9 @@ const Skill = () => {
                             </div>
 
                         </div>
-                        <div className='col-md-6 mb-5'>
+                        ))) : null} 
+
+                        {/* <div className='col-md-6 mb-5'>
                             <div className='progress-wrap ftco-animate fadeInUp ftco-animated'>
                                 <div className=' skill_heading d-flex justify-content-between'>
                                 <h4>JavaScript </h4>
@@ -93,7 +99,7 @@ const Skill = () => {
                                   
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
 
