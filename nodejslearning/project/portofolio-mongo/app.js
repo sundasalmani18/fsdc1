@@ -4,8 +4,9 @@ import mongoose from 'mongoose';
 // import employeeRoutes from './routes/employeeRoutes.js'
 // import bodyParser from 'body-parser';
 // import cors from 'cors'
-import PortfolioModel from './model/createPortofolio.model.js';
-import { exampleData } from './model/portfolioData.js';
+// import PortfolioModel from './model/createPortofolio.model.js';
+// import { exampleData } from './model/portfolioData.js';
+import portfolioRoutes from  "./routes/portfolioRoutes.js"
  
 
 const app = express()
@@ -15,13 +16,13 @@ const app = express()
 db.mongose.connect(db.url).then(() => {
     console.log("connected to database")
 
-    const mainData = new PortfolioModel(exampleData);
-    return mainData.save();
-   })
-  .then(() => {
-    console.log('Data saved successfully');
-    mongoose.connection.close(); // Close the connection when done
-  })
+  //   const mainData = new PortfolioModel(exampleData);
+  //   return mainData.save();
+  //  })
+  // .then(() => {
+  //   console.log('Data saved successfully');
+  //   mongoose.connection.close(); // Close the connection when done
+    })
   .catch((err) => {
     console.error('Error:', err);
   });
@@ -35,8 +36,13 @@ db.mongose.connect(db.url).then(() => {
 app.get('/', (req, res) => {
     res.json({ 'message': "mongo db app" })
 })
-
-// app.use("/employee", employeeRoutes);
+app.use("/portfolio", portfolioRoutes);
+// app.use('/portfolio', (req, res) => {
+//   res.json(exampleData);
+// });
+// app.post('/portfolio', (req, res) => {
+//   res.json(exampleData);
+// });
 
 
 
