@@ -1,6 +1,16 @@
 import React from 'react'
 import portfoloioData from '../data/portfoliodata.json';
 
+
+
+
+
+
+
+
+
+
+
 const Navbar = () => {
   const navData=portfoloioData.nav;
   const data=portfoloioData.nav.nav_li;

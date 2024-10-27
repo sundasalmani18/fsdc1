@@ -52,22 +52,12 @@ const Education = () => {
       </div>
     </div>
 
-    // <div>
-    //   <h2>{educationData.title}</h2>
-    //   {educationData.education_details.map((detail, index) => (
-    //     <div key={index}>
-    //       <h3>{detail.degree}</h3>
-    //       <p>{detail.title} ({detail.year})</p>
-    //       <p>{detail.position}</p>
-    //     </div>
-    //   ))}
-    // </div>
   );
 };
 
 
 
-
+//json data
 
 // const Education = () => {
 //   const educationData=portfoloioData.education;
