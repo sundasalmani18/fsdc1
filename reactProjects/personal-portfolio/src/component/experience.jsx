@@ -18,12 +18,12 @@ const Experience = () => {
     fetchExperienceData();
   }, []);
   if (!experienceData) {
-    return <div>Loading Education...</div>;
+    return <div>Loading Experience...</div>;
   }
 
   return (
 
-        <div id ="education">
+        <div id ="experience">
       <div className='container '>
         <div className='row justify-content-center pb-5 '>
           <div className='col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated m-5'>
@@ -36,7 +36,7 @@ const Experience = () => {
  
         {experienceData.experience_details.length > 0 ? (experienceData.experience_details.map((item, index) => (
           <div className='col-md-6'>
-            <div className='education-wrap ftco-animate fadeInUp ftco-animated'>
+            <div className='experience-wrap ftco-animate fadeInUp ftco-animated'>
             <span className='date'>{item.date}</span>
                <h2>{item.designation} </h2>
                <span className='position'> {item.position}</span><br/>
@@ -62,7 +62,7 @@ const Experience = () => {
 //json
 // const Experience = () => {
 //   const experiencenData=portfoloioData.experience;
-//   const data=portfoloioData.experience.experience_detials;
+//   const data=portfoloioData.experience.experience_details;
     
  
        

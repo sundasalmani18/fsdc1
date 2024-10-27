@@ -33,7 +33,7 @@
     },
     "education": {
         "title": "Education",
-        "education_detials": [
+        "education_details": [
             {
                 "degree": "Intermediate",
                 "title": " Group :Pre-Engineering",
@@ -50,7 +50,7 @@
 
     "experience":{
         "title":"Experience",
-        "experience_detials":[
+        "experience_details":[
             {
                 "date":"Jan 2018-May 2018",
                 "designation":"Intern",
@@ -74,7 +74,7 @@
     },
     "skills":{
         "title":"My Skills",
-        "skill_detials":[
+        "skill_details":[
             {
                 "skill":"HTML/CSS",
                  "percent":"90%"
@@ -104,7 +104,7 @@
     },
     "project":{
         "title":"Projects",
-        "project_detials":[
+        "project_details":[
             {
                 "img":"../css/images/project1.png",
                 "title" :"Redux Todo App With Firebase"

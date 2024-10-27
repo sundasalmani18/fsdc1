@@ -61,7 +61,7 @@ const Education = () => {
 
 // const Education = () => {
 //   const educationData=portfoloioData.education;
-//   const data=portfoloioData.education.education_detials;
+//   const data=portfoloioData.education.education_details;
     
 //   return (    
 //     <>
