@@ -2,16 +2,14 @@ import express from 'express'
 import  db from './model/index.js'
 import mongoose from 'mongoose';
 // import employeeRoutes from './routes/employeeRoutes.js'
-// import bodyParser from 'body-parser';
-// import cors from 'cors'
-// import PortfolioModel from './model/createPortofolio.model.js';
-// import { exampleData } from './model/portfolioData.js';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import portfolioRoutes from  "./routes/portfolioRoutes.js"
  
 
 const app = express()
-// app.use(bodyParser.json());
-// app.use(cors())
+app.use(bodyParser.json());
+app.use(cors())
 
 db.mongose.connect(db.url).then(() => {
     console.log("connected to database")
@@ -37,12 +35,7 @@ app.get('/', (req, res) => {
     res.json({ 'message': "mongo db app" })
 })
 app.use("/portfolio", portfolioRoutes);
-// app.use('/portfolio', (req, res) => {
-//   res.json(exampleData);
-// });
-// app.post('/portfolio', (req, res) => {
-//   res.json(exampleData);
-// });
+
 
 
 
