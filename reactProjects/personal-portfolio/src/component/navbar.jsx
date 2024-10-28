@@ -22,6 +22,7 @@ const Navbar = ({ navData, toggleData }) => {
   // }
 
   return (
+   
 
     <div id='header'>
     <div class="container">
@@ -54,9 +55,9 @@ const Navbar = ({ navData, toggleData }) => {
 
       {/* <button >Toggle Data</button> */}
       <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" onClick={toggleData} role="switch" id="flexSwitchCheckChecked" checked />
-  {/* <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> */}
-</div>
+    <input class="form-check-input" type="checkbox" onClick={toggleData} role="switch" id="flexSwitchCheckChecked" checked />
+    {/* <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> */}
+  </div>
      
       {/* <button onClick={toggleData}>
                 Switch to {isLocalData ? 'MongoDB Data' : 'Local Data'}
@@ -66,6 +67,7 @@ const Navbar = ({ navData, toggleData }) => {
     
         <button id ="headbutton" type="button" className="btn btn-primary p-3">{navData.button}</button>
       </div>
+   
     </header>
     </div>
     </div>

@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-     <Navbar  navData={data.nav} toggleData={toggleData}/>
+    {data.nav && <Navbar  navData={data.nav} toggleData={toggleData}/>}
      <DataFetcher setData={setData} isLocalData={isLocalData} />
      {data.banner && <Banner bannerData={data.banner}/>}
      {data.education && <Education educationDetails={data.education}/>}
