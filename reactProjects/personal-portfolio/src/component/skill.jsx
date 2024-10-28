@@ -5,23 +5,23 @@ import  { useEffect, useState } from 'react';
 
 
 
-const Skill = () => {
-    const [skillData, setSkillData] = useState(null);
+const Skill = ({ skillDetails }) => {
+    // const [skillData, setSkillData] = useState(null);
   
   
-    const fetchSkillData = async () => {
-      const response = await axios.get('http://localhost:8080/portfolio');
-      console.log(response.data[0].skills,"response")
-      setSkillData(response.data[0].skills);
-    };
+    // const fetchSkillData = async () => {
+    //   const response = await axios.get('http://localhost:8080/portfolio');
+    //   console.log(response.data[0].skills,"response")
+    //   setSkillData(response.data[0].skills);
+    // };
   
   
-    useEffect(() => {
-        fetchSkillData();
-    }, []);
-    if (!skillData) {
-      return <div>Loading skills...</div>;
-    }
+    // useEffect(() => {
+    //     fetchSkillData();
+    // }, []);
+    // if (!skillData) {
+    //   return <div>Loading skills...</div>;
+    // }
   
     return (
   
@@ -30,10 +30,10 @@ const Skill = () => {
               
                 <div class="row justify-content-center p-5">
                     <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                        <h2 class="m-5" >{skillData.title}</h2>
+                        <h2 class="m-5" >{skillDetails.title}</h2>
                     </div>
                     <div className='row d-flex'>
-                    {skillData.skill_details.length > 0 ? (skillData.skill_details.map((item, index) => (
+                    {skillDetails.skill_details.length > 0 ? (skillDetails.skill_details.map((item, index) => (
                         <div className='col-md-6 mb-5'>
                             <div className='progress-wrap ftco-animate fadeInUp ftco-animated '>
                                 <div className='skill_heading d-flex justify-content-between'>

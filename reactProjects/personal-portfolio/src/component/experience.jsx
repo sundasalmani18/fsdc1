@@ -3,23 +3,23 @@ import portfoloioData from '../data/portfoliodata.json';
 import axios from 'axios';
 import  { useEffect, useState } from 'react';
 
-const Experience = () => {
-  const [experienceData, setExperienceData] = useState(null);
+const Experience = ({experienceDetails}) => {
+  // const [experienceData, setExperienceData] = useState(null);
 
 
-  const fetchExperienceData = async () => {
-    const response = await axios.get('http://localhost:8080/portfolio');
-    console.log(response.data[0].experience,"response")
-    setExperienceData(response.data[0].experience);
-  };
+  // const fetchExperienceData = async () => {
+  //   const response = await axios.get('http://localhost:8080/portfolio');
+  //   console.log(response.data[0].experience,"response")
+  //   setExperienceData(response.data[0].experience);
+  // };
 
 
-  useEffect(() => {
-    fetchExperienceData();
-  }, []);
-  if (!experienceData) {
-    return <div>Loading Experience...</div>;
-  }
+  // useEffect(() => {
+  //   fetchExperienceData();
+  // }, []);
+  // if (!experienceData) {
+  //   return <div>Loading Experience...</div>;
+  // }
 
   return (
 
@@ -27,14 +27,14 @@ const Experience = () => {
       <div className='container '>
         <div className='row justify-content-center pb-5 '>
           <div className='col-md-10 heading-section text-center ftco-animate fadeInUp ftco-animated m-5'>
-            <h2>{experienceData.title}</h2>
+            <h2>{experienceDetails.title}</h2>
           </div>
 
         </div>
         <div className='row'> 
 
  
-        {experienceData.experience_details.length > 0 ? (experienceData.experience_details.map((item, index) => (
+        {experienceDetails.experience_details.length > 0 ? (experienceDetails.experience_details.map((item, index) => (
           <div className='col-md-6'>
             <div className='experience-wrap ftco-animate fadeInUp ftco-animated'>
             <span className='date'>{item.date}</span>

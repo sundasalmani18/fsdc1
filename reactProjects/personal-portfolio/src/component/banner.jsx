@@ -5,23 +5,23 @@ import  { useEffect, useState } from 'react';
 
 
 
-const Banner = () => {
-  const [bannerData, setBannerData] = useState(null);
+const Banner = ({ bannerData }) => {
+  // const [bannerData, setBannerData] = useState(null);
 
 
-  const fetchBannernData = async () => {
-    const response = await axios.get('http://localhost:8080/portfolio');
-    console.log(response.data[0].banner,"response")
-    setBannerData(response.data[0].banner);
-  };
+  // const fetchBannernData = async () => {
+  //   const response = await axios.get('http://localhost:8080/portfolio');
+  //   console.log(response.data[0].banner,"response")
+  //   setBannerData(response.data[0].banner);
+  // };
 
 
-  useEffect(() => {
-    fetchBannernData();
-  }, []);
-  if (!bannerData) {
-    return <div>Loading Banner...</div>;
-  }
+  // useEffect(() => {
+  //   fetchBannernData();
+  // }, []);
+  // if (!bannerData) {
+  //   return <div>Loading Banner...</div>;
+  // }
 
   return (
 
