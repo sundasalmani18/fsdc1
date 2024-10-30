@@ -65,7 +65,7 @@ const Navbar = ({ navData, toggleData }) => {
     
       <div class="col-md-3 text-end">
     
-        <button id ="headbutton" type="button" className="btn btn-primary p-3">{navData.button}</button>
+        <button id ="headbutton"  type="button" className="btn btn-primary p-3">{navData.button}</button>
       </div>
    
     </header>
