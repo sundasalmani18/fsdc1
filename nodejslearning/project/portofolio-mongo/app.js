@@ -5,12 +5,17 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import portfolioRoutes from  "./routes/portfolioRoutes.js"
- 
+import supportRoutes from  "./routes/supportRoutes.js"
+import dotenv from 'dotenv'
 
+
+ 
 const app = express()
 app.use(bodyParser.json());
+
 app.use(cors())
 
+dotenv.config();
 db.mongose.connect(db.url).then(() => {
     console.log("connected to database")
 
@@ -35,6 +40,7 @@ app.get('/', (req, res) => {
     res.json({ 'message': "mongo db app" })
 })
 app.use("/portfolio", portfolioRoutes);
+app.use("/supportsystem", supportRoutes);
 
 
 
