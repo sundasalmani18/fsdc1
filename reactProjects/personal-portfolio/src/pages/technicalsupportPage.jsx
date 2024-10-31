@@ -1,9 +1,9 @@
 import React from 'react'
-import technicalSupport from '../src/component/technicalSupport'
+import TechnicalSupport from '../component/technicalSupport.jsx'
 
 const TechnicalsupportPage = () => {
   return (
-    <technicalSupport/>
+    <TechnicalSupport/>
   )
 }
 

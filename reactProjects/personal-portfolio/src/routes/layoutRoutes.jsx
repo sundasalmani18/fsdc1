@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/homePage"
-import TechnicalsupportPage from "../pages/technicalsupportPage"
+import HomePage from "../pages/homePage.jsx"
+import TechnicalsupportPage from "../pages/technicalsupportPage.jsx"
 
 export default function LayoutRoutes() {
     return (

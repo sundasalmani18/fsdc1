@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
-import DataFetcher from './component/dataFetcher'
-import Navbar from './component/navbar';
-import Banner from './component/banner';
-import Education from './component/education';
-import Experience from './component/experience';
-import Skill from './component/skill';
-import Project from './component/project';
-import Footer from './component/footer';
+import DataFetcher from '../component/dataFetcher'
+import Navbar from '../component/navbar';
+import Banner from '../component/banner';
+import Education from '../component/education';
+import Experience from '../component/experience';
+import Skill from '../component/skill';
+import Project from '../component/project';
+import Footer from '../component/footer';
 
 const HomePage = () => {
     const [data, setData] = useState({});

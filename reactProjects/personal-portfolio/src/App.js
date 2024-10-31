@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import LayoutRoutes from '../routes/layoutRoutes';
+import LayoutRoutes from './routes/layoutRoutes';
+import {BrowserRouter}  from 'react-router-dom'
 
 
 function App() {

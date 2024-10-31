@@ -2,8 +2,10 @@ import React from 'react'
 import portfoloioData from '../data/portfoliodata.json';
 import axios from 'axios';
 import  { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ navData, toggleData }) => {
+  const navigate =useNavigate()
   // const [navData, setNavData] = useState(null);
 
 
@@ -65,7 +67,7 @@ const Navbar = ({ navData, toggleData }) => {
     
       <div class="col-md-3 text-end">
     
-        <button id ="headbutton"  type="button" className="btn btn-primary p-3">{navData.button}</button>
+        <button id ="headbutton"  onClick={()=>navigate("/technicalsupport")} type="button" className="btn btn-primary p-3">{navData.button}</button>
       </div>
    
     </header>
