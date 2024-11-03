@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios';
 import  { useEffect, useState } from 'react';
-import project1 from "../css/images/project1.png";
-import project2 from "../css/images/project2.png";
-import project3 from "../css/images/project3.png";
-import project4 from "../css/images/project4.png";
+// import project1 from "../css/images/project1.png";
+// import project2 from "../css/images/project2.png";
+// import project3 from "../css/images/project3.png";
+// import project4 from "../css/images/project4.png";
 import portfoloioData from '../data/portfoliodata.json';
 
 

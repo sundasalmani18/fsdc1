@@ -106,19 +106,19 @@
         "title":"Projectss",
         "project_details":[
             {
-                "img":"../css/images/project1.png",
+                "img":"../assets/images/project1.png",
                 "title" :"Redux Todo App With Firebase"
             },
             {
-                "img":"../css/images/project2.jpg",
+                "img":"../assets/images/project2.png",
                 "title":"Restaurant Management System"
             },
             {
-                "img":"../css/images/project3.png",
+                "img":"../assets/images/project3.png",
                 "title" :"Ecommerce App Node js and React"
             },
             {
-                "img":"../css/images/project4.png",
+                "img":"../assets/images/project4.png",
                 "title" :"Employee system with Mongo Db"
             }
         ]        
