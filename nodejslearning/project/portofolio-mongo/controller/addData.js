@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 
 export const getPortofolioData=async (req, res) => {
     try {
-      const allData = await PortfolioModel.find(); // Fetch all documents from the collection
+      const allData = await PortfolioModel.find().limit(10); // Fetch all documents from the collection
       res.status(200).json(allData); // Respond with the retrieved data
     } catch (err) {
       console.error('Error fetching data:', err);
