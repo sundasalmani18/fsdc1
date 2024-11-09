@@ -3,7 +3,7 @@ import {
     addPortofolioData,
     getPortofolioData
 
-} from "../controller/addData.js";
+} from "../controller/addDataController.js";
 
 const router = express.Router();
 

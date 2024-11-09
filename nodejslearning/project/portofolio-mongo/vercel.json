@@ -15,13 +15,9 @@
     }
   ],
 
-
-  "rewrites": [
-    {
-      "src": "/(.*)",
-      "destination": "app.js"
-    },
-    { "src": "/portfolio", "destination": "../controller/addData.js" },
+  "routes": [
+    {"src": "/(.*)", "destination": "app.js"},
+    { "src": "/portfolio", "destination": "../controller/addDataController.js" },
     { "src": "/supportsystem", "destination": "../controller/supportController.js" }
   ]
 }
