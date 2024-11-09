@@ -15,9 +15,8 @@
     }
   ],
 
-  
 
-  "routes": [
+  "rewrites": [
     {
       "src": "/(.*)",
       "destination": "app.js"
