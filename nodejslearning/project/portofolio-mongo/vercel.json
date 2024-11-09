@@ -15,10 +15,10 @@
     }
   ],
 
-  "routes": [
-    {"src": "/(.*)", "destination": "app.js"},
-    { "src": "/portfolio", "destination": "../controller/addDataController.js" },
-    { "src": "/supportsystem", "destination": "../controller/supportController.js" }
+  "rewrites": [
+    {"source": "/(.*)", "destination": "app.js"},
+    { "source": "/portfolio", "destination": "../controller/addDataController.js" },
+    { "source": "/supportsystem", "destination": "../controller/supportController.js" }
   ]
 }
   
