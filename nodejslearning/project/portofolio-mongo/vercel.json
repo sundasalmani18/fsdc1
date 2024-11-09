@@ -19,7 +19,7 @@
 
   "routes": [
     {
-      "source": "/(.*)",
+      "src": "/(.*)",
       "destination": "app.js"
     },
     { "src": "/portfolio", "destination": "../controller/addData.js" },
