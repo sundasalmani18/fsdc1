@@ -4,23 +4,26 @@
     {
       "src": "app.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "./routes/portfolioRoutes.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "./routes/supportRoutes.js",
+      "use": "@vercel/node"
     }
   ],
 
   
-    "functions": {
-      "app.js": {
-        "maxDuration": 10
-      }
-    },
-  
-
 
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "app.js"
-    }
+    },
+    { "source": "/portfolio", "dest": "./routes/portfolioRoutes.js" },
+    { "source": "/supportsystem", "dest": "./routes/supportRoutes.js" }
   ]
 }
   
