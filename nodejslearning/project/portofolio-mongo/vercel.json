@@ -22,8 +22,8 @@
       "source": "/(.*)",
       "destination": "app.js"
     },
-    { "src": "/portfolio", "dest": "../controller/addData.js" },
-    { "src": "/supportsystem", "dest": "../controller/supportController.js" }
+    { "source": "/portfolio", "dest": "../controller/addData.js" },
+    { "source": "/supportsystem", "dest": "../controller/supportController.js" }
   ]
 }
   
