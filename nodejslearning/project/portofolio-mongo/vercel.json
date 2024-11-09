@@ -6,18 +6,18 @@
       "use": "@vercel/node"
     },
     {
-      "src": "./routes/portfolioRoutes.js",
+      "src": "../controller/addData.js",
       "use": "@vercel/node"
     },
     {
-      "src": "./routes/supportRoutes.js",
+      "src": "../controller/supportController.js",
       "use": "@vercel/node"
     }
   ],
 
   
 
-  "rewrites": [
+  "routes": [
     {
       "source": "/(.*)",
       "destination": "app.js"
