@@ -19,7 +19,7 @@ const HomePage = () => {
   
   return (
     <div className="App">
-    {data.nav && <Navbar  navData={data.nav} toggleData={toggleData}/>}
+    {data.nav && <Navbar  navData={data.nav} toggleData={toggleData} isLocalData={isLocalData} />}
      <DataFetcher setData={setData} isLocalData={isLocalData} />
      {data.banner && <Banner bannerData={data.banner}/>}
      {data.education && <Education educationDetails={data.education}/>}

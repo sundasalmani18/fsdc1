@@ -4,7 +4,7 @@ import axios from 'axios';
 import  { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ navData, toggleData }) => {
+const Navbar = ({ navData, toggleData ,isLocalData}) => {
   const navigate =useNavigate()
   // const [navData, setNavData] = useState(null);
 
@@ -55,13 +55,15 @@ const Navbar = ({ navData, toggleData }) => {
       </ul>
       </div>
 
-      {/* <button >Toggle Data</button> */}
       <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" onClick={toggleData} role="switch" id="flexSwitchCheckChecked" checked />
-    {/* <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> */}
+      <span className="toggle-title">
+          {isLocalData ? 'offline Data' : 'Online Data'}
+        </span>
+    <input class="form-check-input" type="checkbox" onChange={toggleData} role="switch" id="flexSwitchCheckChecked" checked />
+    
   </div>
      
-      {/* <button onClick={toggleData}>
+      {/* <button   class="form-check-input" type="checkbox" onClick={toggleData} role="switch">
                 Switch to {isLocalData ? 'MongoDB Data' : 'Local Data'}
             </button> */}
     
