@@ -5,9 +5,9 @@ import 'dotenv/config.js'
 // Handle form submission
 export const submitSupportForm = async (req, res) => {
    const { name, email, issue } = req.body;
-   console.log(name ,email, issue)
-  console.log(process.env.USER_EMAIL) 
-  console.log(process.env.RECEIVER_EMAIL) 
+//    console.log(name ,email, issue)
+//   console.log(process.env.USER_EMAIL) 
+//   console.log(process.env.RECEIVER_EMAIL) 
    try {
        // Save ticket to MongoDB
        const ticket = new Ticket({ name, email, issue });
@@ -24,6 +24,14 @@ export const submitSupportForm = async (req, res) => {
        };
 
        await transporter.sendMail(mailOptions);
+       // Notify the admin via socket.io
+    io.emit('adminNotification', {
+        name: name,
+        email: email,
+        issue: issue
+      });
+  
+      res.send('Email sent and admin notified');
 
        // Response
        res.status(201).json({ message: 'Support ticket submitted and email sent successfully', ticket });

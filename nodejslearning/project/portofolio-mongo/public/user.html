@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Chat</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+
+    <h1>Contact Support</h1>
+  <input id="userMessageInput" placeholder="Type a message to the admin" />
+  <button onclick="sendUserMessage()">Send Message</button>
+  <div id="chat"></div>
+
+  <script>
+    const socket = io('http://localhost:3000');
+
+    // Listen for messages from the admin
+    socket.on('adminMessage', (message) => {
+      const chat = document.getElementById('chat');
+      chat.innerHTML += `<p>Admin: ${message}</p>`;
+    });
+
+    // Send a message to the admin
+    function sendUserMessage() {
+      const input = document.getElementById('userMessageInput');
+      const message = input.value;
+      socket.emit('userMessage', message);
+      input.value = '';
+    }
+  </script>
+    
+</body>
+</html>

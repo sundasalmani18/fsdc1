@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+  <div id="notifications"></div>
+  <input id="adminMessageInput" placeholder="Type a message to the user" />
+  <button onclick="sendAdminMessage()">Send Message</button>
+  <div id="chat"></div>
+
+  <script>
+    const socket = io('http://localhost:3000');
+
+    // Listen for notifications about new form submissions
+    socket.on('adminNotification', (data) => {
+      const notifications = document.getElementById('notifications');
+      notifications.innerHTML += `<p>New message from: ${data.name} (${data.email}): ${data.message}</p>`;
+    });
+
+    // Listen for messages from the user
+    socket.on('userMessage', (message) => {
+      const chat = document.getElementById('chat');
+      chat.innerHTML += `<p>User: ${message}</p>`;
+    });
+
+    // Send a message to the user
+    function sendAdminMessage() {
+      const input = document.getElementById('adminMessageInput');
+      const message = input.value;
+      socket.emit('adminMessage', message);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>
