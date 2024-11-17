@@ -18,11 +18,8 @@ app.use(bodyParser.json());
 app.use(cors())
 
 const server =http.createServer(app)
-const io =new Server(server)
+ const io =new Server(server)
 app.use(express.static("public"))
-
-
-
 io.on('connection', (socket) => {
   console.log('A user connected');
 
@@ -44,6 +41,9 @@ io.on('connection', (socket) => {
     console.log('A user disconnected');
   });
 });
+
+
+
 dotenv.config();
 db.mongose.connect(db.url).then(() => {
     console.log("connected to database")
@@ -70,14 +70,6 @@ app.get('/', (req, res) => {
 })
 app.use("/portfolio", portfolioRoutes);
 app.use("/supportsystem", supportRoutes);
-
-
-
-
-
-
-
-
 
 
 
