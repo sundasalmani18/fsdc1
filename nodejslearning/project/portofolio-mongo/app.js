@@ -16,7 +16,7 @@ import dotenv from 'dotenv'
 const app = express()
 const server =http.createServer(app)
 const io =new Server(server)
-app.use("/css",express.static("./node_modules/bootstrap/dist/css"));
+
 app.use(express.static("public"))
 io.on('connection', (socket) => {
   console.log('A user connected');

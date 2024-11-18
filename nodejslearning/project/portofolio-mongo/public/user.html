@@ -15,7 +15,7 @@
   <div id="chat"></div>
 
   <script>
-    const socket = io('http://localhost:8080');
+    const socket = io();
 
     // Listen for messages from the admin
     socket.on('adminMessage', (message) => {
