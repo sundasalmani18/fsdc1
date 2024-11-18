@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./socket.io/socket.io.js"></script>
 
   <title>Admin Dashboard</title>
-  <script src="/socket.io/socket.io.js"></script>
+
 </head>
 <body>
   <h1>Admin Dashboard</h1>
@@ -13,10 +12,11 @@
   <input id="adminMessageInput" placeholder="Type a message to the user" />
   <button onclick="sendAdminMessage()">Send Message</button>
   <div id="chat"></div>
- 
-  <script>
+
+   <script>
+   
     // Initialize the socket connection
-    const socket = io('http://localhost:8080'); // Make sure this matches your server's URL and port
+    const socket = io(); // Make sure this matches your server's URL and port
 
     // Send a message to the user
     function sendAdminMessage() {
@@ -39,9 +39,9 @@
     });
 
 
-
     
-  </script>
+    
+  </script> 
 
 </body>
 </html>
