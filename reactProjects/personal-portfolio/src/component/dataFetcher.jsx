@@ -10,7 +10,7 @@ const DataFetcher = ({ setData, isLocalData }) => {
     const fetchFromMongoDB = async () => {
         try {
 
-            const response = await axios.get('http://localhost:8080/portfolio');
+            const response = await axios.get('https://sundusbk.vercel.app/portfolio');
                console.log(response.data[0],"response")
                setData(response.data[0]);
 

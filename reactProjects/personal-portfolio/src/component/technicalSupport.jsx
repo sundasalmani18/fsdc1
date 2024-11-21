@@ -20,7 +20,7 @@ const TechnicalSupport = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/supportsystem', formData);
+      const response = await axios.post('https://sundusbk.vercel.app/supportsystem', formData);
       setStatus(response.data.message);
       alert("Support ticket submitted and email sent successfully")
     } catch (error) {

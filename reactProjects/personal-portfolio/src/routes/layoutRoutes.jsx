@@ -10,8 +10,8 @@ export default function LayoutRoutes() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/technicalsupport" element={<TechnicalsupportPage />} />
-          <Route path="/adminchat" element={<AdminchatPage />} />
-          <Route path="/userchat" element={<Userchat />} />
+          <Route path="/admin" element={<AdminchatPage />} />
+          <Route path="/user" element={<Userchat />} />
          
         </Routes>
       </>

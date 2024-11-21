@@ -9,6 +9,8 @@ import cors from 'cors';
 import portfolioRoutes from  "./routes/portfolioRoutes.js"
 import supportRoutes from  "./routes/supportRoutes.js"
 import dotenv from 'dotenv'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 
@@ -16,6 +18,9 @@ import dotenv from 'dotenv'
 const app = express()
 const server =http.createServer(app)
 const io =new Server(server)
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.static("public"))
 io.on('connection', (socket) => {
@@ -66,6 +71,15 @@ db.mongose.connect(db.url).then(() => {
 app.get('/', (req, res) => {
     res.json({ 'message': "mongo db app" })
 })
+
+
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+app.get('/user', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'user.html'));
+});
+
 app.use("/portfolio", portfolioRoutes);
 app.use("/supportsystem", supportRoutes);
 
