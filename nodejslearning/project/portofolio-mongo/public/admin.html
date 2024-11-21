@@ -35,9 +35,14 @@
     // Listen for messages from the user
     socket.on('userMessage', (message) => {
       const chat = document.getElementById('chat');
-      chat.innerHTML += `<p>User: ${message}</p>`;
+      chat.innerHTML += `<p>you: ${message}</p>`;
     });
-
+  // Listen for messages from the admin
+  socket.on('adminMessage', (message) => {
+      const chat = document.getElementById('chat');
+      // Add an admin message to the chat
+      chat.innerHTML += `<p class="admin">user: ${message}</p>`;
+    });
 
     
     
