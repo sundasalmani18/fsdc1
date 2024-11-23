@@ -17,7 +17,17 @@ import { fileURLToPath } from 'url';
 
 const app = express()
 const server =http.createServer(app)
-const io =new Server(server)
+// const io =new Server(server)
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",  // Allow your React app on localhost:3000
+    methods: ["GET", "POST"],         // Allow these HTTP methods
+    allowedHeaders: ["my-custom-header"], // Optional custom headers
+    credentials: true,                // Allow credentials (cookies, etc.)
+  }
+});
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
