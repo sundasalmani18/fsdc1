@@ -11,7 +11,9 @@
 
     <h1>Contact Support</h1>
   <input id="userMessageInput" placeholder="Type a message to the admin" />
-  <button onclick="sendUserMessage()">Send Message</button>
+  <!-- <button id="sendUserMessage()">Send Message</button> -->
+  <button id="sendMessageButton">Send Message</button>
+
   <div id="chat"></div>
 
   <script>
@@ -35,6 +37,10 @@
       socket.emit('userMessage', message);
       input.value = '';
     }
+
+
+    document.getElementById('sendMessageButton').addEventListener('click', sendUserMessage);
+
   </script>
     
 </body>

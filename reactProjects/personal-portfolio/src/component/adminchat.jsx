@@ -171,64 +171,91 @@
 // export default AdminChat;
 
 
+
+
 import React, { useState, useEffect } from 'react';
-import { useSocket } from '../context/socketContext'; // Hook to access socket connection
+import io from 'socket.io-client';
+
+// Make sure the URL matches your backend Socket.io server
+const socket = io(); // default is to connect to the server that served the page
 
 const AdminChat = () => {
-  const socket = useSocket();
   const [adminMessage, setAdminMessage] = useState('');
-  const [chatMessages, setChatMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [notifications, setNotifications] = useState([]);
 
-  // Send a message to the user
-  const sendAdminMessage = () => {
-    if (adminMessage) {
-      socket.emit('adminMessage', adminMessage);  // Emit message to the user
-      setChatMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: 'admin', text: adminMessage },
+  // Listen for notifications about new messages
+  useEffect(() => {
+    socket.on('adminNotification', (data) => {
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        `New message from: ${data.name} (${data.email}): ${data.message}`,
       ]);
-      setAdminMessage('');  // Clear input after sending
+    });
+
+    // Listen for messages from the user
+    socket.on('userMessage', (message) => {
+      setMessages((prevMessages) => [...prevMessages, { sender: 'user', message }]);
+    });
+
+    // Listen for messages from the admin
+    socket.on('adminMessage', (message) => {
+      setMessages((prevMessages) => [...prevMessages, { sender: 'admin', message }]);
+    });
+
+    // Cleanup on component unmount
+    return () => {
+      socket.off('adminNotification');
+      socket.off('userMessage');
+      socket.off('adminMessage');
+    };
+  }, []);
+
+  // Handle sending a message from the admin
+  const sendAdminMessage = () => {
+    if (adminMessage.trim()) {
+      socket.emit('adminMessage', adminMessage); // Emit the message to the user
+      setMessages((prevMessages) => [...prevMessages, { sender: 'admin', message: adminMessage }]);
+      setAdminMessage(''); // Clear the input field
     }
   };
 
-  // Listen for user messages
-  useEffect(() => {
-    if (socket) {
-      socket.on('userMessage', (message) => {
-        setChatMessages((prevMessages) => [
-          ...prevMessages,
-          { sender: 'user', text: message },
-        ]);
-      });
-
-      // Cleanup the listener when the component unmounts
-      return () => {
-        socket.off('userMessage');
-      };
-    }
-  }, [socket]);
-
   return (
     <div>
-      <h1>Admin Chat</h1>
-      <div id="chat">
-        {chatMessages.map((msg, index) => (
-          <p key={index} className={msg.sender}>
-            <strong>{msg.sender === 'admin' ? 'You' : 'User'}:</strong> {msg.text}
-          </p>
-        ))}
+      <h1>Admin Dashboard</h1>
+
+      {/* Display Notifications */}
+      <div id="notifications">
+        {notifications.length > 0 && (
+          <div>
+            <h2>New Messages</h2>
+            {notifications.map((notification, index) => (
+              <p key={index}>{notification}</p>
+            ))}
+          </div>
+        )}
       </div>
+
+      {/* Admin message input */}
       <input
         id="adminMessageInput"
-        placeholder="Type a message to the user"
         value={adminMessage}
         onChange={(e) => setAdminMessage(e.target.value)}
+        placeholder="Type a message to the user"
       />
       <button onClick={sendAdminMessage}>Send Message</button>
+
+      {/* Display Chat */}
+      <div id="chat">
+        {messages.length > 0 &&
+          messages.map((msg, index) => (
+            <p key={index} className={msg.sender === 'admin' ? 'admin' : 'user'}>
+              {msg.sender}: {msg.message}
+            </p>
+          ))}
+      </div>
     </div>
   );
 };
 
 export default AdminChat;
-
-
