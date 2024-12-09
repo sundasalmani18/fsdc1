@@ -55,13 +55,27 @@ const Navbar = ({ navData, toggleData ,isLocalData}) => {
       </ul>
       </div>
 
-      <div class="form-check form-switch">
+      <div className="form-check form-switch">
+        <span className="toggle-title">
+          {isLocalData ? 'Offline Data' : 'Online Data'}
+        </span>
+        <input
+          className="form-check-input"
+          type="checkbox"
+          onChange={toggleData} // Toggle state on checkbox change
+          role="switch"
+          id="flexSwitchCheckChecked"
+          checked={isLocalData} // Toggle the switch based on the state
+        />
+      </div>
+
+      {/* <div class="form-check form-switch">
       <span className="toggle-title">
           {isLocalData ? 'offline Data' : 'Online Data'}
         </span>
     <input class="form-check-input" type="checkbox" onChange={toggleData} role="switch" id="flexSwitchCheckChecked" checked />
     
-  </div>
+  </div> */}
      
       {/* <button   class="form-check-input" type="checkbox" onClick={toggleData} role="switch">
                 Switch to {isLocalData ? 'MongoDB Data' : 'Local Data'}
