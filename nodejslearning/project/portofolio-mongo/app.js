@@ -1,13 +1,13 @@
 import express from 'express'
-import http from "http" 
-import {Server} from "socket.io"
-import  db from './model/index.js'
+import http from "http"
+import { Server } from "socket.io"
+import db from './model/index.js'
 import mongoose from 'mongoose';
 // import employeeRoutes from './routes/employeeRoutes.js'
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import portfolioRoutes from  "./routes/portfolioRoutes.js"
-import supportRoutes from  "./routes/supportRoutes.js"
+import portfolioRoutes from "./routes/portfolioRoutes.js"
+import supportRoutes from "./routes/supportRoutes.js"
 import dotenv from 'dotenv'
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -16,8 +16,19 @@ import { fileURLToPath } from 'url';
 
 
 const app = express()
-const server =http.createServer(app)
- const io =new Server(server)
+app.use(bodyParser.json());
+
+app.use(cors())
+const server = http.createServer(app)
+// const io = new Server(server)
+// Socket.IO server setup with CORS configuration
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000', // React app URL
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+  },
+});
 
 
 
@@ -47,15 +58,13 @@ io.on('connection', (socket) => {
     console.log('A user disconnected');
   });
 });
-app.use(bodyParser.json());
 
- app.use(cors())
 
 
 
 dotenv.config();
 db.mongose.connect(db.url).then(() => {
-    console.log("connected to database")
+  console.log("connected to database")
 
   //   const mainData = new PortfolioModel(exampleData);
   //   return mainData.save();
@@ -63,7 +72,7 @@ db.mongose.connect(db.url).then(() => {
   // .then(() => {
   //   console.log('Data saved successfully');
   //   mongoose.connection.close(); // Close the connection when done
-    })
+})
   .catch((err) => {
     console.error('Error:', err);
   });
@@ -72,7 +81,7 @@ db.mongose.connect(db.url).then(() => {
 
 
 app.get('/', (req, res) => {
-    res.json({ 'message': "mongo db app" })
+  res.json({ 'message': "mongo db app" })
 })
 
 
@@ -92,5 +101,5 @@ app.use("/supportsystem", supportRoutes);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
-    console.log(`"server running on port ${PORT}`)
+  console.log(`"server running on port ${PORT}`)
 })
