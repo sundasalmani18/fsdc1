@@ -11,6 +11,8 @@ import supportRoutes from "./routes/supportRoutes.js"
 import dotenv from 'dotenv'
 import path from 'path';
 import { fileURLToPath } from 'url';
+import messageRoutes from './routes/messageRoutes.js'
+import Message from './model/messge.model.js'
 
 
 
@@ -40,19 +42,61 @@ app.use(express.static("public"))
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  // Listen for messages from the admin
-  socket.on('adminMessage', (data) => {
-    console.log(`Message from admin: ${data}`);
-    // Broadcast the message to all clients (including the user)
-    io.emit('userMessage', data);
+  socket.on('adminMessage', async (message) => {
+    // Store the message in MongoDB
+    const newMessage = new Message({
+      user: 'Admin',
+      message: message
+    });
+    
+    try {
+      await newMessage.save();
+      console.log('Admin message saved to DB:', message);
+    } catch (error) {
+      console.error('Error saving admin message:', error);
+    }
+
+    // Emit the message to the user
+    socket.emit('adminMessage', message);
   });
 
-  // Listen for messages from the user
-  socket.on('userMessage', (data) => {
-    console.log(`Message from user: ${data}`);
-    // Broadcast the message to the admin
-    io.emit('adminMessage', data);
+  // Receive user message and store it in MongoDB
+  socket.on('userMessage', async (message) => {
+    // Store the message in MongoDB
+    const newMessage = new Message({
+      user: 'User',
+      message: message
+    });
+
+    try {
+      await newMessage.save();
+      console.log('User message saved to DB:', message);
+    } catch (error) {
+      console.error('Error saving user message:', error);
+    }
+
+    // Emit the message to the admin
+    socket.emit('userMessage', message);
   });
+
+
+
+
+
+//without database
+  // // Listen for messages from the admin
+  // socket.on('adminMessage', (data) => {
+  //   console.log(`Message from admin: ${data}`);
+  //   // Broadcast the message to all clients (including the user)
+  //   io.emit('userMessage', data);
+  // });
+
+  // // Listen for messages from the user
+  // socket.on('userMessage', (data) => {
+  //   console.log(`Message from user: ${data}`);
+  //   // Broadcast the message to the admin
+  //   io.emit('adminMessage', data);
+  // });
 
   socket.on('disconnect', () => {
     console.log('A user disconnected');
@@ -94,6 +138,7 @@ app.get('/user', (req, res) => {
 
 app.use("/portfolio", portfolioRoutes);
 app.use("/supportsystem", supportRoutes);
+app.use("/message", messageRoutes);
 
 
 
