@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 
 const Adminchat = () => {
 
@@ -12,6 +13,18 @@ const Adminchat = () => {
   
     // useEffect to set up socket listeners
     useEffect(() => {
+
+        // Fetch chat history from MongoDB
+    const fetchMessages = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/message');
+        setChatMessages(response.data.map(msg => `${msg.user}: ${msg.message}`));
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+      }
+    };
+
+    fetchMessages();
 
       // Connect to the Socket.IO server
     socket.on('connect', () => {
