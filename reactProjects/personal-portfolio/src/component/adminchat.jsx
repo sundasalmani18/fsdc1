@@ -7,9 +7,14 @@ const Adminchat = () => {
     const [adminMessage, setAdminMessage] = useState('');
     const [notifications, setNotifications] = useState([]);
     const [chatMessages, setChatMessages] = useState([]);
+    const [isAdminOnline, setIsAdminOnline] = useState(true); // Track if admin is online
   
     // Initialize the socket connection
     const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
+
+
+
+  
   
     // useEffect to set up socket listeners
     useEffect(() => {
@@ -31,8 +36,16 @@ const Adminchat = () => {
       // Connect to the Socket.IO server
     socket.on('connect', () => {
       console.log('Admin Connected to server');
+      setIsAdminOnline(true); // Set admin as online
     });
     
+
+     // Listen for admin disconnect (when admin is offline)
+     socket.on('disconnect', () => {
+      console.log('Admin disconnected from server');
+      setIsAdminOnline(false); // Set admin as offline
+    });
+
       // Listen for notifications about new form submissions
       socket.on('adminNotification', (data) => {
         setNotifications((prevNotifications) => [
@@ -70,6 +83,27 @@ const Adminchat = () => {
         setAdminMessage(''); // Clear the input field
       }
     };
+
+
+
+     // Render message for offline admin
+  const renderOfflineMessage = () => {
+    if (!isAdminOnline) {
+      return <p style={{ color: 'red' }}>Admin is currently offline, will join you soon.</p>;
+    }
+    return null;
+  };
+
+    // Check if admin is offline and send demo message if needed
+    useEffect(() => {
+      if (!isAdminOnline) {
+        setChatMessages((prevMessages) => [
+          ...prevMessages,
+          'Admin: Admin is currently offline, will join you soon.',
+        ]);
+      }
+    }, [isAdminOnline]);
+
   
     return (
       <div>
@@ -87,6 +121,7 @@ const Adminchat = () => {
         />
         <button onClick={sendAdminMessage}>Send Message</button>
         <div id="chat">
+        {renderOfflineMessage()} 
           {chatMessages.map((msg, index) => (
             <p  style={{color:"black"}} key={index}>{msg}</p>
           ))}
