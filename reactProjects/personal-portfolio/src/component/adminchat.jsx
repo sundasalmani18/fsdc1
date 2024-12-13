@@ -15,14 +15,16 @@ const Adminchat = () => {
     useEffect(() => {
 
         // Fetch chat history from MongoDB
-    const fetchMessages = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/message');
-        setChatMessages(response.data.map(msg => `${msg.user}: ${msg.message}`));
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-      }
-    };
+        const fetchMessages = async () => {
+          try {
+            const response = await axios.get('http://localhost:8080/message');
+           
+            setChatMessages(response.data.map(msg => `${msg.user}: ${msg.message}`));
+          } catch (error) {
+            console.error('Error fetching messages:', error);
+          }
+        };
+      
 
     fetchMessages();
 
@@ -56,7 +58,9 @@ const Adminchat = () => {
       return () => {
         socket.disconnect();
       };
-    }, [socket]);
+    }, []);
+
+
   
     // Send a message to the user
     const sendAdminMessage = () => {
