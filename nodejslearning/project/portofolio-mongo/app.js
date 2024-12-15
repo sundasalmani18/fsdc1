@@ -75,6 +75,9 @@ io.on('connection', (socket) => {
       console.error('Error saving user message:', error);
     }
 
+
+
+    
     // Emit the message to the admin
     socket.emit('userMessage', message);
   });
