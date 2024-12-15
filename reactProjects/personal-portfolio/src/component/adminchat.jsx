@@ -15,8 +15,8 @@
      
 //     // useEffect to set up socket listeners
 //     useEffect(() => {
-    
-
+     
+//    fetchMessages();
 //       // Connect to the Socket.IO server
 //     socket.on('connect', () => {
 //       console.log('Admin Connected to server');
@@ -25,10 +25,7 @@
 //     });
  
 //        // Listen for messages from the user
-//    socket.on('userMessage', (message) => {
-//     setChatMessages((prevChatMessages) => [...prevChatMessages, `User: ${message}`]);
-//   });
-//    fetchMessages();
+  
 
 //      // Listen for admin disconnect (when admin is offline)
 //      socket.on('disconnect', () => {
@@ -52,6 +49,9 @@
 //         `User: ${data}`,
 //       ]);
 //     });
+//     socket.on('userMessage', (message) => {
+//       setChatMessages((prevChatMessages) => [...prevChatMessages, `User: ${message}`]);
+//     });
   
   
 //       // Clean up the socket connection when the component unmounts
@@ -69,7 +69,16 @@
 //   }
 // }, [isAdminOnline]); // This effect runs when `isAdminOnline` changes
 
-
+// // Fetch chat history from MongoDB
+// const fetchMessages = async () => {
+//   try {
+//     const response = await axios.get('http://localhost:8080/message');
+   
+//     setChatMessages(response.data.map(msg => `${msg.user}: ${msg.message}`));
+//   } catch (error) {
+//     console.error('Error fetching messages:', error);
+//   }
+//   };
 //   // Function to send a demo message if the admin is offline
 //   const sendDemoMessage = () => {
 //     const demoMessage = "Admin is currently offline, but we will get back to you soon!";
@@ -78,18 +87,9 @@
 //       `Admin: ${demoMessage}`,
 //     ]);
 //     // Optionally, you could also emit this demo message to the server (if required by your server logic)
-//     socket.emit('userMessage', demoMessage);
+//     socket.emit('adminMessage', demoMessage);
 //   };
-// // Fetch chat history from MongoDB
-// const fetchMessages = async () => {
-// try {
-//   const response = await axios.get('http://localhost:8080/message');
- 
-//   setChatMessages(response.data.map(msg => `${msg.user}: ${msg.message}`));
-// } catch (error) {
-//   console.error('Error fetching messages:', error);
-// }
-// };
+
   
 //     // Send a message to the user
 //     const sendAdminMessage = () => {
@@ -100,11 +100,6 @@
 //       }
 //     };
 
-
-
- 
-
- 
 
 
 //      // Render message for offline admin
@@ -143,7 +138,7 @@
 //   };
 
 
-// export default Adminchat
+//  export default Adminchat
 
 
 
@@ -157,7 +152,8 @@ const Adminchat = () => {
     const [notifications, setNotifications] = useState([]);
     const [chatMessages, setChatMessages] = useState([]);
     const [isAdminOnline, setIsAdminOnline] = useState(true); // Track if admin is online
-  
+    const [hasSentDemoMessage, setHasSentDemoMessage] = useState(false); // Flag to prevent multiple demo messages
+
     // Initialize the socket connection
     const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
 
@@ -167,11 +163,15 @@ const Adminchat = () => {
         socket.on('connect', () => {
             console.log('Admin Connected to server');
             setIsAdminOnline(true); // Set admin as online
+            setHasSentDemoMessage(false); // Reset the demo message flag when admin connects
         });
- 
+
         // Listen for messages from the user
         socket.on('userMessage', (message) => {
-            setChatMessages((prevChatMessages) => [...prevChatMessages, `User: ${message}`]);
+            setChatMessages((prevChatMessages) => [
+                ...prevChatMessages,
+                `User: ${message}`,
+            ]);
         });
 
         fetchMessages();
@@ -194,10 +194,10 @@ const Adminchat = () => {
         socket.on('adminMessage', (data) => {
             setChatMessages((prevChatHistory) => [
                 ...prevChatHistory,
-                `User: ${data}`,
+                `Admin: ${data}`,
             ]);
         });
-  
+
         // Clean up the socket connection when the component unmounts
         return () => {
             socket.off('disconnect');
@@ -210,21 +210,22 @@ const Adminchat = () => {
 
     // Check and send demo message when admin is offline
     useEffect(() => {
-        if (!isAdminOnline) {
+        if (!isAdminOnline && !hasSentDemoMessage) {
             // Trigger sending demo message only once when admin goes offline
             sendDemoMessage();
+            setHasSentDemoMessage(true); // Set flag to true to prevent multiple sends
         }
-    }, [isAdminOnline]); // This effect runs when `isAdminOnline` changes
+    }, [isAdminOnline, hasSentDemoMessage]); // This effect runs when `isAdminOnline` or `hasSentDemoMessage` changes
 
     // Function to send a demo message if the admin is offline
     const sendDemoMessage = () => {
         const demoMessage = "Admin is currently offline, but we will get back to you soon!";
         setChatMessages((prevChatMessages) => [
             ...prevChatMessages,
-            `Admin: ${demoMessage}`,
+            `Admin: ${demoMessage}`, // Display the demo message only once in chat
         ]);
         // Optionally, you could also emit this demo message to the server (if required by your server logic)
-        socket.emit('userMessage', demoMessage);
+        socket.emit('userMessage', demoMessage); // This sends the demo message to the user only once
     };
 
     // Fetch chat history from MongoDB
@@ -241,7 +242,10 @@ const Adminchat = () => {
     const sendAdminMessage = () => {
         if (adminMessage.trim() !== '' && isAdminOnline) {
             socket.emit('adminMessage', adminMessage);
-            setChatMessages((prevChatMessages) => [...prevChatMessages, `You: ${adminMessage}`]);
+            setChatMessages((prevChatMessages) => [
+                ...prevChatMessages,
+                `You: ${adminMessage}`,
+            ]);
             setAdminMessage(''); // Clear the input field
         } else if (!isAdminOnline) {
             alert('You cannot send messages while you are offline.');
@@ -284,3 +288,5 @@ const Adminchat = () => {
 };
 
 export default Adminchat;
+
+
