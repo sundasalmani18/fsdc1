@@ -61,7 +61,53 @@ fetchMessages();
   };
 
   return (
-    <div>
+    <>
+       <div class="container">
+      <div class="d-flex justify-content-center m-3">
+        <h3 class="align-center">User Support Chat System</h3>
+      </div>
+      
+        
+      <div id="messages">
+        
+        <div class="msg-left">
+       
+        </div>
+         <div class="msg-right">
+         <div id="chat">
+        {chatHistory.map((msg, index) => (
+          <p style={{color:"black"}} key={index}>{msg}</p>
+        ))}
+      </div>
+        </div>
+        
+  
+        <div class="input-group mb-3">
+          <input type="text" class="form-control"
+           id="userMessageInput"
+           placeholder="Type a message to the admin"
+           value={message}
+           onChange={(e) => setMessage(e.target.value)}
+           aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button"  onClick={sendUserMessage}>Submit</button>
+          
+          </div>
+          </div>
+        
+        
+    </div>
+    
+  
+  
+  
+  </div>
+
+
+
+
+
+    {/* <div>
       <h1>Contact Support</h1>
       <input
         id="userMessageInput"
@@ -75,7 +121,8 @@ fetchMessages();
           <p style={{color:"black"}} key={index}>{msg}</p>
         ))}
       </div>
-    </div>
+    </div> */}
+    </>
   );
 };
 
