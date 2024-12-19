@@ -16,7 +16,7 @@ const Adminchat = () => {
     // useEffect to set up socket listeners
     useEffect(() => {
      
-   fetchMessages();
+
       // Connect to the Socket.IO server
     socket.on('connect', () => {
       console.log('Admin Connected to server');
@@ -53,7 +53,7 @@ const Adminchat = () => {
       setChatMessages((prevChatMessages) => [...prevChatMessages, `User: ${message}`]);
     });
   
-  
+    fetchMessages();
       // Clean up the socket connection when the component unmounts
       return () => {
      
@@ -113,6 +113,38 @@ const fetchMessages = async () => {
    
   
     return (
+<>
+      <div class="container">
+      <div class="d-flex justify-content-center m-3">
+        <h3 class="align-center">Support Chat System</h3>
+      </div>
+      
+        
+      <div id="messages">
+        
+        <div class="msg-left">
+          Hi..
+        </div>
+         <div class="msg-right">
+          Hello
+        </div>
+        
+  
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Submit</button>
+            <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+          </div>
+          </div>
+        
+        
+    </div>
+    
+  
+  
+  
+  </div>
       <div>
         <h1>Admin Dashboard</h1>
         <div id="notifications">
@@ -134,6 +166,7 @@ const fetchMessages = async () => {
           ))}
         </div>
       </div>
+      </>
     );
   };
 
