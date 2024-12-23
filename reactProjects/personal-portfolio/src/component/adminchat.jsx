@@ -12,7 +12,7 @@ const Adminchat = () => {
     // Initialize the socket connection
     const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
 
-     
+        
     // useEffect to set up socket listeners
     useEffect(() => {
       // Connect to the Socket.IO server
@@ -29,7 +29,13 @@ const Adminchat = () => {
           `New message from: ${data.name} (${data.email}): ${data.message}`,
         ]);
       });
+      
 
+
+
+      socket.on('userMessage', (message) => {
+        setChatMessages((prevChatMessages) => [...prevChatMessages, `User: ${message}`]);
+      });
       //Listen for messages from the admin
     socket.on('adminMessage', (data) => {
       setChatMessages((prevChatHistory) => [
@@ -37,29 +43,25 @@ const Adminchat = () => {
         `User: ${data}`,
       ]);
     });
-    socket.on('userMessage', (message) => {
-      setChatMessages((prevChatMessages) => [...prevChatMessages, `User: ${message}`]);
-    });
+  
     socket.on('disconnect', () => {
       console.log('Admin disconnected from server');
       setIsAdminOnline(false); // Set admin as offline
-      // sendDemoMessage();
+     sendDemoMessage();
     });
     fetchMessages();
       // Clean up the socket connection when the component unmounts
       return () => {
-        socket.disconnect();
-     // socket.off('disconnect');
+      
+    socket.off('connect');
+    socket.off('adminNotification');
+    socket.off('userMessage');
+    socket.off('adminMessage');
+    socket.off('disconnect');
       };
     }, []);
 
-  // Check and send demo message when admin is offline
-//  useEffect(() => {
-//   if (!isAdminOnline) {
-//     // Trigger sending demo message when admin goes offline
-//    sendDemoMessage();
-//   }
-// }, [isAdminOnline]); // This effect runs when `isAdminOnline` changes
+
 
 // Fetch chat history from MongoDB
 const fetchMessages = async () => {
@@ -72,15 +74,15 @@ const fetchMessages = async () => {
   }
   };
   // Function to send a demo message if the admin is offline
-  // const sendDemoMessage = () => {
-  //   const demoMessage = "Admin is currently offline, but we will get back to you soon!";
-  //   setChatMessages((prevChatMessages) => [
-  //     ...prevChatMessages,
-  //     `Admin: ${demoMessage}`,
-  //   ]);
-  //   // Optionally, you could also emit this demo message to the server (if required by your server logic)
-  //   socket.emit('adminMessage', demoMessage);
-  // };
+  const sendDemoMessage = () => {
+    const demoMessage = "Admin is currently offline, but we will get back to you soon!";
+    setChatMessages((prevChatMessages) => [
+      ...prevChatMessages,
+      `Admin: ${demoMessage}`,
+    ]);
+    // Optionally, you could also emit this demo message to the server (if required by your server logic)
+    socket.emit('adminMessage', demoMessage);
+  };
 
   
     // Send a message to the user
@@ -95,15 +97,23 @@ const fetchMessages = async () => {
 
 
      // Render message for offline admin
-  // const renderOfflineMessage = () => {
-  //   if (!isAdminOnline) {
-  //     return <p style={{ color: 'red' }}>Admin is currently offline, will join you soon.</p>;
-  //   }
-  //   return null;
-  // };
+  const renderOfflineMessage = () => {
+    if (!isAdminOnline) {
+      return <p style={{ color: 'red' }}>Admin is currently offline, will join you soon.</p>;
+    }
+    return null;
+  };
 
-   
-  
+    // Check and send demo message when admin is offline
+    useEffect(() => {
+      if (!isAdminOnline) {
+        // Trigger sending demo message when admin goes offline
+       sendDemoMessage();
+      }
+
+      console.log("Admin online status changed:", isAdminOnline);
+    }, [isAdminOnline]); // This effect runs when `isAdminOnline` changes
+
     return (
 <>
       <div class="container">
@@ -123,7 +133,8 @@ const fetchMessages = async () => {
         </div>
          <div class="msg-right">
          <div id="chat">
-        {/* {renderOfflineMessage()}  */}
+          
+         {renderOfflineMessage()}  
           {chatMessages.map((msg, index) => (
             <p  style={{color:"black"}} key={index}>{msg}</p>
           ))}
