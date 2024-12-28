@@ -47,7 +47,7 @@ const Adminchat = () => {
     socket.on('disconnect', () => {
       console.log('Admin disconnected from server');
       setIsAdminOnline(false); // Set admin as offline
-     sendDemoMessage();
+    //  sendDemoMessage();
     });
     fetchMessages();
       // Clean up the socket connection when the component unmounts
