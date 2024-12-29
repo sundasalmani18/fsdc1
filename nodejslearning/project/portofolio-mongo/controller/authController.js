@@ -28,7 +28,14 @@ import jwt from "jsonwebtoken";
       // Generate JWT
       const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
   
-      res.status(200).json({ token});
+      res.status(200).json({
+         token,
+         user: {
+          id: user._id,      // User ID
+          username: user.username,  // Username
+          // You can also include more data here (e.g., email, role)
+        },
+      });
       
     } catch (err) {
       res.status(400).send('Error logging in');
