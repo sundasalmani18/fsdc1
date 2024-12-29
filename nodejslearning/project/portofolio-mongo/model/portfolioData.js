@@ -48,7 +48,7 @@ import mongoose from 'mongoose';
         title: "Experience",
         experience_details: [
           {
-            date: "Jan 2018-May 2018",
+            date: "March 2017-July 2017",
             designation: "Intern",
             position: "Verge System",
             description1: "Developed web applications using JavaScript, React, and Node.js",
@@ -57,7 +57,7 @@ import mongoose from 'mongoose';
             description4: "Learned best practices in software development and version control"
           },
           {
-            date: "2018-2019",
+            date: "2017-2018",
             designation: "Junior Developer",
             position: "Verge System",
             description1: "Developed and maintained web applications using JavaScript, HTML, and CSS",
