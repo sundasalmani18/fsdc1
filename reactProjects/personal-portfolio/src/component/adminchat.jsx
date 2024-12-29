@@ -121,25 +121,82 @@ const fetchMessages = async () => {
         <h3 class="align-center">Admin Support Chat System</h3>
       </div>
       
-        
-      <div id="messages">
-        
-        <div class="msg-left">
-        <div id="notifications">
-          {notifications.map((notification, index) => (
+        {notifications.map((notification, index) => (
             <p key={index}>{notification}</p>
           ))}
+
+{/* {renderOfflineMessage()}  
+          {chatMessages.map((msg, index) => (
+            <p  style={{color:"black"}} key={index}>{msg}</p>
+          ))} */}
+      <div id="messages">
+        {console.log('chatMessages', chatMessages)}
+         {/* <div class="msg-left"> */}
+        {/* <div id="notifications">
+        {chatMessages
+            .filter(message => message.startsWith("Admin"))
+            .map((message, index) => {
+              const messageText = message.split(": ").slice(1).join(": ");
+              return <div key={index} className="msg">{messageText}</div>;
+            })}
+          
         </div>
         </div>
          <div class="msg-right">
          <div id="chat">
           
-         {renderOfflineMessage()}  
-          {chatMessages.map((msg, index) => (
-            <p  style={{color:"black"}} key={index}>{msg}</p>
-          ))}
+         {chatMessages
+            .filter(message => message.startsWith("User"))
+            .map((message, index) => {
+              const messageText = message.split(": ").slice(1).join(": ");
+              return <div key={index} className="msg">{messageText}</div>;
+            })}
         </div>
+        </div>  */}
+        
+        {chatMessages.map((message, index) => {
+        const [role, ...messageText] = message.split(": ");
+        const text = messageText.join(": ");
+
+        return (
+          <div
+            key={index}
+            style={{
+              alignSelf: role === "Admin" ? "flex-start" : "flex-end",
+              backgroundColor: role === "Admin" ? "#f1f1f1" : "#e1e1e2",
+              padding: "10px",
+              borderRadius: "5px",
+              maxWidth: "70%",
+            }}
+          >
+            {text}
+          </div>
+        );
+      })}
+     
+        {/* Left div for Admin messages */}
+      {/* <div style={{ width: "45%", backgroundColor: "#f1f1f1", padding: "10px" }}>
+        <div id="notifications">
+          {chatMessages
+            .filter(message => message.startsWith("Admin"))
+            .map((message, index) => {
+              const messageText = message.split(": ").slice(1).join(": ");
+              return <div key={index} className="msg">{messageText}</div>;
+            })}
         </div>
+      </div> */}
+
+       {/* Right div for User messages */}
+       {/* <div style={{ width: "45%", backgroundColor: "#e1e1e1", padding: "10px" }}>
+        <div id="chat">
+          {chatMessages
+            .filter(message => message.startsWith("User"))
+            .map((message, index) => {
+              const messageText = message.split(": ").slice(1).join(": ");
+              return <div key={index} className="msg">{messageText}</div>;
+            })}
+        </div>
+      </div> */}
         
   
         <div class="input-group mb-3">

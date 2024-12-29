@@ -13,6 +13,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import messageRoutes from './routes/messageRoutes.js'
 import Message from './model/messge.model.js'
+import authRoutes from './routes/authRoutes.js'
 
 
 
@@ -142,6 +143,7 @@ app.get('/user', (req, res) => {
 app.use("/portfolio", portfolioRoutes);
 app.use("/supportsystem", supportRoutes);
 app.use("/message", messageRoutes);
+app.use("/auth", authRoutes);
 
 
 
