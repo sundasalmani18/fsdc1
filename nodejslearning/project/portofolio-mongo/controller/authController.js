@@ -33,6 +33,7 @@ import jwt from "jsonwebtoken";
          user: {
           id: user._id,      // User ID
           username: user.username,  // Username
+          role:user.role
           // You can also include more data here (e.g., email, role)
         },
       });

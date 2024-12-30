@@ -66,9 +66,10 @@ const Register = () => {
           </div>
 
         
-        
-
+         
+          <a  href="/login"  > already have account </a>
           <div className="col-md-12 justify-content-center d-flex p-2">
+      
             <button type="submit" className="btn btn-primary btn-sm py-2 w-100 m-2">Submit</button>
             
             {/* <a href="register.html" classname="btn btn-sm btn-primary p-2 m-2 w-100">Create an account</a> */}
