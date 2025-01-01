@@ -16,16 +16,17 @@ const Login = ({ setToken }) => {
       // const token = response.data.token;
       // const user = response; 
       const { token, user } = response.data
-      //  console.log("user",user)
+        // console.log("user",user)
       // Save the token and complete user data in localStorage
       localStorage.setItem('token', token);  // Store the token
       localStorage.setItem('userId', user.id);  // Store the user ID
       localStorage.setItem('username', user.username);  // Store the username
+      localStorage.setItem('role',user.role)
 
       setToken(token);
       alert('login successful')
 
-      // Redirect based on user role
+      // // Redirect based on user role
       if (user.role === 'admin') {
         console.log(user.role, "user role")
         navigate('/admin');  // Navigate to the admin page if user is an admin

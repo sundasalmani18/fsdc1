@@ -16,6 +16,8 @@ const HomePage = () => {
     const toggleData = () => {
         setIsLocalData(!isLocalData);
     };
+
+    console.log({data})
   
   return (
     <div className="App">

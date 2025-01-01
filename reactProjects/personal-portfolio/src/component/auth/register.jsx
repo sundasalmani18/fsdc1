@@ -4,17 +4,17 @@ import axios from 'axios';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/auth/register', { username, password,role });
+      await axios.post('http://localhost:8080/auth/register', { username, password });
       
       alert('User registered successfully');
       setUsername('');
       setPassword('');
-      setRole('');
+     
     } catch (err) {
       alert('Error registering user');
     }
@@ -55,7 +55,7 @@ const Register = () => {
               placeholder="Enter Password" />
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <input type="issue" className="form-control mt-4 shadow-none p-2 mb-3 bg-light rounded"
               id="role"
               name="role"
@@ -63,7 +63,7 @@ const Register = () => {
               onChange={(e) => setRole(e.target.value)} 
               required 
               placeholder="Enter Role" />
-          </div>
+          </div> */}
 
         
          
