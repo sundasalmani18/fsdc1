@@ -17,7 +17,7 @@ const HomePage = () => {
         setIsLocalData(!isLocalData);
     };
 
-    console.log({data})
+    // console.log({data})
   
   return (
     <div className="App">
