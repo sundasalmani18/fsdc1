@@ -8,6 +8,8 @@ const Adminchat = () => {
     const [notifications, setNotifications] = useState([]);
     const [chatMessages, setChatMessages] = useState([]);
     const [isAdminOnline, setIsAdminOnline] = useState(true); // Track if admin is online
+    const [userId, setUserId] = useState('user123'); // Example user ID
+    const [adminId, setAdminId] = useState('admin123'); // Example admin ID
   
     // Initialize the socket connection
     const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
@@ -88,7 +90,12 @@ const fetchMessages = async () => {
     // Send a message to the user
     const sendAdminMessage = () => {
       if (adminMessage.trim() !== '') {
-        socket.emit('adminMessage', adminMessage);
+        const messageData = {
+          senderId: adminId,
+          receiverId: userId, // Assuming admin sends messages to user
+          message: adminMessage,
+        };
+        socket.emit('adminMessage', messageData);
         setChatMessages((prevChatMessages) => [...prevChatMessages, `You: ${adminMessage}`]);
         setAdminMessage(''); // Clear the input field
       }

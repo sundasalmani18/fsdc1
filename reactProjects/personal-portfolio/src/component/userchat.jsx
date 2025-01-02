@@ -5,6 +5,9 @@ import axios from 'axios';
 const Userchat = () => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
+  const [userId, setUserId] = useState('user123'); // Example user ID
+  const [adminId, setAdminId] = useState('admin123'); // Example admin ID
+
   const socket = io('http://localhost:8080'); // Initialize socket.io
 
   // Use useEffect to set up the socket listeners
@@ -51,7 +54,12 @@ fetchMessages();
   // Send a message to the admin
   const sendUserMessage = () => {
     if (message.trim() !== '') {
-      socket.emit('userMessage', message);
+      const messageData = {
+        senderId: userId,
+        receiverId: adminId, // Sending message to the admin
+        message: message,
+      };
+      socket.emit('userMessage', messageData);
       setChatHistory((prevChatHistory) => [
         ...prevChatHistory,
         `You: ${message}`,

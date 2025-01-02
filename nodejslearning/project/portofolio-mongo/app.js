@@ -43,11 +43,14 @@ app.use(express.static("public"))
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  socket.on('adminMessage', async (message) => {
+  socket.on('adminMessage', async (data) => {
+    const { senderId, receiverId, message } = data;
     // Store the message in MongoDB
     const newMessage = new Message({
       user: 'Admin',
-      message: message
+      message: message,
+      senderId,
+      receiverId,
     });
     
     try {
@@ -62,11 +65,14 @@ io.on('connection', (socket) => {
   });
 
   // Receive user message and store it in MongoDB
-  socket.on('userMessage', async (message) => {
+  socket.on('userMessage', async (data) => {
+    const { senderId, receiverId, message } = data;
     // Store the message in MongoDB
     const newMessage = new Message({
       user: 'User',
-      message: message
+      message: message,
+      senderId,
+      receiverId,
     });
 
     try {
