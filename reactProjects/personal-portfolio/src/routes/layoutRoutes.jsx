@@ -53,7 +53,7 @@ export default function LayoutRoutes() {
   }, [localStorage.getItem('token'), localStorage.getItem('role')]);
 
   const isUserLoggedIn = !!token; // Check if the user is logged in based on the token
-  const isAdmin = userRole === 'admin'; // Check if the user is an admin based on role
+  const isAdmin = userRole === 'ADMIN'; // Check if the user is an admin based on role
 
   return (
     <>

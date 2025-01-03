@@ -27,7 +27,7 @@ const Login = ({ setToken }) => {
       alert('login successful')
 
       // // Redirect based on user role
-      if (user.role === 'admin') {
+      if (user.role === 'ADMIN') {
         console.log(user.role, "user role")
         navigate('/admin');  // Navigate to the admin page if user is an admin
       } else {

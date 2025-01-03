@@ -9,7 +9,7 @@ const Adminchat = () => {
     const [chatMessages, setChatMessages] = useState([]);
     const [isAdminOnline, setIsAdminOnline] = useState(true); // Track if admin is online
     const [userId, setUserId] = useState('user123'); // Example user ID
-    const [adminId, setAdminId] = useState('admin123'); // Example admin ID
+    const [adminId, setAdminId] = useState(localStorage.getItem('userId')); // Example admin ID
   
     // Initialize the socket connection
     const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
