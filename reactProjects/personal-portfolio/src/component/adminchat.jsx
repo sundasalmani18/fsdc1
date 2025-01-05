@@ -10,6 +10,7 @@ const Adminchat = () => {
     const [isAdminOnline, setIsAdminOnline] = useState(true); // Track if admin is online
     const [userId, setUserId] = useState('user123'); // Example user ID
     const [adminId, setAdminId] = useState(localStorage.getItem('userId')); // Example admin ID
+      const [users, setUsers] = useState([]); // State to store the list of users
   
     // Initialize the socket connection
     const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
@@ -49,9 +50,10 @@ const Adminchat = () => {
     socket.on('disconnect', () => {
       console.log('Admin disconnected from server');
       setIsAdminOnline(false); // Set admin as offline
-    //  sendDemoMessage();
+ 
     });
     fetchMessages();
+       fetchUsers();
       // Clean up the socket connection when the component unmounts
       return () => {
       
@@ -75,17 +77,23 @@ const fetchMessages = async () => {
     console.error('Error fetching messages:', error);
   }
   };
-  // Function to send a demo message if the admin is offline
-  const sendDemoMessage = () => {
-    const demoMessage = "Admin is currently offline, but we will get back to you soon!";
-    setChatMessages((prevChatMessages) => [
-      ...prevChatMessages,
-      `Admin: ${demoMessage}`,
-    ]);
-    // Optionally, you could also emit this demo message to the server (if required by your server logic)
-    socket.emit('adminMessage', demoMessage);
+
+  // Fetch list of users from the server
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/auth/user');
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
   };
 
+  // Handle user selection for chatting
+  const handleUserSelect = (selectedUserId) => {
+    setUserId(selectedUserId);
+    fetchMessages(); // Optionally, fetch the selected user's message history
+  };
+  
   
     // Send a message to the user
     const sendAdminMessage = () => {
@@ -103,23 +111,7 @@ const fetchMessages = async () => {
 
 
 
-     // Render message for offline admin
-  const renderOfflineMessage = () => {
-    if (!isAdminOnline) {
-      return <p style={{ color: 'red' }}>Admin is currently offline, will join you soon.</p>;
-    }
-    return null;
-  };
-
-    // Check and send demo message when admin is offline
-    useEffect(() => {
-      if (!isAdminOnline) {
-        // Trigger sending demo message when admin goes offline
-       sendDemoMessage();
-      }
-
-      console.log("Admin online status changed:", isAdminOnline);
-    }, [isAdminOnline]); // This effect runs when `isAdminOnline` changes
+  
 
     return (
 <>
@@ -131,6 +123,41 @@ const fetchMessages = async () => {
         {notifications.map((notification, index) => (
             <p key={index}>{notification}</p>
           ))}
+
+
+
+               <div className="d-flex">
+          {/* Sidebar for Users */}
+          <div
+            className="sidebar"
+            style={{
+              width: '25%',
+              padding: '10px',
+              backgroundColor: '#f4f4f4',
+              height: '100vh',
+              overflowY: 'scroll',
+              borderRight: '2px solid #ddd',
+            }}
+          >
+            <h5>Users</h5>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px' }}>
+              {users.map((user) => (
+                <button
+                  key={user.id}
+                  onClick={() => handleUserSelect(user.id)}
+                  style={{
+                    padding: '10px',
+                    backgroundColor: userId === user.id ? '#d3d3d3' : '#fff',
+                    border: '1px solid #ccc',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {user.username}
+                </button>
+              ))}
+            </div>
+          </div>
 
 {/* {renderOfflineMessage()}  
           {chatMessages.map((msg, index) => (
@@ -223,7 +250,7 @@ const fetchMessages = async () => {
     </div>
     
   
-  
+  </div>
   
   </div>
       {/* <div>

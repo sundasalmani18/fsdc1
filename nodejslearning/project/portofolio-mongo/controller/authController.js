@@ -43,3 +43,18 @@ import jwt from "jsonwebtoken";
     }
   };
   
+
+  // Fetch all users (accessible only by admin)
+export const getAllUsers = async (req, res) => {
+  try {
+    // Retrieve all users from the database
+    const users = await User.find({role: { $ne: 'ADMIN' }});
+    
+    // Respond with the list of users
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(400).send('Error fetching users');
+  }
+};
+
+
