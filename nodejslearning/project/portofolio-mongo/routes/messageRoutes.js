@@ -7,7 +7,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", fetchMessage);
+router.get("/:userId", fetchMessage);
 
 
 

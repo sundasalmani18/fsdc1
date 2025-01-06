@@ -52,7 +52,7 @@ const Adminchat = () => {
       setIsAdminOnline(false); // Set admin as offline
  
     });
-    fetchMessages();
+    // fetchMessages();
        fetchUsers();
       // Clean up the socket connection when the component unmounts
       return () => {
@@ -67,16 +67,23 @@ const Adminchat = () => {
 
 
 
-// Fetch chat history from MongoDB
-const fetchMessages = async () => {
+ // Fetch messages based on userId
+ const fetchMessages = async (selectedUserId) => {
+  if (!selectedUserId) {
+    console.error('User ID is missing or invalid');
+    return; // Return early if no userId
+  }
+
+  console.log('Fetching messages for user ID:', selectedUserId);
+
   try {
-    const response = await axios.get('http://localhost:8080/message');
-   
-    setChatMessages(response.data.map(msg => `${msg.user}: ${msg.message}`));
+    const response = await axios.get(`http://localhost:8080/message/${selectedUserId}`);
+    console.log('Fetched messages:', response.data);  // Log fetched messages
+    setChatMessages(response.data);  // Set chat messages state
   } catch (error) {
     console.error('Error fetching messages:', error);
   }
-  };
+};
 
   // Fetch list of users from the server
   const fetchUsers = async () => {
@@ -90,8 +97,9 @@ const fetchMessages = async () => {
 
   // Handle user selection for chatting
   const handleUserSelect = (selectedUserId) => {
+    console.log('Selected user ID:', selectedUserId); // Log the selected userId to verify
     setUserId(selectedUserId);
-    fetchMessages(); // Optionally, fetch the selected user's message history
+    fetchMessages(selectedUserId); // Optionally, fetch the selected user's message history
   };
   
   
@@ -142,9 +150,11 @@ const fetchMessages = async () => {
             <h5>Users</h5>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px' }}>
               {users.map((user) => (
+               
                 <button
                   key={user.id}
-                  onClick={() => handleUserSelect(user.id)}
+                  onClick={() => handleUserSelect(user._id)}
+                  
                   style={{
                     padding: '10px',
                     backgroundColor: userId === user.id ? '#d3d3d3' : '#fff',
@@ -189,8 +199,14 @@ const fetchMessages = async () => {
         </div>  */}
         
         {chatMessages.map((message, index) => {
-        const [role, ...messageText] = message.split(": ");
-        const text = messageText.join(": ");
+            // Log the message to see its structure
+  console.log('Message:', message);
+            if (typeof message === 'object' && message.message) {
+        // const [role, ...messageText] = message.split(": ");
+        // const text = messageText.join(": ");
+         // Directly use message.user and message.message for rendering
+    const text = message.message;  // Get the message content
+    const role = message.user;     // Get the user (or admin) role
 
         return (
           <div
@@ -205,7 +221,16 @@ const fetchMessages = async () => {
           >
             {text}
           </div>
-        );
+        );}
+        else {
+          // Handle the case where message is not a string (log or render fallback)
+          console.error("Invalid message format:", message);
+          return (
+            <div key={index} style={{ padding: "10px", color: "red" }}>
+              Invalid message format.
+            </div>
+          );
+        }
       })}
      
         {/* Left div for Admin messages */}
