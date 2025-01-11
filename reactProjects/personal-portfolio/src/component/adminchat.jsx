@@ -118,14 +118,13 @@ const Adminchat = () => {
     };
 
 
-
   
 
     return (
 <>
-      <div class="container">
-      <div class="d-flex justify-content-center m-3">
-        <h3 class="align-center">Admin Support Chat System</h3>
+      <div className="container">
+      <div className="d-flex justify-content-center m-3">
+        <h3 className="align-center">Admin Support Chat System</h3>
       </div>
       
         {notifications.map((notification, index) => (
@@ -169,13 +168,10 @@ const Adminchat = () => {
             </div>
           </div>
 
-{/* {renderOfflineMessage()}  
-          {chatMessages.map((msg, index) => (
-            <p  style={{color:"black"}} key={index}>{msg}</p>
-          ))} */}
+
       <div id="messages">
         {console.log('chatMessages', chatMessages)}
-         {/* <div class="msg-left"> */}
+         {/* <div className="msg-left"> */}
         {/* <div id="notifications">
         {chatMessages
             .filter(message => message.startsWith("Admin"))
@@ -186,25 +182,29 @@ const Adminchat = () => {
           
         </div>
         </div>
-         <div class="msg-right">
+         <div className="msg-right">
          <div id="chat">
           
          {chatMessages
             .filter(message => message.startsWith("User"))
             .map((message, index) => {
               const messageText = message.split(": ").slice(1).join(": ");
-              return <div key={index} className="msg">{messageText}</div>;
+              return <div key={index} classNameName="msg">{messageText}</div>;
             })}
         </div>
         </div>  */}
         
         {chatMessages.map((message, index) => {
             // Log the message to see its structure
-  console.log('Message:', message);
-            if (typeof message === 'object' && message.message) {
-        // const [role, ...messageText] = message.split(": ");
+
+  
+        
+           
+           
+              console.log('Message:', message);
+        // const [role, ...messageText] = message.split(" : ");
         // const text = messageText.join(": ");
-         // Directly use message.user and message.message for rendering
+       //  Directly use message.user and message.message for rendering
     const text = message.message;  // Get the message content
     const role = message.user;     // Get the user (or admin) role
 
@@ -222,16 +222,8 @@ const Adminchat = () => {
             {text}
           </div>
         );}
-        else {
-          // Handle the case where message is not a string (log or render fallback)
-          console.error("Invalid message format:", message);
-          return (
-            <div key={index} style={{ padding: "10px", color: "red" }}>
-              Invalid message format.
-            </div>
-          );
-        }
-      })}
+        
+      )}
      
         {/* Left div for Admin messages */}
       {/* <div style={{ width: "45%", backgroundColor: "#f1f1f1", padding: "10px" }}>
@@ -252,21 +244,21 @@ const Adminchat = () => {
             .filter(message => message.startsWith("User"))
             .map((message, index) => {
               const messageText = message.split(": ").slice(1).join(": ");
-              return <div key={index} className="msg">{messageText}</div>;
+              return <div key={index} classNameName="msg">{messageText}</div>;
             })}
         </div>
       </div> */}
         
   
-        <div class="input-group mb-3">
-          <input type="text" class="form-control"
+        <div className="input-group mb-3">
+          <input type="text" className="form-control"
            id="adminMessageInput"
            placeholder="Type a message to the user"
            value={adminMessage}
            onChange={(e) => setAdminMessage(e.target.value)}
            aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button" onClick={sendAdminMessage}>Submit</button>
+          <div className="input-group-append">
+            <button className="btn btn-primary" type="button" onClick={sendAdminMessage}>Submit</button>
           
           </div>
           </div>

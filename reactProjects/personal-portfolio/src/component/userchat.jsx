@@ -14,29 +14,46 @@ const Userchat = () => {
   useEffect(() => {
 
 
+
     const fetchMessages = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/message');
+        // Fetch messages for this user
+        const response = await axios.get(`http://localhost:8080/message/${userId}`);
 
-        // console.log('response', response)
-
-        setChatHistory(response.data.map(msg => `${msg.user}: ${msg.message}`));
-        setAdminId(response.data.map(msg => msg?.senderId));
-
-        // setChatHistory(response.data.map(msg => {
-        //   return `${msg.user}: ${msg.message}, receiverId: ${msg?.receiverId}, senderId: ${msg?.senderId}`;
-        // }));
-
-        // setChatHistory(response.data.map(msg => ({
-        //   user: msg.user,
-        //   message: msg.message,
-        //   receiverId: msg?.receiverId,
-        //   senderId: msg?.senderId
-        // })));
+        // Update chat history with messages
+        setChatHistory(response.data.map(msg => {
+          return `${msg.senderId === userId ? 'You' : 'Admin'}: ${msg.message}`;
+        }));
       } catch (error) {
         console.error('Error fetching messages:', error);
       }
     };
+
+
+
+    // const fetchMessages = async () => {
+    //   try {
+    //     const response = await axios.get('http://localhost:8080/message');
+
+    //     // console.log('response', response)
+
+    //     setChatHistory(response.data.map(msg => `${msg.user}: ${msg.message}`));
+    //     setAdminId(response.data.map(msg => msg?.senderId));
+
+    //     // setChatHistory(response.data.map(msg => {
+    //     //   return `${msg.user}: ${msg.message}, receiverId: ${msg?.receiverId}, senderId: ${msg?.senderId}`;
+    //     // }));
+
+    //     // setChatHistory(response.data.map(msg => ({
+    //     //   user: msg.user,
+    //     //   message: msg.message,
+    //     //   receiverId: msg?.receiverId,
+    //     //   senderId: msg?.senderId
+    //     // })));
+    //   } catch (error) {
+    //     console.error('Error fetching messages:', error);
+    //   }
+    // };
 
 
     fetchMessages();
@@ -130,21 +147,7 @@ const Userchat = () => {
 
 
 
-      {/* <div>
-      <h1>Contact Support</h1>
-      <input
-        id="userMessageInput"
-        placeholder="Type a message to the admin"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={sendUserMessage}>Send Message</button>
-      <div id="chat">
-        {chatHistory.map((msg, index) => (
-          <p style={{color:"black"}} key={index}>{msg}</p>
-        ))}
-      </div>
-    </div> */}
+
     </>
   );
 };
