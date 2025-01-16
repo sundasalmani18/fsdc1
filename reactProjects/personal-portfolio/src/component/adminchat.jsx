@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
@@ -11,6 +11,15 @@ const Adminchat = () => {
   const [userId, setUserId] = useState('user123'); // Example user ID
   const [adminId, setAdminId] = useState(localStorage.getItem('userId')); // Example admin ID
   const [users, setUsers] = useState([]); // State to store the list of users
+  const [incomingCall, setIncomingCall] = useState(null)
+  const [isVideoCallActive, setIsVideoCallActive] = useState(false); // To track video call status
+
+
+  // WebRTC references
+  const localVideoRef = useRef(null); // Local video stream
+  const remoteVideoRef = useRef(null); // Remote video stream
+  const peerConnectionRef = useRef(null); // Peer connection reference
+  const localStreamRef = useRef(null); // Local media stream reference
 
   // Initialize the socket connection
   const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
@@ -52,6 +61,34 @@ const Adminchat = () => {
       setIsAdminOnline(false); // Set admin as offline
 
     });
+
+
+
+    socket.on('videoCallRequest', (data) => {
+      const { userId } = data;
+      // Handle incoming video call request (e.g., prompt admin to accept/reject)
+      console.log(`User ${userId} wants to start a video call`);
+      // Call function to display accept/reject dialog for video call
+      setIncomingCall(data);
+    });
+
+    socket.on('videoCallOffer', (offerData) => {
+      const { offer, userId } = offerData;
+      handleVideoCallOffer(offer, userId);
+    });
+
+    socket.on('videoCallAnswer', (answerData) => {
+      const { answer, userId } = answerData;
+      handleVideoCallAnswer(answer, userId);
+    });
+
+    socket.on('iceCandidate', (candidateData) => {
+      const { candidate } = candidateData;
+      if (peerConnectionRef.current) {
+        peerConnectionRef.current.addIceCandidate(new RTCIceCandidate(candidate));
+      }
+    });
+
     // fetchMessages();
     fetchUsers();
     // Clean up the socket connection when the component unmounts
@@ -62,6 +99,10 @@ const Adminchat = () => {
       socket.off('userMessage');
       socket.off('adminMessage');
       socket.off('disconnect');
+      socket.off('videoCallRequest');
+      socket.off('videoCallOffer');
+      socket.off('videoCallAnswer');
+      socket.off('iceCandidate');
     };
   }, []);
 
@@ -118,38 +159,117 @@ const Adminchat = () => {
   };
 
 
-  // Sorting by timestamp in descending order (latest first)
-  // const sortedData = chatMessages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-  // const sortedMessages = chatMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-// Create a copy of the array and then sort it
-//const sortedMessages = [...chatMessages].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+  // WebRTC setup: Get user media (video and audio)
+  const getUserMedia = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      localStreamRef.current = stream;
+      localVideoRef.current.srcObject = stream;
+    } catch (error) {
+      console.error('Error accessing media devices:', error);
+    }
+  };
 
-// Create a shallow copy of the array using slice() and then sort
-// const sortedMessages = chatMessages.slice().sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+  // Handle incoming video call offer
+  const handleVideoCallOffer = async (offer, userId) => {
+    try {
+      const peerConnection = new RTCPeerConnection();
+      peerConnectionRef.current = peerConnection;
 
-// Check if the timestamps are in correct format first
-chatMessages.forEach(message => {
-  console.log(message);  // Log entire message object
-  console.log(message.user);  // Log just the 'user' field
-  console.log(message.message);  
-});
-// Ensure timestamps are properly converted to Date objects
-const sortedMessages = [...chatMessages].sort((a, b) => {
-  const dateA = a.timestamp ? Date.parse(a.timestamp) : NaN;  // If timestamp is invalid, assign NaN
-  const dateB = b.timestamp ? Date.parse(b.timestamp) : NaN;  // If timestamp is invalid, assign NaN
-  
-  // Log the parsed date to ensure correct parsing
-  console.log("Date A:", dateA, "Date B:", dateB);
+      // Add local stream to the peer connection
+      localStreamRef.current.getTracks().forEach(track => peerConnection.addTrack(track, localStreamRef.current));
 
-  // Sorting by timestamp in ascending order (oldest first)
-  return dateA - dateB;  
-});
+      // Set up the ICE candidate handling
+      peerConnection.onicecandidate = (event) => {
+        if (event.candidate) {
+          socket.emit('iceCandidate', { candidate: event.candidate, targetId: userId });
+        }
+      };
+
+      // Handle incoming remote stream
+      peerConnection.ontrack = (event) => {
+        remoteVideoRef.current.srcObject = event.streams[0];
+      };
+
+      // Set the remote description (offer) received from the user
+      await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+
+      // Create and send answer
+      const answer = await peerConnection.createAnswer();
+      await peerConnection.setLocalDescription(answer);
+
+      socket.emit('videoCallAnswer', { answer, userId, adminId });
+    } catch (error) {
+      console.error('Error handling video call offer:', error);
+    }
+  };
+
+  // Handle the answer from the user
+  const handleVideoCallAnswer = async (answer, userId) => {
+    try {
+      if (answer) {
+        // If the user accepts, establish the connection
+        await peerConnectionRef.current.setRemoteDescription(new RTCSessionDescription(answer));
+      } else {
+        console.log('User rejected the video call');
+      }
+    } catch (error) {
+      console.error('Error handling video call answer:', error);
+    }
+  };
+
+  // Start a video call (triggered by admin or user)
+  const startVideoCall = (userId) => {
+    getUserMedia();
+    socket.emit('videoCallRequest', { userId });
+    setIsVideoCallActive(true); // Video call has started
+  };
 
 
-  // Converting each object to a readable format (JSON string) for better visualization
-  // console.log(JSON.stringify(sortedData, null, 2));
-  // console.log({sortedData});
+  const stopVideoCall = () => {
+    // Stop the video tracks and close the peer connection
+    const tracks = localStreamRef.current.getTracks();
+    tracks.forEach(track => track.stop());
+    peerConnectionRef.current.close();
+   
+    localVideoRef.current.srcObject = null;
+    remoteVideoRef.current.srcObject = null;
+    setIsVideoCallActive(false); // End the video call
+  };
+
+  const acceptVideoCall = () => {
+    socket.emit('videoCallAnswer', { answer: true, userId: incomingCall.userId, adminId });
+    setIncomingCall(null); // Reset incoming call after accepting
+    setIsVideoCallActive(true); // Video call accepted
+  };
+
+  const rejectVideoCall = () => {
+    socket.emit('videoCallAnswer', { answer: false, userId: incomingCall.userId, adminId });
+    setIncomingCall(null); // Reset incoming call after rejecting
+  };
+
+
+  // Check if the timestamps are in correct format first
+  chatMessages.forEach(message => {
+    console.log(message);  // Log entire message object
+    console.log(message.user);  // Log just the 'user' field
+    console.log(message.message);
+  });
+  // Ensure timestamps are properly converted to Date objects
+  const sortedMessages = [...chatMessages].sort((a, b) => {
+    const dateA = a.timestamp ? Date.parse(a.timestamp) : NaN;  // If timestamp is invalid, assign NaN
+    const dateB = b.timestamp ? Date.parse(b.timestamp) : NaN;  // If timestamp is invalid, assign NaN
+
+    // Log the parsed date to ensure correct parsing
+    console.log("Date A:", dateA, "Date B:", dateB);
+
+    // Sorting by timestamp in ascending order (oldest first)
+    return dateA - dateB;
+  });
+
+
+
 
 
   return (
@@ -172,10 +292,10 @@ const sortedMessages = [...chatMessages].sort((a, b) => {
             style={{
               width: '25%',
               padding: '10px',
-              backgroundColor: '#f4f4f4',
+              backgroundColor: '#3BA1EE ',
               height: '100vh',
-              overflowY: 'scroll',
-              borderRight: '2px solid #ddd',
+              // overflowY: 'scroll',
+              borderRight: '2px solid #3BA1EE ',
             }}
           >
             <h5>Users</h5>
@@ -188,7 +308,7 @@ const sortedMessages = [...chatMessages].sort((a, b) => {
 
                   style={{
                     padding: '10px',
-                    backgroundColor: userId === user.id ? '#d3d3d3' : '#fff',
+                    backgroundColor: userId === user.id ? '#3BA1EE ' : '#3BA1EE ',
                     border: '1px solid #ccc',
                     borderRadius: '5px',
                     cursor: 'pointer',
@@ -203,31 +323,10 @@ const sortedMessages = [...chatMessages].sort((a, b) => {
 
           <div id="messages">
             {console.log('chatMessages', chatMessages)}
-            {/* <div className="msg-left"> */}
-            {/* <div id="notifications">
-        {chatMessages
-            .filter(message => message.startsWith("Admin"))
-            .map((message, index) => {
-              const messageText = message.split(": ").slice(1).join(": ");
-              return <div key={index} className="msg">{messageText}</div>;
-            })}
-          
-        </div>
-        </div>
-         <div className="msg-right">
-         <div id="chat">
-          
-         {chatMessages
-            .filter(message => message.startsWith("User"))
-            .map((message, index) => {
-              const messageText = message.split(": ").slice(1).join(": ");
-              return <div key={index} classNameName="msg">{messageText}</div>;
-            })}
-        </div>
-        </div>  */}
-        {/* console.log('Message:', message); */}
 
-            {sortedMessages.map((message, index) => {
+            {/* console.log('Message:', message); */}
+
+            {/* {sortedMessages.map((message, index) => {
 
               //  Directly use message.user and message.message for rendering
               const text = message.message;  // Get the message content
@@ -248,31 +347,52 @@ const sortedMessages = [...chatMessages].sort((a, b) => {
               );
             }
 
+            )} */}
+
+            {sortedMessages.map((message, index) => {
+              const { user: role, message: text } = message; // Destructure to get role and text
+              return (
+                <div key={index} style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px' }}>
+                  {/* Admin Message */}
+                  {role === 'Admin' && (
+                    <div className="msg-left" style={{ alignSelf: 'flex-start' }}>
+                      <div id="notifications">
+                        {`${role}: ${text}`}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* User Message */}
+                  {role !== 'Admin' && (
+                    <div className="msg-right" style={{ alignSelf: 'flex-end' }}>
+                      <div id="chat" >
+                        {`${role}: ${text}`}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+
+            <div className="video-call-container">
+              <video ref={localVideoRef} id="localVideo" autoplay muted />
+              <video ref={remoteVideoRef} id="remoteVideo" autoplay />
+            </div>
+
+           { incomingCall && (
+              <div className="video-call-notification">
+                <p>User {incomingCall.userId} is calling you</p>
+                <button onClick={acceptVideoCall}>Accept</button>
+                <button onClick={rejectVideoCall}>Reject</button>
+              </div>
             )}
 
-            {/* Left div for Admin messages */}
-            {/* <div style={{ width: "45%", backgroundColor: "#f1f1f1", padding: "10px" }}>
-        <div id="notifications">
-          {chatMessages
-            .filter(message => message.startsWith("Admin"))
-            .map((message, index) => {
-              const messageText = message.split(": ").slice(1).join(": ");
-              return <div key={index} className="msg">{messageText}</div>;
-            })}
-        </div>
-      </div> */}
-
-            {/* Right div for User messages */}
-            {/* <div style={{ width: "45%", backgroundColor: "#e1e1e1", padding: "10px" }}>
-        <div id="chat">
-          {chatMessages
-            .filter(message => message.startsWith("User"))
-            .map((message, index) => {
-              const messageText = message.split(": ").slice(1).join(": ");
-              return <div key={index} classNameName="msg">{messageText}</div>;
-            })}
-        </div>
-      </div> */}
+{isVideoCallActive && (
+              <button onClick={stopVideoCall} className="btn btn-danger">
+                Stop Video Call
+              </button>
+            )}
 
 
             <div className="input-group mb-3">
@@ -287,35 +407,19 @@ const sortedMessages = [...chatMessages].sort((a, b) => {
 
               </div>
             </div>
+            {!isVideoCallActive && (
+              <button onClick={() => startVideoCall(userId)} className="btn btn-success">
+                Start Video Call
+              </button>
+            )}
 
-
-          </div>
+                      </div>
 
 
         </div>
 
       </div>
-      {/* <div>
-        <h1>Admin Dashboard</h1>
-        <div id="notifications">
-          {notifications.map((notification, index) => (
-            <p key={index}>{notification}</p>
-          ))}
-        </div>
-        <input
-          id="adminMessageInput"
-          placeholder="Type a message to the user"
-          value={adminMessage}
-          onChange={(e) => setAdminMessage(e.target.value)}
-        />
-        <button onClick={sendAdminMessage}>Send Message</button>
-        <div id="chat">
-        {renderOfflineMessage()} 
-          {chatMessages.map((msg, index) => (
-            <p  style={{color:"black"}} key={index}>{msg}</p>
-          ))}
-        </div>
-      </div> */}
+    
     </>
   );
 };

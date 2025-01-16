@@ -40,8 +40,61 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static("public"))
+
+
+// Track the admin's socket connection status
+let adminSocket = null;
 io.on('connection', (socket) => {
   console.log('A user connected');
+
+
+
+  // Set the admin socket
+  socket.on('setAdmin', () => {
+    adminSocket = socket;
+    console.log('Admin is online');
+  });
+
+  // Handle disconnect event
+  socket.on('disconnect', () => {
+    if (adminSocket && socket.id === adminSocket.id) {
+      adminSocket = null;
+      console.log('Admin has disconnected');
+    }
+    console.log('A user disconnected:', socket.id);
+  });
+
+  // Handle video call request
+  socket.on('videoCallRequest', (data) => {
+    const { userId } = data;
+
+    if (adminSocket) {
+      // Notify the admin about the video call request
+      adminSocket.emit('videoCallRequest', { userId, message: 'User wants to start a video call' });
+      socket.emit('adminOnline', 'Admin is online, waiting for response.');
+    } else {
+      socket.emit('adminOffline', 'Admin is offline, please try again later.');
+    }
+  });
+
+  // Handle video call offer/answer
+  socket.on('videoCallOffer', (offerData) => {
+    const { offer, adminId, userId } = offerData;
+    socket.to(userId).emit('videoCallOffer', { offer, adminId });
+  });
+
+  socket.on('videoCallAnswer', (answerData) => {
+    const { answer, userId, adminId } = answerData;
+    socket.to(adminId).emit('videoCallAnswer', { answer, userId });
+  });
+
+  // ICE Candidate Handling
+  socket.on('iceCandidate', (candidateData) => {
+    const { candidate, targetId } = candidateData;
+    socket.to(targetId).emit('iceCandidate', { candidate });
+  });
+
+
 
   socket.on('adminMessage', async (data) => {
     const { senderId, receiverId, message } = data;
