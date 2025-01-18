@@ -40,8 +40,11 @@ export default function Menu() {
   const fetchCategories = async () => {
     try {
       fetch('http://localhost:8080/menucategory')
+      
             .then((res) => { return res.json() })
+           
             .then((data) => { setCategories(data?.Data) })
+            console.log("data",data)
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
@@ -114,13 +117,13 @@ export default function Menu() {
                 {categories?.categories?.length > 0 ? (categories?.categories?.map((item, index) => (
                   <li key={index} className="nav-item " role="presentation">
                     <button
-                      className={`nav-link ${(item.active) === "true" ? 'active' : ''} `}
-                      id={`#${item.link}`}
+                      // className={`nav-link ${(item.active) === "true" ? 'active' : ''} `}
+                      // id={`#${item.link}`}
                       type="button"
                       onClick={() => selectMenu(item,index)}
                     >
                       <div>
-                        <i className={`${item.icon} icon fa-2x`} />
+                        {/* <i className={`${item.icon} icon fa-2x`} /> */}
                       </div>
                       <small>{item.desc}</small>
                       <h6 className="mt-n1 mb-0">{item}</h6>

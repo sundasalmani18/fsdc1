@@ -33,7 +33,7 @@ export const getCategory = (req, res) => {
         return res.status(200).json(responseData)
     })
 
-    // return res.status(200).json({ msg: 'getCatagory' })
+     return res.status(200).json({ msg: 'getCatagory' })
 }
 
 export const addCategory = (req, res) => {
