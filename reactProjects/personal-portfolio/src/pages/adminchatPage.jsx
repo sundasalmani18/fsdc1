@@ -1,5 +1,5 @@
 import React from 'react'
-import Adminchat from '../component/adminchat'
+import Adminchat from '../component/adminchat2'
 
 const AdminchatPage = () => {
   return (
