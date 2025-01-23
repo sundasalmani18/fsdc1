@@ -56,13 +56,13 @@ io.on('connection', (socket) => {
   });
 
   // Handle disconnect event
-  socket.on('disconnect', () => {
-    if (adminSocket && socket.id === adminSocket.id) {
-      adminSocket = null;
-      console.log('Admin has disconnected');
-    }
-    console.log('A user disconnected:', socket.id);
-  });
+  // socket.on('disconnect', () => {
+  //   if (adminSocket && socket.id === adminSocket.id) {
+  //     adminSocket = null;
+  //     console.log('Admin has disconnected');
+  //   }
+  //   console.log('A user disconnected:', socket.id);
+  // });
 
   // Handle video call request
   socket.on('videoCallRequest', (data) => {
@@ -133,11 +133,7 @@ io.on('connection', (socket) => {
       console.log('User message saved to DB:', message);
     } catch (error) {
       console.error('Error saving user message:', error);
-    }
-
-
-
-    
+    }    
     // Emit the message to the admin
     socket.emit('userMessage', message);
   });

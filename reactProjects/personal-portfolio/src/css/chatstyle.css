@@ -667,3 +667,7 @@
 #frame .content .message-input .wrap button:focus {
   outline: none;
 }
+
+.fa{
+  background-color: #243140;
+}

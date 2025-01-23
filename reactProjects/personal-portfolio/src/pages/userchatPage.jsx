@@ -1,5 +1,5 @@
 import React from 'react'
-import Userchat from '../component/userchat'
+import Userchat from '../component/userchat2'
 
 const userchatPage = () => {
   return (

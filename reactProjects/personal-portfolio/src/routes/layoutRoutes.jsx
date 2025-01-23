@@ -3,7 +3,7 @@ import { useState,useEffect} from "react";
 import HomePage from "../pages/homePage.jsx"
 import TechnicalsupportPage from "../pages/technicalsupportPage.jsx"
 import AdminchatPage from "../pages/adminchatPage.jsx";
-import Userchat from "../component/userchat.jsx";
+import Userchat from "../component/userchat2.jsx";
 import Register from "../component/auth/register.jsx";
 import Login from "../component/auth/login.jsx";
 
