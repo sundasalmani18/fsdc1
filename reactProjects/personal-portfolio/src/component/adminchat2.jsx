@@ -3,6 +3,9 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram } from '@fortawesome/free-solid-svg-icons';
+import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+
 const Adminchat = () => {
 
   const [adminMessage, setAdminMessage] = useState('');
@@ -17,37 +20,52 @@ const Adminchat = () => {
 
 
   // WebRTC references
-  const localVideoRef = useRef(null); // Local video stream
-  const remoteVideoRef = useRef(null); // Remote video stream
-  const peerConnectionRef = useRef(null); // Peer connection reference
-  const localStreamRef = useRef(null); // Local media stream reference
-
-  // Initialize the socket connection
-  const socket = io('http://localhost:8080'); // Ensure this matches your server's URL and port
-
+  // const localVideoRef = useRef(null); // Local video stream
+  // const remoteVideoRef = useRef(null); // Remote video stream
+  // const peerConnectionRef = useRef(null); // Peer connection reference
+  // const localStreamRef = useRef(null); // Local media stream reference
+ // Ensure this matches your server's URL and port
+// Initialize the socket connection
+const socket = io('http://localhost:8080');
   useEffect(() => {
-    socket.on('connect', () => { console.log('Admin Connected to server'); });
+    
+    socket.on('connect', () => {
+      console.log('Admin Connected to server');
+    });
     socket.on('adminNotification', (data) => {
       setNotifications(prev => [...prev, `New message from: ${data.name} (${data.email}): ${data.message}`]);
     });
-    socket.on('userMessage', (message) => {
+    // Listen for messages from the user
+    socket.on('userMessage', (data) => {
+      console.log('Received user message:', data.message);
+      // Log the chat state before updating
+      console.log('Current chatMessages:', chatMessages);
+
+      // Update chat messages
       const messageWithTimestamp = {
         user: 'User',
-        message: message.text,
+        message: data.message,
         timestamp: new Date().toLocaleTimeString(),
       };
-      setChatMessages(prev => [...prev, messageWithTimestamp]);
+      console.log('Before updating state:', chatMessages);
+      setChatMessages((prev) => {
+        return [...prev, messageWithTimestamp];
+      });
     });
    
+
+
     socket.on('adminMessage', (data) => {
-      const messageWithTimestamp = { user: data.user, message: data.message, timestamp: data.timestamp || new Date().toLocaleTimeString() };
+      console.log('Message from admin:', data);
+      const messageWithTimestamp = { user: 'Admin', message: data.message, timestamp: data.timestamp || new Date().toLocaleTimeString() };
       setChatMessages(prev => [...prev, messageWithTimestamp]);
     });
-  
-    
+
+
     fetchUsers();
+    fetchMessages();
     socket.on('disconnect', () => { console.log('Admin disconnected from server'); });
-  
+
     return () => {
       socket.off('connect');
       socket.off('adminNotification');
@@ -56,7 +74,6 @@ const Adminchat = () => {
       socket.off('disconnect');
     };
   }, []);
-
 
 
   const fetchMessages = async (selectedUserId) => {
@@ -108,11 +125,11 @@ const Adminchat = () => {
 
 
   // Check if the timestamps are in correct format first
-  chatMessages.forEach(message => {
-    console.log("1",message);  // Log entire message object
-    console.log("2",message.user);  // Log just the 'user' field
-    console.log("3",message.message);
-  });
+  // chatMessages.forEach(message => {
+  //   console.log("1", message);  // Log entire message object
+  //   console.log("2", message.user);  // Log just the 'user' field
+  //   console.log("3", message.message);
+  // });
   // Ensure timestamps are properly converted to Date objects
   // const sortedMessages = [...chatMessages].sort((a, b) => {
   //   const dateA = a.timestamp ? Date.parse(a.timestamp) : NaN;  // If timestamp is invalid, assign NaN
@@ -128,14 +145,18 @@ const Adminchat = () => {
   const sortedMessages = [...chatMessages].sort((a, b) => {
     const dateA = a.timestamp ? Date.parse(a.timestamp) : new Date().getTime();  // Use current time if invalid
     const dateB = b.timestamp ? Date.parse(b.timestamp) : new Date().getTime();  // Use current time if invalid
-  
+
     console.log("Date A:", dateA, "Date B:", dateB);  // Debug to see what's being parsed
-  
+
     // Sort messages by their timestamps
     return dateA - dateB;
   });
-  
-  
+
+
+
+
+  // Debugging before updating the state
+
 
 
   return (
@@ -157,13 +178,15 @@ const Adminchat = () => {
                   </ul>
                 </div>
                 <div id="expanded">
-                  <FontAwesomeIcon icon={faCoffee} class="fa" size="3x" />
-                  <label for="twitter"><i className="fa fa-utensils me-3 fa-2x "></i></label>
+                  <FontAwesomeIcon icon="fa-brands fa-facebook" />
+                  <FontAwesomeIcon icon={faCoffee} className="fa-2" />
                   <input name="twitter" type="text" value="mikeross" />
-                  <label for="twitter"><i className="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
+                  <FontAwesomeIcon icon="fa-brands fa-facebook" />
                   <input name="twitter" type="text" value="ross81" />
+                  <FontAwesomeIcon icon="fa-brands fa-square-instagram" />
                   <label for="twitter"><i className="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
                   <input name="twitter" type="text" value="mike.ross" />
+
                 </div>
               </div>
             </div>
@@ -204,15 +227,21 @@ const Adminchat = () => {
               <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" />
               <p>Harvey Specter</p>
               <div className="social-media">
-                <i className="fa fa-facebook" aria-hidden="true"></i>
-                <i className="fa fa-twitter" aria-hidden="true"></i>
-                <i className="fa fa-instagram" aria-hidden="true"></i>
+                <FontAwesomeIcon icon="fa-brands fa-facebook" />
+                {/* <i class="fa-brands fa-square-instagram"></i>
+              <FontAwesomeIcon icon="fa-brands fa-square-instagram" />
+              <FontAwesomeIcon icon="fa-brands fa-twitter" />
+            <i className="fas fa-instagram" aria-hidden="true"></i>
+            <i class="fas-solid fa-inbox"></i>
+            <FontAwesomeIcon icon="fa-solid fa-inbox" />    */}
+                <i class="fab fa-twitter"></i>
+
               </div>
             </div>
             <div className="messages">
               <ul>
                 {sortedMessages.map((message, index) => {
-                  const { user: role, message: text ,timestamp:time } = message; // Destructure to get role and text
+                  const { user: role, message: text, timestamp: time } = message; // Destructure to get role and text
                   // {console.log("messagess ",message)}
                   return (
                     <div key={index} style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px' }}>
@@ -223,7 +252,7 @@ const Adminchat = () => {
                         <li className="sent">
                           <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="" />
                           {`${role}: ${text}`}
-                        <br/>  <span  style={{ color: 'black' }} className="timestamp">{time}</span>
+                          <br />  <span style={{ color: 'black' }} className="timestamp">{time}</span>
                         </li>
 
                       )}
@@ -233,7 +262,7 @@ const Adminchat = () => {
                         <li className="replies">
                           <img src="https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png" alt="" />
                           {`${role}: ${text}`}
-                          <br/>  <span  style={{ color: 'black' }} className="timestamp">{time}</span>
+                          <br />  <span style={{ color: 'black' }} className="timestamp">{time}</span>
                         </li>
                       )}
                     </div>

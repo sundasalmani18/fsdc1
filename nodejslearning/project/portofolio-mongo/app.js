@@ -14,24 +14,28 @@ import { fileURLToPath } from 'url';
 import messageRoutes from './routes/messageRoutes.js'
 import Message from './model/messge.model.js'
 import authRoutes from './routes/authRoutes.js'
+import setupSocketEvents from './routes/socketRoute.js'
 
-
-
+dotenv.config();
 
 const app = express()
 app.use(bodyParser.json());
 
+
+
 app.use(cors())
 const server = http.createServer(app)
+// Setup Socket.IO events
+setupSocketEvents(server); 
 // const io = new Server(server)
 // Socket.IO server setup with CORS configuration
-const io = new Server(server, {
-  cors: {
-    origin: 'http://localhost:3000', // React app URL
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: 'http://localhost:3000', // React app URL
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type'],
+//   },
+// });
 
 
 
@@ -43,129 +47,140 @@ app.use(express.static("public"))
 
 
 // Track the admin's socket connection status
-let adminSocket = null;
-io.on('connection', (socket) => {
-  console.log('A user connected');
+// let adminSocket = null;
+// io.on('connect', (socket) => {
+//   console.log('A user connected');
 
 
 
-  // Set the admin socket
-  socket.on('setAdmin', () => {
-    adminSocket = socket;
-    console.log('Admin is online');
-  });
+//   // Set the admin socket
+//   // socket.on('setAdmin', () => {
+//   //   adminSocket = socket;
+//   //   console.log('Admin is online');
+//   // });
 
-  // Handle disconnect event
-  // socket.on('disconnect', () => {
-  //   if (adminSocket && socket.id === adminSocket.id) {
-  //     adminSocket = null;
-  //     console.log('Admin has disconnected');
-  //   }
-  //   console.log('A user disconnected:', socket.id);
-  // });
+//   // Handle disconnect event
+//   // socket.on('disconnect', () => {
+//   //   if (adminSocket && socket.id === adminSocket.id) {
+//   //     adminSocket = null;
+//   //     console.log('Admin has disconnected');
+//   //   }
+//   //   console.log('A user disconnected:', socket.id);
+//   // });
 
-  // Handle video call request
-  socket.on('videoCallRequest', (data) => {
-    const { userId } = data;
+//   // Handle video call request
+//   // socket.on('videoCallRequest', (data) => {
+//   //   const { userId } = data;
 
-    if (adminSocket) {
-      // Notify the admin about the video call request
-      adminSocket.emit('videoCallRequest', { userId, message: 'User wants to start a video call' });
-      socket.emit('adminOnline', 'Admin is online, waiting for response.');
-    } else {
-      socket.emit('adminOffline', 'Admin is offline, please try again later.');
-    }
-  });
+//   //   if (adminSocket) {
+//   //     // Notify the admin about the video call request
+//   //     adminSocket.emit('videoCallRequest', { userId, message: 'User wants to start a video call' });
+//   //     socket.emit('adminOnline', 'Admin is online, waiting for response.');
+//   //   } else {
+//   //     socket.emit('adminOffline', 'Admin is offline, please try again later.');
+//   //   }
+//   // });
 
-  // Handle video call offer/answer
-  socket.on('videoCallOffer', (offerData) => {
-    const { offer, adminId, userId } = offerData;
-    socket.to(userId).emit('videoCallOffer', { offer, adminId });
-  });
+//   // Handle video call offer/answer
+//   // socket.on('videoCallOffer', (offerData) => {
+//   //   const { offer, adminId, userId } = offerData;
+//   //   socket.to(userId).emit('videoCallOffer', { offer, adminId });
+//   // });
 
-  socket.on('videoCallAnswer', (answerData) => {
-    const { answer, userId, adminId } = answerData;
-    socket.to(adminId).emit('videoCallAnswer', { answer, userId });
-  });
+//   // socket.on('videoCallAnswer', (answerData) => {
+//   //   const { answer, userId, adminId } = answerData;
+//   //   socket.to(adminId).emit('videoCallAnswer', { answer, userId });
+//   // });
 
-  // ICE Candidate Handling
-  socket.on('iceCandidate', (candidateData) => {
-    const { candidate, targetId } = candidateData;
-    socket.to(targetId).emit('iceCandidate', { candidate });
-  });
-
-
-
-  socket.on('adminMessage', async (data) => {
-    const { senderId, receiverId, message } = data;
-    // Store the message in MongoDB
-    const newMessage = new Message({
-      user: 'Admin',
-      message: message,
-      senderId,
-      receiverId,
-    });
-    
-    try {
-      await newMessage.save();
-      console.log('Admin message saved to DB:', message);
-    } catch (error) {
-      console.error('Error saving admin message:', error);
-    }
-
-    // Emit the message to the user
-    socket.emit('adminMessage', message);
-  });
-
-  // Receive user message and store it in MongoDB
-  socket.on('userMessage', async (data) => {
-    const { senderId, receiverId, message } = data;
-    // Store the message in MongoDB
-    const newMessage = new Message({
-      user: 'User',
-      message: message,
-      senderId,
-      receiverId,
-    });
-
-    try {
-      await newMessage.save();
-      console.log('User message saved to DB:', message);
-    } catch (error) {
-      console.error('Error saving user message:', error);
-    }    
-    // Emit the message to the admin
-    socket.emit('userMessage', message);
-  });
+//   // ICE Candidate Handling
+//   // socket.on('iceCandidate', (candidateData) => {
+//   //   const { candidate, targetId } = candidateData;
+//   //   socket.to(targetId).emit('iceCandidate', { candidate });
+//   // });
 
 
 
+//   socket.on('adminMessage', async (data) => {
+//     console.log('adminMessage', data)
+//     const { senderId, receiverId, message } = data;
 
+//     // Emit the message to the user
+//     socket.emit('adminMessage server', data);
 
-//without database
-  // // Listen for messages from the admin
-  // socket.on('adminMessage', (data) => {
-  //   console.log(`Message from admin: ${data}`);
-  //   // Broadcast the message to all clients (including the user)
-  //   io.emit('userMessage', data);
-  // });
+//     // Store the message in MongoDB
+//     const newMessage = new Message({
+//       user: 'Admin',
+//       message: message,
+//       senderId,
+//       receiverId,
+//     });
 
-  // // Listen for messages from the user
-  // socket.on('userMessage', (data) => {
-  //   console.log(`Message from user: ${data}`);
-  //   // Broadcast the message to the admin
-  //   io.emit('adminMessage', data);
-  // });
+//     try {
+//       await newMessage.save();
+//       console.log('Admin message saved to DB:', message);
+//       // Broadcast message to the specific user
+//       socket.to(receiverId).emit('adminMessage', data);
 
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-  });
-});
+//     } catch (error) {
+//       console.error('Error saving admin message:', error);
+//     }
+
+//     socket.emit('adminMessage', data);
+//   });
+
+//   // Receive user message and store it in MongoDB
+//   socket.on('userMessage', async (data) => {
+//     console.log('userMessage server', data)
+//     const { senderId, receiverId, message } = data;
+//     // Store the message in MongoDB
+//     const newMessage = new Message({
+//       user: 'User',
+//       message: message,
+//       senderId,
+//       receiverId,
+//     });
+
+//     try {
+//       await newMessage.save();
+//       console.log('User message saved to DB:', message);
+
+//       // Broadcast message to the admin
+//       socket.to(receiverId).emit('userMessage', data);
+//     } catch (error) {
+//       console.error('Error saving user message:', error);
+//     }
+//     // Emit the message to the admin
+//     socket.emit('userMessage', message);
+//   });
 
 
 
 
-dotenv.config();
+
+//   //without database
+//   // // Listen for messages from the admin
+//   // socket.on('adminMessage', (data) => {
+//   //   console.log(`Message from admin: ${data}`);
+//   //   // Broadcast the message to all clients (including the user)
+//   //   io.emit('userMessage', data);
+//   // });
+
+//   // // Listen for messages from the user
+//   // socket.on('userMessage', (data) => {
+//   //   console.log(`Message from user: ${data}`);
+//   //   // Broadcast the message to the admin
+//   //   io.emit('adminMessage', data);
+//   // });
+
+//   socket.on('disconnect', () => {
+//     console.log('A user disconnected');
+//   });
+// });
+
+
+
+
+
 db.mongose.connect(db.url).then(() => {
   console.log("connected to database")
 
