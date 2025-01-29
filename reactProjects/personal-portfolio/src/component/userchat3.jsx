@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 
 const Userchat = () => {
   const [message, setMessage] = useState('');
@@ -38,7 +39,7 @@ const Userchat = () => {
     });
 
     return () => {
-      socketConnection.disconnect();
+      socket.disconnect();
     };
   }, []);
 
@@ -73,8 +74,8 @@ const Userchat = () => {
     if (message.trim() !== '') {
       const messageData = {
         user: 'User',
-        userId: userId,
-        adminId: adminId,
+        senderId: userId,
+        receiverId: adminId,
         message: message,
         timestamp: new Date().toISOString(),
       };

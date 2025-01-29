@@ -10,29 +10,56 @@ const Adminchat = () => {
   const [userId, setUserId] = useState('user123');
   const [adminId, setAdminId] = useState(localStorage.getItem('userId'));
   const [users, setUsers] = useState([]);
-  
-  const socket = io('http://localhost:8080'); // Ensure this matches your backend
+   const [socket, setSocket] = useState(null);
+   const [socketConnected, setSocketConnected] = useState(false);
+   // Ensure this matches your backend
 
   // On component mount, set up socket events
   useEffect(() => {
+    const socket = io('http://localhost:8080');
+    setSocket(socket)
     socket.on('connect', () => {
       console.log('Admin Connected to server');
+      setSocketConnected(true);  // Update state when socket is connected
     });
 
-    // Listen for incoming messages in the room
+
     socket.on('userMessage', (data) => {
-      setChatMessages((prevMessages) => [
-        ...prevMessages,
-        { user: 'User', message: data.message, timestamp: new Date().toLocaleTimeString() }
-      ]);
+      if (data.userId === userId) { // Ensure the message is for the selected user
+        setChatMessages((prevMessages) => [
+          ...prevMessages,
+          { user: 'User', message: data.message, timestamp: new Date().toLocaleTimeString() }
+        ]);
+      }
+    });
+  
+    socket.on('adminMessage', (data) => {
+      if (data.userId === userId) { // Ensure the message is for the selected user
+        setChatMessages((prevMessages) => [
+          ...prevMessages,
+          { user: 'Admin', message: data.message, timestamp: new Date().toLocaleTimeString() }
+        ]);
+      }
     });
 
-    socket.on('adminMessage', (data) => {
-      setChatMessages((prevMessages) => [
-        ...prevMessages,
-        { user: 'Admin', message: data.message, timestamp: new Date().toLocaleTimeString() }
-      ]);
-    });
+
+    fetchMessages()
+    // Listen for incoming messages in the room
+    // socket.on('userMessage', (data) => {
+    //   console.log("user message",data)
+    //   setChatMessages((prevMessages) => [
+    //     ...prevMessages,
+    //     { user: 'User', message: data.message, timestamp: new Date().toLocaleTimeString() }
+    //   ]);
+    // });
+
+    // socket.on('adminMessage', (data) => {
+    //   console.log("adminMessage ",data)
+    //   setChatMessages((prevMessages) => [
+    //     ...prevMessages,
+    //     { user: 'Admin', message: data.message, timestamp: new Date().toLocaleTimeString() }
+    //   ]);
+    // });
 
     // Clean up socket event listeners
     return () => {
@@ -40,13 +67,31 @@ const Adminchat = () => {
       socket.off('userMessage');
       socket.off('adminMessage');
     };
-  }, [adminId]);
+  }, [userId]);
+  useEffect(() => {
+    fetchMessages(userId); 
+    fetchUsers() // Fetch messages when component mounts or user changes
+  }, [userId]); 
 
+
+  useEffect(() => {
+    if (chatMessages.length > 0) {
+      console.log('Chat messages updated:', chatMessages);
+      // Optionally, trigger additional logic when messages are updated
+    }
+  }, [chatMessages]);
   // Fetch list of users
   const fetchUsers = async () => {
     try {
       const response = await axios.get('http://localhost:8080/auth/user');
       setUsers(response.data);
+
+  // Automatically select the first user (if any users are available)
+  if (response.data.length > 0) {
+    const firstUser = response.data[0];
+    handleUserSelect(firstUser._id);
+  }
+
     } catch (error) {
       console.error('Error fetching users:', error);
     }
@@ -65,20 +110,34 @@ const Adminchat = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUsers(); // Load users on mount
-    fetchMessages();
-  }, []);
+
 
   // Handle user selection
+  // const handleUserSelect = (selectedUserId) => {
+  //   setUserId(selectedUserId);
+  //   fetchMessages(selectedUserId); 
+  //   // Emit an event to join a specific room (based on adminId and userId)
+  //   const roomName = `chatroom-${selectedUserId}-${adminId}`;
+  //   socket.emit('startChat', { userId: selectedUserId, adminId }); // Emit to server to handle room logic
+  //   console.log(`Joined room: ${roomName}`);
+  // };
+
   const handleUserSelect = (selectedUserId) => {
     setUserId(selectedUserId);
+    setChatMessages([]);  // Clear previous chat messages
     fetchMessages(selectedUserId); 
-    // Emit an event to join a specific room (based on adminId and userId)
-    const roomName = `chatroom-${selectedUserId}-${adminId}`;
-    socket.emit('startChat', { userId: selectedUserId, adminId }); // Emit to server to handle room logic
-    console.log(`Joined room: ${roomName}`);
+  
+    // Check if socket is initialized
+    if (socket && socketConnected) {
+      const roomName = `chatroom-${selectedUserId}-${adminId}`;
+      socket.emit('startChat', { userId: selectedUserId, adminId });
+      console.log(`Joined room: ${roomName}`);
+    } else {
+      console.error("Socket is not initialized yet.");
+    }
   };
+  
+
 
   // Send admin message
   const sendAdminMessage = () => {
@@ -131,6 +190,7 @@ const Adminchat = () => {
           <div className="messages">
             <ul>
               {chatMessages.map((message, index) => {
+                console.log(chatMessages,"chat message")
                 const { user, message: text, timestamp } = message;
                 return (
                   <div key={index} style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px' }}>
