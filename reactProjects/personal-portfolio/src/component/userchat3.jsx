@@ -6,44 +6,57 @@ const Userchat = () => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [userId, setUserId] = useState(localStorage.getItem('userId')); // Example user ID
-  const [adminId, setAdminId] = useState('admin123'); // Example admin ID
+  // const [adminId, setAdminId] = useState('67758b0e2f3f34949e27d26f'); // Example admin ID
+
+  const adminId = '67758b0e2f3f34949e27d26f';  // Replace with actual admin ID
 
   const [socket, setSocket] = useState(null);
 
- // const socket = io('http://localhost:8080'); // Connect to the server
 
   useEffect(() => {
-      // Create socket connection on mount
-      const socket= io('http://localhost:8080');
-      setSocket(socket);
-    fetchMessages();
-    socket.on('connect', () => {
-      console.log('User Connected to server');
-      socket.emit('joinRoom', userId);  // Join the room for the user
-    });
 
-    socket.on('adminMessage', (data) => {
-      console.log('Received admin message:', data.message);
-      setChatHistory((prevChatHistory) => [
-        ...prevChatHistory,
-        { user: 'Admin', message: data.message, timestamp: new Date().toISOString() },
-      ]);
-    });
+      const socketInstance = io('http://localhost:8080');
+      setSocket(socketInstance);
 
-    socket.on('userMessage', (data) => {
-      console.log('Received user message:', data.message);
-      setChatHistory((prevChatHistory) => [
-        ...prevChatHistory,
-        { user: 'You', message: data.message, timestamp: new Date().toISOString() },
-      ]);
-    });
+      socketInstance.on('connect', () => {
+        console.log('User Connected to server');
+        const roomName = `chatroom-${userId}-${adminId}`;
+        socketInstance.emit('joinRoom', { userId, adminId });
+        console.log(`User joined room: ${roomName}`);
+      });
 
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+      socketInstance.on('adminMessage', (data) => {
+        console.log('Received admin message:', data.message);
+        setChatHistory((prevChatHistory) => [
+          ...prevChatHistory,
+          { user: 'Admin', message: data.message, timestamp: new Date().toISOString() },
+        ]);
+      });
+  
+      socketInstance.on('userMessage', (data) => {
+        console.log('Received user message:', data.message);
+        setChatHistory((prevChatHistory) => [
+          ...prevChatHistory,
+          { user: 'You', message: data.message, timestamp: new Date().toISOString() },
+        ]);
+      });
 
+      fetchMessages()
 
+      return () => {
+        socketInstance.disconnect();
+      };
+  //  }
+  }, [userId, adminId]);
+  const handleJoinRoom = () => {
+    if (socket) {
+        const roomName = `chatroom-${userId}-${adminId}`;
+        socket.emit('joinRoom', { userId, adminId });
+        console.log(`User joined room: ${roomName}`);
+    } else {
+        console.error("Socket not connected yet.");
+    }
+};
 
   useEffect(() => {
     // Fetch chat history whenever userId changes
@@ -79,7 +92,8 @@ const Userchat = () => {
         message: message,
         timestamp: new Date().toISOString(),
       };
-      socket.emit('userMessage', messageData);  // Emit message to the admin's room
+      const roomName = `chatroom-${userId}-${adminId}`;
+    socket.emit('userMessage', { messageData, roomName }); // 🔥 Emit to backend
       console.log("user message",messageData)
       setChatHistory((prevChatHistory) => [
         ...prevChatHistory,

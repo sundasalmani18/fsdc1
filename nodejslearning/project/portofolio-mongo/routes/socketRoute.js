@@ -16,77 +16,162 @@ const setupSocketEvents = (server) => {
     console.log('A user connected:', socket.id);
 
     // Handle chat room creation (as mentioned previously)
-    socket.on('startChat', (data) => {
+    socket.on('joinRoom', (data) => {
       const { userId, adminId } = data;
       const roomName = `chatroom-${userId}-${adminId}`;
       socket.join(roomName);
       console.log(`${socket.id} joined room ${roomName}`);
 
-      socket.to(adminId).emit('userJoinedRoom', { userId, roomName });
+       socket.to(adminId).emit('userJoinedRoom', { userId, roomName });
     });
 
 
 
-// Handle incoming messages from the user
-socket.on('userMessage', async (data) => {
-    console.log('Received userMessage data:', data);  // Log all incoming data
+    socket.on('userMessage', async (data) => {
+      console.log('Received userMessage data:', data);  // Log full data object
   
-    const { senderId, receiverId, message } = data;
+      // ✅ Correct destructuring (Extract messageData first)
+      const { messageData, roomName } = data;
+      if (!messageData) {
+        console.error('Missing messageData in received data:', data);
+        return;
+      }
   
-    // Check if any required fields are missing
-    if (!senderId || !receiverId || !message) {
-      console.error('Missing required fields in message data:', data);
-      return;  // Return early if required fields are missing
-    }
+      // ✅ Extract values from messageData
+      const { senderId, receiverId, message } = messageData;
   
-    console.log('Data is valid. Proceeding with saving the message...');
+      // ✅ Check for missing fields
+      if (!senderId || !receiverId || !message) {
+        console.error('Missing required fields in messageData:', messageData);
+        return;
+      }
   
-    // Generate room name from userId and adminId
-    const roomName = `chatroom-${senderId}-${receiverId}`;
+      console.log('Data is valid. Proceeding with saving the message...');
   
-    // Save the message in the database (MongoDB)
-    const newMessage = new Message({
-      user: 'User',
-      message,
-      senderId,
-      receiverId,
-      timestamp: new Date().toISOString(),
-    });
+      // ✅ Save message in database
+      const newMessage = new Message({
+        user: 'User',
+        message: message,
+        senderId,
+        receiverId,
+        timestamp: new Date().toISOString(),
+      });
   
-    try {
-      // Save the message to the database
-      await newMessage.save();
-      console.log('User message saved to DB:', message);
+      try {
+        await newMessage.save();
+        console.log('User message saved to DB:', message);
   
-      // Broadcast the message to the admin in the same room
-      socket.to(roomName).emit('userMessage', data);
-    } catch (error) {
-      console.error('Error saving user message:', error.message);  // Log only the error message
-      if (error.errors) {
-        for (let field in error.errors) {
-          console.error(`Validation error on field ${field}:`, error.errors[field].message);
+        // ✅ Broadcast to admin
+        socket.to(roomName).emit('userMessage', messageData);
+      } catch (error) {
+        console.error('Error saving user message:', error.message);
+        if (error.errors) {
+          for (let field in error.errors) {
+            console.error(`Validation error on field ${field}:`, error.errors[field].message);
+          }
         }
       }
-    }
   });
   
+
+// Handle incoming messages from the user
+// socket.on('userMessage', async (data) => {
+//     console.log('Received userMessage data:', data);  // Log all incoming data
+  
+//     const { senderId, receiverId, message } = data;
+  
+//     // Check if any required fields are missing
+//     if (!senderId || !receiverId || !message) {
+//       console.error('Missing required fields in message data:', data);
+//       return;  // Return early if required fields are missing
+//     }
+  
+//     console.log('Data is valid. Proceeding with saving the message...');
+  
+//     // Generate room name from userId and adminId
+//     const roomName = `chatroom-${senderId}-${receiverId}`;
+  
+//     // Save the message in the database (MongoDB)
+//     const newMessage = new Message({
+//       user: 'User',
+//       message: message,
+//       senderId,
+//       receiverId,
+//       timestamp: new Date().toISOString(),
+//     });
+  
+//     try {
+//       // Save the message to the database
+//       await newMessage.save();
+//       console.log('User message saved to DB:', message);
+  
+//       // Broadcast the message to the admin in the same room
+//       socket.to(roomName).emit('userMessage', data);
+//     } catch (error) {
+//       console.error('Error saving user message:', error.message);  // Log only the error message
+//       if (error.errors) {
+//         for (let field in error.errors) {
+//           console.error(`Validation error on field ${field}:`, error.errors[field].message);
+//         }
+//       }
+//     }
+//   });
+  
+  // socket.on('adminMessage', async (data) => {
+  //   console.log('Received message data:', data);  // Log the data to ensure it has the expected fields
+  
+  //   const { userId, adminId, message } = data;
+  
+  //   if (!userId || !adminId || !message) {
+  //     console.error('Missing required fields in message data');
+  //     return;
+  //   }
+  
+  //   // Generate room name from userId and adminId
+  //   const roomName = `chatroom-${userId}-${adminId}`;
+  
+  //   // Save the message in the database
+  //   const newMessage = new Message({
+  //     user: 'Admin',
+  //     message: message,
+  //     senderId: adminId,
+  //     receiverId: userId,
+  //     timestamp: new Date().toISOString(),
+  //   });
+  
+  //   try {
+  //     await newMessage.save();
+  //     console.log('Admin message saved:', newMessage);
+  //      // Broadcast the message to the admin in the same room
+  //      socket.to(roomName).emit('adminMessage', data);
+  //   } catch (error) {
+  //     console.error('Error saving admin message:', error);
+  //   }
+  // });
+
+
   socket.on('adminMessage', async (data) => {
     console.log('Received message data:', data);  // Log the data to ensure it has the expected fields
   
-    const { userId, adminId, message } = data;
-  
-    if (!userId || !adminId || !message) {
-      console.error('Missing required fields in message data');
+    if (!data.messageData) {
+      console.error('Missing messageData in received data');
       return;
     }
   
-    // Generate room name from userId and adminId
-    const roomName = `chatroom-${userId}-${adminId}`;
+    const { userId, adminId, message } = data.messageData;
+  
+    if (!userId || !adminId || !message) {
+      console.error('Missing required fields in messageData');
+      return;
+    }
+  
+    // Use the provided room name from data instead of reconstructing it
+    const roomName = data.roomName || `chatroom-${userId}-${adminId}`;
   
     // Save the message in the database
     const newMessage = new Message({
       user: 'Admin',
-      message,
+      message: message,
       senderId: adminId,
       receiverId: userId,
       timestamp: new Date().toISOString(),
@@ -95,12 +180,17 @@ socket.on('userMessage', async (data) => {
     try {
       await newMessage.save();
       console.log('Admin message saved:', newMessage);
-       // Broadcast the message to the admin in the same room
-       socket.to(roomName).emit('adminMessage', data);
+  
+      // Broadcast the message to the admin in the same room
+      socket.to(roomName).emit('adminMessage', data.messageData);
     } catch (error) {
       console.error('Error saving admin message:', error);
     }
   });
+  
+
+
+
   
 
     // Handle user disconnect
