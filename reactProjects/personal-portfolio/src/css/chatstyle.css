@@ -602,14 +602,20 @@
     max-width: 300px;
   }
 }
+
+
+
+
 #frame .content .message-input {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 90%;
   z-index: 99;
+
 }
 #frame .content .message-input .wrap {
   position: relative;
+  
 }
 #frame .content .message-input .wrap input {
   font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
@@ -648,8 +654,8 @@
   opacity: 1;
 }
 #frame .content .message-input .wrap button {
-  float: right;
-  border: none;
+  float: right; 
+   border: none;
   width: 50px;
   padding: 12px 0;
   cursor: pointer;
@@ -660,12 +666,6 @@
   #frame .content .message-input .wrap button {
     padding: 16px 0;
   }
-}
-#frame .content .message-input .wrap button:hover {
-  background: #435f7a;
-}
-#frame .content .message-input .wrap button:focus {
-  outline: none;
 }
 
 /* .fa{

@@ -74,81 +74,8 @@ const setupSocketEvents = (server) => {
   });
   
 
-// Handle incoming messages from the user
-// socket.on('userMessage', async (data) => {
-//     console.log('Received userMessage data:', data);  // Log all incoming data
-  
-//     const { senderId, receiverId, message } = data;
-  
-//     // Check if any required fields are missing
-//     if (!senderId || !receiverId || !message) {
-//       console.error('Missing required fields in message data:', data);
-//       return;  // Return early if required fields are missing
-//     }
-  
-//     console.log('Data is valid. Proceeding with saving the message...');
-  
-//     // Generate room name from userId and adminId
-//     const roomName = `chatroom-${senderId}-${receiverId}`;
-  
-//     // Save the message in the database (MongoDB)
-//     const newMessage = new Message({
-//       user: 'User',
-//       message: message,
-//       senderId,
-//       receiverId,
-//       timestamp: new Date().toISOString(),
-//     });
-  
-//     try {
-//       // Save the message to the database
-//       await newMessage.save();
-//       console.log('User message saved to DB:', message);
-  
-//       // Broadcast the message to the admin in the same room
-//       socket.to(roomName).emit('userMessage', data);
-//     } catch (error) {
-//       console.error('Error saving user message:', error.message);  // Log only the error message
-//       if (error.errors) {
-//         for (let field in error.errors) {
-//           console.error(`Validation error on field ${field}:`, error.errors[field].message);
-//         }
-//       }
-//     }
-//   });
-  
-  // socket.on('adminMessage', async (data) => {
-  //   console.log('Received message data:', data);  // Log the data to ensure it has the expected fields
-  
-  //   const { userId, adminId, message } = data;
-  
-  //   if (!userId || !adminId || !message) {
-  //     console.error('Missing required fields in message data');
-  //     return;
-  //   }
-  
-  //   // Generate room name from userId and adminId
-  //   const roomName = `chatroom-${userId}-${adminId}`;
-  
-  //   // Save the message in the database
-  //   const newMessage = new Message({
-  //     user: 'Admin',
-  //     message: message,
-  //     senderId: adminId,
-  //     receiverId: userId,
-  //     timestamp: new Date().toISOString(),
-  //   });
-  
-  //   try {
-  //     await newMessage.save();
-  //     console.log('Admin message saved:', newMessage);
-  //      // Broadcast the message to the admin in the same room
-  //      socket.to(roomName).emit('adminMessage', data);
-  //   } catch (error) {
-  //     console.error('Error saving admin message:', error);
-  //   }
-  // });
 
+  
 
   socket.on('adminMessage', async (data) => {
     console.log('Received message data:', data);  // Log the data to ensure it has the expected fields
@@ -189,6 +116,21 @@ const setupSocketEvents = (server) => {
   });
   
 
+  // 📌 WebRTC Signaling Events 📌
+  socket.on("offer", (data) => {
+    console.log("Received WebRTC Offer from:", data.sender);
+    socket.to(data.target).emit("offer", data);
+  });
+
+  socket.on("answer", (data) => {
+    console.log("Received WebRTC Answer from:", data.sender);
+    socket.to(data.target).emit("answer", data);
+  });
+
+  socket.on("ice-candidate", (data) => {
+    console.log("Received ICE Candidate:", data);
+    socket.to(data.target).emit("ice-candidate", data);
+  });
 
 
   
