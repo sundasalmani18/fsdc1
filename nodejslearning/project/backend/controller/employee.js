@@ -28,6 +28,7 @@ export const getEmployee = (req, res) => {
             result: true,
             employee: data
         }
+       
         return res.status(200).json({ Data: responseData })
     })
 
