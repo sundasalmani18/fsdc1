@@ -1,0 +1,155 @@
+
+Async storage 
+
+
+import { useEffect, useState } from "react"
+import { Text, TouchableOpacity, View } from "react-native"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+function Home({ navigation }: any) {
+    const [userName, setUserName] = useState("salman");
+    const getData = async () => {
+        const response = await AsyncStorage.getItem("username");
+        if (response) {
+            setUserName(response)
+            console.log(response)
+        }
+    }
+    useEffect(() => {
+        getData()
+    }, [getData])
+    const hyandleChangeName = () => {
+        setUserName("Hamza")
+        AsyncStorage.setItem("username", "Hamza")
+        getData()
+    }
+    return (
+        <View>
+            <Text style={{ fontSize: 35 }}>Hello! Home Page</Text>
+            <Text style={{ fontSize: 30, fontWeight: 700 }}>
+                {userName}
+            </Text>
+            <TouchableOpacity
+                onPress={() => hyandleChangeName()}
+                style={{
+                    backgroundColor: "#2563EB",
+                    paddingVertical: 12,
+                    paddingHorizontal: 20,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: 20,
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 4,
+                    elevation: 5,
+                }}
+            >
+                <Text
+                    style={{
+                        color: "#fff",
+                        fontSize: 16,
+                        fontWeight: "600",
+                    }}
+                >
+                    Change Name
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate("About")}
+                style={{
+                    backgroundColor: "#2563EB",
+                    paddingVertical: 12,
+                    paddingHorizontal: 20,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: 20,
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 4,
+                    elevation: 5,
+                }}
+            >
+                <Text
+                    style={{
+                        color: "#fff",
+                        fontSize: 16,
+                        fontWeight: "600",
+                    }}
+                >
+                    Go to About us Page
+                </Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+
+export default Home
+
+
+Navigation 
+
+
+
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import About from '~/Screens/About';
+import Contact from '~/Screens/COntact';
+import Home from '~/Screens/Home';
+
+
+const Stack = createNativeStackNavigator();
+
+
+function Navigation() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="About" component={About} />
+                <Stack.Screen name="Contact" component={Contact} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+
+export default Navigation
+
+
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+Asycn Storage
+npx expo install @react-native-async-storage/async-storage
+
+save
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const dataSave = async () => {
+  await AsyncStorage.setItem('naam', 'Ali');
+};
+
+get
+const dataLo = async () => {
+  const naam = await AsyncStorage.getItem('naam');
+  console.log(naam); // "Ali"
+};
+
+const dataHatao = async () => {
+  await AsyncStorage.removeItem('naam');
+};
