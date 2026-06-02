@@ -1,4 +1,5 @@
-
+Create project 
+npx create-expo-app@latest --template blank@latest
 Async storage 
 
 
@@ -93,7 +94,9 @@ export default Home
 Navigation 
 
 
-
+npx expo install @react-navigation/native
+npx expo install @react-navigation/native-stack
+npx expo install react-native-screens react-native-safe-area-context
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -153,3 +156,223 @@ const dataLo = async () => {
 const dataHatao = async () => {
   await AsyncStorage.removeItem('naam');
 };
+
+
+
+
+Navigation:
+npx expo install @react-navigation/native
+npx expo install @react-navigation/native-stack
+npx expo install react-native-screens react-native-safe-area-context
+
+Location:
+npx expo install expo-location
+
+import * as Location from 'expo-location';
+import { useState } from 'react';
+import { View, Text, Button } from 'react-native';
+
+export default function LocationScreen() {
+  const [location, setLocation] = useState('');
+
+  const getLocation = async () => {
+    // Permission maango
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    
+    if (status !== 'granted') {
+      alert('Permission nahi mili!');
+      return;
+    }
+
+    // Location lo
+    const loc = await Location.getCurrentPositionAsync({});
+    setLocation(`Lat: ${loc.coords.latitude}, Long: ${loc.coords.longitude}`);
+  };
+
+  return (
+    <View>
+      <Button title="Location Lo" onPress={getLocation} />
+      <Text>{location}</Text>
+    </View>
+  );
+}
+
+Camera :
+npx expo install expo-camera
+
+import { CameraView, useCameraPermissions } from 'expo-camera';
+import { useRef, useState } from 'react';
+import { View, Button, Image } from 'react-native';
+
+export default function CameraScreen() {
+  const [permission, requestPermission] = useCameraPermissions();
+  const [photo, setPhoto] = useState('');
+  const cameraRef = useRef<CameraView>(null);
+
+  const photoLo = async () => {
+    if (cameraRef.current) {
+      const pic = await cameraRef.current.takePictureAsync();
+      setPhoto(pic!.uri);
+    }
+  };
+
+  if (!permission?.granted) {
+    return <Button title="Camera Permission Do" onPress={requestPermission} />;
+  }
+
+  return (
+    <View style={{ flex: 1 }}>
+      <CameraView style={{ flex: 1 }} ref={cameraRef} />
+      <Button title="?? Photo Lo" onPress={photoLo} />
+      {photo && <Image source={{ uri: photo }} style={{ width: 100, height: 100 }} />}
+    </View>
+  );
+}
+
+Access Gallery
+
+npx expo install expo-image-picker
+
+import * as ImagePicker from 'expo-image-picker';
+import { useState } from 'react';
+import { View, Button, Image } from 'react-native';
+
+export default function GalleryScreen() {
+  const [image, setImage] = useState('');
+
+  const galleryKholo = async () => {
+    // Permission maango
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    
+    if (status !== 'granted') {
+      alert('Permission nahi mili!');
+      return;
+    }
+
+    // Gallery kholo
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+  return (
+    <View>
+      <Button title="?? Gallery Kholo" onPress={galleryKholo} />
+      {image && (
+        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+      )}
+    </View>
+  );
+}
+
+npx expo install expo-notifications
+import * as Notifications from 'expo-notifications';
+import { Button, View } from 'react-native';
+
+export default function NotificationScreen() {
+
+  // Permission maango
+  const permissionLo = async () => {
+    const { status } = await Notifications.requestPermissionsAsync();
+    if (status !== 'granted') {
+      alert('Permission nahi mili!');
+    }
+  };
+
+  // Abhi notification bhejo
+  const notificationBhejo = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: '?? Hello Bhai!',
+        body: 'Yeh ek test notification hai',
+      },
+      trigger: null, // null = abhi bhejo
+    });
+  };
+
+  // 5 second baad notification
+  const baadMeinBhejo = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: '? 5 Second Baad!',
+        body: 'Yeh delayed notification hai',
+      },
+      trigger: { seconds: 5 },
+    });
+  };
+
+  return (
+    <View>
+      <Button title="Permission Lo" onPress={permissionLo} />
+      <Button title="Abhi Bhejo" onPress={notificationBhejo} />
+      <Button title="5 Sec Baad Bhejo" onPress={baadMeinBhejo} />
+    </View>
+  );
+}
+
+
+DEPLOYMENT IN EXPO
+
+npm install -g eas-cli
+
+
+eas login 
+
+app.json file
+ "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+
+// Add this 2 line
+      "package":"com.suffiyankhan.practiceapp",
+      "versionCode":1
+    }
+
+eas build:configure
+
+eas build -p android --profile preview
+
+
+Android
+APK ==> Direct Mobile Installation
+
+AAB ==> Playstore
+
+IOS
+
+GIT Repository
+
+
+git init
+
+git add .
+
+git config --global user.name "You_github_User_Name"
+git config --global user.email "Your_github_Email"
+
+git commit -m "Your message"
+
+git remote add origin respository URL
+
+git push -u origin master
+
+
+kisi bhi repo ko clone karne kayliya take exist repository updat karsake:
+
+git clone https://github.com/SuffiyanKhan/application-1.git
+
+git add .
+git commit -m "Your message"
+git push
+
+
+second pc jaha pa updated code tha us pa git se sara updated code lane kayliye (Note: .git file ):
+git pull
