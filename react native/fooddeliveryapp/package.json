@@ -12,8 +12,8 @@
     "plugins": [
       "expo-location",
       "expo-camera",
-         "expo-notifications",
-         "expo-image-picker"
+      "expo-notifications",
+      "expo-image-picker"
     ]
   },
   "dependencies": {
@@ -23,12 +23,14 @@
     "expo": "~54.0.33",
     "expo-camera": "~17.0.10",
     "expo-image-picker": "~17.0.11",
+    "expo-linear-gradient": "~15.0.8",
     "expo-location": "~19.0.8",
     "expo-notifications": "~0.32.17",
     "expo-status-bar": "~3.0.9",
     "nativewind": "^4.2.4",
     "react": "19.1.0",
     "react-native": "0.81.5",
+    "react-native-linear-gradient": "^2.8.3",
     "react-native-paper": "^5.15.2",
     "react-native-reanimated": "~4.1.1",
     "react-native-safe-area-context": "~5.6.0",
