@@ -45,7 +45,7 @@ export default function ProductDetailsScreen() {
           color:'#FF3B5C',
           fontWeight:'700'
         }}>
-          $17.99
+         Rs:300
         </Text>
       </View>
 

@@ -14,7 +14,7 @@ export default function CartScreen() {
     {
       id: '1',
       name: 'Cheese Burger',
-      price: 8.99,
+      price: 300,
       qty: 2,
       image:
         'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500',
@@ -22,7 +22,7 @@ export default function CartScreen() {
     {
       id: '2',
       name: 'Chicken Burger',
-      price: 10.99,
+      price: 200,
       qty: 1,
       image:
         'https://images.unsplash.com/photo-1550547660-d9450f859349?w=500',
@@ -51,7 +51,7 @@ export default function CartScreen() {
     0,
   );
 
-  const deliveryFee = 2.99;
+  const deliveryFee = 300;
   const total = subtotal + deliveryFee;
 
   const renderItem = ({ item }) => (
@@ -67,7 +67,7 @@ export default function CartScreen() {
         </Text>
 
         <Text style={styles.itemPrice}>
-          ${item.price.toFixed(2)}
+          Rs:{item.price.toFixed(2)}
         </Text>
 
         <View style={styles.qtyContainer}>

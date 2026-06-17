@@ -21,28 +21,28 @@ const burgers = [
   {
     id: '1',
     name: 'Cheese Burger',
-    price: '$8.99',
+    price: 'Rs:400',
     image:
       'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500',
   },
   {
     id: '2',
     name: 'Chicken Burger',
-    price: '$10.99',
+    price: 'Rs:200',
     image:
       'https://images.unsplash.com/photo-1550547660-d9450f859349?w=500',
   },
   {
     id: '3',
     name: 'Double Burger',
-    price: '$12.99',
+    price: 'Rs:800',
     image:
       'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500',
   },
   {
     id: '4',
     name: 'Veg Burger',
-    price: '$9.99',
+    price: 'Rs:120',
     image:
       'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500',
   },
